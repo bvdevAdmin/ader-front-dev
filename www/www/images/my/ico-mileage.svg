@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="12" height="15" viewBox="0 0 12 15">
+  <g id="적립금_아이콘" data-name="적립금 아이콘" transform="translate(0.5 0.5)">
+    <ellipse id="타원_218" data-name="타원 218" cx="5.5" cy="2.5" rx="5.5" ry="2.5" transform="translate(0 9)" fill="#fff" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+    <ellipse id="타원_219" data-name="타원 219" cx="5.5" cy="2.5" rx="5.5" ry="2.5" transform="translate(0 6)" fill="#fff" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+    <ellipse id="타원_220" data-name="타원 220" cx="5.5" cy="2.5" rx="5.5" ry="2.5" transform="translate(0 3)" fill="#fff" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+    <ellipse id="타원_221" data-name="타원 221" cx="5.5" cy="2.5" rx="5.5" ry="2.5" fill="#fff" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+    <line id="선_2881" data-name="선 2881" y2="9.001" transform="translate(0 3)" fill="none" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+    <line id="선_2882" data-name="선 2882" y2="9.001" transform="translate(11 3)" fill="none" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

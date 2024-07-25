@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="그룹_8322" data-name="그룹 8322" transform="translate(-200 -1352)">
+    <g id="타원_224" data-name="타원 224" transform="translate(200 1352)" fill="none" stroke="#343434" stroke-width="1">
+      <circle cx="15" cy="15" r="15" stroke="none"/>
+      <circle cx="15" cy="15" r="14.5" fill="none"/>
+    </g>
+    <g id="그룹_8321" data-name="그룹 8321" transform="translate(1 0.25)">
+      <line id="선_2973" data-name="선 2973" x2="16.5" transform="translate(206 1367)" fill="none" stroke="#343434" stroke-width="1"/>
+      <line id="선_2976" data-name="선 2976" x1="5" y2="5" transform="translate(206 1361.5)" fill="none" stroke="#343434" stroke-linecap="square" stroke-width="1"/>
+      <line id="선_2977" data-name="선 2977" x1="5" y1="5" transform="translate(205.5 1367)" fill="none" stroke="#343434" stroke-linecap="square" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

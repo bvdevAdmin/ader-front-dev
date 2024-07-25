@@ -1,0 +1,59 @@
+@charset "utf-8";
+@font-face { /* 일부 해당 폰트 사용 필요 _zuri */
+  font-family: 'FuturaG';
+  src: url('Futura.eot'),
+         url('Futura.eot?#iefix') format('embeded-opentype'),
+         url('Futura.woff') format('woff'),
+         url('Futura.ttf') format('truetype'),
+         url('Futura.svg') format('svg');
+}
+@font-face {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 200;
+  src: url('FuturaLTPro-Light.eot');
+  src: local('Futura LT Pro Light'), local('Futura LT Pro Light'), url('FuturaLTPro-Light.woff') format('woff'), url('FuturaLTPro-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 400;
+  src: url('FuturaLTPro-Medium.eot');
+  src: local('Futura LT Pro Medium'), local('Futura LT Pro Medium'), url('FuturaLTPro-Medium.woff') format('woff'), url('FuturaLTPro-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 600;
+  src: url('FuturaLTPro-Bold.eot');
+  src: local('Futura LT Pro Bold'), local('Futura LT Pro Bold'), url('FuturaLTPro-Bold.woff') format('woff'), url('FuturaLTPro-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 800;
+  src: url('FuturaLTPro-Heavy.eot');
+  src: local('Futura LT Pro Heavy'), local('Futura LT Pro Heavy'), url('FuturaLTPro-Heavy.woff') format('woff'), url('FuturaLTPro-Heavy.ttf') format('truetype');
+}
+/*
+@font-face {
+    font-family: 'Futura-Heavy';
+    src: url('./Futura/FuturaLTPro-Heavy.eot');
+    src: url('./Futura/FuturaLTPro-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('./Futura/FuturaLTPro-Heavy.woff2') format('woff2'),
+        url('./Futura/FuturaLTPro-Heavy.woff') format('woff'),
+        url('./Futura/FuturaLTPro-Heavy.ttf') format('truetype');
+	font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Futura-Bold';
+    src: url('./Futura/FuturaLTPro-Bold.eot');
+    src: url('./Futura/FuturaLTPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('./Futura/FuturaLTPro-Bold.woff2') format('woff2'),
+        url('./Futura/FuturaLTPro-Bold.woff') format('woff'),
+        url('./Futura/FuturaLTPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+*/

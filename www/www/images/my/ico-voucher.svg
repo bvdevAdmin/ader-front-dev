@@ -1,0 +1,9 @@
+<svg id="바우처아이콘" xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10">
+  <g id="사각형_2678" data-name="사각형 2678" fill="#fff" stroke="#343434" stroke-width="1">
+    <rect width="16" height="10" stroke="none"/>
+    <rect x="0.5" y="0.5" width="15" height="9" fill="none"/>
+  </g>
+  <line id="선_2878" data-name="선 2878" y2="3" transform="translate(12)" fill="none" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+  <line id="선_2879" data-name="선 2879" y2="2" transform="translate(12 4)" fill="none" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+  <line id="선_2880" data-name="선 2880" y2="3" transform="translate(12 7)" fill="none" stroke="#343434" stroke-linejoin="round" stroke-width="1"/>
+</svg>

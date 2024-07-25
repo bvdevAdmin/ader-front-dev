@@ -1,0 +1,8 @@
+<svg id="경고" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+  <line id="선_2741" data-name="선 2741" y1="5" transform="translate(6.5 2.5)" fill="none" stroke="#343434" stroke-linejoin="round" stroke-width="1.2"/>
+  <path id="패스_7101" data-name="패스 7101" d="M5.65,9.452a1,1,0,1,1,1,1,1,1,0,0,1-1-1" transform="translate(-0.15 0.048)" fill="#343434"/>
+  <g id="사각형_2332" data-name="사각형 2332" fill="none" stroke="#343434" stroke-width="1">
+    <rect width="13" height="13" stroke="none"/>
+    <rect x="0.5" y="0.5" width="12" height="12" fill="none"/>
+  </g>
+</svg>

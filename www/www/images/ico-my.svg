@@ -1,0 +1,10 @@
+<svg id="사용자_아이콘" data-name="사용자 아이콘" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="14" viewBox="0 0 13 14">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_2279" data-name="사각형 2279" width="13" height="14" fill="none" stroke="#343434" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_7829" data-name="그룹 7829" clip-path="url(#clip-path)">
+    <path id="패스_6973" data-name="패스 6973" d="M11.639,8.918,8.259,8.489,7.811,6.25l.85-3.393L6.673.536,4.1.881l-.9,4.3,1.654,1.99L4.7,8.037,1.951,7.689.535,9.1.5,13.571H11.39l1.067-3.555Z" transform="translate(0 -0.037)" fill="none" stroke="#343434" stroke-miterlimit="10" stroke-width="1"/>
+  </g>
+</svg>

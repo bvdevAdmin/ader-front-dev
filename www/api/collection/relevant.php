@@ -1,0 +1,1 @@
+<?php include '/var/www/www/api/posting/collection/relevant/get.php'; ?>

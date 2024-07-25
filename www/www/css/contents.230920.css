@@ -1,0 +1,1234 @@
+@charset "UTF-8";
+
+
+/** preset : 텍스트 **/
+.bold {font-weight: bold;}
+.underline {text-decoration: underline !important;}
+
+/** preset : 즐겨찾기 버튼 **/
+button.favorite { position : absolute ; width : 18px ; height : 18px ; top : 21px ; right : 21px ; background : url('/images/btn-favorite.svg') center no-repeat ; display : inline-block }
+button.favorite.on { background-image : url('/images/btn-favorite.on.svg') }
+
+/** preset : 닫기 버튼 **/
+button.close { width : 12px ; height : 12px ; position : absolute ; top : 40px ; right : 83px ; background : url('/images/ico-close.svg') center no-repeat ; transition : ease-out .2s }
+button.close:hover { transform : rotate(180deg) }
+
+/** preset : 버튼 모양 **/
+.buttons { display : block ; width : 100% }
+.buttons button,.btn { display : block ; width : 100% ; height : 45px ; font-size : var(--fontsize) ; transition : ease-out .2s ; border : solid 1px var(--gray) ; text-align : center ; line-height : 43px ; position : relative }
+.buttons button.black,
+.btn.black { background-color : var(--black) ; color : var(--white) }
+.buttons button ~ button,.buttons .btn ~ .btn { margin-top : 10px }
+.buttons button.off,.buttons .btn.off { border-color : var(--border-color) }
+.buttons button.off:hover,.buttons .btn.off:hover { border-color : var(--black) }
+
+.buttons button > .text,.btn > .text,
+.buttons button > .hover,.btn > .hover { position : absolute ; overflow : hidden ; top : 0 ; left : 0 ; width : 100% ; height : 100% }
+.buttons button > .hover,.btn > .hover { width : 0 ; left : 50% ; background-color : var(--black) ; color : var(--white) ; transition : ease-out .2s }
+.buttons button > .hover > .text,.btn > .hover > .text { width : 100% ; word-break: keep-all; }
+.buttons button:hover > .hover,.btn:hover > .hover { width : 100% ; left : 0 }
+
+
+/** preset : 체크박스, 라디오 버튼 **/
+label { position : relative }
+label,label * { cursor : pointer }
+label input { position : absolute ; top : 0 ; left : 0 ; width : 100% ; height : 100% ; opacity : 0 }
+label input + i { border : solid 1px var(--black) ; width : 10px ; height : 12px ; vertical-align : middle ; margin-right : 5px ; display : inline-block }
+label input:checked + i { background-color : var(--black) }
+
+/** preset : 날짜 검색 **/
+.date-search { background-color : var(--content-bg) ; width : 100% ; padding : 8px 10px ; position : relative ; margin-bottom : 20px }
+.date-search,
+.date-search button { font-size : var(--fontsize-sub) }
+.date-search ul { display : inline-grid ; grid-template-columns : repeat(4,65px) ; background-color : var(--white) }
+.date-search ul > li { position : relative ; height : 45px ; border : solid 1px var(--border-gray-color) ; text-align : center ; margin-left : -1px }
+.date-search ul > li button { width : 100% ; height : 45px }
+.date-search ul > li:hover { border-color : var(--gray) }
+.date-search ul > li:hover:after { content : "" ; width : 1px ; height : 100% ; top : 0 ; right : -1px ; z-index : 2 ; background-color : var(--gray) ; display : inline-block ; position : absolute }
+.date-search .inp { text-align : center ; display : grid ; grid-template-columns : 150px 10px 150px ; position : absolute ; top : 8px ; right : 120px ; line-height : 43px }
+.date-search .inp > .item { background-color : var(--white) ; border : solid 1px var(--border-gray-color) ; position : relative }
+.date-search .inp > .item input { opacity : 0 ; position : absolute ; z-index : 2 ; top : 0 ; left : 0 ; cursor : pointer ; width : 100% ; height : 43px }
+.date-search .inp > .item .select { width : 100% ; height : 100% }
+.date-search .inp > .item .select:before { content : "" ; display : inline-block ; margin-right : 10px ; width : 13px ; height : 13px ; background : url('/images/ico-calendar.svg') center no-repeat ; vertical-align : middle }
+.date-search .inp > .item .calendar { display : none ; width : 310px ; border-right : solid 1px var(--gray) ; border-left : solid 1px var(--gray) ; border-bottom : solid 1px var(--gray) ; background-color : var(--white) ; position : absolute ; z-index : 2 ; top : 31px ; left : -1px ; padding : 20px 10px }
+.date-search .inp > .item .calendar:before { content : "" ; width : 160px ; height : 1px ; background-color : var(--gray) ; display : inline-block ; position : absolute ; right : 0 ; top : 0 }
+.date-search .inp > .item .calendar table { width : 100% }
+.date-search .inp > .item .calendar table thead th { line-height : 16px ; position : relative ; font-weight : var(--fontweight-m) }
+.date-search .inp > .item .calendar table thead th button { display : inline-block ; width : 16px ; height : 16px ; background-repeat : no-repeat ; background-position : center ; cursor : pointer ; position : absolute ; top : 0 }
+.date-search .inp > .item .calendar table thead th button.prev { left : calc( 50% - 58px ) ; background-image : url('/images/ico-angle-prev.svg') }
+.date-search .inp > .item .calendar table thead th button.next { right : calc( 50% - 58px ) ; background-image : url('/images/ico-angle-next.svg') }
+.date-search .inp > .item .calendar table tbody { line-height : 32px }
+.date-search .inp > .item .calendar table tbody > tr > td { width : calc( 100% / 7 ) ; cursor : pointer }
+.date-search .inp > .item:last-child .calendar { left : initial ; right : -1px }
+.date-search .inp > .item:last-child .calendar:before { right : initial ; left : 0 }
+.date-search .inp > .item.on { border-color : var(--gray) }
+.date-search .inp > .item.on .calendar { display : block }
+.date-search button[type='submit'].btn { position : absolute ; right : 10px ; top : 8px ; width : 100px ; height : 45px ; background-color : var(--white) ; border : solid 1px var(--gray) }
+
+/** preset : 페이지 하단 상품 슬라이드 **/
+.swiper-row { padding-left : 120px ; height : 530px ; position : relative ; overflow : hidden ; background-color : var(--white) }
+.swiper-row > h2 { position : absolute ; top : 0 ; left : 0 ; padding : 20px 0 0 10px ; width : 120px ; height : 100% ; border-right : solid 1px var(--border-color) ; font-size : 13px ; line-height : 13px ; text-decoration : underline ; font-weight : 400 }
+.swiper-row .swiper-container { width : 100% ; overflow : hidden }
+.swiper-slide.goods-list { width : 360px ; height : 530px ; padding-top : 450px ; border-right : solid 1px var(--border-color) }
+.swiper-slide.goods-list > a.image { display : block ; width : 100% ; height: 450px ; position : absolute ; top : 0 ; left : 0 ; background-size : cover ; background-position : center ; border-bottom : solid 1px var(--border-color) }
+.swiper-slide.goods-list .info { padding : 12px 9px }
+.swiper-slide.goods-list ul.size { display : table }
+.swiper-slide.goods-list ul.size > li { display : table-cell }
+
+/** preset : tab **/
+.tab > .tab-container { text-align : center }
+.tab > .tab-container > ul { display : grid ; grid-template-columns: repeat(auto-fill, minmax(50%, auto)) ; width : 100% ; border-bottom : solid 1px var(--border-color) }
+.tab > .tab-container > ul > li { cursor : pointer ; opacity : .5 ; line-height : 16px ; font-size : 12px ; padding : 20px 0 15px 0 ; position : relative }
+.tab > .tab-container > ul > li.on { opacity : 1 }
+.tab > .tab-container > ul > li.on:before { content : "" ; width : 100% ; height : 3px ; background-color : var(--black) ; position : absolute ; display : inline-block ; left : 0 ; bottom : -2px }
+.tab > section:not(.on) { display : none }
+
+/** preset : form **/
+.form-inline { width : 100% ; position : relative ; padding-top : 26px }
+.form-inline ~ .form-inline:not(.no-margin) { margin-top : 20px }
+.form-inline .control-label { position : absolute ; display : inline-block ; font-size : var(--fontsize-sub) ; top : 0 ; left : 0 ; transition : ease-out .2s ; z-index : -1 }
+.form-inline input:not([type='checkbox']):not([type='radio']),
+.form-inline select,
+.form-inline textarea,
+.form-inline .textarea { width : 100% ; height : 35px ; padding : 0 10px ; border : solid 1px var(--gray) ; background : none }
+.form-inline .textarea { min-height : 250px ; padding : 20px }
+.form-inline .inp-row { width : 100% ; position : relative }
+.form-inline .inp-row ~ .inp-row { margin-top : 10px }
+.form-inline .inp-row.has-btn { display : grid ; grid-gap : 10px ; grid-template-columns : 1fr minmax(110px, 50%) }
+.form-inline .inp-row.has-btn button { height : 40px ; background-color :var(--black) ; color : var(--white) }
+
+.form-inline.inline-label .control-label { top : 28px ; color : var(--control-label-color) ; font-size : 12px ; opacity : .5 ; line-height : 16px }
+.form-inline.inline-label input:not([type='checkbox']):not([type='radio']),
+.form-inline.inline-label select { border-top : none ; border-left : none ; border-right : none ; border-color : var(--quick-border) ; padding : 0 ; font-size : 14px }
+.form-inline.inline-label select { background : url('/images/ico-select-arrow.svg') calc( 100% - 10px ) center no-repeat } 
+.form-inline.inline-label input:not([type='checkbox']):not([type='radio']).has-value ~ .control-label,
+.form-inline.inline-label input:not([type='checkbox']):not([type='radio']):focus ~ .control-label,
+.form-inline.inline-label input:not([type='checkbox']):not([type='radio']):not(:placeholder-shown) ~ .control-label { top : 13px ; font-size : var(--fontsize-s) }
+.form-inline.inline-label .textarea { margin-top : -26px }
+.form-inline.inline-label .textarea ~ .control-label { top : 21px ; left : 21px }
+.form-inline.inline-label .textarea:focus ~ .control-label,
+.form-inline.inline-label .textarea.has-value ~ .control-label { display : none }
+
+.form-inline:not(.inline-label) .control-label.inline { opacity : .5 ; left : 10px ; top : 40px }
+.form-inline:not(.inline-label) input:focus ~ .control-label.inline,
+.form-inline:not(.inline-label) input:not(:placeholder-shown) ~ .control-label.inline { top : 5px ; left : 0 }
+
+.form-inline.inline-label .vaild { display : none ; color : var(--red) ; position : absolute ; top : 10px ; left : 0 ; font-size : 10px }
+.form-inline.inline-label .vaild.on { display : block }
+.form-inline.inline-label .vaild.on ~ .control-label { display : none }
+
+.form-inline button { width : 100px ; height : 45px ; border : solid 1px var(--gray) ; position : absolute ; right : 0 ; bottom : 0 ; font-size : 11px }
+.form-inline.inline-label button { height : 37px ; border-color : var(--black) }
+.form-inline button:not(.pw-view-toggle) + input { width : calc( 100% - 110px ) !important }
+.form-inline button.pw-view-toggle { background : url('/images/ico-pw-view.svg') center no-repeat ; height : 28px ; width : 38px ; bottom : initial ; top : 24px ; border : none }
+.form-inline button.pw-view-toggle.view-alphanet { background-image : url('/images/ico-pw-view-off.svg') }
+
+.form-inline.file { display : flex }
+.form-inline.file .cont { display : inline-block ; width : 45px ; height : 45px ; position : relative ; background : url('/images/ico-increase.svg') center no-repeat ; border : solid 1px var(--gray) }
+.form-inline.file .cont * { cursor : pointer }
+.form-inline.file .cont label { position : absolute ; width : 100% ; height : 100% }
+.form-inline.file .cont label input { position : absolute; width : 100% ; height : 100% ; opacity : 0 }
+.form-inline.file .cont ~ .cont { margin-left : 10px }
+
+.form-inline .remark { border : solid 1px var(--gray) ; width : 100% ; padding : 20px ; margin-top : 20px ; display : none }
+.form-inline .remark ul.dot { margin : 0 }
+/*.form-inline input:focus ~ .remark { display : block }*/
+
+/** preset : modal **/
+.modal { position : fixed ; display : none }
+.modal.on { display : block }
+.modal > section { position : absolute ; border : solid 1px var(--black) ; background-color : var(--white) ; padding : 10px }
+.modal > section > button.close { top : 20px ; right : 20px }
+
+/** preset : grid **/
+.grid { display : grid !important }
+.grid.col-2 { grid-template-columns : repeat(2, 1fr) }
+.grid.col-3 { grid-template-columns : repeat(3, 1fr) }
+.grid.gap-10 { gap : 10px }
+
+/** preset : 컨텐츠 가운데 정렬 **/
+.item-center { padding : 0 !important ; height: calc( 100vh - 100px ); display: grid; place-items: center; }
+
+
+/** preset : dot list **/
+ul.dot { margin : 20px 0 }
+ul.dot > li { line-height : 15px ; font-size : 11px ; padding-left : 7px ; position : relative }
+ul.dot > li ~ li { margin-top : 11px }
+ul.dot.margin20 > li ~ li { margin-top : 20px }
+ul.dot > li:before { content : "" ; display : inline-block ; width : 2px ; height : 2px ; background-color : var(--black) ; position : absolute ; top : 7px ; left : 0 ; border-radius : 50% }
+
+/** preset : table **/
+table.simple { border-top : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) }
+table.simple th,
+table.simple td { font-size : 10px ; font-weight : 400 ; text-align : center ; padding : 10px 0 ; line-height : 13px ; border-bottom : solid 1px var(--border-color) ; border-left : solid 1px var(--border-color) }
+
+ul.table-info { display : grid ; width : 100% ; grid-auto-flow: column dense; height : 90px ; border : solid 1px var(--border-color) }
+ul.table-info > li { border-left : solid 1px var(--border-color) ; text-align : center ; position : relative ; padding-top : 20px }
+ul.table-info > li:first-child { border-left : none }
+ul.table-info > li .number { position : absolute ; left : 0 ; bottom : 19px ; width : 100% }
+
+/** preset : animation **/
+
+/** preset : 뒤로가기 **/
+#btn-mobile-history-back { display : none ; border-bottom : solid 1px var(--border-color) ; width : 100% ; height : 45px ; text-align : left ; padding-left : 37px ; padding-bottom : 4px ; background : url('/images/ico-back.svg') 20px center no-repeat }
+#btn-mobile-history-back:before { content : "뒤로가기" ; font-size : 10px }
+
+
+/** preset : 하단 상품 스와이프 **/
+.bottom-goods-slide {  }
+.bottom-goods-slide h2 { width : 100% ; font-size : 11px ; line-height : 15px ; padding : 50px 40px 20px 40px }
+.bottom-goods-slide .swiper-container { border-top : solid 1px var(--border-color) ; border-bottom : solid 1px var(--border-color) }
+.bottom-goods-slide .swiper-wrapper {  }
+.bottom-goods-slide .swiper-slide { width : 432px ; height : 660px ; border-right : solid 1px var(--border-color) }
+.bottom-goods-slide .swiper-slide .image { width : 100% ; height : 540px ; display : block ; background-size: cover ; background-position : center }
+.bottom-goods-slide .swiper-slide .info { height : 120px }
+
+
+/** preset : 스크롤바 숨기기 **/
+.hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scroll::-webkit-scrollbar { display: none; }
+
+
+/** preset : contents list **/
+dl.contents-list { width : 100% }
+dl.contents-list ~ dl.contents-list { margin-top : 40px }
+dl.contents-list > dt { border-bottom : solid 1px var(--footer-border) ; font-size : 13px ; line-height : 17px ; padding : 11px 0 }
+dl.contents-list > dd { font-size : 12px ; line-height : 16px ; padding : 10px 0 }
+dl.contents-list > dd a { display : block ; width : 100% ; background : url('/images/ico-angle-right.svg') calc( 100% - 10px ) center no-repeat }
+dl.contents-list > dt + dd { padding-top : 20px }
+
+ul.contents-list > li.empty { border-top : solid 1px var(--border-gray-color) ; border-bottom : solid 1px var(--border-gray-color) ; padding : 100px 0 ; text-align : center }
+
+/** preset : 설명박스 **/
+.--describe { background-color : var(--content-bg) ; line-height : 16px ; font-size : 12px ; padding : 20px ; width : 100% ; text-align : left }
+
+/** preset : to top **/
+button.to-top { width : 41px ; height : 46px ; cursor : pointer ; background : url('/images/to-top.svg') center no-repeat ; }
+
+/** preset : wrap **/
+.wrap-480 { max-width : 480px ; width : 100% ; margin : auto }
+.wrap-720 { max-width : 720px ; width : 100% ; margin : auto }
+
+
+/** preset : modal **/
+.modal { }
+.modal ul.dot { font-size : var(--fontsize-s)}
+
+/***********************************************************************************************************/
+
+
+
+
+/** layout **/
+body > main { padding-top : 45px ; padding-bottom : 200px ; position : relative  }
+
+
+/** quick aside **/
+body > aside { position : fixed ; right : 0 ; bottom : 0 ; z-index : 80 }
+body > aside button.close { top : 12px ; right : 12px }
+body > aside > ul { position : absolute ; bottom : 40px ; right : 40px }
+body > aside > ul > li { transition : cubic-bezier(0, 0, 0, 1.1) .5s ; background-color : var(--white) ; border : solid 1px var(--quick-border) ; overflow : hidden ; width : 50px ; height : 50px ; border-radius : 50% }
+body > aside > ul > li ~ li { margin-top : 10px }
+body > aside > ul > li > button.quick { width : 48px ; height : 48px ; background-position : center ; background-repeat : no-repeat }
+body > aside > ul > li > section { position : relative }
+body > aside > ul > li.recently-viewed > button.quick { background-image : url('/images/ico-quick-recently.svg') }
+body > aside > ul > li.qna > button.quick { background-image : url('/images/ico-quick-qna.svg') }
+
+
+body > aside dl > dt { width : 60px ; height : calc( 25% + 1px ) ; border : solid 1px var(--quick-border) ; background-color : var(--white) ; position : absolute ; right : -1px ; line-height : 1 ; padding : 0 0 0 8px ; font-size : 10px ; top : -1px ; cursor : pointer ; z-index : 20 ; color : var(--white) }
+body > aside dl > dt:nth-child(3) { top : 49px }
+body > aside dl > dt:nth-child(5) { top : 99px }
+body > aside dl > dt:nth-child(7) { top : 149px ; border-bottom : none }
+body > aside dl > dt i { display : block ; margin-top : 7px ; width : 100% ; height : 25px ; background-image : url('/images/ico-quick-recently.svg') ; background-position : top left ; background-repeat : no-repeat ; transition : ease-out .2s }
+body > aside dl > dt:nth-child(1) i  { height : 20px }
+body > aside dl > dt.on i { background-image : url('/images/ico-quick-recently.on.svg') }
+body > aside dl > dt:nth-child(3) i { background-image : url('/images/ico-quick-top.svg') }
+body > aside dl > dt:nth-child(5) i { background-image : url('/images/ico-quick-wishlist.svg') }
+body > aside dl > dt:nth-child(7) i { background-image : url('/images/ico-quick-qna.svg') }
+body > aside dl > dt.on:nth-child(3) i { background-image : url('/images/ico-quick-top.on.svg') }
+body > aside dl > dt.on:nth-child(5) i { background-image : url('/images/ico-quick-wishlist.on.svg') }
+body > aside dl > dt.on:nth-child(7) i { background-image : url('/images/ico-quick-qna.on.svg') }
+
+body > aside dl > dt:hover,body > aside dl > dt.on { color : var(--black) }
+
+body > aside dl > dd { width : calc( 25vw - 59px ) ; height : 200px ; position : absolute ; left : 0 ; overflow : hidden ; background-color : var(--white) }
+body > aside dl > dt.on + dd { z-index : 2 }
+body > aside dl > dd > section { padding : 8px 0 }
+body > aside dl > dd header { position : relative; vertical-align: bottom; display : inline-block ; height : 20px ; line-height : 20px ; padding-left : 30px ; font-size : 12px }
+body > aside dl > dd header i { display : inline-block ; position : absolute ; width : 20px ; height : 20px ; background : url('/images/ico-quick-recently.svg') left center no-repeat ; top : 0 ; left : 10px }
+body > aside dl > dd:nth-child(4) header i { background-image : url('/images/ico-quick-top.on.svg') }
+body > aside dl > dd:nth-child(6) header i { background-image : url('/images/ico-quick-wishlist.on.svg') }
+body > aside dl > dd:nth-child(8) header i { background-image : url('/images/ico-quick-qna.on.svg') }
+body > aside dl > dd .swiper-container { padding-top : 5px }
+body > aside dl > dd .swiper-wrapper { padding : 0 32px 0 10px }
+body > aside dl > dd .swiper-slide { width : 80px ; padding-top : 100px ; text-align : center }
+body > aside dl > dd .swiper-slide .image { position : absolute ; width : 100% ; height : 100px ; top : 0 ; left : 0 ; background-size : cover ; background-position : center ; display : inline-block ; background-color : #FBFBFB }
+body > aside dl > dd .swiper-slide .name { line-height : 1 }
+body > aside dl.on { width : 25vw }
+body > aside.bottom { position : absolute }
+body > aside.bottom dl > dt { height : calc( 25% + 2px ) }
+
+/** header **/
+body > header,body > footer { width : 100% ; /* min-width : 1600px */ }
+body > header,body > header.fixed { position : fixed ; top : 0 ; left : 0 ; z-index : 100 }
+body > header { overflow : hidden ;transition : ease-out .2s }
+body > header.on { height : 100vh  }
+body > header:before { display : block ; position : absolute ; top : 0 ; left : 0 ; content : "" ; width: 100% ; height : 100vh ; background-color : #000 ; z-index : -100 ;transition : ease-out .35s ; opacity : 0 }
+body > header.fadeout { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px) }
+body > header.fadeout:before { opacity : .15 }
+body > header > nav,body > header.fixed > nav { height : 45px ; width : 100% ; position : relative ; border-bottom : solid 1px var(--nav-border-color) ; background-color : #fff }
+body > header > nav:before { content : "" ; width : 100% ; height : 1px ; background-color : var(--border-color) ; position: absolute ; top : 44px ; display : inline-block ; z-index: 10 }
+body > header > nav h1,
+main.story > section.detail > header h1 { font-size : 0 ; width : 136px ; height : 18px ; background : url('/images/logo.svg') center no-repeat ; display : inline-block ; position : absolute ; top : 17px ; left : calc( 50% - 68px ) }
+body > header > nav > dl { position : absolute ; top : 18px ; font-size : 12px }
+body > header > nav > dl > dt { float : left ; line-height : 16px ; height : 28px ; font-weight : var(--category-fontweight-l) }
+body > header > nav > dl > dd { overflow : hidden ; /* transition : ease-out .2s ; height : 0 */ ; display : none ; position : fixed ; top : 45px ; left : 0 ; background : #fff ; width : 100% ; border-bottom : solid 1px var(--border-color) ; padding : 0 0 0 25% }
+body > header > nav > dl > dt.on:before { content : "" ; width : 6px ; height : 11px ; background-color : var(--black) ; display : inline-block ; position : absolute ; left : -8px ; top : 2px }
+body > header > nav > dl > dt.on + dd { min-height : 350px ; display : block ; z-index : 1 }
+body > header > nav > dl > dd .cont { min-height : 350px }
+body > header > nav dl.gnb { left : 40px }
+body > header > nav dl.gnb > dt { margin-right : 50px ; cursor : pointer ; position : relative }
+body > header > nav dl.gnb > dd > .gallery { position : absolute ; bottom: 40px ; left : 40px ; width : 150px ; overflow : hidden }
+body > header > nav dl.gnb > dd > .gallery .swiper-container { width : 150px }
+body > header > nav dl.gnb > dd > .gallery .swiper-slide { display : block ; width : 150px ; height : 150px ; background-position : center ; background-size : cover }
+body > header > nav dl.gnb > dd > .cont { border-left : solid 1px var(--border-color) }
+body > header > nav dl.gnb > dd > .cont > ul { display : table ; min-height : 350px ; padding-left : 20px }
+body > header > nav dl.gnb > dd > .cont > ul > li { display : table-cell ; width : 155px ; padding : 40px 0 }
+body > header > nav dl.gnb > dd > .cont > ul > li .image { display : block ; width : 100% ; height : 160px ; background-size : cover ; background-position : center ; margin-top : 10px }
+body > header > nav dl.gnb > dd > .cont > ul > li a { font-size : 11px ; line-height : 16px }
+body > header > nav dl.gnb > dd > .cont > ul > li dl > dt { font-weight : var(--category-fontweight-m) }
+body > header > nav dl.gnb > dd > .cont > ul > li dl > dd { margin-top : 21px }
+body > header > nav dl.gnb > dd[data-title="콜라보레이션"] > .cont > ul > li dl > dt a,
+body > header > nav dl.gnb > dd > .cont > ul > li dl > dd { font-weight : var(--category-fontweight-s) }
+body > header > nav dl.gnb > dd > .cont > ul > li dl > dd a { opacity : .7 ; transition : ease-out .2s }
+body > header > nav dl.gnb > dd > .cont > ul > li dl > dd a:hover { opacity : 1  }
+
+body > header > nav dl.gnb > dd.no-gallery { padding : 0 }
+body > header > nav dl.gnb > dd.no-gallery > .cont { border-left : none }
+body > header > nav dl.gnb > dd.no-gallery > .cont > ul { width : 100% ; display : grid ; grid-template-columns: repeat(auto-fill, minmax(20%, auto)) ; padding-left : 0 }
+body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li { width : auto ; padding : 40px ; display: inline-grid; align-items: end; }
+body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li ~ li { border-left : solid 1px var(--border-color) }
+body > header > nav dl.gnb > dd:not(.no-gallery) > .cont > ul > li .image  { display : none }
+
+body > header > nav dl.tnb { right : 40px }
+body > header > nav dl.tnb > dt a { cursor : pointer }
+body > header > nav dl.tnb > dt { margin-right : 45px }
+body > header > nav dl.tnb > dt:nth-child(4) { margin-right : 80px }
+body > header > nav dl.tnb > dt:nth-child(5).on { text-decoration : none !important }
+body > header > nav dl.tnb > dt:nth-child(4) ~ dt { margin-right : 0 ; margin-top : -4px }
+body > header > nav dl.tnb > dt:nth-child(4) ~ dt a { padding-right : 30px ; position : relative ; line-height : 20px ; height : 20px }
+body > header > nav dl.tnb > dt:nth-child(4) ~ dt a.on { text-decoration : underline }
+body > header > nav dl.tnb > dt:nth-child(5) ~ dt a:not([data-side='language']):not([data-side='my']) { font-size : 0 }
+body > header > nav dl.tnb > dt:nth-child(4) ~ dt a:before { content : "" ; vertical-align : top ; display : inline-block ; width : 20px ; height : 20px ; background-position : center ; background-repeat : no-repeat }
+body > header > nav dl.tnb > dt:last-child a { padding-right : 0 !important }
+body > header > nav dl.tnb > dt a[data-side='search']:before { background-image : url('/images/ico-search.svg') }
+body > header > nav dl.tnb > dt a[data-side='search'].on:before { background-image : url('/images/ico-search.on.svg') }
+
+body > header > nav dl.tnb > dt a[href='/stockist']:before { background-image : url('/images/ico-globus.svg') }
+body > header > nav dl.tnb > dt a[href='/my/wishlist']:before { background-image : url('/images/ico-favorite.svg') }
+body > header > nav dl.tnb > dt a[data-side='shoppingbag']:before { background-image : url('/images/ico-bag.svg') }
+/*body > header > nav dl.tnb > dt a[data-side='my']:before { background-image : url('/images/ico-my.svg') }*/
+
+body > header > nav dl.tnb > dt a[data-side='bluemark'] { text-decoration : none !important ; padding-left : 14px ; padding-right : 0 !important ; margin-right : 30px ; color : var(--bluemark) ; font-size : 11px }
+body > header > nav dl.tnb > dt a[data-side='bluemark']:before,
+body > header > nav dl.tnb > dt a[data-side='language']:before { display : none !important }
+body > header > nav dl.tnb > dt a[data-side='bluemark'] .over { display : inline-block ; transition : linear .15s ; overflow : hidden ; width : 10px ; position : absolute ; top : 5px ; height : 12px ; left : 0 }
+body > header > nav dl.tnb > dt a[data-side='bluemark'] .over:before { display : block ; background-color : var(--bluemark) ; position : absolute ; top : 0 ; left : 0 ; width: 6px;height : 6px ; content : "" ; transition : linear .15s ; border : solid 1px var(--white) }
+body > header > nav dl.tnb > dt a[data-side='bluemark'] .over > span { padding-left : 12px ; line-height : 12px ; display : block ; position : absolute ; top : 1px ; left : 2px ; color : var(--white) }
+body > header > nav dl.tnb > dt a[data-side='bluemark']:hover { }
+body > header > nav dl.tnb > dt a[data-side='bluemark']:hover .over,
+body > header > nav dl.tnb > dt a[data-side='bluemark'].on .over { width : calc( 100% + 3px ) ; top : 3px }
+body > header > nav dl.tnb > dt a[data-side='bluemark']:hover .over:before, 
+body > header > nav dl.tnb > dt a[data-side='bluemark'].on .over:before { left : 10px ; width : calc( 100% - 2px ) ; height : 14px ; top : 0 }
+
+body > header > nav dl.tnb > dt a[data-side='language'] { padding : 0 2px 0 2px !important ; margin-right : 28px } 
+body > header > nav dl.tnb > dt a[data-side='language'].on { background-color : var(--black) ; color : var(--white) ; text-decoration : none !important }
+
+body > header > nav dl.tnb #tnb-story { padding : 0 }
+body > header > nav dl.tnb dt.on + dd#tnb-story { display : grid ; grid-template-columns : 75% 25% }
+body > header > nav dl.tnb #tnb-story > * { padding : 40px }
+body > header > nav dl.tnb #tnb-story > dl:last-child { padding-left : 10px ; border-left : solid 1px var(--border-color) }
+body > header > nav dl.tnb #tnb-story > dl > dt { height : 88px }
+body > header > nav dl.tnb #tnb-story > dl > dd { width : 128px ; display : inline-block ; float : left }
+body > header > nav dl.tnb #tnb-story > dl > dd ~ dd { margin-left : 10px }
+body > header > nav dl.tnb #tnb-story > dl > dd h3 { font-size : 12px ; line-height : 16px ; padding-bottom : 10px ; font-weight : var(--category-fontweight-s) }
+body > header > nav dl.tnb #tnb-story > dl > dd .image { display : block ; width : 100% ; height : 160px ; background-size : cover ; background-position : center ; background-color : var(--gray) }
+body > header > nav dl.tnb #tnb-story-new > dd { max-width : 400px ; width : 100% !important }
+
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav h1 { background-image : url('/images/logo.w.svg') }
+body > main.transparent-header ~ header:not(.fixed):not(.fadeout) > nav { background : none ; border-bottom-color : transparent }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav { color : var(--white) }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav dt > a { color : var(--white) }
+body > main.transparent-header ~ header:not(.fixed):not(.fadeout) > nav:before { background-color : transparent }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav dl.tnb > dt a[data-side='search']:before { background-image : url('/images/ico-search.w.svg') }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav dl.tnb > dt a[href='/stockist']:before { background-image : url('/images/ico-globus.w.svg') }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav dl.tnb > dt a[href='/wishlist']:before { background-image : url('/images/ico-favorite.w.svg') }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav dl.tnb > dt a[data-side='shoppingbag']:before { background-image : url('/images/ico-bag.w.svg') }
+body > main.transparent-header:not(.bk-header) ~ header:not(.fixed):not(.fadeout) > nav dl.tnb > dt a[data-side='my']:before { background-image : url('/images/ico-my.w.svg') }
+
+/** header > notice **/
+body > header > .notice { transition : ease-out .2s ; width : 100% ; height : 0 ; position : relative ; overflow : hidden ; border-bottom : solid 1px var(--border-color) ; margin-top : -1px }
+body > header > .notice button { position : absolute }
+body.has-headnoti > header > .notice { height : 30px ; margin-top : 0 }
+
+/** footer **/
+body > footer { padding : 40px ; font-size : 10px ; line-height : 2.1 ; border-top : solid 1px var(--footer-border) }
+body > footer h1,body > footer h2 { font-size : 12px ; line-height : 17px ; padding-bottom : 30px }
+body > footer address { font-style : normal }
+body > footer > section { display : grid ; grid-template-columns: auto 308px 308px 308px 308px }
+body > footer article.social ul { display : grid ; grid-template-columns: 20px 20px 20px 20px ; grid-gap : 30px }
+body > footer article.social ul > li { }
+body > footer article.social a { display : block ; width : 14px ; height : 20px ; line-height : 12px ; text-align : center ; transition : ease-out .2s ; opacity : .5 ; padding : 2px 0 6px 0 }
+body > footer article.social a:hover { opacity : 1 }
+body > footer article.social a > img { display : inline-block }
+body > footer article.rules ul > li { line-height : 14px ; font-size : 10px }
+body > footer article.rules ul > li ~ li { margin-top : 30px }
+body > footer p.copyright { padding-top : 60px ; font-size : 13px }
+
+body > main { min-height : 100vh /* min-height : calc( 100vh - 240px ) */ }
+main.fix-header { padding-top : 50px }
+
+
+/** account > login **/
+main.login { padding-bottom : 0 }
+main.login > section { display : flex ; min-height : 100vh ; padding : 100px 0 ; align-items : center }
+main.login > section > article.account { width : 606px ; margin : auto ; text-align : center }
+article.login button[type="submit"] { margin-top : 40px }
+article.login .form-inline ~ .form-inline { margin-top : 20px }
+article.login .btn { margin-top : 10px }
+article.login form .rows { display : inline-block ; width : 100% ; margin-top : 10px }
+article.login form .rows .left { float : left }
+article.login form .rows .right { float : right }
+article.login form .rows a { text-decoration : underline }
+article.login .sns-login,
+section.account .sns-login { margin-top : 40px ; text-align : center }
+article.login .sns-login p,
+section.account .sns-login p { line-height : 16px ; font-size : 12px }
+article.login .sns-login ul,
+section.account .sns-login ul { display : inline-block ; margin-top : 10px }
+article.login .sns-login ul > li,
+section.account .sns-login ul > li { display : inline-block ; float : left ; width : 45px ; height : 45px }
+article.login .sns-login ul > li ~ li,
+section.account .sns-login ul > li ~ li { margin-left : 10px }
+article.login .sns-login ul > li button,
+section.account .sns-login ul > li button { width : 45px ; height : 45px ; /*border : solid 1px ; */ font-size : 0 }
+article.login .sns-login ul > li button.login-kakao,
+section.account .sns-login ul > li button.login-kakao { border-color : var(--kakao) ; background-image : url('/images/ico-sns-kakao.svg') }
+article.login .sns-login ul > li button.login-naver,
+section.account .sns-login ul > li button.login-naver { border-color : var(--naver) ; background-image : url('/images/ico-sns-naver.svg') }
+article.login section.customer { padding-top : 80px }
+
+
+/** account **/
+section.account > article { width : 480px ; margin : auto }
+section.account > article .tab { margin-top : 60px }
+section.account > article .--describe { margin-top : 30px }
+section.account > article .form-inline { padding-top : 20px }
+section.account > article .form-inline ~ .form-inline { margin-top : 0 }
+section.account > article .form-inline.inline-label input:not([type='checkbox']):not([type='radio']).has-value ~ .control-label,
+section.account > article .form-inline.inline-label input:not([type='checkbox']):not([type='radio']):focus ~ .control-label,
+section.account > article .form-inline.inline-label input:not([type='checkbox']):not([type='radio']):not(:placeholder-shown) ~ .control-label { top : 10px }
+section.account > article .form-inline input { font-size : 12px !important }
+section.account > article .number-confirm { position : relative ; padding : 0 0 27px 0 ; height : 100px }
+section.account > article .number-confirm .timeleft { text-align : center ; width : 50px ; line-height : 37px ; bottom : 0 ; right : 0 ; position : absolute }
+section.account > article .number-confirm button.time-extend { font-size : 12px ; border-bottom : solid 1px var(--black) ; position : absolute ; bottom : 0 ; right : 0 }
+section.account > article .number-confirm:not(.on) > * { display : none }
+section.account > article .buttons { padding : 30px 0 0 0 }
+
+/** account > 회원가입 **/
+section.account > article.join > h1 { margin-bottom : 30px }
+section.account > article.join .agrees { margin : 40px 0 30px 0 ; line-height : 16px }
+section.account > article.join .agrees ul > li { margin-top : 10px }
+section.account > article.join .agrees a { border-bottom : solid 1px var(--black) }
+section.account > article.join section.join-ok { display : none }
+section.account > article.join.ok form { display : none }
+section.account > article.join.ok section.join-ok { display : block ; padding-top : 10px }
+section.account > article.join.ok section.join-ok p ~ p { margin-top : 10px }
+section.account > article.join.ok section.join-ok .buttons { padding-top : 60px }
+
+/** account > 아이디 / 비밀번호 찾기 **/
+section.account > article.find .--describe + .form-inline { margin-top : 10px }
+
+
+/** tnb > side **/
+body > header > aside { position : fixed ; top : 45px ; right : 0 ; width : 0 ; height : calc( 100vh - 45px ) ; overflow-x : hidden ; overflow-y : auto ; transition : cubic-bezier(0, 0, 0, 1.1) .5s; background-color : var(--white) ; z-index : 10 }
+body > header > aside button.close { right : 40px }
+body > header > aside > section { width : 100% ; min-width : 25vw ; min-height : 100% ; display : none ; align-items : center }
+body > header > aside > section article { padding : 0 40px ; width : 100% ; min-height : 600px }
+body > header > aside.bluemark,
+body > header > aside.language,
+body > header > aside.shoppingbag,
+body > header > aside.my { width : 25vw }
+body > header > aside.bluemark > section.bluemark,
+body > header > aside.language > section.language,
+body > header > aside.search > section.search,
+body > header > aside.shoppingbag > section.shoppingbag,
+body > header > aside.my > section.my { display : flex }
+body > header > aside h2 { font-size : 12px ; line-height : 16px ; font-weight : 400 ; text-align : left }
+body > header > aside > section input:not([type="radio"]):not([type="checkbox"]) { width : 100% ; height : 25px ; font-size : 11px ; border-bottom : solid 1px var(--border-color) }
+
+/** tnb > side > bluemark **/
+body > header > aside > section.bluemark h2 { color : var(--bluemark) ; font-size : var(--fontsize-title) ; padding-left : 11px ; position : relative }
+body > header > aside > section.bluemark h2:before { content : "" ; width : 6px ; height : 6px ; display : inline-block ; position : absolute ; top : calc( 50% - 3px ) ; left : 0 ; background-color : var(--bluemark) }
+body > header > aside > section.bluemark p { margin: 40px 0 70px 0 }
+body > header > aside > section.bluemark a.btn { color : var(--bluemark) ; border-color : var(--bluemark) }
+body > header > aside > section.bluemark a.btn.certify { color : var(--white) ; background-color : var(--bluemark) }
+body > header > aside > section.language p { margin: 75px 0 }
+
+/** tnb > side > search **/
+body > header > aside.search { width : 50vw }
+body > header > aside.search > section.search { width : 50vw }
+body > header > aside.search > section.search article { padding : 0 155px }
+body > header > aside.search > section.search input[name='keyword'] { padding-left : 24px ; background : url('/images/ico-search.svg') left center no-repeat }
+body > header > aside.search > section.search ul { display : inline-block ; width : 100% ; margin: 0 0 0 -5px }
+body > header > aside.search > section.search ul > li { margin : 5px ; display : inline-block ; float : left }
+body > header > aside.search > section.search ul.recommend { font-size : 11px }
+body > header > aside.search > section.search ul.recommend > li { border : solid 1px #eaeaea ; line-height : 26px ; padding : 0 8px }
+body > header > aside.search > section.search ul.hot > li a { display : block ; width : 100px ; height : 160px ; position : relative ; padding-top : 132px ; font-size : 10px ; line-height : 14px ; text-align : center }
+body > header > aside.search > section.search ul.hot > li a .img { display : block ; width : 100% ; padding-top : 125% ; position : absolute ; top : 0 ; left : 0 ; background-size : cover ; background-position : center }
+body > header > aside.search > section.search h2 { margin-top : 60px ; margin-bottom : 5px }
+body > header > aside.search > section.search h2 ~ h2 { margin-top : 100px }
+
+/** tnb > side > login **/
+body > header > aside.my > section.my article.login { height : calc( 100vh - 205px ) ; text-align : center }
+body > header > aside.my > section.my article.login + .loged { display : none }
+body > header > aside.my > section.my article.login h2 { margin-bottom : 18px }
+
+/** tnb > side > cart **/
+body > header > aside.shoppingbag { height : auto }
+body > header > aside > section.shoppingbag { }
+body > header > aside > section.shoppingbag article { padding : 0 ; min-height : auto }
+body > header > aside > section.shoppingbag article h2 { display : block ; height : 86px ; border-bottom : solid 1px var(--border-gray-color) ; line-height : 1 ; padding : 38px 0 0 55px ; background : url('/images/ico-shoppingbag.svg') 40px center no-repeat }
+
+body > header > aside > section.shoppingbag article dl.cart > dt { height : 45px ; line-height : 45px ; padding : 0 40px }
+body > header > aside > section.shoppingbag article dl.cart > dt .msg { float : left }
+body > header > aside > section.shoppingbag article dl.cart > dt .right { float : right }
+body > header > aside > section.shoppingbag article dl.cart > dt .right * { height : 12px ; line-height: 12px ; vertical-align : middle }
+body > header > aside > section.shoppingbag article dl.cart > dt .right button.select-delete { text-decoration : underline }
+body > header > aside > section.shoppingbag article dl.cart > dt label input + i { margin-right : 0 ; margin-left : 14px }
+body > header > aside > section.shoppingbag article dl.cart > dd { overflow-y : auto ; max-height : calc( 100vh - 374px ) ; border-top : solid 1px var(--border-gray-color) }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li { border-bottom : solid 1px var(--border-gray-color) ; position : relative ; height : 150px ; padding : 20px 20px 20px 140px }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li:last-child { border-bottom : none }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .thumbnail { position : absolute ; top : 0 ; left : 0 ; width : 120px ; height : 100% ; background-size : cover ; background-position : center ; border-right : solid 1px var(--border-gray-color) }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li label.check { position : absolute ; top : 20px ; right : 40px }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li label.check i { margin-right : 0 }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .name { font-size : 12px }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .price { }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .color { }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .color .colorchip { display : inline-block ; margin-left : 3px ; width : 5px ; height : 5px ; border-radius : 50% }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .size { }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .name ~ *:not(.qty-cont) { margin-top : 7px ; font-size : 10px }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont { position : absolute ; bottom : 20px ; left : 140px ; padding-left : 36px ; height : 15px ; width : 118px }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont .label { position : absolute ; left : 0 ; top : 0 }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont button { position : absolute ; top : 0 ; width : 15px ; height : 15px ; display : inline-block ; background-position : center ; background-repeat : no-repeat ; opacity : .3 }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont button.on { opacity : 1 }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont button.decrease { background-image : url('/images/ico-decrease.svg') ; left : 36px }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont button.increase { background-image : url('/images/ico-increase.svg') ; right : 0 }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .qty-cont input { width : 100% ; height : 15px ; border : none ; background : none ; text-align : center }
+body > header > aside > section.shoppingbag article dl.cart > dd ul > li .total-price { text-decoration : underline ; position : absolute ; right : 40px ; bottom : 20px }
+
+body > header > aside > section.shoppingbag article footer { width : 100% }
+body > header > aside > section.shoppingbag article footer dl > * { border-top : solid 1px var(--border-gray-color) ; width : 100% ; height : 46px; line-height : 45px ; padding : 0 40px }
+body > header > aside > section.shoppingbag article footer dl > dd { text-align : right ; margin-top : -46px }
+body > header > aside > section.shoppingbag article footer dl > dd:last-child { text-decoration : underline }
+body > header > aside > section.shoppingbag article footer button[type="submit"] { height : 60px ; background-color : var(--footer-bg) ; color : var(--white) }
+
+body > header > aside > section.shoppingbag article .info-box { text-align : center ; padding : 0 40px 70px 40px }
+body > header > aside > section.shoppingbag article .no-login > .login p { padding : 100px 0 }
+body > header > aside > section.shoppingbag article .no-login > .join p { padding : 100px 0 10px 0 }
+body > header > aside > section.shoppingbag article .empty,
+body > header > aside > section.shoppingbag article .empty.on ~ * { display : none }
+body > header > aside > section.shoppingbag article .empty.on { display : block }
+body > header > aside > section.shoppingbag article .empty p { padding : 100px 0 }
+body:not(.loged) > header > aside > section.shoppingbag article .no-login ~ * { display : none }
+body.loged > header > aside > section.shoppingbag article .no-login { display : none }
+
+/** tnb 로그인 **/
+body.loged > header > aside.my > section.my article.login { display : none }
+body.loged > header > aside.my > section.my article.login + .loged { display : block }
+body.loged > header > nav dl.tnb > dt a[data-side='my'],
+body > header > nav dl.tnb > dt a[href='/my'] { display : none }
+body.loged > header > nav dl.tnb > dt a[href='/my'] { display : block }
+
+
+
+/** main **/
+.links a + a { margin-left : 60px }
+.links a { position : relative ; padding-bottom : 3px ; font-size : 12px }
+.links a:after { content : "" ; width : 10px ; height : 1px ; background : #000 ; display : inline-block ; position : absolute ; left : 0 ; bottom : 0 ; transition : ease-out .2s }
+.links a:hover:after { width : 100% }
+
+body.main > header { background : none ; }
+body.main > header > nav { border-bottom-color : transparent }
+body.main > header > nav > dl > dt { color : #fff }
+
+main.intro { padding-top : 0 }
+main.intro > section { text-align : center }
+main.intro > section ul > li { position : relative }
+main.intro > section.campaign ul { display : grid ; grid-template-columns: 50% 50% ; grid-auto-rows: calc( 100vw * 0.46875 ) }
+main.intro > section.campaign ul > li:first-child { grid-column : 1 / 3 }
+main.intro > section.campaign ul > li { background-position : center ; background-size : cover }
+main.intro > section.campaign ul > li .video { position : absolute ; top : 0 ; left : 0 ; width : 100% ; height : 100% ; display : flex ; align-items : center ;justify-content: center; }
+main.intro > section.campaign ul > li .video video { min-width : 100% ; min-height : 100% ; position : absolute }
+main.intro > section.campaign ul > li .title { display : block ; position : absolute ; overflow : hidden ; width : 100% ; left : 0 ; bottom : 120px ; z-index : 2 }
+main.intro > section.campaign ul > li .title .box { display: inline-block ; background-color : var(--white) ; padding : 10px ; }
+main.intro > section.campaign ul > li .title .box h2 { font-size : 13px ; font-weight : 400 ; margin-bottom : 5px }
+main.intro > section.campaign ul > li .title .box a { border-bottom : solid 1px var(--black) ; padding-bottom : 2px }
+main.intro > section.campaign ul > li .title .box a ~ a { margin-left : 20px }
+main.intro > section.goods ul { display : grid ; grid-template-columns: repeat(4,25%) ; grid-auto-rows: calc( 25vw * ( 5 / 4 ) ) }
+main.intro > section.goods a { position : absolute ; top : 0 ; left : 0 ; width : 100% ; height : 100% ; background-position : center ; background-size : cover ; display : flex ; place-items: end center ;}
+main.intro > section.goods a .name { display : block ; width : 100% ; font-size : 13px ; padding-bottom : 40px }
+
+/*
+main.intro { padding-bottom : 250px ; overflow : hidden }
+main.intro > article { width : 100% ; position : relative }
+main.intro > article h1 { font-size : 20px ; line-height : 1.5 }
+main.intro > article h1 small { font-size : 13px ; display : block }
+main.intro > article h1 + .links { margin-top : 22px }
+main.intro > article .shortcut { padding : 15px 10px }
+main.intro > article .shortcut a span { text-decoration : underline }
+main.intro > article .shortcut a:after { content : ">" ; padding-left : 10px ; transition : ease-out .2s }
+main.intro > article .shortcut a:hover:after { padding-left : 15px }
+main.intro > article.campaign .cont { position : absolute ; bottom : 110px ; left : 130px }
+main.intro > article.campaign .cont.wh,main.intro > article.campaign .cont.wh a { color : #fff }
+main.intro > article.campaign .cont.wh .links a:after { background : #fff }
+main.intro > article.campaign .media * { display : block ; width : 100% }
+main.intro > article.promotion { display : grid ; grid-template-columns : 50% 50% }
+main.intro > article.promotion > section.title .cont { position : absolute ; bottom : 100px ; left : 130px }
+main.intro > article.promotion img { width : 100% }
+main.intro > article.goods .swiper-slide { width : 480px ; height : 600px }
+main.intro > article.goods .swiper-slide span { position : absolute ; bottom : 40px ; left : 0 ; width : 100% ; text-align : center }
+main.intro > article.styling { margin-top : 150px }
+main.intro > article.styling .swiper-slide { width : 600px ; height : 692px }
+main.intro > article.styling .swiper-slide .image { width : 100% ; height : 600px ; background-size : cover ; background-position : center }
+main.intro > article.styling .swiper-slide .title { padding : 25px 130px ; font-size : 16px ; line-height : 1.3 }
+main.intro > article.styling .swiper-button-prev,main.intro > article.styling .swiper-button-next { top : inherit ; bottom : 20px ; margin-top: 0 }
+main.intro > article.foryou { margin-top : 300px ; border-top : solid 1px var(--border-color) ; border-bottom : solid 1px var(--border-color) }
+main.intro > article.foryou .shortcut { position : absolute ; z-index : 5 ; top : 0 ; left : 0 }
+main.intro > article.foryou .swiper-slide { width : 360px ; height : 490px ; border-right : solid 1px var(--border-color) ; text-align : center  }
+main.intro > article.foryou .swiper-slide .image { width : 100% ; height : 450px ; background-size : cover ; background-position : center ; background-color : #FBFBFB }
+main.intro > article.foryou .swiper-slide a { display : block ; line-height : 40px }
+*/
+
+
+/** 쿠키 설정 **/
+section.cookie-agree { display : none }
+section.cookie-agree.on { display : block }
+section.cookie-agree > .banner { width : 100% ; height : 96px ; background-color : var(--white) ; position : fixed ; bottom : 0 ; left : 0 ; z-index : 100 ; padding : 40px 60px ; transition : ease-out .2s }
+section.cookie-agree > .banner button.close { top : 20px ; right : 20px }
+section.cookie-agree > .banner .buttons { display : grid ; grid-template-columns : 100px 100px ; gap : 10px ; position : absolute ; width : 210px ; top : 30px ; right : 60px }
+section.cookie-agree > .banner .buttons button { margin-top : 0 }
+section.cookie-agree > .accept { display : none ; position : fixed ; top : 0 ; left : 0 ; width : 100% ; height : 100% ; z-index : 100 ; backdrop-filter: blur(8px); }
+section.cookie-agree > .accept > .cont { width : 480px ; margin : 66px 20px ; position : relative ; background-color : var(--white) }
+section.cookie-agree > .accept > .cont > header { border-bottom : solid 1px var(--gray) ; line-height : 42px ; padding : 0 40px }
+section.cookie-agree > .accept > .cont > header button.close { top : 15px ; right : 40px }
+section.cookie-agree > .accept > .cont > article { padding : 40px }
+section.cookie-agree > .accept > .cont > article ul > li { margin-top : 25px }
+section.cookie-agree > .accept > .cont > article ul > li:first-child { margin-top : 0 }
+section.cookie-agree > .accept > .cont > article p { margin-top : 10px }
+section.cookie-agree > .accept > .cont > article .buttons { margin-top : 50px }
+section.cookie-agree.config > .banner { display : none }
+section.cookie-agree.config > .accept { display : grid ; place-items: center; }
+
+/** 상품 > 목록 **/
+main.goods.list { min-height : 100vh ; padding-top : 180px }
+main.goods.list > header { width: 100% ; height : 135px ; position : absolute ; top : 45px ; left :0 ; transition : ease-out .25s ; border-bottom : solid 1px var(--border-color) ; opacity : 0 }
+main.goods.list > header.on { opacity : 1 }
+main.goods.list > header nav .category { position : absolute ; left : 0 ; top : 0 ; border-bottom : solid 1px var(--border-color) ; width : 100% ; height : 90px }
+main.goods.list > header nav .category .swiper-container { padding-top : 10px ; padding-left : 40px ; overflow : hidden }
+main.goods.list > header nav .category .swiper-slide { min-width : 45px ; width : fit-content ; text-align : center ; padding-top : 45px }
+main.goods.list > header nav .category .swiper-slide ~ .swiper-slide { margin-left : 10px }
+main.goods.list > header nav .category .swiper-slide .image { width : 45px ; height : 45px ; display : block ; background-repeat : no-repeat ; background-position : center ; background-size : contain ; position : absolute ; top : 0 ; left : calc( 50% - 22.5px ) }
+main.goods.list > header nav .category .swiper-slide .image:before { position : absolute ; top : 0 ; left : 0 ; width : 43px ; height : 43px ; content : "" ; display : block ; border : solid 1px transparent ; transition : ease-out .2s }
+main.goods.list > header nav .category .swiper-slide a { padding-top : 4px ; display : block ; font-size : 10px }
+main.goods.list > header nav .category .swiper-slide a .title { display : block ; opacity : .5 ; transition : ease-out .2s ; white-space: nowrap }
+main.goods.list > header nav .category .swiper-slide a:hover .image:before,
+main.goods.list > header nav .category .swiper-slide a.on .image:before { border-color : #000 }
+main.goods.list > header nav .category .swiper-slide a:hover .title,
+main.goods.list > header nav .category .swiper-slide a.on .title { opacity : 1 } 
+
+main.goods.list > header nav .nav { position : absolute ; left : 40px ; bottom : 10px ; line-height : 14px ; font-size : 10px }
+
+main.goods.list > header nav .tools { position : absolute ; right : 30px ; bottom : 0 }
+main.goods.list > header nav .tools > ul { display : table }
+main.goods.list > header nav .tools > ul .dropdown { position : absolute ; left : -1px ; top : 100% ; width : 400% ; z-index : 1 ; display : none ; background-color : var(--white) ; padding : 0 12px ; border : solid 1px var(--border-color) ; border-right : none }
+main.goods.list > header nav .tools > ul .dropdown > ul { margin : 30px 0 }
+main.goods.list > header nav .tools > ul .dropdown > ul > li { line-height : 15px }
+main.goods.list > header nav .tools > ul .dropdown > ul > li ~ li { margin-top : 17px }
+main.goods.list > header nav .tools > ul > li { width : 45px ; height : 33px ; display : table-cell ; position : relative ; text-align : center }
+main.goods.list > header nav .tools > ul > li > button { height : 33px ; line-height : 33px ; font-size : 0 }
+main.goods.list > header nav .tools > ul > li > button .icon { background-position : center ;background-repeat : no-repeat ; display : inline-block ; position : relative ; vertical-align : middle ; width : 23px ; height : 33px ; transition : ease-out .2s }
+
+main.goods.list > header nav .tools > ul > li > button.on + .dropdown { display : block }
+
+/** 정렬 버튼 **/
+main.goods.list > header nav .tools > ul > li > button.sort .icon { background-image : url('/images/ico-angle-down.svg') }
+main.goods.list > header nav .tools > ul > li > button.sort.on .icon { transform : rotate(180deg) }
+/** 필터 버튼 **/
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont { width : 12px ; height: 12px ; display : inline-block ; position : absolute ; top : 10px ; left : 3px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line { position : absolute ; width : 100% ; left : 0 ; height : 5px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:before,
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:after { content : "" ; background-color : var(--quick-border) ; display : inline-block ; position : absolute ; left : 0 ; transition : ease-out .2s }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:before { width: 100% ; height : 1px ; top : 1px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:after { width : 1px ; height : 3px ; top : 0 } 
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:nth-child(1) { top : 2px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:nth-child(2) { top : 6px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:nth-child(3) { top : 10px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:nth-child(1):after { left : 3px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:nth-child(2):after { left : 8px }
+main.goods.list > header nav .tools > ul > li > button.filter .icon .--cont > .--line:nth-child(3):after { left : 5px }
+main.goods.list > header nav .tools > ul > li > button.filter.on .icon .--cont > .--line:nth-child(1):after { left : 9px }
+main.goods.list > header nav .tools > ul > li > button.filter.on .icon .--cont > .--line:nth-child(2):after { left : 4px }
+main.goods.list > header nav .tools > ul > li > button.filter.on .icon .--cont > .--line:nth-child(3):after { left : 7px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown { position : fixed ; top : 44px ; left : initial ; right : 0 ; width : 25vw ; padding : 0 ; text-align : left }
+/*
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul { display : table ; width : 100% }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li { display : table-cell ; width : 25% ; padding : 16px 20px ; vertical-align : top }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li ~ li { border-left : solid 1px var(--border-color) }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li:last-child > .item { margin-top : 25px }
+*/
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul { width : 100% }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li { padding : 16px 20px ; vertical-align : top }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li ~ li { border-top : solid 1px var(--border-color) }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li:last-child > .item { margin-top : 25px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid h3 { line-height : 12px ; font-size : 12px ; margin-bottom : 13px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid h3 + .item { margin-top : 20px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid .item ~ .item { margin-top : 40px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid .item > .item ~ .item { margin-top : 15px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid .colorchip { display : inline-block ; vertical-align : middle ; width : 6px ; height : 6px ; border-radius : 50% ; margin-left : 4px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid ul[data-filter] { display : inline-block ; width : 100% }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid ul[data-filter] > li { display : inline-block ; float : left ; margin-right : 30px ; line-height : 25px ; cursor : pointer ; font-size : 11px }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .buttons { width : 100% ; display : block ; border-top : solid 1px var(--border-color) ; text-align : center ; padding : 10px 0 }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .buttons button { width : 225px ; margin : 0 3px ; display : inline-block }
+main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .buttons button.submit { color : var(--white) ; background-color : #0C0C0C ; border-color : #0C0C0C }
+
+/** 아이탬 <-> 착용샷 **/
+main.goods.list > header nav .tools > ul > li > button.showing .icon { background-image : url('/images/ico-list-t2.svg') }
+main.goods.list > header nav .tools > ul > li > button.showing.on .icon { background-image : url('/images/ico-list-t1.svg') }
+main.goods.list > header nav .tools > ul > li > button.showing:not(.on) .on,
+main.goods.list > header nav .tools > ul > li > button.showing.on .off { display : none }
+/** 2칸 <-> 4칸보기 **/
+main.goods.list > header nav .tools > ul > li > button.column .icon { background-image : url('/images/ico-list-grid.svg') ; background-repeat : repeat-x ; width : 12px ; margin : 0 3px ; background-position : left center }
+main.goods.list > header nav .tools > ul > li > button.column .icon:after { content : "" ; width : 1px ; height : 14px ; display : inline-block ; position : absolute ; right : 0 ; top : calc( 50% - 7px ) ; background-color : var(--quick-border) }
+main.goods.list > header nav .tools > ul > li > button.column.on .icon { width : 23px }
+main.goods.list > header nav .tools > ul > li > button.column:not(.on) .on,
+main.goods.list > header nav .tools > ul > li > button.column.on .off { display : none }
+
+/** 상품 > 목록 : 기본 4칸보기 **/
+main.goods.list ul#list { display : grid ; grid-template-columns : repeat(4,1fr) } 
+main.goods.list ul#list > li { position : relative ; height : calc( ( 68 / 48 ) * 25vw ) ; padding-bottom : calc( 125% + 120px ) ; border-bottom : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) }
+main.goods.list ul#list > li:nth-child(4n) { border-right : none }
+main.goods.list ul#list > li a { display : block ; width : 100% ; height : calc( 100% - 120px ) ; position : absolute; top : 0 ; left :0 ; overflow : hidden }
+main.goods.list ul#list > li a > * { display : block ; width : 100% ; height : 100% ; position : absolute ; top : 0 ; left : 0 ; background-size : cover ; background-position : center ; }
+main.goods.list ul#list > li .info { position : absolute ; bottom : 0 ; left : 0 ; width : 100% ; height : 120px ; font-size : var(--fontsize-s) ; padding : 15px 0 0 40px }
+main.goods.list ul#list > li .info > * { display : block }
+main.goods.list ul#list > li .info > * > ul { display : table }
+main.goods.list ul#list > li .info > * > ul > li { display : table-cell }
+main.goods.list ul#list > li .info > strong { font-size : var(--fontsize) ; font-weight : var(--fontweight-s) ; top : 15px ; left : 40px }
+main.goods.list ul#list > li .info > .price { position : absolute ; top : 18px ; right : 40px }
+main.goods.list ul#list > li .info > .color { bottom : 12px ; left : 40px }
+main.goods.list ul#list > li .info > .color ul > li { cursor : pointer ; position : relative }
+main.goods.list ul#list > li .info > .color ul > li .name { white-space: nowrap; display : inline-block }
+main.goods.list ul#list > li .info > .color .colorchip { display : inline-block ; width : 5px ; height : 5px ; border-radius : 50% ; margin-left : 4px }
+main.goods.list ul#list > li .info > .color .colorchip.white { background-color : var(--white) ; border : solid 1px var(--border-color) }
+main.goods.list ul#list > li .info > .size { margin-top : 6px }
+main.goods.list ul#list > li .info > .size ul > li { padding-right : 12px ; line-height : 11px ; cursor : pointer }
+
+/** 상품 > 목록 : 2칸보기 **/
+main.goods.list > section.list.col-2 { padding : 0 120px }
+main.goods.list > section.list.col-2 ul#list { grid-template-columns : repeat(2,1fr) ; border-left : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) } 
+main.goods.list > section.list.col-2 ul#list > li:nth-child(2n) { border-right : none }
+main.goods.list > section.list.col-2 ul#list > li .info > strong,
+main.goods.list > section.list.col-2 ul#list > li .info > .color { left : 130px }
+main.goods.list > section.list.col-2 ul#list > li .info > .price,
+main.goods.list > section.list.col-2 ul#list > li .info > .size { right : 130px }
+
+main.goods.list > section.list.col-2 .swiper-container { opacity : 1 }
+main.goods.list > section.list .swiper-container { position : relative ; height : 100% ; opacity : 0 } 
+main.goods.list > section.list.outfit .swiper-container.product { z-index : -1 }
+main.goods.list > section.list:not(.outfit) .swiper-container.outfit { z-index : -1 }
+main.goods.list > section.list .swiper-container .swiper-slide { width : 100% }
+main.goods.list > section.list .swiper-container .image-cont { display : grid ; place-items:  center ; height : 100% }
+main.goods.list > section.list .swiper-container .image-cont img { min-width : 100% ; min-height : 100% }
+
+/** 상품 > 목록 : 착용샷 **/
+main.goods.list > section.list.outfit ul#list a > .image { background-image : var(--outfit-src) !important }
+
+
+/** 베스트 상품 > 목록 **/
+main.goods.list section.best { position : relative ; margin-bottom : 120px }
+main.goods.list section.best:after { content : "" ; display : inline-block ; width : 100% ; height : 1px ; position : absolute ; background-color : var(--border-color) ; left : 0 ; bottom : 0 }
+main.goods.list section.best ul#list { width : 1280px ; margin : auto ; border-right : solid 1px var(--border-color) ; border-left : solid 1px var(--border-color) ; display : grid ; grid-template-columns : repeat(2,1fr) } 
+main.goods.list section.best ul#list > li { height : 300px ; padding-bottom : 0 ; border-bottom : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) ; padding-left : 240px }
+main.goods.list section.best ul#list > li:nth-child(2n) { border-right : none }
+main.goods.list section.best ul#list > li a { width : 240px ; height : 300px ; background-position : center ; background-repeat : no-repeat ; background-size : contain ; border-right : solid 1px var(--border-color) }
+
+main.goods.list section.best ul#list > li:before { display : block ; width : 40px ; line-height : 24px ; background-color : var(--black) ; color: var(--white) ; text-align : center ; font-size : 10px ; position : absolute ; top : 0 ; left : 0 ; z-index : 2  }
+main.goods.list section.best ul#list > li:nth-child(1):before { content : "01" } 
+main.goods.list section.best ul#list > li:nth-child(2):before { content : "02" } 
+main.goods.list section.best ul#list > li:nth-child(3):before { content : "03" } 
+main.goods.list section.best ul#list > li:nth-child(4):before { content : "04" } 
+main.goods.list section.best ul#list > li:nth-child(5):before { content : "05" } 
+main.goods.list section.best ul#list > li:nth-child(6):before { content : "06" } 
+main.goods.list section.best ul#list > li:nth-child(7):before { content : "07" } 
+main.goods.list section.best ul#list > li:nth-child(8):before { content : "08" } 
+main.goods.list section.best ul#list > li:nth-child(9):before { content : "09" } 
+main.goods.list section.best ul#list > li:nth-child(10):before { content : "10" } 
+main.goods.list section.best ul#list > li:nth-child(11):before { content : "11" } 
+main.goods.list section.best ul#list > li:nth-child(12):before { content : "12" } 
+main.goods.list section.best ul#list > li:nth-child(13):before { content : "13" } 
+main.goods.list section.best ul#list > li:nth-child(14):before { content : "14" } 
+main.goods.list section.best ul#list > li:nth-child(15):before { content : "15" } 
+main.goods.list section.best ul#list > li:nth-child(16):before { content : "16" } 
+main.goods.list section.best ul#list > li:nth-child(17):before { content : "17" } 
+main.goods.list section.best ul#list > li:nth-child(18):before { content : "18" } 
+main.goods.list section.best ul#list > li:nth-child(19):before { content : "19" } 
+main.goods.list section.best ul#list > li:nth-child(20):before { content : "20" } 
+main.goods.list section.best ul#list > li .info { position : static ; width : 100% ; height : auto ; font-size : 11px ; padding : 85px 0 0 20px }
+main.goods.list section.best ul#list > li .info > * { display : block ; margin-bottom : 13px }
+main.goods.list section.best ul#list > li .info > * > ul { display : table }
+main.goods.list section.best ul#list > li .info > * > ul > li { display : table-cell }
+main.goods.list section.best ul#list > li .info > strong { font-size : 13px ; font-weight : 400 ; top : 15px ; left : 40px }
+main.goods.list section.best ul#list > li .info > .price { position : static }
+main.goods.list section.best ul#list > li .info button.favorite { position : static ; margin-bottom : 20px }
+main.goods.list section.best button.to-top { position : absolute ; bottom : -106px ; left : calc( 50% - 20px ) }
+
+
+/** 상품 > 상세 **/
+main.goods.detail { padding : 0 0 200px 0 }
+main.goods.detail > section { border-bottom : solid 1px var(--border-color) }
+main.goods.detail > section.cont { padding : 0 50% 0 0 ; min-height : 100vh ; position : relative }
+main.goods.detail > section.cont > section.gallery { }
+main.goods.detail > section.cont > section.gallery img { width : 100% }
+main.goods.detail > section.cont > section.gallery #images-paging { position : fixed ; top : 80px ; left : 40px ; font-size : 12px ; z-index: 2 }
+main.goods.detail > section.cont > section.gallery > nav { position : fixed ; top : 50px ; left : 10px ; width : 80px }
+main.goods.detail > section.cont > section.gallery > nav li { cursor : pointer ; text-align : center ; font-size : 10px ; padding-bottom : 10px }
+main.goods.detail > section.cont > section.gallery > article img { cursor: zoom-in; }
+main.goods.detail > section.cont > section.gallery > article .swiper-container { opacity : 0 ; z-index : -1 ; position : relative }
+main.goods.detail > section.cont > section.information { position : fixed ; right : 0 ; width : 50% ; height : calc( 100vh - 45px ) ; top : 45px ; display : flex ; align-items : center }
+main.goods.detail > section.cont > section.information.bottom { position : absolute ; top : initial ; bottom : 0 }
+main.goods.detail > section.cont > section.information > .cont { display : grid ; place-items : center ; width : 100% }
+main.goods.detail > section.cont > section.information article { width : 400px ; position : relative }
+main.goods.detail > section.cont > section.information article.goods { padding-bottom : 60px }
+main.goods.detail > section.cont > section.information article.goods button.favorite { top : 0 ; right : 0 }
+main.goods.detail > section.cont > section.information article.goods h1 { font-size : 13px ; line-height : 1 }
+main.goods.detail > section.cont > section.information article.goods .price { font-size : 12px ; line-height : 1 ; margin : 5px 0 26px 0 }
+main.goods.detail > section.cont > section.information article.goods .option { margin-bottom : 24px }
+main.goods.detail > section.cont > section.information article.goods .option dl { display : inline-block ; width : 100% }
+main.goods.detail > section.cont > section.information article.goods .option dl > * { display : inline-block }
+main.goods.detail > section.cont > section.information article.goods .option dl > dt { width : 100% ; margin-bottom : 10px }
+main.goods.detail > section.cont > section.information article.goods .option label,
+main.goods.detail > section.cont > section.information article.goods .option label * { cursor : pointer }
+main.goods.detail > section.cont > section.information article.goods .option dd label span { position : relative }
+main.goods.detail > section.cont > section.information article.goods .option dl.size > dd { float : left ; margin-left : -1px }
+main.goods.detail > section.cont > section.information article.goods .option dl.size > dd label span { display: block ; width : 45px ; height : 45px ; line-height : 43px ; border : solid 1px var(--border-gray-color) ; text-align : center ; position : relative }
+main.goods.detail > section.cont > section.information article.goods .option dl.size > dd label input:checked ~ span { border-color : var(--black) }
+main.goods.detail > section.cont > section.information article.goods .option dl.size > dd label input:checked ~ span:after { content : "" ; width : 1px ; height : 45px ; background-color : var(--black) ; display : inline-block ; position : absolute ; top : -1px ; right : -1px ; z-index : 2 }
+main.goods.detail > section.cont > section.information article.goods .option .sizeguide { width : 100% ; margin-top : 10px }
+main.goods.detail > section.cont > section.information article.goods .option .sizeguide button { height : 15px ; font-size : 11px ; background : url('/images/ico-ruler.svg') left center no-repeat ; padding-left : 20px ; line-height: 15px; }
+
+
+main.goods.detail > section.cont > section.information article.goods .option ul.color { display : table }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li { width : 47px ; height : 32px ; font-size : 11px ; position : relative ; display : table-cell }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label { display : block ; height : 32px } 
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li .name { opacity : 0 ; display : block ; position : absolute ; bottom : 15px }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li .colorchip { width : 14px ; height : 14px ; display : inline-block ; border-radius : 50% ; position : absolute ; bottom : 0 ; border : solid 1px transparent }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li .colorchip > span { width : 8px ; height : 8px ; display : inline-block ; border-radius : 50% ; position : absolute ; top : 2px ; left : 2px ; border : solid 1px transparent }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li.soldout label:after { content : "" ; display : inline-block ; width : 1px ; height : 14px ; background-color : var(--border-color) ; transform : rotate(45deg) ; position : absolute ; top : 18px ; left : 6px }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li.soldout .colorchip > span { border-color : var(--border-color) }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label:hover .name,
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label input:checked ~ .name { opacity : 1 }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label:hover .colorchip,
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label input:checked ~ .colorchip { border-color : var(--black) }
+
+main.goods.detail > section.cont > section.information article.goods .buttons { display : block ; width : 100% ; padding-top : 16px }
+main.goods.detail > section.cont > section.information article.goods .buttons button { width : 100% ; height : 45px ; border : solid 1px var(--border-color) ; font-size : 11px ; margin-top : 0 ; line-height : 43px }
+main.goods.detail > section.cont > section.information article.goods .buttons button[type="submit"]:before { content : "" ; display : inline-block ; background : url('/images/ico-shoppingbag.svg') center no-repeat ; width : 10px ; height : 15px ; margin-right : 8px ; vertical-align : sub }
+main.goods.detail > section.cont > section.information article.goods .buttons button.favorite { margin-left : -1px }
+main.goods.detail > section.cont > section.information #details { border-bottom : solid 1px var(--border-gray-color) }
+main.goods.detail > section.cont > section.information #details button:not(.close) { height : 45px ; padding-left : 25px ; position : relative ; font-size : 11px ; width: 100% ; text-align : left }
+main.goods.detail > section.cont > section.information #details button:not(.close):before { content : "" ; width : 25px ; height : 45px ; background-position : left center ;background-repeat : no-repeat ; display : block ; position : absolute ; top : 0 ; left : 0 }
+main.goods.detail > section.cont > section.information #details > .material button:before { background-image : url('/images/ico-material.svg') }
+main.goods.detail > section.cont > section.information #details > .info button:before { background-image : url('/images/ico-info.svg') }
+main.goods.detail > section.cont > section.information #details > .warning button:before { background-image : url('/images/ico-warning.svg') }
+main.goods.detail > section.cont > section.information #details > dt { height : 45px ; border-top : solid 1px var(--border-gray-color) ; background : url('/images/ico-gnb-fold.svg') right center no-repeat ; position : relative }
+main.goods.detail > section.cont > section.information #details > dd:before,
+main.goods.detail > section.cont > section.information #details > dt:after { content : "" ; display : inline-block ; position : absolute ; width : 1px ; height : 8px ; background-color : var(--black) ; top : calc( 50% - 4px ) ; right : 8px ; transition : ease-out .2s }
+main.goods.detail > section.cont > section.information #details > dt.on { border-top-color : var(--black) }
+main.goods.detail > section.cont > section.information #details > dd:before { width : 100% ; height : 1px ; position : absolute ; bottom : -1px ; left : 0 ; top : initial ; z-index : 2 }
+main.goods.detail > section.cont > section.information #details > dt.on + dd:before { background-color : var(--black) }
+main.goods.detail > section.cont > section.information #details > dt.on:after { transform : rotate(90deg) }
+
+
+
+main.goods.detail > section.cont > section.information #details > dd { display : none ; position : relative }
+main.goods.detail > section.cont > section.information #details > dd .cont { }
+main.goods.detail > section.cont > section.information #details > dd .cont .body { padding-top : 5px ; padding-bottom : 40px }
+
+/*
+main.goods.detail { padding : 45px 0 200px 0 }
+main.goods.detail > section { border-bottom : solid 1px var(--border-color) }
+main.goods.detail > section.cont { padding : 0 50% 0 0 ; min-height : 100vh }
+main.goods.detail > section.cont > section.gallery { padding-left : 119px }
+main.goods.detail > section.cont > section.gallery img { width : 100% }
+main.goods.detail > section.cont > section.gallery > nav { position : fixed ; top : 50px ; left : 10px ; width : 80px }
+main.goods.detail > section.cont > section.gallery > nav li { cursor : pointer ; text-align : center ; font-size : 10px ; padding-bottom : 10px }
+main.goods.detail > section.cont > section.gallery > article img { cursor: zoom-in; }
+main.goods.detail > section.cont > section.gallery > article .swiper-container { display : none }
+main.goods.detail > section.cont > section.information { position : fixed ; right : 0 ; width : 50% ; height : calc( 100vh - 50px ) ; top : 50px ; display : flex ; align-items : center }
+main.goods.detail > section.cont > section.information > .cont { display : block ; padding-left : 130px }
+main.goods.detail > section.cont > section.information article.goods { padding-bottom : 50px }
+main.goods.detail > section.cont > section.information article.goods h1 { font-size : 13px ; line-height : 25px }
+main.goods.detail > section.cont > section.information article.goods .price { font-size : 12px ; line-height : 25px ; margin-bottom : 52px }
+main.goods.detail > section.cont > section.information article.goods .option { margin-bottom : 44px }
+main.goods.detail > section.cont > section.information article.goods .option dl { display : table }
+main.goods.detail > section.cont > section.information article.goods .option dl > * { display : table-cell }
+main.goods.detail > section.cont > section.information article.goods .option dl > dt { width : 120px }
+main.goods.detail > section.cont > section.information article.goods .option dl > dd ~ dd { padding-left : 36px }
+main.goods.detail > section.cont > section.information article.goods .option label,
+main.goods.detail > section.cont > section.information article.goods .option label * { cursor : pointer }
+main.goods.detail > section.cont > section.information article.goods .option dd label span { position : relative }
+main.goods.detail > section.cont > section.information article.goods .option dd label span:before { content : "" ; width : 0 ; height : 1px ; display : inline-block ; position : absolute ; bottom : -3px ; left : 0 ; background-color : #000 ; transition : ease-out .2s }
+main.goods.detail > section.cont > section.information article.goods .option dd label:hover span:before,
+main.goods.detail > section.cont > section.information article.goods .option dd label input:checked ~ span:before { width : 100% }
+main.goods.detail > section.cont > section.information article.goods .option ul.color { display : table }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li { width : 47px ; height : 32px ; font-size : 11px ; position : relative ; display : table-cell }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label { display : block ; height : 32px } 
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li .name { opacity : 0 ; display : block ; position : absolute ; bottom : 20px }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li .colorchip { width : 14px ; height : 14px ; display : inline-block ; border-radius : 50% ; position : absolute ; bottom : 0 ; border : solid 1px transparent }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li .colorchip > span { width : 8px ; height : 8px ; display : inline-block ; border-radius : 50% ; position : absolute ; top : 2px ; left : 2px ; border : solid 1px transparent }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li.soldout label:after { content : "" ; display : inline-block ; width : 1px ; height : 20px ; background-color : var(--border-color) ; transform : rotate(45deg) ; position : absolute ; top : 15px ; left : 7px }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li.soldout .colorchip > span { border-color : var(--border-color) }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label:hover .name,
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label input:checked ~ .name { opacity : 1 }
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label:hover .colorchip,
+main.goods.detail > section.cont > section.information article.goods .option ul.color > li label input:checked ~ .colorchip { border-color : var(--black) }
+
+main.goods.detail > section.cont > section.information article.goods .buttons { display : grid ; grid-template-columns : 240px 111px ; width : 351px }
+main.goods.detail > section.cont > section.information article.goods .buttons button { position : static ; width : auto ; height : 34px ; border : solid 1px var(--border-color) ; font-size : 11px ; margin-top : 0 ; line-height : 32px }
+main.goods.detail > section.cont > section.information article.goods .buttons button[type="submit"]:before { content : "" ; display : inline-block ; background : url('/images/ico-shoppingbag.svg') center no-repeat ; width : 10px ; height : 15px ; margin-right : 8px ; vertical-align : sub }
+main.goods.detail > section.cont > section.information article.goods .buttons button.favorite { margin-left : -1px }
+main.goods.detail > section.cont > section.information #details { margin-left : -12px ; border : solid 1px transparent }
+main.goods.detail > section.cont > section.information #details button:not(.close) { height : 45px ; padding-left : 42px ; position : relative ; font-size : 11px }
+main.goods.detail > section.cont > section.information #details button:not(.close):before { content : "" ; width : 39px ; height : 45px ; background-position : center ;background-repeat : no-repeat ; display : block ; position : absolute ; top : 0 ; left : 0 }
+main.goods.detail > section.cont > section.information #details > .sizeguide button:before { background-image : url('/images/ico-ruler.svg') }
+main.goods.detail > section.cont > section.information #details > .material button:before { background-image : url('/images/ico-material.svg') }
+main.goods.detail > section.cont > section.information #details > .info button:before { background-image : url('/images/ico-info.svg') }
+main.goods.detail > section.cont > section.information #details > .warning button:before { background-image : url('/images/ico-warning.svg') }
+main.goods.detail > section.cont > section.information #details > .sizeguide.on button:before { background-image : url('/images/ico-ruler.w.svg') }
+main.goods.detail > section.cont > section.information #details > .material.on button:before { background-image : url('/images/ico-material.w.svg') }
+main.goods.detail > section.cont > section.information #details > .info.on button:before { background-image : url('/images/ico-info.w.svg') }
+main.goods.detail > section.cont > section.information #details > .warning.on button:before { background-image : url('/images/ico-warning.w.svg') }
+main.goods.detail > section.cont > section.information #details > dt { height : 45px }
+main.goods.detail > section.cont > section.information #details > dt ~ dt { border-top : solid 1px transparent }
+main.goods.detail > section.cont > section.information .on-detail #details,
+main.goods.detail > section.cont > section.information .on-detail #details > dt { border-color : var(--border-color) } 
+main.goods.detail > section.cont > section.information .on-detail #details > dt.on { background-color : #000 }
+main.goods.detail > section.cont > section.information .on-detail > article.goods { opacity : 0 }
+main.goods.detail > section.cont > section.information #details > dd { height : calc( 100vh - 50px ) ; z-index : 2 ; position : fixed ; top : 50px ; right : 0 ; width : calc( 50vw - 161px ) ; border-left : solid 1px var(--border-color) ; background-color : #fff ; display : none }
+main.goods.detail > section.cont > section.information #details > dt.on + dd { display : block }
+
+main.goods.detail > section.cont > section.information #details > dd h3 { font-size : 11px ; font-weight : 15px ; border-bottom : solid 1px #000 ; display : inline-block }
+main.goods.detail > section.cont > section.information #details > dd .cont { padding-left : 120px ; padding-top : 176px  }
+main.goods.detail > section.cont > section.information #details > dd .cont .body { padding-top : 20px }
+*/
+
+
+
+/** 마이페이지 **/
+main.my { max-width : 1440px ; width : 100% ; margin : auto }
+main.my:before,
+main.my:after { content : "" ; width : 1px ; height : 100% ; position : absolute ; background-color : var(--border-color) ; display : inline-block ; top : 0 }
+main.my:before { left : -1px }
+main.my:after { right : -1px }
+
+main.my .buttons { max-width : 400px ; margin : auto }
+main.my > section.wrap-720 { padding-top : 25px }
+main.my h1 { margin-bottom : 20px }
+
+main.my ul.list { border-bottom : solid 1px var(--border-color) }
+main.my ul.list > li.empty { text-align : center ; padding : 150px 0 }
+
+main.my > section.summary { height : 180px ; padding-top : 0 ; border-bottom : solid 1px var(--border-color) ; display : grid ; grid-template-columns : 1fr 1fr }
+main.my > section.summary > article.info { border-right : solid 1px var(--border-color) ; position : relative }
+main.my > section.summary > article.info dl { display : grid ; grid-template-columns : repeat(2,1fr) ; grid-template-rows : repeat(3,1fr) ; width : 100% ; height : 100% } 
+main.my > section.summary > article.info dl > dt { padding : 20px 0 0 40px ; border-right : solid 1px var(--border-color) ; grid-row : 1 / span 3 }
+main.my > section.summary > article.info dl > dd { display : flex ; padding : 0 60px ; align-items : center ; border-top : solid 1px var(--border-color) }
+main.my > section.summary > article.info dl > dt + dd { border-top : none }
+main.my > section.summary > article.info dl > dt * { line-height : 1 }
+main.my > section.summary > article.info dl > dt .name big { font-size : 15px }
+main.my > section.summary > article.info dl > dt .name small { font-size : 10px ; padding-left : 8px }
+main.my > section.summary > article.info dl > dt .email { font-size : 13px ; padding : 11px 0 }
+main.my > section.summary > article.info dl > dt a { background : url('/images/ico-angle-right.svg') right center no-repeat ; padding-right : 10px }
+main.my > section.summary > article.info button.logout { position : absolute ; left : 40px ; bottom : 20px ; background : url('/images/ico-logout.svg') left center no-repeat ; padding-left : 20px ; color : var(--gray-color) ; font-size : var(--fontsize)}
+main.my > section.summary > article.info dl > dd > div { width : 100% ; line-height : 20px }
+main.my > section.summary > article.info dl > dd .t { font-size: 12px ; padding-left : 26px ; position : relative }
+main.my > section.summary > article.info dl > dd .t:before { content : "" ; display : inline-block ; width : 16px ; height : 20px ; background-position : center ; background-repeat : no-repeat ; position : absolute ; top : 0 ; left : 0 }
+main.my > section.summary > article.info dl > dd.mileage .t:before { background-image : url('/images/my/ico-mileage.svg') }
+main.my > section.summary > article.info dl > dd.boucher .t:before { background-image : url('/images/my/ico-boucher.svg') }
+main.my > section.summary > article.info dl > dd.membership .t:before { background-image : url('/images/my/ico-membership.svg') }
+main.my > section.summary > article.info dl > dd a { text-decoration : underline  ; float : right }
+main.my > section.summary > article.links { background-color : var(--my-summary-bg) ; padding : 12px 40px ; height: calc( 100% - 1px ) }
+main.my > section.summary > article.links ul { display : grid ; height : 100% ; grid-gap : 12px ; grid-template-columns : repeat(3,1fr) ; grid-template-rows : repeat(3,1fr) }
+main.my > section.summary > article.links a { line-height : 44px ; height : 44px ; display : block ; padding-bottom : 0 ; padding-left : 59px }
+main.my > section.summary > article.links a:before { content : "" ; display : inline-block ; position : absolute ; top : 0 ; left : 0 ; width : 44px ; height : 44px ; border : solid 1px var(--border-color) ; background-color : var(--white) ; background-position : center ; background-repeat : no-repeat ; border-radius : 50% }
+main.my > section.summary > article.links a:after { display : none }
+main.my > section.summary > article.links a[href='/my']:before { background-image : url('/images/my/ico-info.svg') }
+main.my > section.summary > article.links a[href='/my/boucher']:before { background-image : url('/images/my/ico-boucher.svg') }
+main.my > section.summary > article.links a[href='/my/bluemark']:before { background-image : url('/images/my/ico-bluemark.svg') }
+main.my > section.summary > article.links a[href='/my/order']:before { background-image : url('/images/my/ico-order.svg') }
+main.my > section.summary > article.links a[href='/my/standby']:before { background-image : url('/images/my/ico-standby.svg') }
+main.my > section.summary > article.links a[href='/my/customer']:before { background-image : url('/images/my/ico-customer.svg') }
+main.my > section.summary > article.links a[href='/my/mileage']:before { background-image : url('/images/my/ico-mileage.svg') }
+main.my > section.summary > article.links a[href='/my/reorder']:before { background-image : url('/images/my/ico-reorder.svg') }
+main.my > section.summary > article.links a[href='/my/as']:before { background-image : url('/images/my/ico-as.svg') }
+
+main.my > nav { line-height : 15px ; padding : 20px 40px }
+main.my > nav ul { display : table }
+main.my > nav ul > li { display : table-cell }
+main.my > nav ul > li:after { content : ">" ; margin : 0 5px }
+main.my > nav ul > li:last-child:after { display : none }
+main.my > nav a:after { display : none }
+
+main.my > section { padding-top : 65px }
+main.my > section > h1 { margin-bottom : 62px ; line-height : 1 ; font-size : 13px }
+main.my > section h2 { width : 100% ; display : block ; line-height : 18px ; font-size : var(--fontsize-sub) ; padding-bottom : 20px }
+main.my > section h2 a { font-size : var(--fontsize) ; float : right ; background : url('/images/ico-angle-right.min.svg') right center no-repeat ; padding-right : 10px }
+main.my > section h2 ~ h2 { margin-top : 60px }
+main.my > section h2.border { border-bottom : solid 1px var(--border-color) /* ; padding-bottom : 10px */ }
+main.my > section h2 + h3,
+main.my > section h2:not(.border) + ul.dot,
+main.my > section h2:not(.border) + .tab { border-top : solid 1px var(--border-color) }
+main.my > section h3 { font-size : 12px ; padding-top : 20px }
+main.my > section > header { padding : 0 40px 20px 40px }
+main.my > section > header h2 { border-bottom : none ; font-size : 11px }
+
+body[data-path="/my"] > main.my > section.summary > article.links a[href='/my']:before,
+body[data-path^="/my/boucher"] > main.my > section.summary > article.links a[href='/my/boucher']:before,
+body[data-path^="/my/bluemark"] > main.my > section.summary > article.links a[href='/my/bluemark']:before,
+body[data-path^="/my/order"] > main.my > section.summary > article.links a[href='/my/order']:before,
+body[data-path^="/my/standby"] > main.my > section.summary > article.links a[href='/my/standby']:before,
+body[data-path^="/my/customer"] > main.my > section.summary > article.links a[href='/my/customer']:before,
+body[data-path^="/my/mileage"] > main.my > section.summary > article.links a[href='/my/mileage']:before,
+body[data-path^="/my/reorder"] > main.my > section.summary > article.links a[href='/my/reorder']:before,
+body[data-path^="/my/as"] > main.my > section.summary > article.links a[href='/my/as']:before { border-color : var(--black) }
+
+main.my > section.my-main h2 { padding-left : 20px ; padding-bottom : 0 ; line-height : 14px ; position : relative }
+main.my > section.my-main h2:before { content : "" ; background-position : center ; background-repeat : no-repeat ; display : inline-block ; position : absolute ; left : 0 ; width: 17px ; height : 14px ; top : calc( 50% - 7px ) }
+main.my > section.my-main.summary-recently h2:before { background-image : url('/images/my/ico-recently.svg') }
+main.my > section.my-main.summary-wishlist h2:before { background-image : url('/images/ico-favorite.svg') }
+
+main.my > section.my-main .swiper-container { height: 525px ; margin-bottom : 60px ; position : relative }
+main.my > section.my-main .swiper-button-prev,
+main.my > section.my-main .swiper-button-next { opacity : 0 }
+
+/** 마이페이지 > 내 정보 관리 **/
+main.my > section.info { width : 100% ; max-width : 480px ; margin : auto }
+main.my > section.info dl.myinfo { margin-top : 20px ; grid-template-columns : 120px auto ; row-gap : 12px }
+main.my > section.info > article.context h2 { border-bottom : solid 1px var(--border-color) ; padding-bottom : 10px }
+main.my > section.info.modify article.input { border : solid 1px var(--border-color) ; padding : 40px }
+main.my > section.info.modify article.input .buttons { margin-top : 60px }
+
+main.my > section.address article.list { width : 480px ; margin: auto }
+
+/** 마이페이지 > A/S **/
+main.my > section.as { width : 100% ; max-width : 960px ; margin : auto ; padding-top : 0 }
+main.my > section.as table.price { width : 480px }
+main.my > section.as table.price tr > * { width : calc( 100% / 4 ) }
+main.my > section.as > article.apply .tab { margin-top : 30px }
+
+/** 마이페이지 > 주문내역 **/
+main.my > section.order { width : 100% ; max-width : 720px ; margin : auto ; padding-top : 20px }
+
+/** 마이페이지 > 멤버십 **/
+main.my > section.membership h1 { margin-bottom : 20px }
+main.my > section.membership .--describe big { font-size : 13px }
+main.my > section.membership .--describe small { font-size : 10px }
+main.my > section.membership .--describe p { line-height : 1.6 }
+main.my > section.membership .--describe p ~ p  { margin-top : 18px }
+main.my > section.membership h2 { margin-top : 60px ; border-bottom-color : var(--black) }
+main.my > section.membership ul.benefits { margin-bottom : 40px }
+main.my > section.membership ul.benefits > li { height: 100px ; position : relative ; padding : 20px 0 20px 200px ; border-bottom : solid 1px var(--border-color) }
+main.my > section.membership ul.benefits > li:last-child { border-bottom-color : var(--black) }
+main.my > section.membership ul.benefits > li > .level { position : absolute ; top : 20px ; left : 0 ; font-size : 10px ; color : var(--gray) }
+main.my > section.membership ul.benefits > li > .level big { display : block ; font-size : 12px ; margin-bottom : 6px ; color : var(--black) }
+main.my > section.membership ul.benefits > li ul.dot { margin : 0 }
+main.my > section.membership ul.benefits > li ul.dot > li ~ li { margin-top : 6px }
+
+/** 자주 묻는 질문 **/
+main.my > section.faq { width : 100% ; max-width : 720px ; margin : 65px auto 0 auto ; }
+main.my > section.faq .searchform { width : 100% ; margin : 30px 0 20px 0 ; height : 32px }
+main.my > section.faq .searchform input { width: 100% ; height : 32px ; border-bottom : solid 1px var(--border-color) ; background : url('/images/ico-search.svg') left center no-repeat ; padding-left : 25px }
+main.my > section.faq .category { width : 100% ; height : 60px ; border : solid 1px var(--border-color) ; padding : 12px 20px ; transition : ease-out .2s }
+main.my > section.faq .category ul { display : table }
+main.my > section.faq .category ul > li { display : table-cell ; padding : 0 20px ; line-height : 36px ; position : relative ; cursor : pointer }
+main.my > section.faq .category ul > li:before { content : "" ; background-color : var(--black) ; width : 0 ; height : 2px ; display : inline-block ; position : absolute ; left : 50% ; bottom : 0 ; transition : ease-out .2s }
+main.my > section.faq .category ul > li.on:before { width : 100% ; left : 0 }
+main.my > section.faq .contents > h2 { font-size : 10px ; line-height : 14px ; padding : 5px 20px ; margin-top : 35px }
+main.my > section.faq .contents > dl { border-top : solid 1px var(--border-color) ; border-bottom : solid 1px var(--border-color) }
+main.my > section.faq .contents > dl > * { padding : 14px 20px ; line-height : 16px ; word-break: break-all; border-top : solid 1px var(--border-gray-color) }
+main.my > section.faq .contents > dl > *:first-child { border-top : none }
+main.my > section.faq .contents > dl > dt { cursor : pointer ; position : relative }
+main.my > section.faq .contents > dl > dt:before { content : "" ; display : inline-block ; width : 10px ; height : 5px ; position : absolute ; background : url('/images/ico-angle-down.svg') center no-repeat ; transition : ease-out .2s ; right : 20px ; top : calc( 50% - 3px ) }
+main.my > section.faq .contents > dl > dt.on:before { transform : rotate(180deg) }
+main.my > section.faq .contents > dl > dd { display : none ; background-color : var(--content-bg) ; font-size : 11px ; line-height : 14px }
+main.my > section.faq .contents > dl > dd > h3 { font-size : 12px ; line-height : 16px ; margin-bottom : 20px }
+
+/** 마이페이지 > 고객센터 **/
+main.my > section.customer { width : 100% ; max-width : 720px ; margin : auto }
+
+/** 마이페이지 > 문의하기 **/
+main.my > section.qna > article .info { padding-top : 40px ; font-size : 11px }
+main.my > section.qna > article .info big { font-size : 12px ; display : block; padding-bottom : 10px }
+main.my > section.qna > article .info + ul.dot { opacity : .5 ; margin-bottom : 25px }
+main.my > section.qna > article h2 + ul.contents-list { margin-top : -10px }
+main.my > section.qna > article ~ article { padding-top : 60px }
+main.my > section.qna > article.write h2 { padding-bottom : 0 }
+main.my > section.qna > article.write .buttons { padding-top : 40px }
+
+/** 마이페이지 > 공지사항 **/
+main.my > section.notice dl.board-list { border-bottom : solid 1px var(--border-color) }
+main.my > section.notice dl.board-list img { max-width : 100% }
+main.my > section.notice dl.board-list > dt { padding : 14px 20px ; font-size : 12px ; line-height : 16px ; position : relative ; border-top : solid 1px var(--border-color) ; cursor : pointer }
+main.my > section.notice dl.board-list > dt:after { content : "" ; display : inline-block ; position : absolute ; width : 10px ; height : 10px ; background : url('/images/ico-angle-down.svg') center no-repeat ; top : calc( 50% - 5px ) ; right : 20px ; transition : ease-out .2s }
+main.my > section.notice dl.board-list > dd { padding : 0 20px 20px 20px ; display : none }
+main.my > section.notice dl.board-list > dt.on,
+main.my > section.notice dl.board-list > dt.on + dd { background-color : var(--content-bg) }
+main.my > section.notice dl.board-list > dt.on:after { transform : rotate(180deg) }
+
+/** 마이페이지 > 재입고알림 **/
+main.my > section.reorder ul.list { padding : 40px 0 20px 0 ; border-bottom : none }
+main.my > section.reorder ul.list > li { height : 150px ; border : solid 1px var(--border-gray-color) ; position : relative ; padding : 20px 20px 20px 140px ; font-size: var(--fontsize-s) }
+main.my > section.reorder ul.list > li ~ li { margin-top : 20px }
+main.my > section.reorder ul.list > li .thumbnail { position : absolute ; top : 0 ; left : 0 ; width : 120px ; height : 100% ; background-position : center ; background-size : cover ; border-right : solid 1px var(--border-gray-color) }
+main.my > section.reorder ul.list > li .name { font-size : var(--fontsize-sub) }
+main.my > section.reorder ul.list > li .name ~ * { margin-top : 5px }
+main.my > section.reorder ul.list > li .info { position: absolute ; right : 20px ; bottom : 20px ; text-align : right }
+main.my > section.reorder ul.list > li .info > .status { font-size : var(--fontsize-sub) ; text-decoration : underline }
+main.my > section.reorder ul.list > li .info > .date { font-size : var(--fontsize-s) ; color : var(--gray) }
+main.my > section.reorder ul.list > li .info > .buttons { margin-top : 4px ; width : 135px }
+
+/** 마이페이지 > 마일리지 **/
+main.my > section.mileage article.status ul.table-info + ul.dot { margin-top : 40px }
+main.my > section.mileage article.history { margin-top : 80px }
+
+
+/** 마이페이지 > 바우처 **/
+main.my > section.boucher .submit { padding-top : 14px }
+main.my > section.boucher .submit .form-inline:before { content : "" ; width : 18px ; height : 16px ; display : inline-block ; background : url('/images/ico-barcode.svg') no-repeat center ; position : absolute ; right : 120px ; top : 40px ; z-index : 2 }
+main.my > section.boucher .submit .form-inline input { height : 45px }
+main.my > section.boucher .submit ul.dot { margin-top : 40px }
+main.my > section.boucher .submit-ok { width : 480px ; padding-top : 110px ; margin : auto ; display : none }
+main.my > section.boucher .submit-ok ul.dot { margin : 40px 0 80px 0 }
+main.my > section.boucher.submit .submit-ok { display : block }
+main.my > section.boucher.submit .submit-ok ~ * { display : none }
+main.my > section.boucher > article > h2 ~ h2 { margin-top : 80px }
+main.my > section.boucher ul.boucher-list > li { padding : 20px ; border : solid 1px var(--border-color) ; margin-top : 20px ; position : relative }
+main.my > section.boucher ul.boucher-list > li .sale { margin-top : 15px }
+main.my > section.boucher ul.boucher-list > li .date { padding-left : 20px }
+main.my > section.boucher ul.boucher-list > li .expire { position : absolute ; top : 20px ; right : 20px ; font-size : 11px ; color: var(--gray) ; text-align : center }
+main.my > section.boucher ul.boucher-list > li .expire .number { margin-top: 7px }
+main.my > section.boucher ul.boucher-list > li dl { margin-top : 10px ; line-height : 1.2 ; display : grid ; grid-template-columns : 75px 1fr }
+
+main.my > section.boucher ul.boucher-list#list-2 .sale { margin-top : 40px }
+
+/** 스토리(콜렉션, 에디토리얼) 공통 **/
+main.story > section.detail > header { width : 100% ; position : fixed ; top : 0 ; left : 0 ; z-index : 2 }
+main.story > section.detail > header h1 { z-index : 2 }
+main.story > section.detail > header button.close { z-index : 2 ; top : 17px ; right : 40px }
+
+
+/** 콜렉션 **/
+main.collection > header { width : 100% ; overflow-x : auto ; border-bottom : solid 1px var(--border-color) ; padding : 26px 40px 26px 8px }
+main.collection > header ul { display : table }
+main.collection > header ul > li { display : table-cell ; height : 17px ; line-height : 17px ; font-size : 13px ; position : relative ; padding-left : 32px ; cursor : pointer }
+main.collection > header ul > li.on:before { content : "" ; width : calc( 100% - 32px ) ; height : 3px ; background-color : var(--black) ; display : inline-block ; bottom : -3px ; right : 0 ; position : absolute }
+main.collection > section.list ul { display : grid ; grid-template-columns : repeat(4, 1fr) }
+main.collection > section.list img { width : 100% ; cursor : pointer }
+main.collection > section.list > .info { top : calc( ( 100vh - 45px ) / 2 ) ; left : 40px ; position : fixed ; display : inline-block ; height : 70px }
+main.collection > section.list > .info * { font-size : 12px ; line-height : 16px }
+main.collection > section.list > .info h1 { margin-bottom : 22px }
+
+main.collection > section.detail { width : 100% ; height : 100vh ; overflow-y : auto ; position : fixed ; top : 0 ; left : 0 ; z-index : 1000 ; background-color : var(--white) }
+main.collection > section.detail > .gallery { display : grid ; grid-template-columns : 35% 65% ; width : 100% ; position : relative }
+main.collection > section.detail > .gallery article.image img { width : 100% ; cursor : zoom-in }
+main.collection > section.detail > .gallery article.zoom { width : 65% ; height : 100% ; top : 0 ; right : 0 ; position : absolute ; overflow : auto }
+main.collection > section.detail > .gallery article.slide { display : none }
+main.collection > section.detail > .recommend { padding-bottom : 50px }
+main.collection > section.detail > .recommend .swiper-slide .info { padding : 20px 40px ; position : relative }
+main.collection > section.detail > .recommend .swiper-slide .info * { font-size : 11px ; font-weight : 400 }
+
+main.collection.detail > section.list,
+main.collection.detail > section.detail > .recommend:not(.on),
+main.collection:not(.detail) > section:not(.list) { display : none }
+
+
+/** 에디토리얼 **/
+main.editorial > section.list { padding-top : 50px }
+main.editorial > section.list .swiper-slide { width : 700px ; margin-right : 60px }
+main.editorial > section.list .swiper-slide .item { cursor : pointer ; height : 400px ; margin-bottom : 60px ; position : relative }
+main.editorial > section.list .swiper-slide .item > .cont { overflow : hidden ; height : 370px ; background-color : var(--black) }
+main.editorial > section.list .swiper-slide .item > .cont img { width : 100% ; min-height : 100% }
+main.editorial > section.list .swiper-slide .item > .title { width : 100% ; text-align : center ; line-height : 15px ; font-size : 11px ; position : absolute ; bottom : 0 ; left : 0 } 
+
+main.editorial > section.detail { width : 100% ; height : 100vh ; overflow : hidden ; position : fixed ; top : 0 ; left : 0 ; z-index : 1000 ; background-color : var(--white) }
+main.editorial > section.detail section.gallery,
+main.editorial > section.detail .swiper-slide .cont { height : 100vh }
+main.editorial > section.detail .swiper-slide .cont video { width : 100% ; height : 100% ; background-color : var(--black) }
+
+main.editorial.detail > section.list,
+main.editorial:not(.detail) > section:not(.list) { display : none }
+
+
+/** 이용약관 **/
+main.terms {line-height: 15px;}
+main.terms > header { padding: 100px 0 40px 0; font-size: 13px;}
+main.terms > nav > ul.terms-list {display: flex; justify-content: center; gap: 10px; font-size: 11px;}
+main.terms > nav > ul.terms-list > li.on { opacity: 1; background: var(--black)}
+main.terms > nav > ul.terms-list > li {padding: 1px; opacity: 0.5; background: var(--white); line-height: 21px}
+main.terms > nav > ul.terms-list > li:hover {transition: ease-out .5s; opacity: 1; background: var(--black)}
+main.terms > nav > ul.terms-list > li > a { display: inline-block; background: var(--white); padding: 4px 9px; line-height: 15px;}
+main.terms > section.description {padding-top: 70px; padding-bottom: 80px; width: 710px; margin: auto;}
+main.terms > section.description > h2 {font-size: 13PX; line-height: 15px; margin-bottom: 30px;}
+main.terms > section.description > div {display: block; transition: ease-out .5s; font-size: 11px; line-height: 16px;}
+main.terms > section.description > div .sub_title {font-size: 13px; line-height: 15px; margin-bottom: 10px;}
+main.terms > section.description > div .content {margin-bottom: 30px;}
+
+
+/** stockist **/
+#map .gm-style-cc {display: none;}
+main.stockist > section {padding: 100px 0;}
+main.stockist > section > article.search {display: block; padding-left: 130px;}
+main.stockist > section > article.search > .search-tab {position: relative; width: 39.66%; height: auto;}
+main.stockist > section > article.search > .search-tab > img {width: 14px; height: 14px; position: absolute; top: 2px;}
+main.stockist > section > article.search > .search-tab > input {border-bottom: solid 1px var(--border-color); padding-left: 25px; padding-bottom: 4px; font-size: 13px; line-height: 17px; width: 100%; height: 100%;}
+main.stockist > section > article.search > .search-tab > input::placeholder {opacity: 0.5;}
+main.stockist > section > article.search > .search-tab > .clear {position: absolute; right: 6px; top: 4.4px; float: left;}
+main.stockist > section > article.search > .search-tab > .clear > img {display: inline-block; width: 13px; height: auto; margin-bottom: 1px; vertical-align: middle;}
+main.stockist > section > article.search > .search-tab > .clear > label {margin-left: 5px; font-size: 11px; letter-spacing: 0.4px; vertical-align: bottom;}
+main.stockist > section > article.search > .search-tab > button.location {height: 15.55px; margin-top: 15.5px;}
+main.stockist > section > article.search > .search-tab > button.location > img {display: inline-block; width: 15px; height: auto; vertical-align: middle;}
+main.stockist > section > article.search > .search-tab > button.location > label {font-size: 11px; margin-left: 2px; vertical-align: middle;}
+main.stockist > section > article.search > .search-result {width: 100%; height: 100%; display: flex; padding-top: 50px; transition: ease-in 5s;}
+main.stockist > section > article.search > .search-result > .google-map {width: 53.07%; aspect-ratio: 950/534; position: relative;}
+main.stockist > section > article.search > .search-result > .google-map > #map { width: 100%; height: 100%; }
+main.stockist > section > article.search > .search-result > .google-map > .zoom-button {background-image: url("/images/ico-map-zoom-btn.svg"); width: 70px; height: 35px; position: absolute; right: 10px; bottom: 10px; display: flex; gap: 1px;}
+main.stockist > section > article.search > .search-result > .google-map > .zoom-button > div {width: 50%; height: auto; cursor: pointer; }
+main.stockist > section > article.search > .search-result > .marker-card {width: 46.93%; padding: 0 60px 0 130px; position: relative; display: none;}
+main.stockist > section > article.search > .search-result > .marker-card.on {display: block;}
+main.stockist > section > article.search > .search-result > .marker-card > .image {width: 90.77%; height: auto; margin-bottom: 30px;}
+main.stockist > section > article.search > .search-result > .marker-card > .title > span {font-size: 13px; line-height: 17px;}
+main.stockist > section > article.search > .search-result > .marker-card > .title > .link {margin-left: 10px; width: auto; display: inline-block;}
+main.stockist > section > article.search > .search-result > .marker-card > .title > .link > img {width: 12px; height: 12px;}
+main.stockist > section > article.search > .search-result > .marker-card > div > span {font-size: 11px; margin-top: 8px; line-height: 15px;}
+main.stockist > section > article.search > .search-result > .marker-card > div > a.location-link {margin-left: 1px; font-size: 11px; text-decoration: underline; color: var(--quick-border); }
+main.stockist > section > article.search > .search-result > .marker-card > div > a.location-link > img {display: inline-block; width: 15px; height: auto; margin-right: 3px; vertical-align: sub;}
+main.stockist > section > article.search > .search-result > .marker-card > div {margin-top: 8px; height: 15px;}
+main.stockist > section > article.search > .search-result > .marker-card > div.title { height: 17px; margin: 0;}
+main.stockist > section > article.search > .search-result > .marker-card > div.date {margin-top: 6px;}
+main.stockist > section > article.search > .search-result > .marker-card > a.detail { display: block; width: 230px; height: 40px; font-size: 11px; border: 1px solid var(--quick-border); margin-top: 15px; text-align: center; padding: 12.5px 0;}
+main.stockist > section > article.search > .search-result > .marker-card > button.close {position: absolute; top: 10px; right: 60px;}
+main.stockist > section > article.store-card {display: block; padding-left: 130px;}
+main.stockist > section > article.store-card > h2 {font-size: 13px; padding: 100px 0 22px 0;}
+main.stockist > section > article.store-card > div { padding-bottom: 40px;}
+main.stockist > section > article.store-card > div > h3 {font-size: 11px; font-weight: 300; padding-bottom: 10px;}

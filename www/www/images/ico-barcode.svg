@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="16.428" viewBox="0 0 19 16.428">
+  <g id="qr" transform="translate(20054 -13631)">
+    <line id="선_2964" data-name="선 2964" x2="13.999" transform="translate(-20051.5 13639.214)" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+    <g id="그룹_8902" data-name="그룹 8902" transform="translate(-20053.5 13631.5)">
+      <line id="선_2965" data-name="선 2965" y1="3" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+      <line id="선_2966" data-name="선 2966" x2="3" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+    </g>
+    <g id="그룹_8905" data-name="그룹 8905" transform="translate(-20035.5 13646.928) rotate(180)">
+      <line id="선_2965-2" data-name="선 2965" y1="3" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+      <line id="선_2966-2" data-name="선 2966" x2="3" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+    </g>
+    <g id="그룹_8903" data-name="그룹 8903" transform="translate(-20038.5 13631.5)">
+      <line id="선_2965-3" data-name="선 2965" y1="3" transform="translate(3)" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+      <line id="선_2966-3" data-name="선 2966" x1="3" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+    </g>
+    <g id="그룹_8904" data-name="그룹 8904" transform="translate(-20050.5 13646.928) rotate(180)">
+      <line id="선_2965-4" data-name="선 2965" y1="3" transform="translate(3)" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+      <line id="선_2966-4" data-name="선 2966" x1="3" fill="none" stroke="#707070" stroke-linecap="square" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+<svg id="사이즈가이드_아이콘" data-name="사이즈가이드 아이콘" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15.833" height="11.417" viewBox="0 0 15.833 11.417">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_2310" data-name="사각형 2310" width="15.833" height="11.417" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_7760" data-name="그룹 7760" transform="translate(0 0)">
+    <g id="그룹_7759" data-name="그룹 7759" clip-path="url(#clip-path)">
+      <rect id="사각형_2309" data-name="사각형 2309" width="14.799" height="6.83" transform="translate(0.618 4.17)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="0.833"/>
+    </g>
+  </g>
+  <line id="선_2685" data-name="선 2685" y2="3.903" transform="translate(2.901 4.346)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+  <line id="선_2686" data-name="선 2686" y2="1.951" transform="translate(5.459 4.346)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+  <line id="선_2687" data-name="선 2687" y2="3.903" transform="translate(8.018 4.346)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+  <line id="선_2688" data-name="선 2688" y2="1.951" transform="translate(10.575 4.346)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+  <line id="선_2689" data-name="선 2689" y2="3.903" transform="translate(13.133 4.346)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+  <g id="그룹_7762" data-name="그룹 7762" transform="translate(0 0)">
+    <g id="그룹_7761" data-name="그룹 7761" clip-path="url(#clip-path)">
+      <line id="선_2690" data-name="선 2690" y1="2.486" transform="translate(15.417 0)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+      <line id="선_2691" data-name="선 2691" y2="2.486" transform="translate(0.417 0)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+      <line id="선_2692" data-name="선 2692" x2="15" transform="translate(0.417 1.243)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="0.833"/>
+    </g>
+  </g>
+</svg>

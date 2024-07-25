@@ -1,0 +1,16 @@
+<svg id="달력_아이콘" data-name="달력 아이콘" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13" height="13" viewBox="0 0 13 13">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_2412" data-name="사각형 2412" width="13" height="13" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_8109" data-name="그룹 8109">
+    <g id="그룹_8108" data-name="그룹 8108" clip-path="url(#clip-path)">
+      <rect id="사각형_2411" data-name="사각형 2411" width="12.103" height="10.759" transform="translate(0.448 1.793)" fill="none" stroke="#343434" stroke-linecap="square" stroke-miterlimit="3" stroke-width="1"/>
+      <line id="선_2912" data-name="선 2912" x1="12.103" transform="translate(0.448 4.483)" fill="none" stroke="#343434" stroke-linecap="square" stroke-miterlimit="3" stroke-width="1"/>
+      <line id="선_2913" data-name="선 2913" y1="1.345" transform="translate(3.138 0.448)" fill="none" stroke="#343434" stroke-linecap="square" stroke-miterlimit="3" stroke-width="1"/>
+      <line id="선_2914" data-name="선 2914" y1="1.345" transform="translate(9.862 0.448)" fill="none" stroke="#343434" stroke-linecap="square" stroke-miterlimit="3" stroke-width="1"/>
+    </g>
+  </g>
+  <rect id="사각형_2413" data-name="사각형 2413" width="2" height="2" transform="translate(8.8 8.8)" fill="#343434"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8">
+  <g id="_2칸보기" data-name="2칸보기" transform="translate(-1810 -180)">
+    <g id="사각형_1330" data-name="사각형 1330" transform="translate(1810 180)" fill="#fff" stroke="#343434" stroke-width="1">
+      <rect width="16" height="8" stroke="none"/>
+      <rect x="0.5" y="0.5" width="15" height="7" fill="none"/>
+    </g>
+    <line id="선_1453" data-name="선 1453" y2="7" transform="translate(1818 180.5)" fill="none" stroke="#343434" stroke-width="1"/>
+  </g>
+</svg>

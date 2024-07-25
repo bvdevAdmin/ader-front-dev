@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="16" viewBox="0 0 46 16">
+  <g id="햄버거아이콘" transform="translate(0 3)">
+    <g id="메뉴아이콘" transform="translate(0 2.757)">
+      <line id="선_3" data-name="선 3" x1="12" transform="translate(0 8.243)" fill="none" stroke="#343434" stroke-width="1" opacity="0"/>
+      <line id="선_2" data-name="선 2" x1="12" transform="translate(1.757) rotate(45)" fill="none" stroke="#343434" stroke-width="1"/>
+      <line id="선_1" data-name="선 1" x1="12" transform="translate(0 0.243)" fill="none" stroke="#343434" stroke-width="1" opacity="0"/>
+      <line id="선_2-1" data-name="선 2-1" x1="12" transform="translate(1.757 8.486) rotate(-45)" fill="none" stroke="#343434" stroke-width="1"/>
+    </g>
+    <text id="close" transform="translate(17 10)" fill="#343434" font-size="12" font-family="SegoeUI, Segoe UI" letter-spacing="0.025em"><tspan x="0" y="0">close</tspan></text>
+  </g>
+</svg>

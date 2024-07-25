@@ -1,0 +1,8 @@
+<svg id="그리드_아이콘" data-name="그리드 아이콘" xmlns="http://www.w3.org/2000/svg" width="12" height="15" viewBox="0 0 12 15">
+  <g id="사각형_2552" data-name="사각형 2552" fill="none" stroke="gray" stroke-width="1">
+    <rect width="12" height="15" stroke="none"/>
+    <rect x="0.5" y="0.5" width="11" height="14" fill="none"/>
+  </g>
+  <line id="선_2714" data-name="선 2714" y2="14" transform="translate(6 0.5)" fill="none" stroke="gray" stroke-width="1" opacity="0"/>
+  <line id="선_2715" data-name="선 2715" x2="12" transform="translate(0 7.5)" fill="none" stroke="gray" stroke-width="1" opacity="0"/>
+</svg>

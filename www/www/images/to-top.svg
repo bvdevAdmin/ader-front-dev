@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="46" viewBox="0 0 41 46">
+  <g id="Top_버튼" data-name="Top 버튼" transform="translate(-940 -3431)">
+    <g id="그룹_6762" data-name="그룹 6762" transform="translate(1671 3421) rotate(90)">
+      <rect id="사각형_1251" data-name="사각형 1251" width="35" height="41" transform="translate(10 690)" fill="none"/>
+      <g id="오른쪽_L_wh" transform="translate(32 719) rotate(180)">
+        <path id="오른쪽" d="M1361.667,3065l8,8-8,8" transform="translate(-1361.667 -3065)" fill="none" stroke="#343434" stroke-width="1"/>
+      </g>
+    </g>
+    <text id="Top" transform="translate(961 3474)" fill="#343434" font-size="12" font-family="SegoeUI, Segoe UI"><tspan x="-9.601" y="0">Top</tspan></text>
+  </g>
+</svg>

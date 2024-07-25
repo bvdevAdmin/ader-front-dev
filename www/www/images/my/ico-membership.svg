@@ -1,0 +1,10 @@
+<svg id="멤버십_아이콘" data-name="멤버십 아이콘" xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12">
+  <g id="사각형_2681" data-name="사각형 2681" fill="none" stroke="#343434" stroke-width="1">
+    <rect width="16" height="12" stroke="none"/>
+    <rect x="0.5" y="0.5" width="15" height="11" fill="none"/>
+  </g>
+  <line id="선_2888" data-name="선 2888" x2="6" transform="translate(8 4)" fill="none" stroke="#343434" stroke-width="1"/>
+  <line id="선_2889" data-name="선 2889" x2="4" transform="translate(8 6)" fill="none" stroke="#343434" stroke-width="1"/>
+  <circle id="타원_223" data-name="타원 223" cx="2" cy="2" r="2" transform="translate(3 2.102)" fill="#343434"/>
+  <path id="패스_7147" data-name="패스 7147" d="M5.5,7a2.5,2.5,0,0,0-5,0V8.3h5Z" transform="translate(2 1.602)" fill="#343434"/>
+</svg>

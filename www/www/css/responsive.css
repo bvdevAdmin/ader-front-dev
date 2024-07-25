@@ -1,0 +1,761 @@
+@charset "UTF-8";
+
+.mobile,.mobile-block { display : none !important }
+.not-mobile { display : block !important }
+.not-mobile-table { display : table !important }
+
+@media only screen and (max-width: 1024px) {
+	* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+	::-webkit-scrollbar { width : 0, display: none; }
+	html{ -webkit-text-size-adjust: none; text-size-adjust: none; touch-action: pan-y; }
+	body { min-width : 100% ; overflow-x : hidden }
+	body > main { padding-bottom : 150px ; overflow-x : hidden }
+
+	/** PRESET **/
+	.mobile { display : inline-block !important }
+	.mobile-block { display : block !important }
+	.not-mobile,.not-mobile-table { display : none !important }
+
+	button.favorite { width : 14px ; height : 14px ; top : 20px ; right : 20px ; background-size : contain }
+	#btn-mobile-history-back { display : block ; margin-bottom : 20px }
+
+	.swiper-row { padding-left : 0 ; padding-top : 95px ; border-top : solid 1px var(--gray) ; height : 389px ; margin-top : 100px }
+	.swiper-row ~ .swiper-row { margin-top : 0 ; border-top : none }
+	.swiper-row > h2 { top : 60px ; left : 20px }
+	.swiper-row button.swiper-button-prev,.swiper-row button.swiper-button-next { display : none }
+	.swiper-slide.goods-list { width : 162px ; height : 293px ; padding-top : 203px ; border-bottom : solid 1px var(--border-gray-color) }
+	.swiper-slide.goods-list > a.image { height : 203px }
+	.swiper-slide.goods-list .info { padding : 7px 20px ; height : 90px }
+	.swiper-button-prev, .swiper-button-next { width : 35px ; height : 40px ; transform : rotate(180deg) }
+	.swiper-button-prev { left : 0 }
+	.swiper-button-next { right : 0 }
+	.swiper-button-prev:after { background-image : url('/images/ico-angle-prev-mobile.svg') }
+	.swiper-button-next:after { background-image : url('/images/ico-angle-next-mobile.svg') }
+	.swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical>.swiper-pagination-bullets { top : 20px ; right : 20px }
+	
+	.--describe { padding : 20px 10px }
+	
+	/*.form-inline .textarea { min-height : 120px }*/
+	.form-inline .remark { padding : 10px ; margin-top : 10px }
+
+	/** preset : 컨텐츠 접기 **/
+	dl.fold > dt { position : relative }
+	dl.fold > dt:after { content : "" ; display : inline-block ; width : 10px ; height : 10px ; position : absolute ; top : calc( 50% - 5px ) ; right : 9px ; background : url('/images/ico-fold-arrow.svg') center no-repeat ; transition : ease-out .2s }
+	dl.fold > dt.close:after { transform : rotate(180deg) }
+
+	/** preset : dot list **/
+	ul.dot > li ~ li { margin-top : 6px }
+	h3 + ul.dot { margin : 10px 0 }
+
+	/** preset : 날짜 검색 **/
+	.date-search { padding : 0 ; margin-bottom : 0 ; background : none }
+	.date-search ul { display : grid ; grid-template-columns : repeat(4,1fr) }
+	.date-search ul > li { height : 37px }
+	.date-search ul > li button { height : 35px }
+	.date-search ul > li:hover:after { top : -1px ; height : calc( 100% + 2px ) }
+	.date-search .inp { margin-top : 10px ; grid-template-columns : 1fr 10px 1fr ; position : static ; line-height : 35px }
+	.date-search .inp > .t { color : var(--border-gray-color) }
+	.date-search .inp > .item input { height : 37px }
+	.date-search .inp > .item .calendar { width : calc( 100vw - 40px ) }
+	.date-search .inp > .item .calendar:before { width : calc( ( 100vw - 30px ) / 2 ) }
+	.date-search button[type='submit'].btn { position : static ; width : 100% ; height : 37px ; line-height : 1 ; margin-top : 10px }
+
+	/** preset : table **/
+	ul.table-info { display : block ; height : auto ; border : none ; border-top : solid 1px var(--border-gray-color) ; border-bottom : solid 1px var(--border-gray-color) }
+	ul.table-info > li { border-left : none ; text-align : left ; padding : 10px 0 }
+	ul.table-info > li:first-child { padding-top : 20px }
+	ul.table-info > li:last-child { padding-bottom : 20px }
+	ul.table-info > li .number { left : initial ; right : 0 ; line-height : 16px ; bottom : calc( 50% - 8px ) ; width : auto }
+
+	/** preset : modal **/
+	.modal { padding : 20px }
+	.modal > section,
+	.modal.alert > section,
+	.modal.alert > section > section { min-width : 100% ; max-width : 100% ; width : 100% ; padding : 10px }
+
+	/** preset : 그리드 갤러리 **/
+	.gallery-grid.mobile-hide-after-4 > li:nth-child(4) ~ li { display : none }
+	.gallery-grid.col-4 { grid-template-columns: repeat(2, 1fr); }
+	.gallery-grid.hide-after-8 > li:nth-child(6) ~ li { display: none; }
+	.gallery-grid ~ .buttons.more { padding : 60px 0 0 0 !important }
+	.gallery-grid ~ .buttons.more button { border-color : var(--border-gray-color) ; border-right : none ; border-left : none }
+	
+	
+	/** header **/
+	body > header, body > footer { min-width: 100% }
+	body > header > nav,body > header.fixed > nav { height : 45px }
+	body > header > nav h1 { width : 100px ; height : 13px ; background-position : center ; background-size : contain ; top : 22px ; left : calc( 50% - 50px ) ; position : fixed ; z-index : 5 }
+	body > header > nav dl.gnb { display : none ; position : static ; padding-top : 90px ; width : 100% ; margin-bottom : 15px }
+	body > header > nav dl.gnb > * { float : initial }
+	body > header > nav dl.gnb > dt { display : list-item ; margin-right : 0 ; height : 45px ; line-height : 44px ; border-bottom : solid 1px var(--border-color) ; padding : 0 20px }
+	body > header > nav dl.gnb > dt:not(.on):before,
+	body > header > nav dl.gnb > dt:after { content : "" ; display : inline-block ; position : absolute }
+	body > header > nav dl.gnb > dt:after { width : 16px ; height : 10px ; background-image : url('/images/ico-gnb-fold.svg') ; top : calc( 50% - 5px ) ; right : 20px }
+	body > header > nav dl.gnb > dt:not(.on):before { width : 2px ; height : 8px ; background-color : var(--black) ; top : calc( 50% - 4px ) ; right : 27px }
+	body > header > nav dl.gnb > dt.on { background-color : #F8F8F8 }
+	/* body > header > nav dl.gnb > dt:before { transition : ease-out .2s } */
+	body > header > nav dl.gnb > dt.on:before { left : initial ; right : calc( 100vw - 17px ) ; top : calc( 50% - 6px ) }
+	body > header > nav dl.gnb > dd { position : relative ; min-height : auto ; top : 0 ; background-color : #F8F8F8 ; padding : 0 ; overflow : initial }
+	body > header > nav dl.gnb > dd > .gallery { left : 20px ; bottom : 20px }
+	body > header > nav dl.gnb > dd > .cont { border-left : none ; min-height : auto }
+	body > header > nav dl.gnb > dd:not(.no-gallery) > .cont { padding-bottom : 190px }
+	body > header > nav dl.gnb > dd > .cont > ul { min-height : auto ; display : block ; padding-left : 0 }
+	body > header > nav dl.gnb > dd > .cont > ul > li { display : list-item ; width : auto ; min-height : 45px ; padding : 0 }
+	body > header > nav dl.gnb > dd > .cont > ul > li .row > dl > dt { border-bottom : solid 1px var(--border-color) ; background : url('/images/ico-gnb-right.svg') calc( 100vw - 30px ) center  no-repeat }
+	body > header > nav dl.gnb > dd > .cont > ul > li .row > dl > dd { display : none }
+	body > header > nav dl.gnb > dd > .cont > ul > li .row > dl > dt a { display : block ; width : 100% ; height : 44px ; line-height : 44px ; padding : 0 20px }
+	body > header > nav dl.gnb > dd.no-gallery > .cont > ul { display : block }
+	body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li { display : list-item ; line-height : 1 ; padding : 20px ; border-bottom : solid 1px var(--border-color) ; border-left : none !important }
+	body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li:last-child { border-bottom : none }
+
+	body > header > nav dl.gnb > dd > .cont > ul > li .image { height : 125px }
+	body > header > nav dl.gnb > dd:not(.no-gallery) > .cont > ul > li .image { display : none }
+	
+	body > header > nav dl.gnb > dd[data-title="콜라보레이션"] > .cont > ul > li > .row > dl > dt { border-bottom : none ; background : none }
+	body > header > nav dl.gnb > dd[data-title="콜라보레이션"] > .cont > ul > li > .row > dl > dt a { height : auto ; padding : 0 ; line-height : 1 }
+	body > header > nav dl.gnb > dd[data-title="콜라보레이션"] > .cont > ul > li:last-child { padding : 0 20px }
+	body > header > nav dl.gnb > dd[data-title="콜라보레이션"] > .cont > ul > li:last-child a { line-height : 45px ; text-align : left ;     background: url('/images/ico-gnb-right.svg') calc( 100vw - 50px ) center no-repeat; position : relative }
+
+	
+	body > header > nav dl.gnb > dt.on + dd:after,
+	body > header > nav dl.gnb > dt.on + dd:before { content : "" ; width : 100% ; height : 1px ; display : inline-block ; background-color : var(--nav-on-border-color) ; position : absolute ; left : 0 }
+	body > header > nav dl.gnb > dt.on + dd:before { top : -45px }
+	body > header > nav dl.gnb > dt.on + dd:after { bottom : 0 }
+	/*
+	body > header > nav dl.tnb { top : inherit ; bottom : 8px ; right : 35px }
+	body > header > nav dl.tnb > dt { display : none ; margin-right : 30px }
+	body > header > nav dl.tnb > dt:nth-child(5),body > header > nav dl.tnb > dt:nth-child(6) { display : inline-block }
+	body > header > nav dl.tnb > dt:nth-child(2) ~ dt a { }
+	body > header > nav dl.tnb > dt:nth-child(2) ~ dt a:before { background-size : contain }
+	*/
+	
+	button#btn-gnb { position : fixed ; top : 22px ; left : 20px ; width : 50px ; height : 12px ; line-height : 12px ; padding-left : 18px ; z-index : 5 }
+	button#btn-gnb .icon { width : 12px ; height : 12px ; position : absolute ; left : 0 ; top : 0 }
+	button#btn-gnb .icon > span { transform-origin : center center ; position : absolute ; width : 100% ; height : 1px ; background : #000 ; left : 0 ; transition : ease-out .2s }
+	button#btn-gnb .icon > span:nth-child(1) { top : 1px }
+	button#btn-gnb .icon > span:nth-child(2) { top : 5px }
+	button#btn-gnb .icon > span:nth-child(3) { top : 5px }
+	button#btn-gnb .icon > span:nth-child(4) { bottom : 2px }
+	button#btn-gnb .text { position : absolute ; top : -1px ; left : 18px ; color : var(--black) }
+	button#btn-gnb .text:before { content : "menu" }
+
+	/** header // gnb 펼치기 **/
+	body.fold-nav { overflow : hidden }
+	body.fold-nav button#btn-gnb .icon > span:nth-child(1),
+	body.fold-nav button#btn-gnb .icon > span:nth-child(4) { width : 0 ; left : 50% }
+	body.fold-nav button#btn-gnb .icon > span:nth-child(2) { transform : rotate(45deg) }
+	body.fold-nav button#btn-gnb .icon > span:nth-child(3) { transform : rotate(-45deg)}
+	body.fold-nav button#btn-gnb .text:before { content : "close" }
+	body.fold-nav > header { background-color : var(--white) ; height : 100vh ; overflow-y : auto }
+	body.fold-nav > header > nav:before { top : 0 ; height : 45px ; background-color : var(--white) ; border-bottom : solid 1px var(--border-color) ; z-index : 4 ; position : fixed }
+	body.fold-nav > header > nav { height : auto ; min-height : 100vh }
+	body.fold-nav > header > nav dl.gnb { display : block  }
+	body.fold-nav > header > nav > dl > dt.on + dd { display : list-item ; min-height : auto }
+	body.fold-nav > header > nav:after { content: ""; width: 100%; height: 1px; background-color: var(--border-color); position: absolute; top: 89px; height: 1px; left : 0 ; display: inline-block; z-index: 10; }
+	
+	/** header // tnb **/
+	dl#tnb { top : 0 ; right : 0 }
+	dl#tnb > dt { display : none ; width : 100% ; height : 45px }
+	dl#tnb > dt:nth-child(4) ~ dt a { padding-right : 0 }
+	dl#tnb > dt:nth-child(4),
+	dl#tnb > dt:nth-child(5),
+	dl#tnb > dt:nth-child(7) { display : none !important }
+	dl#tnb > dt:nth-child(8),
+	dl#tnb > dt:nth-child(9) { position : fixed ; display : inline-block !important ; top : 25px ; right : 50px ; width : 16px ; height : 14px ; z-index : 5 }
+	dl#tnb > dt:nth-child(8) a:before { width : 16px ; height : 14px }
+	dl#tnb > dt:nth-child(9) { width : 10px ; right : 20px }
+	dl#tnb > dt:nth-child(9) a:before { width : 10px ; height : 14px }
+	dl#tnb > dt a[data-side='search'] { font-size : 12px }
+	dl#tnb > dt a[data-side='search']:before { position : absolute ; left : 18px ; top : 12px }
+
+	body.fold-nav dl#tnb { position : sticky ; top : initial ; bottom : 0 }
+	body.fold-nav dl#tnb > dt { display : block }
+	body.fold-nav dl#tnb > dt:nth-child(1) a,
+	body.fold-nav dl#tnb > dt:nth-child(3) a,
+	body.fold-nav dl#tnb > dt:nth-child(6) a { display : block ; padding-left : 20px ; line-height : 45px ; width : 100% ; height : 45px ; position : relative ; background : url('/images/ico-gnb-right.svg') calc( 100vw - 30px ) center  no-repeat }
+	body.fold-nav dl#tnb > dt:nth-child(6) { margin-bottom : 15px }
+	body.fold-nav dl#tnb > dt:nth-child(6) a { padding-left : 40px ; background : none }
+
+	/** header // tnb -> aside **/
+	body > header > aside { box-shadow : 0 0 1px 1px var(--border-color) ; right : -1px }
+	body > header > aside.bluemark,
+	body > header > aside.customer,
+	body > header > aside.language,
+	body > header > aside.search { width : calc( 100vw + 1px ) }
+	body > header > aside > section article { width : 100vw ; padding : 80px 20px 20px 20px !important ; min-height : calc( 100vh - 46px ) }
+	body > header > aside:not(.shoppingbag) button.close { right : initial ; left:0 ; width : 100vw ; height : 45px ; top : 0 ; padding-left : 37px ; text-align : left ; background : url('/images/ico-back.svg') 20px center no-repeat ; border-bottom: solid 1px var(--border-color); }
+	body > header > aside:not(.shoppingbag) button.close:after { content : "뒤로가기" ; font-size : 10px }
+	body > header > aside button.close:hover { transform : none }
+	
+	body > header > aside.story, 
+	body > header > aside.bluemark, 
+	body > header > aside.language, 
+	body > header > aside.shoppingbag, 
+	body > header > aside.my { width : 100% !important ; right : 0 }
+	body > header > aside.bluemark > section.bluemark, 
+	body > header > aside.language > section.language, 
+	body > header > aside.story > section.story, 
+	body > header > aside.search > section.search, 
+	body > header > aside.shoppingbag > section.shoppingbag, 
+	body > header > aside.my > section.my { width : 100% ; display : block }
+
+	/** header // tnb 스토리 **/
+	body > header > nav dl.tnb > dt:first-child.on + dd#tnb-story { display : block ; height : auto ; min-height : 100% ; background : var(--white) ; position : relative  }
+	body > header > nav dl.tnb > dt:first-child.on + dd ~ * { display : none !important }
+	body > header > nav dl.tnb #tnb-story > dl { padding : 0 ; display : block ; border-top : solid 1px var(--black) ; border-right : none }
+	body > header > nav dl.tnb #tnb-story > dl > dt { line-height : 44px ; border-bottom : solid 1px var(--border-color) ; padding : 0 20px }
+	body > header > nav dl.tnb #tnb-story > dl > dd {  }
+	body > header > nav dl.tnb #tnb-story > dl > dd a { position : static }
+	body > header > nav dl.tnb #tnb-story > dl > dd .image { height : calc( ( 25 / 64 ) * ( 100vw - 40px ) ) }
+	body > header > nav dl.tnb dl#tnb-story-new { }
+	body > header > nav dl.tnb dl#tnb-story-new > dd { border-bottom : solid 1px var(--border-color) ; padding : 20px }
+	body > header > nav dl.tnb dl#tnb-story-new > dd:last-child:before { display : none }
+	body > header > nav dl.tnb dl#tnb-story-archive { padding : 0 20px 20px 20px ; display : inline-block ; width : 100% }
+	body > header > nav dl.tnb dl#tnb-story-archive > dt { width : calc( 100% + 40px ) ; margin-left : -20px ; margin-bottom : 20px }
+	body > header > nav dl.tnb dl#tnb-story-archive > dd { width : calc( ( ( 100% - 20px ) / 3 ) ) ; height: 150px ; float : left ; padding-bottom : 24px }
+	body > header > nav dl.tnb dl#tnb-story-archive > dd ~ dd { margin-left : 10px }
+	body > header > nav dl.tnb dl#tnb-story-archive > dd h3 { position : absolute ; left : 0 ; bottom : 0 ; padding-bottom : 0 }
+	body > header > nav dl.tnb dl#tnb-story-archive > dd .image { height : calc( ( ( 100vw - 60px ) / 3 ) * ( 5 / 4 ) ) }
+
+	body > header > aside > section.story > article { padding : 44px 0 0 0 !important }
+	body > header > aside > section.story > article > dl { padding : 0 ; display : block ; border-top : solid 1px var(--black) ; border-right : none }
+	body > header > aside > section.story > article > dl > dt { line-height : 44px ; border-bottom : solid 1px var(--border-color) ; padding : 0 20px }
+	body > header > aside > section.story > article > dl > dd {  }
+	body > header > aside > section.story > article > dl > dd small { display : block }
+	body > header > aside > section.story > article > dl > dd .image { width : 100% ; height : calc( ( 25 / 64 ) * ( 100vw - 40px ) ) ; background-position : center ; background-size : cover ; display : block }
+	body > header > aside > section.story > article dl#tnb-story-new-m { position : relative ; z-index : 2 }
+	body > header > aside > section.story > article dl#tnb-story-new-m > dd { border-bottom : solid 1px var(--border-color) ; padding : 20px }
+	body > header > aside > section.story > article dl#tnb-story-new-m > dd:last-child:before { display : none }
+	body > header > aside > section.story > article dl#tnb-story-new-m > dd .image { margin-top : 10px }
+	body > header > aside > section.story > article dl#tnb-story-archive-m { padding : 0 20px 20px 20px ; display : inline-block ; width : 100% }
+	body > header > aside > section.story > article dl#tnb-story-archive-m > dt { width : calc( 100% + 40px ) ; margin-left : -20px ; margin-bottom : 20px }
+	body > header > aside > section.story > article dl#tnb-story-archive-m > dd { width : calc( ( ( 100% - 20px ) / 3 ) ) ; height: calc( ( ( 100vw - 60px ) / 3 ) * ( 5 / 4 ) + 24px ) ; float : left ; padding-bottom : 24px ; position : relative }
+	body > header > aside > section.story > article dl#tnb-story-archive-m > dd ~ dd { margin-left : 10px }
+	body > header > aside > section.story > article dl#tnb-story-archive-m > dd h3 { position : absolute ; left : 0 ; bottom : 0 ; padding-bottom : 0 }
+	body > header > aside > section.story > article dl#tnb-story-archive-m > dd .image { height : calc( ( ( 100vw - 60px ) / 3 ) * ( 5 / 4 ) ) ; background-color : var(--border-color) }
+	
+	/** header // tnb 쇼핑백 **/
+	body > header > aside > section.shoppingbag article { padding : 0 !important }
+	body > header > aside > section.shoppingbag article h2 { height : 45px ; line-height : 44px ; padding : 0 0 0 34px ; background-position : 20px center }
+	body > header > aside > section.shoppingbag article dl.cart > dt,
+	body > header > aside > section.shoppingbag article footer dl > * { padding : 0 20px }
+	body > header > aside > section.shoppingbag article dl.cart > dd ul > li label.check,
+	body > header > aside > section.shoppingbag article dl.cart > dd ul > li .total-price { right : 20px }
+	body > header > aside > section.shoppingbag article .info-box { padding : 0 20px 56px 20px }
+	body > header > aside > section.shoppingbag article .no-login > .join { border-top : solid 1px var(--border-gray-color) ; margin-top : 50px }
+	body > header > aside > section.shoppingbag article .no-login > .join p { padding-top : 40px }
+
+	body > header > aside.shoppingbag { top: 0 ; z-index: 10 ; transition : none ; box-shadow : none }
+	body > header > aside.shoppingbag button.close { top : 17px ; right : 20px }
+	
+	/** header // tnb search **/
+	body > header > aside.search,
+	body > header > aside.search > section.search { min-width : 100% ; padding-top : 0 }
+	body > header > aside.search > section.search > article { margin-top : 15px }
+	body > header > aside.search > section.search h2 ~ h2 { margin-top : 50px ; margin-bottom : 20px }
+	body > header > aside.search > section.search ul { margin : 0 }
+	body > header > aside.search > section.search ul.hot { grid-template-columns: repeat(3, 1fr) }
+	body > header > aside.search > section.search ul.hot > li { margin : 0 }
+	body > header > aside.search > section.search ul.hot > li a { padding-top : 160% ; height : auto }
+	body > header > aside.search > section.search ul.hot > li a .name { display : block ; position : absolute ; width : 100% ; height : 28px ; bottom : 0 ; left : 0 }
+
+	/** header // tnb 하단 버튼 **/
+	ul.tnb-mobile { display : none !important  }
+	body.fold-nav ul.tnb-mobile { display : grid !important ; grid-template-columns : repeat(2,1fr) ; grid-template-rows : repeat(2,45px) ; width : 100% ; position : sticky ; top : calc( 100% - 90px ) }
+	ul.tnb-mobile > li { border-top : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) }
+	ul.tnb-mobile > li:nth-child(2n) { border-right : none }
+	ul.tnb-mobile > li a { display : block ; width : 100% ; height : 44px ; line-height : 44px ; padding-left : 44px ; position : relative }
+	ul.tnb-mobile > li a.my { background : url('/images/ico-tnb-login.svg') 20px center no-repeat }
+	body:not(.loged) ul.tnb-mobile > li a.my[href="/my"],
+	body.loged ul.tnb-mobile > li a.my[href="/login"] { display : none }
+	ul.tnb-mobile > li a.customer { background : url('/images/ico-tnb-customer.svg') 20px center no-repeat }
+	ul.tnb-mobile > li a.language:before { content : "KR" ; display : inline-block ; position : absolute ; left : 20px ; height : 44px ; top : 0 }
+	html[lang='en'] ul.tnb-mobile > li a.language:before { content : "EN" }
+	html[lang='cn'] ul.tnb-mobile > li a.language:before { content : "CN" }
+	ul.tnb-mobile > li a.bluemark { color : var(--bluemark) }
+	ul.tnb-mobile > li a.bluemark:before { content : "" ; display : inline-block ; position : absolute ; left : 23px ; width : 6px ; height : 6px ; top : 19px ; background-color : var(--bluemark) }
+	
+	nav.on > .gnb > dt:not(.on),
+	nav.on > .gnb > dt:not(.on) + dd,
+	nav.on > .tnb,
+	nav.on > .tnb-mobile { opacity : .3 }
+
+	/** footer **/
+	body > footer { padding : 23px 0 0 0 ; height : auto }
+	body > footer h1,body > footer h2 { font-size : 12px ; padding : 0 20px  ; line-height : 42px ; position : relative }
+	body > footer > section { display : block }
+	body > footer > section > article { display : list-item ; border-bottom : solid 1px var(--border-color)}
+	body > footer > section > article h2 ~ * { display : none !important }
+	body > footer > section > article h2:before,
+	body > footer > section > article h2:after { content : "" ; width : 9px ; height : 2px ; display : inline-block ; position : absolute ; top : 21px ; right : 26px ; background : #888 ; transition : ease-out .2s }
+	body > footer > section > article:not(.on) h2:before { transform : rotate(90deg) }
+	body > footer > section > article.on { padding : 0 20px 40px 20px }
+	body > footer > section > article.on h2 { margin-left : -20px ; width : calc( 100% + 40px ) ; margin-bottom : 15px }
+	body > footer > section > article.on h2 ~ * { display : block !important }
+	body > footer > section > article.about.on p br { display : none }
+	body > footer > section > article.rules.on h2 { margin-bottom : 0 }
+	body > footer > section > article.rules.on ul > li { line-height : 42px }
+	body > footer > section > article.rules.on ul > li ~ li { margin-top : 0 }
+	body > footer > section > article.rules.on ul > li:last-child { border-bottom : none }
+	body > footer > section > article.social.on h2 { margin-bottom : 0 }
+	body > footer > section > article.social.on ul { display : grid !important ; grid-template-columns: repeat(4, 40px); margin-top : 15px ; margin-left : 0px ; gap : 0 }
+	body > footer article.social a { width : 40px ; height : 40px ; line-height : 40px ; padding : 0 ; text-align : left }
+	body > footer article.social a:hover { opacity : .5 }
+	body > footer article.social a > img { max-height : inherit ; height : 14px }
+	body > footer p.copyright { padding-top : 0 ; padding-left : 20px ; font-size : 12px ; line-height : 92px }
+	
+	/** quick menu **/
+	body > aside { }
+	body > aside > ul { right : 20px ; bottom : 30px }
+	body > aside > ul > li.on { width : calc( 100vw + 2px ) ; right : -21px ; bottom : -31px }
+	body > aside > ul > li > section footer { padding : 0 }
+	body > aside > ul > li.qna footer { padding : 20px 0 0 0 }
+	body > aside > ul > li.qna article.category ul,
+	body > aside > ul > li.qna article.chat > ul > li.you > ul.category { grid-template-columns : repeat(3, 1fr) }
+	body > aside > ul > li.recently-viewed ul.list,
+	body > aside > ul > li.qna article.chat { max-height: 60vh }
+
+	/** 쿠키 설정 **/
+	section.cookie-agree > .banner { height : auto ; padding : 50px 20px 10px 20px }
+	section.cookie-agree > .banner .buttons { display : block ; position : static ; width : 100% ; padding-top : 12px }
+	section.cookie-agree > .banner .buttons button { margin-top : 10px }
+	section.cookie-agree > .accept > .cont { width : calc( 100% - 40px ) }
+	section.cookie-agree > .accept > .cont > header { line-height : 44px ; padding : 0 20px }
+	section.cookie-agree > .accept > .cont > header button.close { top : 16px ; right : 20px }
+	section.cookie-agree > .accept > .cont > article { padding : 20px }
+	section.cookie-agree > .accept > .cont > article .buttons { margin-top : 35px }
+
+	/** account **/
+	section.account > article { width : 100% }
+	section.account > article .buttons { padding : 40px 0 0 0 }
+	
+	/** login **/
+	main.login > section { padding : 96px 20px }
+	main.login > section h1 { text-align : left }
+	article.login section.customer { display : none }
+	
+	/** join **/
+	section.account > article.join > h1 { margin-bottom : 10px }
+	section.account > article.join .agrees { margin-bottom : 0 }
+	section.account > article.join.ok section.join-ok { padding-top : 50px }
+
+	/** main **/
+	.links a + a { margin-left : 35px }
+	.links a:after { width : 100% ; height : 1px }
+
+	main.intro { padding-bottom : 150px }
+	main.intro > section.campaign ul { grid-template-columns: 1fr ; grid-auto-rows: calc( 100vw * ( 54 / 36 ) ) }
+	main.intro > section.campaign ul > li:first-child { grid-column : 1 }
+	main.intro > section.campaign ul > li .title { bottom : 40px }
+	main.intro > section.campaign ul > li .title .box h2 { font-size : 12px }
+	main.intro > section.goods ul { grid-template-columns: repeat(2,50%) ; grid-auto-rows: calc( 50vw * 1.25 ) }
+	main.intro > section.goods a .name { font-size : 10px ; padding-bottom : 15px }
+
+	/*
+	body > main.intro { padding-bottom : 140px }
+	body > main.intro > article h1 { font-size : 16px }
+	body > main.intro > article h1 small { font-size : 12px }
+	body > main.intro > article .shortcut { padding : 0 10px }
+	body > main.intro > article .shortcut a span { text-decoration : none }
+	body > main.intro > article.campaign .cont { bottom : 50px ; left : 10px }
+	body > main.intro > article.campaign .media { overflow : hidden }
+	body > main.intro > article.campaign .media * { width : auto ; height : 90vh ; margin-left : calc( -96vh + 50vw )}
+	body > main.intro > article.promotion { display : block ; padding-bottom : 110px ; margin-top : 100px ; background-color : #FBFBFB }
+	body > main.intro > article.promotion > section.title .cont { bottom : 10px ; left : 10px }
+	body > main.intro > article.goods { background-color : #FBFBFB ; padding-bottom : 50px }
+	body > main.intro > article.goods .swiper-wrapper { display : grid ; grid-template-columns: 50% 50%  }
+	body > main.intro > article.goods .swiper-button-prev,
+	body > main.intro > article.goods .swiper-button-next { display : none }
+	body > main.intro > article.goods .swiper-slide { width : 50vw ; height : 62.5vw ; background-size : contain ; background-position : center }
+	body > main.intro > article.goods .swiper-slide span { bottom : 15px ; padding : 0 10vw ; line-height : 1.2 }
+	body > main.intro > article.styling { margin-top : 80px }
+	body > main.intro > article.styling .shortcut { padding-bottom : 8px } 
+	body > main.intro > article.styling .swiper-slide { width : calc( 75vw + 10px ) ; height : calc( 75vw + 90px ) ; padding-right : 10px }
+	body > main.intro > article.styling .swiper-slide .image { height : 75vw }
+	body > main.intro > article.styling .swiper-slide .title { padding : 20px 0 20px 100px ; transition : ease-out .2s }
+	body > main.intro > article.styling .swiper-slide.swiper-slide-active .title { padding-left : 10px }
+	body > main.intro > article.styling .swiper-button-prev { display : none }
+	body > main.intro > article.foryou { margin-top : 130px }
+	body > main.intro > article.foryou .shortcut { top : -30px }
+	body > main.intro > article.foryou .swiper-slide { width : 36vw ; height : calc( 45vw + 30px )}
+	body > main.intro > article.foryou .swiper-slide .image { height : 45vw }
+	body > main.intro > article.foryou .swiper-slide a { line-height : 30px }
+	body > main.intro > article.foryou .swiper-button-prev,
+	body > main.intro > article.foryou .swiper-button-next { display : none }
+	*/
+	
+	
+	/** shop **/
+	main.goods.list { }
+	main.goods.list > header nav .category button { display : none }
+	main.goods.list > header nav .category .swiper-container { padding-left : 20px ; padding-right : 20px }
+	main.goods.list > header nav .category .swiper-container > button { display : none }
+	main.goods.list > header nav .category .swiper-slide a { }
+	
+	main.goods.list > header nav .nav { left : 20px }
+
+	main.goods.list > header nav .tools { right : 4px }
+	main.goods.list > header nav .tools > ul .dropdown { width : 100vw !important }
+	main.goods.list > header nav .tools > ul > li > button.on + .dropdown { z-index : 110 ; top : 0 }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown > header { padding : 0 20px ; line-height : 44px ; height : 45px }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown > header button.close { top : 17px ; right : 20px }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .buttons + .grid { max-height : auto ; height : calc( 100vh - 90px ) }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid h3 { margin-bottom : 13px }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li { padding : 20px 20px 40px 20px }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li .sort { grid-template-columns: 1fr }
+	main.goods.list > header nav .tools > ul > li > button.column .icon { margin : 0 ; width : 12px !important ; transition : none }
+	main.goods.list > header nav .tools > ul > li > button.column .icon:after { display : none }
+	main.goods.list > header nav .tools > ul > li > button.column:not(.on) .icon { background-image : url('/images/ico-list-grid-1.svg') }
+	main.goods.list ul#list { grid-template-columns: repeat(2,1fr); }
+	main.goods.list ul#list > li {  padding-bottom: calc( 125% + 90px ); }	
+	main.goods.list ul#list > li:nth-child(2n) { border-right : none }
+	main.goods.list ul#list > li a { height: calc( 100% - 90px ) }
+	main.goods.list ul#list > li .info { height : 90px ; padding : 7px 0 0 20px }
+	main.goods.list ul#list > li .info > .price { position : static }
+	main.goods.list > section.list.col-2 { padding : 0 }
+	main.goods.list > section.list.col-2 ul#list { display : block ; border-left : none ; border-right : none }
+	main.goods.list > section.list.col-2 ul#list > li { border-right : none }
+	main.goods.list > section.list:not(.col-2) ul#list > li .info > .size { display : none }
+
+
+	/** 베스트 상품 > 목록 **/
+	main.goods.list section.best { margin-bottom : 0 }
+	main.goods.list section.best:after { display : none }
+	main.goods.list section.best ul#list { width : 100% ; border-left : none ; border-right : none ; border-bottom : none ; display : block } 
+	main.goods.list section.best ul#list > li { height : 150px ; border-bottom : solid 1px var(--border-color) ; border-right : none ; padding-left : 120px }
+	main.goods.list section.best ul#list > li a { width : 120px ; height : 149px }
+	main.goods.list section.best ul#list > li:before { width : 20px ; line-height : 20px }
+	main.goods.list section.best ul#list > li .info { font-size : 10px ; padding : 40px 0 0 20px }
+	main.goods.list section.best ul#list > li .info > * { margin-bottom : 6px }
+	main.goods.list section.best ul#list > li .info > strong { font-size : 11px }
+	main.goods.list section.best ul#list > li .info button.favorite { position : absolute ; margin-bottom : 0 ; top : 40px }
+
+
+	/** shop detail **/
+	main.goods.detail { padding : 45px 0 100px 0 }
+	main.goods.detail > section.cont { padding : 0 ; border : none }
+	main.goods.detail > section.cont > section.gallery { padding-left : 0 ; position : relative }
+	main.goods.detail > section.cont > section.gallery > nav { position : absolute ; top :initial ; bottom : 60px ; left : initial ; right : 10px }
+    main.goods.detail > section.cont > section.gallery #images-paging { background-color : var(--white) ; position : absolute ; top : initial ; left : 15px ; bottom : 17px ; width: 35px ; height : 20px ; line-height : 20px ; font-size : var(--fontsize-s) ; text-align : center }
+	main.goods.detail > section.cont > section.gallery > article #images { display : none }
+	main.goods.detail > section.cont > section.gallery > article .swiper-container { opacity : 1 ; z-index : 1 ; position : relative ; width: 100% ; height: auto }
+	main.goods.detail > section.cont > section.gallery > article .swiper-wrapper { background-color : var(--border-color) ; height : calc( ( 45 / 36 ) * 100vw ) }
+	main.goods.detail > section.cont > section.gallery > article .swiper-container .swiper-pagination { background-color : var(--border-gray-color) ; position : relative ; width : 100% ; height : 2px }
+
+	main.goods.detail > section.cont > section.information { position : static !important ; margin-top: 20px ; width : 100% ; height : auto ; display: block }
+	main.goods.detail > section.cont > section.information > .cont { display : block }
+    main.goods.detail > section.cont > section.information article { width : 100% ; padding : 0 20px }
+	main.goods.detail > section.cont > section.information article.goods { padding-bottom : 0 }
+    main.goods.detail > section.cont > section.information article.goods button.favorite { right : 20px }
+    /*
+	main.goods.detail > section.cont > section.information article.goods .option dl { padding-top : 30px ; position : relative }
+	main.goods.detail > section.cont > section.information article.goods .option dl > dt { width: 100% ; display: block ; position : absolute ; top: 0 ; left : 0 }
+    */
+    main.goods.detail > section.cont > section.information article.goods .buttons button { width : 100% }
+    /*
+	main.goods.detail > section.cont > section.information article.goods .buttons { grid-template-columns: auto 25% ; position : fixed ; bottom : 0 ; left : 0 ; width : 100% ; height: 40px ; z-index : 85 ; background-color : var(--white) }
+    main.goods.detail > section.cont > section.information article.goods .buttons button { border-color : #808080 ; height : 40px ; line-height : 38px ; background-size : auto }
+	main.goods.detail > section.cont > section.information article.goods .buttons.bottom { position : absolute }
+    */
+
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods { }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods > dt { padding-left : 20px ; background-color : var(--white) }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods > dt > ul { margin-left : -20px ; width : calc( 100% + 20px ) }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods > dd { max-height : calc( 100vh - 85px ) ; position : static ; border : none ; margin-top : 0 }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods > dd.over500 ul { border-right : none }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods.on { position : fixed ; top : 0 ; left : 0 ; width : 100vw ; height : 100vh ; z-index : 105 ; padding : 20px ; margin : 0 ; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods.on:before { display: block; position: absolute; top: 0 ; left: 0 ; content: ""; width: 100vw ; height: 100vh ; background-color: var(--black) ; z-index: -1 ; transition: ease-out .35s ; opacity : .15 }
+	main.goods.detail > section.cont > section.information article.goods .option dl.setgoods.on > dt { border-top : none ; border-left : none ; border-right : none }
+	
+	main.goods.detail > section.cont > section.information #details { position : relative ; transition : ease-out .2s ; margin-top : 60px }	
+    /*
+	main.goods.detail > section.cont > section.information #details > dd { min-height : 100% ; height : auto ; top : 0 ; position : absolute ; right : initial ; left : 45px ; width: calc( 100vw - 45px ); }
+	main.goods.detail > section.cont > section.information #details > dd:before,
+	main.goods.detail > section.cont > section.information #details > dd:after { content : "" ; display : inline-block ; width : 100vw ; height : 1px ; background-color : var(--border-color) ; position : absolute ; left : -45px }
+	main.goods.detail > section.cont > section.information #details > dd:before { top : 0 }
+	main.goods.detail > section.cont > section.information #details > dd:after { bottom : 0 } 
+	main.goods.detail > section.cont > section.information #details > dd button.close { display : none }
+	main.goods.detail > section.cont > section.information #details > dd .cont { padding : 10px !important }
+	main.goods.detail > section.cont > section.information #details button:not(.close) { padding-left : 45px }
+	main.goods.detail > section.cont > section.information #details button:not(.close):before { width : 45px }
+	main.goods.detail > section.cont > section.information .on-detail > article.goods { opacity : 1 }
+	main.goods.detail > section.cont > section.information .on-detail #details { margin-left : -57px }
+	main.goods.detail > section.cont > section.information .on-detail #details, 
+	main.goods.detail > section.cont > section.information .on-detail #details > dt { border-color : transparent }
+
+	main.goods.detail > section.cont ~ .swiper-row { margin-top : 77px }
+
+*/
+
+
+	/** 장바구니 > 결제 **/
+	main.my > section.pay { padding-top : 0 }
+	main.my > section.pay article.result { margin-top : 40px ; position : static ; border : none ; padding : 0 ; width : 100% }
+	main.my > section.pay .form-inline button.width150 { width : 100px }
+	main.my > section.pay .form-inline button.width150 + input { width : calc( 100% - 110px ) !important }
+
+
+	/** 마이페이지 **/
+	main.my:before, 
+	main.my:after,
+	main.my > nav { display : none }
+	main.my > section { padding-top : 20px }
+	main.my > section h1 { margin-bottom : 10px }
+	main.my > section h2 { padding-bottom : 10px }
+	main.my > section h2 ~ h2 { margin-top : 40px }
+	main.my > section h3 { padding-top : 10px }
+	main.my > section:not(.summary) { padding-left : 20px ; padding-right : 20px }
+	main.my > section.wrap-720 { padding-top: 40px }
+	
+	main.my > section.summary { height : auto ; display : block }
+	main.my > section.summary > article.info dl > dt { padding : 20px 0 50px 20px }
+	main.my > section.summary > article.info button.logout { bottom : 10px ; left : 20px }
+	main.my > section.summary > article.info dl > dd { padding : 0 15px }
+	main.my > section.summary > article.links { border-top : solid 1px var(--border-color) ; overflow-x : auto ; padding : 20px ; -ms-overflow-style: none; scrollbar-width: none;  }
+	main.my > section.summary > article.links::-webkit-scrollbar { display: none }
+	main.my > section.summary > article.links ul { display : table }
+	main.my > section.summary > article.links ul > li { display : table-cell }
+	main.my > section.summary > article.links ul > li a { width : 50px ; height : auto ; display : block ; line-height : 15px ; padding : 60px 0 0 0 ; font-size : 11px ; text-align : center ; margin-left : 15px ; white-space: nowrap; }
+	main.my > section.summary > article.links ul > li:first-child a { margin-left : 0 }
+	main.my > section.summary > article.links ul > li a:before { width : 50px ; height : 50px }
+
+	/** 마이페이지 상품 목록 **/
+	.swiper-wrapper.goods > .swiper-slide { width : 162px ; height : 293px }
+	.swiper-wrapper.goods > .swiper-slide .image { height : 203px }
+	.swiper-wrapper.goods > .swiper-slide .info { width : calc( 100% - 40px ) ; height : calc( 100% - 223px ) ; bottom : 10px ; left : 20px }
+	.swiper-wrapper.goods > .swiper-slide .info .price { position : static }
+	.swiper-wrapper.goods > .swiper-slide .info ul.size { display : none }
+	.swiper-wrapper.goods > .swiper-slide .info .color,
+	.swiper-wrapper.goods > .swiper-slide .info .price { margin-top : 2px }
+
+	/** 회원 가입 **/
+	main.my > section.account { padding-top : 0 }
+	main.my > section.account > article.join #btn-personal-certify { margin-top : 10px }
+
+
+	/** 마이페이지 > 메인 **/
+	main.my > section.my-main { padding : 0 }
+	main.my > section.my-main > header { padding : 40px 20px 20px 20px }
+	main.my > section.my-main .swiper-container { height : 293px ; margin-bottom : 0 }
+	
+	/** 마이페이지 > 공지사항 **/
+	main.my > section.notice { padding-left : 0 ; padding-right : 0 }
+	main.my > section.notice > article h1 { padding : 0 20px }
+	
+	/** 마이페이지 > 자주 묻는 질문 **/
+	main.my > section.faq { margin-top : 20px ; padding-left : 0 ; padding-right : 0 }
+	main.my > section.faq > article > h1,
+	main.my > section.faq > article > .searchform { padding : 0 20px }
+	main.my > section.faq > article > .category { height : 61px ; overflow-x : auto ; border : none ; padding : 0 ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.my > section.faq > article > .category::-webkit-scrollbar { display: none }
+	main.my > section.faq > article > .category ul { border-top : solid 1px var(--border-gray-color) ; border-bottom : solid 1px var(--border-gray-color) ; padding : 0 15px }
+	main.my > section.faq > article > .category ul > li { line-height : 58px ; word-break: keep-all; }
+	main.my > section.faq > article > .category ul > li.on:before { bottom : -1px }
+	main.my > section.faq > article .contents > dl > dd > h3 { padding-top : 0 }
+	
+	/** 마이페이지 > 문의하기 **/
+	main.my > section.qna > article .info { padding-top : 10px }
+	main.my > section.qna > article .info + ul.dot { margin-bottom : 20px }
+	main.my > section.qna > article h2 + ul.contents-list { margin-top : 0 }
+	main.my > section.qna > article.write .buttons { padding-top : 20px }
+	
+	
+	main.my > section.info.modify article.input { border : none ; padding : 0 ; margin-top : 50px }
+
+	/** 마이페이지 > 내 정보 관리 > 결제 수단 **/
+	main.my > section.paymethod > article > ul.dot { margin : 100px 0 80px 0  }
+
+	/** 마이페이지 > 내 정보 관리 > 구매맞춤정보 **/
+	main.my > section.info.purchase > h1 { margin-bottom : 25px }
+	main.my > section.info.purchase > article ul.dot { margin-bottom : 25px }
+	main.my > section.info.purchase > article .gender-field { margin-bottom : 20px }
+	main.my > section.info.purchase > article .shoesize-field { padding-top : 20px }
+	main.my > section.info.purchase > article .form-inline:not(.inline-label) { margin-top : 20px }
+	main.my > section.info.purchase > article .grid + .form-inline { margin-top : 40px }
+	main.my > section.info.purchase > article .form-inline.topsize ul.checkbox > li:nth-child(3) ~ li { grid-row-start : 2 }
+	main.my > section.info.purchase > article .form-inline.bottomsize ul.checkbox > li:nth-child(5) ~ li { grid-row-start : 2 }
+	main.my > section.info.purchase > article .form-inline.shoesize-field .grid { margin-top : 16px ; grid-template-columns : repeat(2, 1fr) }
+	main.my > section.info.purchase > article .buttons { margin-top : 60px }
+	main.my > section.info.purchase.saved > h1 { margin-bottom : 50px }
+	main.my > section.info.purchase.saved .btn { margin-top : 60px }
+
+
+	/** 마이페이지 > 내 정보 관리 > 회원탈퇴 **/
+	main.my > section.info.drop { max-width : 100% }
+	main.my > section.info.drop h1 { margin-bottom : 40px }
+	main.my > section.info.drop .reason { grid-template-columns : repeat(2,1fr) }
+	main.my > section.info.drop .buttons { margin-top : 40px }
+	main.my > section.info.drop.ok { max-width : 100% }
+	
+	/** 마이페이지 > 재입고알림 **/
+	main.my > section.reorder ul.list { padding : 20px 0 }
+	main.my > section.reorder ul.list > li { height : 195px ; padding-bottom : 45px }
+	main.my > section.reorder ul.list > li .thumbnail { height : 150px ; border-right : none }
+	main.my > section.reorder ul.list > li ul.info { right : -1px ; bottom : -1px ; width : calc( 100% + 2px ) }
+	main.my > section.reorder ul.list > li ul.info > li:not(.buttons) { padding-right : 10px }
+	main.my > section.reorder ul.list > li ul.info > li.buttons { width : 100% ; margin-top : 10px }
+	main.my > section.reorder ul.list > li ul.info > li.buttons button { border-color : var(--border-gray-color) }
+	main.my > section.reorder ul.list > li ul.info > li.buttons button { border-color : var(--border-gray-color) }
+		
+	/** 마이페이지 > 마일리지 **/
+	main.my > section.mileage article.history { margin-top : 45px }
+	
+	/** 마이페이지 > 바우처 **/
+	main.my > section.boucher .submit { padding-top : 4px }
+	main.my > section.boucher .submit .form-inline { padding-bottom : 55px }
+	main.my > section.boucher .submit .form-inline input,
+	main.my > section.boucher .submit .form-inline button { width : 100% !important }
+	main.my > section.boucher .submit .form-inline:before { right : 10px }
+	main.my > section.boucher .submit ul.dot { margin-top : 20px }
+	main.my > section.boucher .submit-ok { width : 100% ; padding-top : 70px }
+	main.my > section.boucher .submit-ok ul.dot { margin : 20px 0 60px 0 }
+	main.my > section.boucher h2 + ul.dot { margin-top : 10px }
+	main.my > section.boucher > article > h2 ~ h2 { margin-top : 60px }
+	main.my > section.boucher ul.boucher-list > li { padding : 20px 10px }
+	main.my > section.boucher ul.boucher-list > li .expire { right : 10px }
+
+	/** 마이페이지 > 멤버십 **/
+	main.my > section.membership h1 { margin-bottom : 11px }
+	main.my > section.membership h2 { margin-top : 40px }
+	main.my > section.membership ul.dot > li ~ li { margin-top : 11px }
+	main.my > section.membership ul.benefits > li { height: auto ; padding : 20px 10px }
+	main.my > section.membership ul.benefits > li > .level { position : static }
+	main.my > section.membership ul.benefits > li ul.dot { margin : 10px 0 0 0 }
+	main.my > section.membership ul.benefits > li ul.dot > li ~ li { margin-top : 6px }
+	
+	/** 마이페이지 > A/S **/
+	main.my > section.as { padding-top : 40px }
+	main.my > section.as table.price { width : 100% }
+
+
+	/** 마이페이지 > 주문내역 **/
+	main.my > section.order ul.list > li { height : auto }
+	main.my > section.order ul.list > li ~ li { margin-top : 95px }
+	main.my > section.order ul.list > li:last-child { margin-bottom : 55px }
+	main.my > section.order ul.list > li > .info { padding : 10px ; height : auto ; position : static }
+	main.my > section.order ul.list > li > .goods { position : relative ; height : 145px ; top : 0 }
+	main.my > section.order ul.list > li > .goods .image { width : 100px ; height : 125px ; line-height : 125px ; top : 10px ; right : 10px }
+	main.my > section.order ul.list > li > .goods dl { left : 10px ; bottom : 10px ; gap : 2px ; grid-template-columns: 75px 1fr; }
+	main.my > section.order ul.list > li > a.btn { position : absolute ; bottom : -55px ; left : 0 }
+
+	main.my > section.order article.detail dl.detail-info > dd:not(.goods) { padding : 0 ; border : none }
+	main.my > section.order article.detail dl.detail-info > dd h2 { border-bottom-color : var(--black) ; padding-bottom : 10px ; margin-bottom : 15px }
+
+	main.my > section.order article.detail dl.detail-info > dd.goods { padding : 20px 0 20px 130px }
+	main.my > section.order article.detail dl.detail-info > dd.goods big ~ * { margin-top : 3px }
+	main.my > section.order article.detail dl.detail-info > dd.goods .status { right : 10px ; bottom : 10px ; font-size : var(--fontsize-s) }
+	main.my > section.order article.detail dl.detail-info > dd.goods .status .now { font-size : var(--fontsize) ; margin-bottom : 2px }
+	
+	main.my > section.order article.detail dl.detail-info > dd.info dl > * { height : 32px }
+	main.my > section.order article.detail dl.detail-info > dd.info dl > dt.total, main.my > section.order article.detail dl.detail-info > dd.info dl > dt.total + dd { margin-bottom : 15px ; padding : 13px 0 }
+	main.my > section.order article.detail dl.detail-info > dd.info .modify { top: 0 ; right : 0 ; color : var(--gray) }
+	main.my > section.order article.detail dl.detail-info > dd.info .modify button { position : absolute ; right : 0 ; top : 40px }
+	
+	main.my > section.order article.detail h2.border { border-bottom-color : var(--black) }
+	main.my > section.order article.detail ul.dot { margin : 15px 0 }
+	main.my > section.order article.detail .buttons { margin-top : 10px }
+	
+	main.my > section.order article.cancel ul.dot > li ~ li, main.my > section.order article.cancel-submit ul.dot > li ~ li { margin-top : 10px }
+	main.my > section.order article.detail dl.detail-info { margin-bottom : 20px }
+	
+	/** 매장찾기 **/
+	main.stockist > section.search-tab { position: static ; width: 100% ; padding : 60px 20px 20px 20px }
+	main.stockist > section.tab { display : block ; border-bottom : none }
+	main.stockist > section.tab > .tab-container { width : 100% ; padding : 0 20px 20px 20px }
+	main.stockist > section.tab > section:not(.on) { display : none !important }
+	main.stockist section.search { padding : 0 ; border-right : none }
+	main.stockist section.store-card { padding : 0 20px 20px 20px }
+	main.stockist section.store-card dl { display : block }
+	main.stockist section.store-card dl > dd ~ dd { margin-top : 20px }
+	main.stockist section.store-card dl > dd a.location { display : block }
+	main.stockist section.store-card > h2 { padding-bottom : 10px }
+	main.stockist section.store-card dl.stockist { margin-top : 0 }
+	main.stockist section.store-card dl.stockist > dd + dt  { margin-top : 20px }
+	main.stockist section.store-card dl.stockist > dt + dd,
+	main.stockist section.store-card dl.stockist > dd { margin-top : 10px }
+	main.stockist section.store-card dl.stockist > dd .tel { display : block }
+
+	/** 스토리 공통 **/	
+	main.story > section.list > button.to-top { margin-top : 40px }
+	main.story > section.detail > header button.close { top : 20px ; right : 20px }
+	main.story > section.detail #btn-view-goods { position : absolute ; height : 28px ; right : 10px ; bottom : 8px ; z-index : 2 ; padding : 0 5px 0 20px ; background : url('/images/ico-styling.svg') left 8px no-repeat }
+	
+	/** 콜렉션 **/
+	main.collection > header { padding : 14px 0 }
+	main.collection > header ul { padding : 0 7px }
+	main.collection > header ul > li { padding : 0 15px ; line-height : 32px }
+	main.collection > header ul > li.on:before { width : calc( 100% - 30px ) ; right :15px ; bottom : 3px }
+	main.collection > section.list ul { grid-template-columns: repeat(2, 1fr) }
+	main.collection > section.list > .info { left : 20px }
+	main.collection > section.detail > .gallery { display : block ; width : 100% ; position : relative }
+	main.collection > section.detail > .gallery .swiper-slide { display : block ; height : 100vh }
+	main.collection > section.detail > .gallery .swiper-slide .image,
+	main.collection > section.detail > .gallery .swiper-slide .zoom { display : none }
+	
+	/** 에디토리얼 **/
+	main.editorial > section.list .item { margin-bottom : 40px }
+	main.editorial > section.list .item > .title { position : static ; padding : 30px 20px 0 20px ; height : 60px ; text-align : left }
+	main.editorial > section.detail .swiper-button-prev,
+	main.editorial > section.detail .swiper-button-next { display : none }
+	main.editorial > section.detail .swiper-scrollbar { left : 0 ; bottom : 0 ; width : 100% ; height : 3px ; background : none }
+	main.editorial > section.detail .swiper-scrollbar .swiper-scrollbar-drag { border-radius : 0 ; background-color : var(--black) }
+
+	/** 콜라보레이션 **/
+	main.collaboration { padding-bottom : 50px }
+	main.collaboration > nav { height : 111px ; padding-top : 10px }
+	main.collaboration > nav .swiper-container { width : 100% ; padding : 0 15px }
+	main.collaboration > nav .swiper-container button { display : none }
+	main.collaboration > header { padding : 40px 0 }
+	main.collaboration > section > article ~ article, main.collaboration section.media > video + article, main.collaboration section.media > img + article { padding-top : 40px }
+	main.collaboration > section ~ section { margin-top : 100px }
+	main.collaboration > section .buttons { padding : 0 20px }
+	main.collaboration > section .buttons .btn,
+	main.collaboration > section .buttons button { width : 100% }
+	main.collaboration .swiper-container + p { margin-top : 40px }
+	main.collaboration .collaboration-series .media { width : 100% }
+
+	main.collaboration .swiper-container.slide-auto .swiper-slide { width : 80% }
+
+	main.collaboration .gallery-grid:not(.col-2):not(.col-3):not(.col-4) { grid-template-columns : repeat(2, 1fr) }
+	
+	main.collaboration .product-gallery { width : 100% ; min-height : auto }
+	main.collaboration .product-gallery > .goods,
+	main.collaboration .product-gallery > .goods .detail { width : 100% ; position : static }
+	main.collaboration .product-gallery > .goods .detail { padding : 0 40px }
+	main.collaboration .product-gallery > .goods .detail .image, 
+	main.collaboration .product-gallery > .goods .detail .swiper-container,
+	main.collaboration .product-gallery > .goods .detail .swiper-container .swiper-wrapper,
+	main.collaboration .product-gallery > .goods .detail .swiper-container .swiper-slide { width : 100% }
+	main.collaboration .product-gallery > .goods .detail .swiper-container { height : calc( ( 100vw - 80px ) * ( 37 / 28 ) ) }
+	main.collaboration .product-gallery > .goods .detail p { position : static ; width : 100vw ; margin-left : -40px ; text-align : center ; word-break: keep-all; }
+	main.collaboration button.to-top { margin-top : 50px }
+	main.collaboration .product-gallery > ul.list {  position : static ; display : flex ; padding : 0 10px ; border-bottom : solid 1px var(--border-gray-color) ; overflow-x : auto  ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.collaboration .product-gallery > ul.list > li { display : table-cell ; height : 110px ; padding-top : 59px  ;min-width : 70px }
+	main.collaboration .product-gallery > ul.list > li .thumbnail { width : 50px ; height : 50px ; left : calc( 50% - 25px ) }
+	main.collaboration .product-gallery > .goods { position : relative }
+	main.collaboration .product-gallery > .goods .detail .image { background : none !important }
+	main.collaboration .product-gallery > .goods .thumbnails { width : 100% ; border-bottom : solid 1px var(--border-gray-color) ; position : absolute ; top : initial ; left : 0 ; bottom : 120px }
+	main.collaboration .product-gallery > .goods .thumbnails,
+	main.collaboration .product-gallery > .goods .thumbnails .scroll,
+	main.collaboration .product-gallery > .goods .thumbnails ul > li { height : 120px }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li { border-right : solid 1px var(--border-gray-color) }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li:last-child { border-right : none }
+	main.collaboration .product-gallery > .goods .thumbnails .scroll { overflow-x : auto ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.collaboration .product-gallery > ul.list::-webkit-scrollbar,
+	main.collaboration .product-gallery > .goods .thumbnails .scroll::-webkit-scrollbar { display: none; }
+	main.collaboration .product-gallery > .goods .thumbnails ul { display : table }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li { display : table-cell }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li .thumbnail { width : 90px; height : 120px ; background-position : center ; background-size : cover }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li .thumbnail img { display : none }
+
+	main.collaboration .product-gallery > .goods .thumbnails button { display : none }
+	main.collaboration .product-gallery > .goods .thumbnails ~ .detail { padding : 0 0 250px 0 ; width : 100% }
+	main.collaboration .product-gallery > .goods .thumbnails ~ .detail img { width : 100% }
+	main.collaboration .product-gallery > .goods .thumbnails ~ .detail p { position : absolute ; margin-left : 0 ; height : 80px ; bottom : 0 ; left : 0 }
+	
+	main.collaboration .product-gallery.no-thumbnails { width : 100% }
+	main.collaboration .product-gallery.no-thumbnails > ul.list { right : initial ; top : 20px ; left : 20px ; grid-template-columns : 50px }
+	main.collaboration .product-gallery.no-thumbnails > .goods .detail { padding : 0 }
+	main.collaboration .product-gallery.no-thumbnails > .goods .detail p { padding : 0 20px ; margin-left : 0 }
+	main.collaboration .product-gallery.no-thumbnails > .goods .detail .swiper-container { height : calc( 100vw * ( 475 / 360 ) ) }
+}
