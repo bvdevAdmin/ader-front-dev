@@ -2,8 +2,8 @@
 	<button type="button" id="btn-mobile-history-back"></button>
 	<nav>
 		<ul>
-			<li><a href="/">HOME</a></li>
-			<li><a href="/join">회원가입</a></li>
+			<li><a href="/kr">HOME</a></li>
+			<li><a href="/kr/join">회원가입</a></li>
 		</ul>
 	</nav>
 	<section class="account">
@@ -11,13 +11,13 @@
 			<h1>회원가입</h1>
 			<form id="frm-join">
 				<div class="form-inline inline-label">
-					<input type="email" name="member_id" placeholder=" " required>
+					<input type="email" name="member_id" placeholder=" " required tabindex="1" autocomplete="off">
 					<span class="vaild">이메일을 정확하게 기입해주세요.</span>
 					<span class="control-label">이메일</span>
 				</div>
 				<div class="form-inline inline-label">
-					<button type="button" class="pw-view-toggle"></button>
-					<input type="password" name="member_pw" placeholder=" " required>
+					<button type="button" class="pw-view-toggle" tabindex="-1"></button>
+					<input type="password" name="member_pw" placeholder=" " required tabindex="2" autocomplete="off">
 					<span class="vaild">비밀번호를 정확하게 기입해주세요.</span>
 					<div class="remark">
 						<ul class="dot">
@@ -29,8 +29,8 @@
 					<span class="control-label">비밀번호</span>
 				</div>
 				<div class="form-inline inline-label">
-					<button type="button" class="pw-view-toggle"></button>
-					<input type="password" name="member_pw2" placeholder=" " required>
+					<button type="button" class="pw-view-toggle" tabindex="-1"></button>
+					<input type="password" name="member_pw2" placeholder=" " required tabindex="3">
 					<span class="vaild">비밀번호가 일치하지 않습니다.</span>
 					<div class="remark">
 						<ul class="dot">
@@ -43,33 +43,35 @@
 				</div>
 
 				<div class="buttons">
-					<button type="button" id="btn-personal-certify">휴대폰 본인인증</button>
+					<button type="button" id="btn-personal-certify"  tabindex="4">휴대폰 본인인증</button>
 				</div>
 				
 				<div id="personal-certify-ok" class="hidden">
 					<div class="form-inline inline-label">
-						<input type="text" name="member_name" placeholder=" " required>
+						<input type="text" name="member_name" placeholder=" " required tabindex="5">
 						<span class="control-label">이름</span>
 					</div>
 					<div class="form-inline inline-label">
-						<!--<button type="button" id="btn-personal-certify">인증</button>-->
-						<input type="tel" name="tel_mobile" placeholder=" " required>
+						<input type="tel" name="tel_mobile" placeholder=" " required tabindex="6">
+						
+						<input type="hidden" name="member_gender" value="">
+						<input type="hidden" name="member_birth" value="">
 						<span class="vaild">'-'가 포함되지 않은 휴대폰 전화를 입력해주세요.</span>
 						<span class="control-label">휴대전화</span>
 					</div>
 					<div class="agrees">
-						<label class="check"><input type="checkbox" name="agree_all"><i></i>전체동의</label>
+						<label class="check"><input type="checkbox" name="agree_all" tabindex="7"><i></i>전체동의</label>
 						<ul>
 							<li>
-								<label class="check"><input type="checkbox" name="agree_terms"><i></i></label>
-								<a href="/terms-of-use" target="_blank">이용약관</a>, <a href="/privacy-policy" target="_blank">개인정보수집 및 이용</a> 에 동의합니다. (필수)
+								<label class="check"><input type="checkbox" name="agree_terms" tabindex="8"><i></i></label>
+								<a href="/kr/terms-of-use" target="_blank">이용약관</a>, <a href="/kr/privacy-policy" target="_blank">개인정보수집 및 이용</a> 에 동의합니다. (필수)
 							</li>
 							<li>
-								<label class="check"><input type="checkbox" name="agree_receive_sms"><i></i></label>
+								<label class="check"><input type="checkbox" name="agree_receive_sms" tabindex="9"><i></i></label>
 								SMS 마케팅정보 수신을 동의합니다. (선택)
 							</li>
 							<li>
-								<label class="check"><input type="checkbox" name="agree_receive_email"><i></i></label>
+								<label class="check"><input type="checkbox" name="agree_receive_email" tabindex="10"><i></i></label>
 								이메일 마케팅정보 수신을 동의합니다. (선택)
 							</li>
 						</ul>
@@ -87,7 +89,7 @@
 					확인할 수 있습니다.
 				</p>
 				<div class="buttons">
-					<a href="/login" class="btn">로그인</a>
+					<a href="/kr/login" class="btn">로그인</a>
 				</div>
 			</section>
 		</article>

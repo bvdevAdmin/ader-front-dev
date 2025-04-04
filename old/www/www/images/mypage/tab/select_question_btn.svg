@@ -1,0 +1,7 @@
+<svg data-name="소분류 버튼" xmlns="http://www.w3.org/2000/svg" width="86" height="24" viewBox="0 0 86 24">
+    <g data-name="사각형 1942" style="stroke:gray;fill:none">
+        <rect width="86" height="24" rx="1" style="stroke:none"/>
+        <rect x=".5" y=".5" width="85" height="23" rx=".5" style="fill:none"/>
+    </g>
+    <text data-name="자주 찾는 질문" transform="translate(43 17)" style="fill:#343434;font-size:11px;font-family:NotoSansKR-Regular,Noto Sans KR"><tspan x="-36.824" y="0">자주 찾는 질문</tspan></text>
+</svg>

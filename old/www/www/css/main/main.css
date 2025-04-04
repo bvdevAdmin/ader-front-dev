@@ -1,0 +1,258 @@
+/* common */
+
+.btn__wrap{
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.46;
+    letter-spacing: normal;
+    display: flex;
+    gap: 30px;
+}
+.swiper-wrapper{
+    height: auto;
+}
+
+/* new project */
+.new__project__img{
+    width: 100%;
+    height: 615px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.new__project__content{
+    color: #fff;
+    position: relative;
+    top: 70%;
+    left: 10px;
+}
+.new__project__swiper{
+    overflow-x:hidden ;
+}
+.new__project__swiper .swiper-button-next, .swiper-button-prev {
+    color: #fff;
+    top: 40%;
+}
+.new__project__content .season__title{
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-align: left;
+}
+.new__project__content .title{
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: 0.75px;
+    text-align: left;
+}
+.new__project__swiper .btn__wrap > div::after{
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #fff;
+}
+
+/* recommend */
+.recommend-swiper{
+    padding-bottom: 80px;
+}
+.recommend-swiper .recommend__prd{
+    border-right-width: 0px;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+}
+.for__you__box{
+    width: 240px;
+    padding: 20px;
+}
+.recommend-swiper .recommend__img{
+    width: 100%;
+    height: 215px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.recommend-swiper .color__chip {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.recommend-swiper .color__chip li {
+    list-style-type: none;
+    width: 8px;
+    height: 8px;
+}
+
+/* exhibtion */
+.exhibtion__content{
+    padding: 10px;
+    background-color: #fbfbfb;
+}
+.exhibtion__content .title{
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.46;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.exhibtion__content .season__title{
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+
+    line-height: 1.45;
+    letter-spacing: 0.6px;
+    text-align: left;
+    color: #343434;
+    padding-bottom: 30px;
+}
+
+.exhibtion__img{
+    width: 100%;
+    height: 360px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 기획전 상품 */
+.exhibtion__prd__wrap{
+    background-color: #fbfbfb;
+}
+.exhibtion__prd__wrap .prd__box{
+    display: flex;
+    width: 100%;
+}
+.exhibtion__prd__wrap .prd__card{
+    flex-grow: 1;
+}
+.exhibtion__prd__wrap .prd__img__wrap{
+    width: 100%;
+    height: 225px;
+    padding: 20px;
+}
+.exhibtion__prd__wrap .prd__img{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+.exhibtion__prd__wrap .prd__title{
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    font-stretch: normal;
+    line-height: 1.31;
+    letter-spacing: normal;
+    text-align: center;
+    color: #343434;
+    margin-bottom: 24px;
+}
+.exhibtion__wrap .btn__wrap > div::after{
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #000;
+}
+/* 스타일링 */
+.styling-swiper{
+    padding-bottom: 100px;
+    width: 100%;
+}
+.styling-swiper .styling__img{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 270px;
+    width: 100%;
+}
+.styling-swiper .btn__wrap {
+    padding-left: 10px;
+}
+.styling-swiper .btn__wrap > div::after{
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #000;
+}
+.styling-swiper .title{
+    padding: 20px 0 10px 10px;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #343434;
+}
+
+
+ 
+@media (min-width: 1024px){
+    /* .nav__bar{
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(16, 120px);gap: 10px;
+    } */
+    .exhibtion__wrap{
+        display: flex;
+    }
+    .exhibtion__prd__wrap{
+        background-color: #ffffff;
+    }
+    .exhibtion__content {
+        background-color: #ffffff;
+    }
+    .exhibtion__wrap .exhibtion__img{
+        width: 50%;
+        order: 2;
+        height: 960px;
+    }
+    .exhibtion__wrap .exhibtion__content{
+        display: flex;
+        width: 50%;
+        order: 1;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 0 100px 130px;
+    }
+
+    .exhibtion__box{
+        width: 50%;
+    }
+    .exhibtion__box.content{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-left: 80px;
+    }
+
+
+    .styling-swiper .styling__img{
+        height: 600px;
+    }
+
+
+
+    .recommend-swiper .recommend__img{
+        height: 450px;
+    }
+    .exhibtion__prd__wrap{
+        display: flex;
+    }
+    .exhibtion__prd__wrap .prd__card{
+        height: 600px;
+    }
+    .exhibtion__prd__wrap .prd__img__wrap{
+        height:90%;
+    }
+}

@@ -21,34 +21,44 @@ define('PG', array(
 ));
 define('DBMS',			'MYSQL'); // MYSQL,MSSQL,ORACLE,MONGODB
 
+define('dir_f_api','/var/www/dev-tmp/www/api');
+
 // 개발
 if($_SERVER['SERVER_NAME'] == 'dev2.adererror.com') {
-	// define('DB',array(
-	// 	'SERVER'=>'dev-ecommerce-web-rds.cluster-cpqnzu6us5oj.ap-northeast-2.rds.amazonaws.com', // 테스트 서버 위치
-	// 	'NAME'=>'dev', // 사용 db
-	// 	'USER'=>'aderdev', // 아이디
-	// 	'PASSWORD'=>'dkejdpfj19rma!#', // 비밀번호
-	// 	'HEAD'=>'' // db table 접두어
-	// ));
+	//	define('DB',array(
+	//		'SERVER'=>'prod-ecommerce-web-rds-instance-1.cpqnzu6us5oj.ap-northeast-2.rds.amazonaws.com', // 테스트 서버 위치
+	//		'NAME'=>'dev', // 사용 db
+	//		'USER'=>'aderprod', // 아이디
+	//		'PASSWORD'=>'dkejdpfj19rma!#', // 비밀번호
+	//		'HEAD'=>'' // db table 접두어
+	//	));
+	
 	define('DB',array(
-		'SERVER'=>'prod-ecommerce-web-rds-instance-1.cpqnzu6us5oj.ap-northeast-2.rds.amazonaws.com', // 테스트 서버 위치
+		'SERVER'=>'121.138.215.112:33306', // 테스트 서버 위치
 		'NAME'=>'dev', // 사용 db
-		'USER'=>'aderprod', // 아이디
-		'PASSWORD'=>'dkejdpfj19rma!#', // 비밀번호
+		'USER'=>'bvdev', // 아이디
+		'PASSWORD'=>'bv1229', // 비밀번호
 		'HEAD'=>'' // db table 접두어
 	));
 }
 
 // 실서버
 else {
+	//	define('DB',array(
+	//		'SERVER'=>'prod-ecommerce-web-rds-instance-1.cpqnzu6us5oj.ap-northeast-2.rds.amazonaws.com', // 테스트 서버 위치
+	//		'NAME'=>'dev', // 사용 db
+	//		'USER'=>'aderprod', // 아이디
+	//		'PASSWORD'=>'dkejdpfj19rma!#', // 비밀번호
+	//		'HEAD'=>'' // db table 접두어
+	//	));
+	
 	define('DB',array(
-		'SERVER'=>'prod-ecommerce-web-rds-instance-1.cpqnzu6us5oj.ap-northeast-2.rds.amazonaws.com', // 테스트 서버 위치
+		'SERVER'=>'121.138.215.112:33306', // 테스트 서버 위치
 		'NAME'=>'dev', // 사용 db
-		'USER'=>'aderprod', // 아이디
-		'PASSWORD'=>'dkejdpfj19rma!#', // 비밀번호
+		'USER'=>'bvdev', // 아이디
+		'PASSWORD'=>'bv1229', // 비밀번호
 		'HEAD'=>'' // db table 접두어
 	));
-
 }
 
 /*******************************************************************************
@@ -71,7 +81,8 @@ define('PAGE_OPTION',array(
 			'my',
             'collaboration',
 			'collection',
-			'editorial'
+			'editorial',
+			'auth'
 		),
 		'header'=>'header',
 		'footer'=>'footer',

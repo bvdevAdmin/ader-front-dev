@@ -24,7 +24,7 @@
 		</section>
 		<section class="recommend on" id="collection-recommend">
 			<article class="bottom-goods-slide">
-				<h2>함께 스타일링 된 아이템</h2>
+				<h2>Styling with</h2>
 				<div class="swiper-container" id="swiper-recommend">
 					<div class="swiper-wrapper"></div>
 				</div>

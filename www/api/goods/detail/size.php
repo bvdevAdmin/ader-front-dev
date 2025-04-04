@@ -13,6 +13,7 @@
  | 
  +=============================================================================
 */
+
 $size_type = isset($size_type) ? $size_type : null;
 
 if (isset($country) && isset($product_type) && isset($product_idx)) {
@@ -21,23 +22,23 @@ if (isset($country) && isset($product_type) && isset($product_idx)) {
 		$ext_file_name = "_mo";
 	}
 	
-	$param_product_idx	= array();
-	$set_product_name	= array();
+	$param_idx	= array();
+	$set_name	= array();
 	
-	$param_product = setParamProduct($db,$product_type,$product_idx);
+	$param_product = setParam_product($db,$product_type,$product_idx);
 	if ($param_product != null) {
-		$param_product_idx	= $param_product['param_product_idx'];
-		$set_product_name	= $param_product['set_product_name'];
+		$param_idx	= $param_product['param_idx'];
+		$set_name	= $param_product['set_name'];
 	}
 	
-	$size_guide_info = array();
+	$size_guide = array();
 	
 	/* 사이즈 가이드 이미지/옵션 정보 조회처리 */
-	if (count($param_product_idx) > 0) {
-		for ($i=0; $i<count($param_product_idx); $i++) {
+	if (count($param_idx) > 0) {
+		foreach($param_idx as $key => $tmp_idx) {
 			$product_name = null;
 			if ($product_type == "S") {
-				$product_name = $set_product_name[$i];
+				$product_name = $set_name[$i];
 			}
 			
 			$img_file_name	= "";
@@ -48,68 +49,70 @@ if (isset($country) && isset($product_type) && isset($product_idx)) {
 			$dimensions		= "";
 			
 			/* 옵션 사이즈 자율입력 체크 */
-			$option_size_txt = getOptionSizeTxt($db,$product_idx);
-			if ($option_size_txt != null && isset($option_size_txt['option_size_txt_'.$country])) {
-				$size_guide_info[] = array(
-					'product_idx'		=>$param_product_idx[$i],
+			$option_size_txt = getOption_size_txt($db,$country,$tmp_idx);
+			if ($option_size_txt != null && strlen($option_size_txt) > 0) {
+				$size_guide[] = array(
+					'product_idx'		=>$tmp_idx,
 					'product_name'		=>$product_name,
-					'option_size_txt'	=>$option_size_txt['option_size_txt_'.$country]
+					'option_size_txt'	=>$option_size_txt
 				);
 			} else {
 				/* 사이즈 가이드 이미지/사이즈 텍스트 조회처리 */
-				$size_info		= getProductSizeGuide($db,$country,$param_product_idx[$i]);
-				/* 옵션 이름/옵션 사이즈 조회처리 */
-				$option_info	= getProductSizeOption($db,$param_product_idx[$i]);
+				$size_guide = getProduct_size_guide($db,$country,$tmp_idx);
 				
-				if ($size_info != null && count($option_info) > 0) {
-					if (isset($size_info['img_file_name'])) {
-						$img_file_name	= "/size/".$size_info['img_file_name'].$ext_file_name.".svg";
+				/* 옵션 이름/옵션 사이즈 조회처리 */
+				$option_size = getProduct_option_size($db,$tmp_idx);
+				
+				if ($size_guide != null && count($option_size) > 0) {
+					if (isset($size_guide['img_file_name'])) {
+						$img_file_name	= "/size/".$size_guide['img_file_name'].$ext_file_name.".svg";
 					}
 					
-					if (isset($size_info['model'])) {
-						$model			= $size_info['model'];
+					if (isset($size_guide['model'])) {
+						$model			= $size_guide['model'];
 					}
 					
-					if (isset($size_info['model_wear'])) {
-						$model_wear		= $size_info['model_wear'];
+					if (isset($size_guide['model_wear'])) {
+						$model_wear		= $size_guide['model_wear'];
 					}
 					
-					if (isset($size_info['svg_web'])) {
-						$svg_web		= $size_info['svg_web'];
+					if (isset($size_guide['svg_web'])) {
+						$svg_web		= $size_guide['svg_web'];
 					}
 					
-					if (isset($size_info['svg_mob'])) {
-						$svg_mob		= $size_info['svg_mob'];
+					if (isset($size_guide['svg_mob'])) {
+						$svg_mob		= $size_guide['svg_mob'];
 					}
 					
-					$dimensions = setProductDimensions($size_info,$option_info);
+					$dimensions = setProduct_dimensions($size_guide,$option_size);
 				}
 				
-				$size_guide_info[] = array(
-					'product_idx'		=>$param_product_idx[$i],
+				$size_guide[] = array(
+					'product_idx'		=>$tmp_idx,
 					'product_name'		=>$product_name,
 					'img_file_name'		=>$img_file_name,
 					'model'				=>$model,
 					'model_wear'		=>$model_wear,
 					'svg_web'			=>$svg_web,
 					'svg_mob'			=>$svg_mob,
+					
 					'dimensions'		=>$dimensions
 				);
 			}
 		}
 	}
 	
-	$json_result['data'] = $size_guide_info;
+	$json_result['data'] = $size_guide;
 }
 
-function setParamProduct($db,$product_type,$product_idx) {
+function setParam_product($db,$product_type,$product_idx) {
 	$param_product = null;
 	
-	$param_product_idx = array();
-	$set_product_name = array();
+	$param_idx	= array();
+	$set_name	= array();
 	
 	if ($product_type == "B") {
-		array_push($param_product_idx,$product_idx);
+		array_push($param_idx,$product_idx);
 	} else if ($product_type == "S") {
 		$select_set_product_sql = "
 			SELECT
@@ -120,33 +123,33 @@ function setParamProduct($db,$product_type,$product_idx) {
 				LEFT JOIN SHOP_PRODUCT PR ON
 				SP.PRODUCT_IDX = PR.IDX
 			WHERE
-				SP.SET_PRODUCT_IDX = ".$product_idx."
+				SP.SET_PRODUCT_IDX = ?
 			GROUP BY
 				PR.STYLE_CODE
 		";
 		
-		$db->query($select_set_product_sql);
+		$db->query($select_set_product_sql,array($product_idx));
 		
 		foreach($db->fetch() as $data) {
-			array_push($param_product_idx,$data['PRODUCT_IDX']);
-			array_push($set_product_name,$data['PRODUCT_NAME']);
+			array_push($param_idx,$data['PRODUCT_IDX']);
+			array_push($set_name,$data['PRODUCT_NAME']);
 		}
 	}
 	
 	if (
-		($product_type == "B" && count($param_product_idx) > 0) ||
-		($product_type == "S" && count($param_product_idx) > 0 && count($set_product_name) > 0)
+		($product_type == "B" && count($param_idx) > 0) ||
+		($product_type == "S" && count($param_idx) > 0 && count($set_name) > 0)
 	) {
 		$param_product = array(
-			'param_product_idx'	=>$param_product_idx,
-			'set_product_name'	=>$set_product_name
+			'param_idx'		=>$param_idx,
+			'set_name'		=>$set_name
 		);
 	}
 	
 	return $param_product;
 }
 
-function getOptionSizeTxt($db,$product_idx) {
+function getOption_size_txt($db,$country,$product_idx) {
 	$option_size_txt = null;
 	
 	$shop_product = $db->get(
@@ -155,33 +158,30 @@ function getOptionSizeTxt($db,$product_idx) {
 			IDX = ? AND
 			(
 				OPTION_SIZE_TXT_KR IS NOT NULL AND
-				OPTION_SIZE_TXT_EN IS NOT NULL AND
-				OPTION_SIZE_TXT_CN IS NOT NULL
+				OPTION_SIZE_TXT_EN IS NOT NULL
 			)
 		",
 		array($product_idx)
 	);
 	
 	if ($shop_product != null) {
-		$option_size_txt = array(
-			'option_size_txt_KR'		=>$shop_product[0]['OPTION_SIZE_TXT_KR'],
-			'option_size_txt_EN'		=>$shop_product[0]['OPTION_SIZE_TXT_EN'],
-			'option_size_txt_CN'		=>$shop_product[0]['OPTION_SIZE_TXT_CN'],
-		);
+		if ($shop_product[0]['OPTION_SIZE_TXT_'.$country] != null) {
+			$option_size_txt = $shop_product[0]['OPTION_SIZE_TXT_'.$country];
+		}
 	}
 	
 	return $option_size_txt;
 }
 
-function getProductSizeGuide($db,$country,$product_idx) {
+function getProduct_size_guide($db,$country,$product_idx) {
 	$size_info = null;
 	
 	$select_size_guide_sql = "
 		SELECT
 			SG.IMG_FILE_NAME	AS IMG_FILE_NAME,
 			
-			OM.MODEL			AS MODEL,
-			OM.MODEL_WEAR		AS MODEL_WEAR,
+			PR.MODEL			AS MODEL,
+			PR.MODEL_WEAR		AS MODEL_WEAR,
 			
 			SG.SIZE_TITLE_1		AS SIZE_TITLE_1,
 			SG.SIZE_TITLE_2		AS SIZE_TITLE_2,
@@ -201,56 +201,50 @@ function getProductSizeGuide($db,$country,$product_idx) {
 			SV.SVG_MOB			AS SVG_MOB
 		FROM
 			SIZE_GUIDE SG
-			LEFT JOIN ORDERSHEET_MST OM ON
-			SG.CATEGORY_TYPE = OM.SIZE_GUIDE_CATEGORY
-			
+
 			LEFT JOIN SIZE_GUIDE_SVG SV ON
 			SG.CATEGORY_TYPE = SV.SIZE_CATEGORY
+
+			LEFT JOIN SHOP_PRODUCT PR ON
+			SG.CATEGORY_TYPE = PR.SIZE_GUIDE_CATEGORY
 		WHERE
-			SG.COUNTRY = '".$country."' AND
-			OM.IDX = (
-				SELECT
-					PR.ORDERSHEET_IDX
-				FROM
-					SHOP_PRODUCT PR
-				WHERE
-					PR.IDX = ".$product_idx."
-			)
+			SG.COUNTRY = ? AND
+			PR.IDX = ?
 	";
 	
-	$db->query($select_size_guide_sql);
+	$db->query($select_size_guide_sql,array($country,$product_idx));
 	
-	foreach ($db->fetch() as $size_data) {
+	foreach ($db->fetch() as $data) {
 		$size_info = array(
-			'img_file_name'	=>$size_data['IMG_FILE_NAME'],
+			'img_file_name'	=>$data['IMG_FILE_NAME'],
 			
-			'model'			=>$size_data['MODEL'],
-			'model_wear'	=>$size_data['MODEL_WEAR'],
+			'model'			=>$data['MODEL'],
+			'model_wear'	=>$data['MODEL_WEAR'],
 			
-			'size_title_1'	=>$size_data['SIZE_TITLE_1'],
-			'size_title_2'	=>$size_data['SIZE_TITLE_2'],
-			'size_title_3'	=>$size_data['SIZE_TITLE_3'],
-			'size_title_4'	=>$size_data['SIZE_TITLE_4'],
-			'size_title_5'	=>$size_data['SIZE_TITLE_5'],
-			'size_title_6'	=>$size_data['SIZE_TITLE_6'],
+			'size_title_1'	=>$data['SIZE_TITLE_1'],
+			'size_title_2'	=>$data['SIZE_TITLE_2'],
+			'size_title_3'	=>$data['SIZE_TITLE_3'],
+			'size_title_4'	=>$data['SIZE_TITLE_4'],
+			'size_title_5'	=>$data['SIZE_TITLE_5'],
+			'size_title_6'	=>$data['SIZE_TITLE_6'],
 			
-			'size_desc_1'	=>$size_data['SIZE_DESC_1'],
-			'size_desc_2'	=>$size_data['SIZE_DESC_2'],
-			'size_desc_3'	=>$size_data['SIZE_DESC_3'],
-			'size_desc_4'	=>$size_data['SIZE_DESC_4'],
-			'size_desc_5'	=>$size_data['SIZE_DESC_5'],
-			'size_desc_6'	=>$size_data['SIZE_DESC_6'],
+			'size_desc_1'	=>$data['SIZE_DESC_1'],
+			'size_desc_2'	=>$data['SIZE_DESC_2'],
+			'size_desc_3'	=>$data['SIZE_DESC_3'],
+			'size_desc_4'	=>$data['SIZE_DESC_4'],
+			'size_desc_5'	=>$data['SIZE_DESC_5'],
+			'size_desc_6'	=>$data['SIZE_DESC_6'],
 			
-			'svg_web'		=>$size_data['SVG_WEB'],
-			'svg_mob'		=>$size_data['SVG_MOB']
+			'svg_web'		=>$data['SVG_WEB'],
+			'svg_mob'		=>$data['SVG_MOB']
 		);
 	}
 	
 	return $size_info;
 }
 
-function getProductSizeOption($db,$product_idx) {
-	$option_info = array();
+function getProduct_option_size($db,$product_idx) {
+	$option_size = array();
 	
 	$select_option_size_sql = "
 		SELECT
@@ -262,33 +256,34 @@ function getProductSizeOption($db,$product_idx) {
 			OO.OPTION_SIZE_5		AS OPTION_SIZE_5,
 			OO.OPTION_SIZE_6		AS OPTION_SIZE_6
 		FROM
-			ORDERSHEET_OPTION OO
+			SHOP_OPTION OO
+			
 			LEFT JOIN SHOP_PRODUCT PR ON
-			OO.ORDERSHEET_IDX = PR.ORDERSHEET_IDX
+			OO.PRODUCT_IDX = PR.IDX
 		WHERE
-			PR.IDX = ".$product_idx."
+			PR.IDX = ?
 		ORDER BY
-			OO.IDX
+			OO.IDX ASC
 	";
 	
-	$db->query($select_option_size_sql);
+	$db->query($select_option_size_sql,array($product_idx));
 	
-	foreach($db->fetch() as $option_data) {
-		$option_info[] = array(
-			'option_name'		=>$option_data['OPTION_NAME'],
-			'option_size_1'		=>$option_data['OPTION_SIZE_1'],
-			'option_size_2'		=>$option_data['OPTION_SIZE_2'],
-			'option_size_3'		=>$option_data['OPTION_SIZE_3'],
-			'option_size_4'		=>$option_data['OPTION_SIZE_4'],
-			'option_size_5'		=>$option_data['OPTION_SIZE_5'],
-			'option_size_6'		=>$option_data['OPTION_SIZE_6']
+	foreach($db->fetch() as $data) {
+		$option_size[] = array(
+			'option_name'		=>$data['OPTION_NAME'],
+			'option_size_1'		=>$data['OPTION_SIZE_1'],
+			'option_size_2'		=>$data['OPTION_SIZE_2'],
+			'option_size_3'		=>$data['OPTION_SIZE_3'],
+			'option_size_4'		=>$data['OPTION_SIZE_4'],
+			'option_size_5'		=>$data['OPTION_SIZE_5'],
+			'option_size_6'		=>$data['OPTION_SIZE_6']
 		);
 	}
 	
-	return $option_info;
+	return $option_size;
 }
 
-function setProductDimensions($size_info,$option_info) {
+function setProduct_dimensions($size_info,$option_info) {
 	$dimensions = array();
 	
 	for ($j=0; $j<count($option_info); $j++) {

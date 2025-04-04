@@ -1,0 +1,22 @@
+FROM php:8.2-fpm-alpine
+
+LABEL description="This is an example Dockerfile for PHP 8.2 with FPM on Alpine Linux."
+
+# Install MySQL client
+RUN apk add --no-cache mysql-client
+
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Enable FPM
+RUN echo "pm.max_children = 5" >> /usr/local/etc/php-fpm.conf
+
+# Fix timezone issue
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+COPY ./000-default.conf /etc/apache2/sites-available/
+
+EXPOSE 80 443 9000
+
+CMD ["php-fpm", "-F"]

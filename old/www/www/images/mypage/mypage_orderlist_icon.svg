@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15.538" height="20" viewBox="0 0 15.538 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #343434;
+      }
+    </style>
+  </defs>
+  <g id="그룹_7914" data-name="그룹 7914" transform="translate(-580 -237)">
+    <rect id="사각형_2289" data-name="사각형 2289" class="cls-1" width="15.538" height="18.092" transform="translate(580 238.908)"/>
+    <path id="사각형_2289_-_윤곽선" data-name="사각형 2289 - 윤곽선" class="cls-2" d="M.645.649V17.513h14.2V.649H.645M0,0H15.487V18.161H0Z" transform="translate(580 238.839)"/>
+    <rect id="사각형_2290" data-name="사각형 2290" class="cls-1" width="10.877" height="3.885" transform="translate(582.331 237.354)"/>
+    <path id="사각형_2290_-_윤곽선" data-name="사각형 2290 - 윤곽선" class="cls-2" d="M.68.613V3.677H10.2V.613H.68M0,0H10.877V4.29H0Z" transform="translate(582.331 237)"/>
+    <path id="선_2656" data-name="선 2656" class="cls-2" d="M9.982.113H0V-.5H9.982Z" transform="translate(582.762 244.774)"/>
+    <path id="선_2657" data-name="선 2657" class="cls-2" d="M7.364.113H0V-.5H7.364Z" transform="translate(583.052 247.362)"/>
+    <path id="선_2658" data-name="선 2658" class="cls-2" d="M3.682.113H0V-.5H3.682Z" transform="translate(582.955 249.951)"/>
+  </g>
+</svg>

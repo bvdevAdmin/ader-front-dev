@@ -14,42 +14,39 @@
  +=============================================================================
 */
 
-if (isset($_SESSION['COUNTRY'])) {
-	$country = $_SESSION['COUNTRY'];
-} 
-else if ($_SERVER['HTTP_COUNTRY']) {
-	$country = $_SERVER['HTTP_COUNTRY'];
+if (isset($_SERVER['HTTP_COUNTRY'])) {
+	if ($db->count('COLLECTION_PROJECT','COUNTRY = ?',array($_SERVER['HTTP_COUNTRY'])) > 0) {
+		$db->query('
+			SELECT
+				CP.IDX					AS PROJECT_IDX,
+				CP.PROJECT_NAME			AS PROJECT_NAME,
+				CP.PROJECT_DESC			AS PROJECT_DESC,
+				CP.PROJECT_TITLE		AS PROJECT_TITLE,
+				CP.THUMB_LOCATION		AS THUMB_LOCATION
+			FROM
+				COLLECTION_PROJECT CP
+			WHERE
+				CP.COUNTRY = ?
+			AND
+				DEL_FLG = FALSE
+			ORDER BY
+				CP.DISPLAY_NUM DESC
+		',array($_SERVER['HTTP_COUNTRY']));
+		
+		foreach($db->fetch() as $data) {
+			$json_result['data'][] = array(
+				'project_idx'		=>$data['PROJECT_IDX'],
+				'project_name'		=>$data['PROJECT_NAME'],
+				'project_desc'		=>$data['PROJECT_DESC'],
+				'project_title'		=>$data['PROJECT_TITLE'],
+				'thumb_location'	=>$data['THUMB_LOCATION']
+			);
+		}
+	} 
+	else {
+		$code = 301;
+		$msg = getMsgToMsgCode($db, $_SERVER['HTTP_COUNTRY'], 'MSG_B_ERR_0094', array());
+	}
 }
 
-if ($db->count('COLLECTION_PROJECT','COUNTRY = ?',array($country)) > 0) {
-	$db->query('
-		SELECT
-			CP.IDX					AS PROJECT_IDX,
-			CP.PROJECT_NAME			AS PROJECT_NAME,
-			CP.PROJECT_DESC			AS PROJECT_DESC,
-			CP.PROJECT_TITLE		AS PROJECT_TITLE,
-			CP.THUMB_LOCATION		AS THUMB_LOCATION
-		FROM
-			COLLECTION_PROJECT CP
-		WHERE
-			CP.COUNTRY = ?
-		AND
-			DEL_FLG = FALSE
-		ORDER BY
-			CP.DISPLAY_NUM DESC
-	',array($country));
-	
-	foreach($db->fetch() as $project_data) {
-		$json_result['data'][] = array(
-			'project_idx'		=>$project_data['PROJECT_IDX'],
-			'project_name'		=>$project_data['PROJECT_NAME'],
-			'project_desc'		=>$project_data['PROJECT_DESC'],
-			'project_title'		=>$project_data['PROJECT_TITLE'],
-			'thumb_location'	=>$project_data['THUMB_LOCATION']
-		);
-	}
-} 
-else {
-    $code = 301;
-    $msg = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0094', array());
-}
+?>

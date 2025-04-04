@@ -18,9 +18,11 @@
 if(!isset($type)) $type = 'PNL';
 
 $data = $db->get('POLICY_INFO','COUNTRY = ? AND POLICY_TYPE = ?',array($country,$type));
-if(sizeof($data) > 0) {
+if (sizeof($data) > 0) {
+	$policy = $data[0];
+	
     $json_result = array(
-        'type' => $data[0]['POLICY_TYPE'],
-        'contents' => $data[0]['POLICY_TXT']
+        'type'		=>$policy['POLICY_TYPE'],
+        'contents'	=>$policy['POLICY_TXT']
     );
 }

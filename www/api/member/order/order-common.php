@@ -92,7 +92,7 @@ function getOrderProductByStatus($db,$order_status,$order_code,$select_type) {
 					SELECT
 						S_OO.OPTION_NAME
 					FROM
-						ORDERSHEET_OPTION S_OO
+						SHOP_OPTION S_OO
 					WHERE
 						S_OO.IDX = OT.PREV_OPTION_IDX
 				)					AS PREV_OPTION_NAME,
@@ -310,7 +310,7 @@ function getOrderProductByStatus($db,$order_status,$order_code,$select_type) {
 							break;
 						
 						case "EN" :
-							$delivery_num = "Waing the post number.";
+							$delivery_num = "Waiting the post number.";
 							break;
 						
 						case "CN" :
@@ -394,7 +394,7 @@ function getTmpProductByStatus($db,$order_status,$order_code) {
 				SELECT
 					S_OO.OPTION_NAME
 				FROM
-					ORDERSHEET_OPTION S_OO
+					SHOP_OPTION S_OO
 				WHERE
 					S_OO.IDX = OT.PREV_OPTION_IDX
 			)							AS PREV_OPTION_NAME,
@@ -673,8 +673,8 @@ function setTxtOrderStatus($param) {
 	$order_status = "";
 	
 	$country = null;
-	if (isset($_SESSION['COUNTRY'])) {
-		$country = $_SESSION['COUNTRY'];
+	if (isset($_SERVER['HTTP_COUNTRY'])) {
+		$country = $_SERVER['HTTP_COUNTRY'];
 	}
 	
 	if ($country != null) {

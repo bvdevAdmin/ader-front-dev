@@ -1,0 +1,978 @@
+/** collaboration **/
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    font-weight: 200;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+main.collaboration { text-align : center ; padding-bottom : 0px }
+main.collaboration > nav { width : 100% ; height : 125px ; padding-top : 20px ; border-bottom : solid 1px var(--border-gray-color) ; position : relative }
+main.collaboration > nav .swiper-container { width : 720px ; margin : auto ; overflow : hidden }
+main.collaboration > nav a.swiper-slide { width : 60px ; position: relative ; padding-top : 60px ; font-size : var(--fontsize-s) ; text-align : center ; opacity : .5 ; transition : ease-out .2s }
+main.collaboration > nav a.swiper-slide ~ a.swiper-slide { margin-left : 5px }
+main.collaboration > nav a.swiper-slide .thumbnail { display : inline-block ; width : 50px ; height : 50px ; background-position : center ; background-size : cover ; border-radius : 50% ; position : absolute ; border : solid 1px var(--border-gray-color) ; top : 0 ; left : 5px }
+main.collaboration > nav a.swiper-slide:hover,
+main.collaboration > nav a.swiper-slide.on { opacity : 1 }
+main.collaboration > nav a.swiper-slide.on .thumbnail { border-color : var(--gray) }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/converse/2023/2nd'] .thumbnail { background-image : url('https://adererror.com/upload/2024ss/20240227/collab_02.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/converse/2023'] .thumbnail { background-image : url('https://adererror.com/upload/2024ss/20240227/collab_03.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/zara'] .thumbnail { background-image : url('/images/collaboration/zara.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/casetify/2022/2'] .thumbnail { background-image : url('/images/collaboration/casetify.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/birkenstock'] .thumbnail { background-image : url('/images/collaboration/birkenstock.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/puma/2022'] .thumbnail { background-image : url('/images/collaboration/puma.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/eastpak'] .thumbnail { background-image : url('/images/collaboration/eastpak.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/maison-kitsune'] .thumbnail { background-image : url('/images/collaboration/maisonkitsune.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/helinox'] .thumbnail { background-image : url('/images/collaboration/helinox.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/camper'] .thumbnail { background-image : url('/images/collaboration/camper.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/bearbrick'] .thumbnail { background-image : url('/images/collaboration/bearbrick.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/alpha-industries'] .thumbnail { background-image : url('/images/collaboration/alpha-industries.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/10-corso-como'] .thumbnail { background-image : url('/images/collaboration/10-corso-como.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/g-shock'] .thumbnail { background-image : url('/images/collaboration/g-shock.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/disney'] .thumbnail { background-image : url('https://adererror.com/upload/2024ss-disney/collab_00.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/bang-n-olufsen'] .thumbnail { background-image : url('https://adererror.com/upload/2024ss/20240411/collab_01.jpg') }
+main.collaboration > nav a.swiper-slide[href*='/collaboration/swarovski'] .thumbnail { background-image : url('https://adererror.com/upload/collaboration/swarovski.jpg') }
+main.collaboration > nav .swiper-button-prev:after,
+main.collaboration > nav .swiper-button-next:after { width : 30px ; height : 30px }
+main.collaboration > nav .swiper-button-prev:after { background-image : url('/images/ico-angle-collabo-prev.svg') }
+main.collaboration > nav .swiper-button-next:after { background-image : url('/images/ico-angle-collabo-next.svg') }
+main.collaboration > nav .swiper-button-prev { top : 40px ; left : calc( 50% - 410px ) ; transform : rotate(180deg) }
+main.collaboration > nav .swiper-button-next { top : 40px ; right : calc( 50% - 400px ) }
+
+main.collaboration > header { width : 100% ; padding : 100px 0 ; }
+main.collaboration > header h1 { line-height: normal ; font-size : 15px ; font-weight: 200 ; text-align : center ; }
+main.collaboration > header h1 small { display : block ; margin-bottom : 10px ; line-height: 1 ; font-size : 11px ; }
+main.collaboration .buttons button,
+main.collaboration .buttons .btn { width : 400px ; margin : auto }
+main.collaboration button.to-top { margin-top : 80px }
+main.collaboration > section ~ section { margin-top : 200px }
+main.collaboration section.media { margin-bottom: 200px ; }
+main.collaboration section.media > video,
+main.collaboration section.media > img { width: 100% ; }
+main.collaboration .pc { display: block !important; }
+main.collaboration .mo { display: none !important; }
+main.collaboration > section > article ~ article,
+main.collaboration section.media > video + article,
+main.collaboration section.media > img + article { padding : 60px 0 0 0 }
+main.collaboration > section > article p { word-break : keep-all }
+main.collaboration > section > article p + .buttons { margin : 60px auto 0 auto }
+main.collaboration > section > article + .buttons { margin : 100px auto 0 auto }
+main.collaboration .button { display: inline-block ; width: 308px ; height: 30px ; line-height: 28px ; color: #000 ; border: solid 1px #000 ; position: relative ; font-size: 11px ; text-align: center ; cursor: pointer ; }
+main.collaboration .button > .over { position: absolute ; left: 0 ; top: 0 ; height: 30px ; width: 0 ; background: #000 ; color: #fff ; overflow: hidden ; transition: ease-out.2s ; }
+main.collaboration .button > .over .text { width: 308px ; height: 28px ; display: inline-block ; position: absolute ; left: 0 ; top: 0 ; color: #fff ; padding: 0 !important ; }
+main.collaboration .button:hover > .over { width: 100% ; }
+
+main.collaboration .swiper-container .swiper-slide img { max-width : 100% }
+main.collaboration .swiper-container .swiper-slide > .label { position : absolute ; top : 17px ; left : 22px }
+main.collaboration .swiper-container.slide-auto .swiper-slide { width : auto ; padding-right : 20px }
+main.collaboration .swiper-container.card { width : 100% ; height : 830px }
+main.collaboration .swiper-container.card .swiper-slide { transition : ease-out .2s ; border : solid 1px var(--gray) ; opacity : .5 ; width : 500px ; height : 600px ; margin : 0 20px ; overflow : hidden ; transform : translateY(40px) }
+main.collaboration .swiper-container.card .swiper-slide.swiper-slide-active { opacity : 1 ; height : 680px ; transform : translateY(0) scale(1.12) }
+main.collaboration .swiper-container.card .swiper-slide .box { padding-top : 90px ; position : absolute ; top : -1px ; left : -1px ; width : calc( 100% + 2px ) ; height : calc( 100% + 2px ) ; background-size : cover ; background-position : center ; background-repeat : no-repeat }
+main.collaboration .swiper-container.carousel .swiper-slide { width : auto }
+main.collaboration .swiper-container + p { margin-top : 60px }
+main.collaboration .swiper-container + .buttons { margin-top : 90px }
+
+main.collaboration .product-gallery { width : 1450px ; min-height : 1000px ; margin : auto ; position : relative }
+main.collaboration .product-gallery > ul.list { position : absolute ; top : 0 ; right : 40px ; display : grid ; grid-template-columns : repeat(2, 100px) ; z-index : 2 }
+main.collaboration .product-gallery > ul.list > li { transition : ease-out .2s ; cursor : pointer ; position : relative ; padding-top : 95px ; height : 136px ; text-align : center ; opacity : .5 }
+main.collaboration .product-gallery > ul.list > li .thumbnail { display : inline-block ; background-position : center ; background-size : cover ; overflow : hidden ; position : absolute ; top : 0 ; left : calc( 50% - ( 75px / 2 ) ) ; width : 75px ; height : 75px ; border-radius : 50% ; border : solid 1px var(--border-gray-color) }
+main.collaboration .product-gallery > ul.list > li .thumbnail img { width : 100% }
+main.collaboration .product-gallery > ul.list > li:hover,
+main.collaboration .product-gallery > ul.list > li.on { opacity : 1 }
+main.collaboration .product-gallery > ul.list > li.on .thumbnail { border-color : var(--gray-color) }
+main.collaboration .product-gallery > .goods { display : none ; position : absolute ; top : 0 ; left : 0 ; width : 100% ; height : 100% }
+main.collaboration .product-gallery > .goods.on { display : block }
+main.collaboration .product-gallery > .goods .thumbnails { position : absolute ; top : 0 ; left : 0 ; width : 160px ; height : 100% ; border : solid 1px var(--border-gray-color)}
+main.collaboration .product-gallery > .goods .thumbnails .scroll { width : 100% ; height : calc( 100% - 90px ) ; overflow : hidden }
+main.collaboration .product-gallery > .goods .thumbnails ul > li { cursor : pointer ; border-bottom : solid 1px var(--border-gray-color) }
+main.collaboration .product-gallery > .goods .thumbnails ul > li .thumbnail { width : 160px ; height : 200px ; display : block ; background-position : center ; background-size : cover ; overflow : hidden }
+main.collaboration .product-gallery > .goods .thumbnails img { width : 100% ; min-width :100% ; min-height : 100% ; display : block }
+main.collaboration .product-gallery > .goods .thumbnails button { position : absolute ; bottom : 0 ; cursor : pointer ; width : 50% ; height : 90px ; background-repeat : no-repeat ; transition : ease-out .2s }
+main.collaboration .product-gallery > .goods .thumbnails button:hover { transform : scale(1.1) }
+main.collaboration .product-gallery > .goods .thumbnails button.up { right : 0 ; background-position : 10px center ; background-image : url('/images/ico-gallery-arrow-up.svg') }
+main.collaboration .product-gallery > .goods .thumbnails button.down { left : 0 ; background-position : 58px center ; background-image : url('/images/ico-gallery-arrow-down.svg') }
+main.collaboration .product-gallery > .goods .detail { position : absolute ; top : 0 ; left : 95px ; width: calc( 100% - 190px ) ; height : 100% }
+main.collaboration .product-gallery > .goods .thumbnails ~ .detail { left : 190px ; width : calc( 100% - 190px ) }
+main.collaboration .product-gallery > .goods .detail .image,
+main.collaboration .product-gallery > .goods .detail .swiper-container .swiper-slide { width : 800px ; height: 100% ; background-size : cover ; background-position : center }
+main.collaboration .product-gallery > .goods .detail p { 
+    position : absolute ; 
+    text-align : left ; 
+    left : 840px ; 
+    bottom : 40px 
+}
+main.collaboration .product-gallery > .goods .detail .swiper-container { width : 800px ; height : 100% ; border : solid 1px var(--gray) ; overflow : hidden }
+main.collaboration .product-gallery > .goods .detail .swiper-container .swiper-wrapper { width : 800px }
+main.collaboration .product-gallery + .buttons { margin-top : 60px }
+
+main.collaboration .product-gallery.no-thumbnails { width : 1260px }
+main.collaboration .product-gallery.no-thumbnails > .goods .detail { width : 100% ; left : 0 }
+
+main.collaboration .gallery .swiper-container:not(.thumbnail) img { width : 100% }
+
+main.collaboration .collaboration-series { text-align : center }
+main.collaboration .collaboration-series h3 { text-align : center ; font-size : var(--fontsize-title) }
+main.collaboration .collaboration-series h3 small { display : block ; font-size : var(--fontsize-s) }
+main.collaboration .collaboration-series .swiper-container { width : 100% ; position : relative } 
+main.collaboration .collaboration-series .media { width : 960px ; margin : 40px auto 60px auto }
+main.collaboration .collaboration-series .media video,
+main.collaboration .collaboration-series .media img { width : 100% ; display : block }
+main.collaboration .collaboration-series .swiper-button-prev,
+main.collaboration .collaboration-series .swiper-button-next { top : 18px }
+main.collaboration .collaboration-series .swiper-button-prev { left : calc( 50% - 460px ) }
+main.collaboration .collaboration-series .swiper-button-next { right : calc( 50% - 460px ) }
+
+main.collaboration section.alpha-industries ul.gallery-grid { width : 1220px ; gap : 40px ; margin : auto }
+
+article:not(.casetify-2nd) .swiper-slide {
+    transform: none !important;
+}
+
+main.collaboration span {
+    vertical-align: top;
+}
+
+.displaynone {
+    display: none !important;
+}
+.no-margin {
+    margin: 0 !important;
+}
+
+/* banner */
+main.collaboration > section.banner {
+    width: 100%;
+    height: auto;
+}
+main.collaboration > section.banner > img {
+    width: 100%;
+    height: 100%;
+}
+
+/* campaign */
+main.collaboration.new article.campaign {
+    padding : 100px 0 200px 0
+}
+
+main.collaboration.new article.campaign > p {
+    padding : 20px 0 80px 0
+}
+
+main.collaboration > article.campaign {
+    padding : 100px 0 200px ;
+    text-align : center
+}
+
+main.collaboration article.campaign h3 {
+    border : none ;
+    line-height : 1 ;
+    font-size : 14px ;
+    height : auto;
+    text-align: center;
+}
+
+main.collaboration article.campaign h3 small {
+    display : block ;
+    font-size : 11px ;
+    margin-bottom : 20px
+}
+
+main.collaboration article.campaign .media {
+    display : inline-block ;
+    width : 1246px ;
+    height : auto ;
+    margin : 50px 0 ;
+    position : relative
+}
+
+main.collaboration article.campaign .media > * {
+    width : 100% ;
+    height : auto
+}
+
+main.collaboration article.campaign .media video.on {
+    position : fixed ;
+    top : 0 ;
+    left : 0 ;
+    width : 100% ;
+    height : 100% ;
+    opacity : 1 ;
+    z-index : 99999999 ;
+    background : #000 ;
+    cursor : url('https://adererror.com/img/stop-icon2.png'), default;
+}
+
+main.collaboration article.campaign .swiper-container h3 {
+    margin-bottom: 50px;
+}
+
+main.collaboration article.campaign h3 {
+    border: none;
+    line-height: 1;
+    font-size: 14px;
+    height: auto;
+}
+
+main.collaboration article.campaign .swiper-container {
+    padding-top : 107px
+}
+
+main.collaboration article.campaign .swiper-container h3 {
+    margin-bottom : 50px;
+    text-align: center;
+}
+
+main.collaboration article.campaign .swiper-button-next,
+main.collaboration article.campaign .swiper-button-prev {
+    top : 115px
+}
+
+main.collaboration article.campaign .swiper-button-prev {
+    left : calc( 50% - 780px )
+}
+
+main.collaboration article.campaign .swiper-button-next {
+    right : calc( 50% - 780px )
+}
+
+main.collaboration article.campaign .swiper-pagination {
+    bottom : initial ;
+    top : 0
+}
+
+main.collaboration article.campaign .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin : 0 35px
+}
+
+main.collaboration article.campaign .swiper-pagination-bullet {
+    width : 7px ;
+    height : 7px ;
+    background : none ;
+    border : solid 1px #000 ;
+    opacity: 1
+}
+
+main.collaboration article.campaign .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background : #000
+}
+
+main.collaboration article.campaign .buttons .button {
+    margin-bottom : 10px
+}
+
+main.collaboration article.campaign .buttons .button:last-child {
+    margin-bottom : 0
+}
+
+section.collaboration.new > article.campaign {
+    padding: 100px 0 200px 0;
+}
+
+section.collaboration.new > article.list > .describe {
+    text-align: center;
+    position: relative;
+    padding-bottom: 525px;
+}
+section.collaboration.new > article.list > .describe > .text {
+    position: absolute;
+    width: 100%;
+    top: 200px;
+}
+section.collaboration.new > article.list > .describe > .text > h1 {
+    padding-bottom: 50px;
+    font-size: 25px;
+    text-align: center;
+}
+section.collaboration.new > article.list > .product > .gallery {
+    width: 100%;
+    padding-left: 35%;
+    position: relative;
+}
+section.collaboration.new > article.list > .product > .gallery > img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 200px;
+}
+section.collaboration.new > article.list > .product > .gallery > .cont {
+    height: 100%;
+    position: absolute;
+    left: 170px;
+    top: 0;
+}
+section.collaboration.new > article.list > .product > .gallery > .cont > .box {
+    width: 100%;
+    text-align: left;
+}
+
+main.collaboration > header h1 .more {
+  padding-top: 20px;
+}
+
+body.on-modal {
+  overflow: hidden !important;
+}
+
+body > .video-fullscreen {
+  position: fixed ;
+  top: 0 ;
+  left: 0 ;
+  width: 100% ;
+  height: 100% ;
+  background: #000 ;
+  z-index: 10000;
+}
+
+body > .video-fullscreen > video {
+  width: 100%;
+  height: 100%;
+  position : absolute;
+  top: 0;
+  left: 0;
+  cursor: url('https://adererror.com/img/stop-icon2.png'), default;
+}
+
+body > .video-fullscreen > button.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  transform: rotate(45deg);
+  transition: ease-out .2s;
+  width: 40px;
+  height: 40px;
+  z-index: 3100;
+}
+
+body > .video-fullscreen > button.close:before,body > .video-fullscreen > button.close:after {
+  content: "";
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background : #0000c5;
+  position: absolute;
+  top: 50%;
+  left : 0;
+}
+
+body > .video-fullscreen > button.close:before {
+  transform: rotate(90deg);
+}
+
+@media only screen and (max-width: 1024px) {
+	main.collaboration > nav { height : 111px ; padding-top : 10px }
+	main.collaboration > nav .swiper-container { width : 100% ; padding : 0 15px }
+	main.collaboration > nav .swiper-container button { display : none }
+	main.collaboration > header { padding : 80px 0 50px }
+	main.collaboration > header h1 { font-size : 14px ; }
+	main.collaboration > header h1 small { line-height: 17px ; }
+	main.collaboration > section > article ~ article, main.collaboration section.media > video + article, main.collaboration section.media > img + article { padding-top : 40px }
+	main.collaboration > section ~ section { margin-top : 100px }
+	main.collaboration > section .buttons { padding : 0 20px }
+	main.collaboration > section .buttons .btn,
+	main.collaboration > section .buttons button { width : 100% }
+    main.collaboration .button { width: calc( 100% - 30px ) ; font-size: 10px ; }
+    main.collaboration .button > .over { height: 28px ; }
+    main.collaboration .button > .over .text { width: 345px ; }
+	main.collaboration .swiper-container + p { margin-top : 40px }
+	main.collaboration .collaboration-series .media { width : 100% }
+
+	main.collaboration .swiper-container.slide-auto .swiper-slide { width : 80% }
+
+	main.collaboration .gallery-grid:not(.col-2):not(.col-3):not(.col-4) { grid-template-columns : repeat(2, 1fr) }
+
+    main.collaboration section.media { margin-bottom: 70px ; }
+    main.collaboration section.media > video,
+    main.collaboration section.media > img { border-top: 1px solid #000 ; border-bottom: 1px solid #000 ; }
+    main.collaboration .pc { display: none !important; }
+    main.collaboration .mo { display: block !important; }
+
+    main.collaboration > article.campaign {
+        padding : 70px 0 ;
+    }
+    main.collaboration article.campaign h3 {
+        border: none;
+        line-height: 1;
+        font-size: 14px;
+        height: auto;
+        margin-bottom: 30px;
+    }
+    main.collaboration > article.campaign .media {
+        display: inline-block;
+        width: calc(100% - 30px);
+        height: auto;
+        margin: 0 0 20px 0;
+        position: relative;
+    }
+	
+	main.collaboration .product-gallery { width : 100% ; min-height : auto }
+	main.collaboration .product-gallery > .goods,
+	main.collaboration .product-gallery > .goods .detail { width : 100% ; position : static }
+	main.collaboration .product-gallery > .goods .detail { padding : 0 40px }
+	main.collaboration .product-gallery > .goods .detail .image, 
+	main.collaboration .product-gallery > .goods .detail .swiper-container,
+	main.collaboration .product-gallery > .goods .detail .swiper-container .swiper-wrapper,
+	main.collaboration .product-gallery > .goods .detail .swiper-container .swiper-slide { width : 100% }
+	main.collaboration .product-gallery > .goods .detail .swiper-container { height : calc( ( 100vw - 80px ) * ( 37 / 28 ) ) }
+	main.collaboration .product-gallery > .goods .detail p { position : static ; width : 100vw ; margin-left : -40px ; text-align : center ; word-break: keep-all; }
+	main.collaboration button.to-top { margin-top : 50px }
+	main.collaboration .product-gallery > ul.list {  position : static ; display : flex ; padding : 0 10px ; border-bottom : solid 1px var(--border-gray-color) ; overflow-x : auto  ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.collaboration .product-gallery > ul.list > li { display : table-cell ; height : 110px ; padding-top : 59px  ;min-width : 70px }
+	main.collaboration .product-gallery > ul.list > li .thumbnail { width : 50px ; height : 50px ; left : calc( 50% - 25px ) }
+	main.collaboration .product-gallery > .goods { position : relative }
+	main.collaboration .product-gallery > .goods .detail .image { background : none !important }
+	main.collaboration .product-gallery > .goods .thumbnails { width : 100% ; border-bottom : solid 1px var(--border-gray-color) ; position : absolute ; top : initial ; left : 0 ; bottom : 120px }
+	main.collaboration .product-gallery > .goods .thumbnails,
+	main.collaboration .product-gallery > .goods .thumbnails .scroll,
+	main.collaboration .product-gallery > .goods .thumbnails ul > li { height : 120px }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li { border-right : solid 1px var(--border-gray-color) }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li:last-child { border-right : none }
+	main.collaboration .product-gallery > .goods .thumbnails .scroll { overflow-x : auto ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.collaboration .product-gallery > ul.list::-webkit-scrollbar,
+	main.collaboration .product-gallery > .goods .thumbnails .scroll::-webkit-scrollbar { display: none; }
+	main.collaboration .product-gallery > .goods .thumbnails ul { display : table }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li { display : table-cell }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li .thumbnail { width : 90px; height : 120px ; background-position : center ; background-size : cover }
+	main.collaboration .product-gallery > .goods .thumbnails ul > li .thumbnail img { display : none }
+
+	main.collaboration .product-gallery > .goods .thumbnails button { display : none }
+	main.collaboration .product-gallery > .goods .thumbnails ~ .detail { padding : 0 0 250px 0 ; width : 100% }
+	main.collaboration .product-gallery > .goods .thumbnails ~ .detail img { width : 100% }
+	main.collaboration .product-gallery > .goods .thumbnails ~ .detail p { position : absolute ; margin-left : 0 ; height : 80px ; bottom : 0 ; left : 0 }
+	
+	main.collaboration .product-gallery.no-thumbnails { width : 100% }
+	main.collaboration .product-gallery.no-thumbnails > ul.list { right : initial ; top : 20px ; left : 20px ; grid-template-columns : 50px }
+	main.collaboration .product-gallery.no-thumbnails > .goods .detail { padding : 0 }
+	main.collaboration .product-gallery.no-thumbnails > .goods .detail p { padding : 0 20px ; margin-left : 0 }
+	main.collaboration .product-gallery.no-thumbnails > .goods .detail .swiper-container { height : calc( 100vw * ( 475 / 360 ) ) }
+
+    main.collaboration > header h1 .more a.button {
+        width: 40%;
+        min-width: 240px;
+        max-width: 300px;
+    }
+
+    main.collaboration article.campaign .buttons {
+        padding: 0 15px;
+    }
+}
+
+/** list & paging **/
+main.collaboration .list {
+    margin-top: 0 !important;
+}
+main.collaboration .list > ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: calc( 100% + 1px ) ;
+    position : relative
+}
+main.collaboration .list > ul > li {
+    position : relative ;
+    border-bottom : solid 1px #000 ;
+    border-right : solid 1px #000 ;
+    background-position : center ;
+    background-size : cover ;
+    background-repeat : no-repeat ;
+    overflow : hidden
+}
+main.collaboration .list > ul > li:nth-child(1),
+main.collaboration .list > ul > li:nth-child(2),
+main.collaboration .list > ul > li:nth-child(3),
+main.collaboration .list > ul > li:nth-child(4) {
+    border-top : none
+}
+main.collaboration .list > ul > li > a.image-over.image-over-on {
+    display : inline-block ;
+    opacity : 0 ;
+    width : 100% ;
+    padding-bottom : 151.998% ;
+    position : absolute ;
+    top : 0 ;
+    left : 0 ;
+    background-position : center ;
+    background-size : cover ;
+    background-repeat : no-repeat
+}
+main.collaboration .list > ul > li > a.image-over {
+    display : none ;
+}
+main.collaboration .list > ul > li:hover > a.image-over.image-over-on {
+    opacity: 1;
+}
+main.collaboration .list > ul > li > a {
+    display : inline-block ;
+    width : 100% ;
+    padding-bottom : 151.15% ;
+    color : #000
+}
+main.collaboration .list > ul > li .box {
+    position : absolute ;
+    bottom : 14px ;
+    left : 10px ;
+    width : calc( 100% - 10px );
+}
+main.collaboration .list > ul > li .box > strong {
+    display : block;
+    text-align: start;
+}
+main.collaboration .list > ul > li strong > span {
+    font-weight : 200;
+    font-size : 11px;
+}
+main.collaboration .list > ul > li .box > strong * {
+    font-weight : 400;
+    font-size : 13px;
+}
+main.collaboration .list > ul > li .color {
+    width: 100%;
+    text-align: start;
+    display: inline-block;
+    color : #000 ;
+    font-size : 13px ;
+    line-height : 1 ;
+    padding-top : 3px
+}
+main.collaboration .list > ul > li .color .colorchip {
+    display : inline-block ;
+    width : 10px ;
+    height : 10px ;
+    vertical-align : middle ;
+    border-radius : unset ;
+    margin-left : 5px;
+}
+main.collaboration .list > ul > li .price {
+    font-size : 13px ;
+    color : #000 ;
+    line-height : 1 ;
+    display : inline-block ;
+    position : absolute ;
+    bottom : 0 ;
+    right : 15px
+}
+main.collaboration .list > ul > li .sold-out {
+    display: inline-block;
+}
+main.collaboration .list > ul > li .sold-out img {
+    display: none;
+}
+main.collaboration .list > ul > li .sold-out img ~ .cont {
+    color: red;
+    text-decoration: line-through;
+}
+main.collaboration .list > ul > li .sold-out img ~ .cont:after {
+    content: "(soldout)";
+    display: inline-block;
+}
+main.collaboration .list > ul > li .tools {
+    position : absolute ;
+    top : 20px ;
+    right: 20px
+}
+main.collaboration .list > ul > li .tools .wishlist .wish {
+    position: relative;
+    width: 26px;
+    height: 21px;
+    display: inline-block;
+    cursor: pointer;
+}
+main.collaboration .list > ul > li .tools .wishlist img {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+main.collaboration .list > ul > li .tools .wishlist span.icon {
+    display: inline-block;
+    background: url('https://adererror.com/images/ico-wishlist.svg') center no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 21px;
+}
+main.collaboration .list ul > li .tools .wishlist img[icon_status='on'] + span.icon {
+    background-image : url('https://adererror.com/images/ico-wishlist-f.svg');
+}
+main.collaboration .list > ul + .paging {
+    display: inline-block;
+    border-top: solid 1px #000;
+    border-bottom: solid 1px #000;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+main.collaboration .paging {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 30px 0;
+}
+main.collaboration .paging a {
+    display: inline-block;
+    text-align: center;
+    min-width: 20px;
+    padding: 0 10px;
+    font-size: 14px;
+    opacity: .6;
+    position: relative;
+    vertical-align: middle;
+}
+main.collaboration .paging > a {
+    display: inline-block;
+    width: 30px;
+    height: 12px;
+    font-size: 0;
+    vertical-align: middle;
+}
+main.collaboration .paging a.first, .paging a.last {
+    letter-spacing: -0.15em;
+}
+main.collaboration .paging a.first {
+    background: url('https://adererror.com/images/ico-page-first.png') center no-repeat;
+}
+main.collaboration .paging a.first + a {
+    background: url('https://adererror.com/images/ico-page-prev.png') center no-repeat;
+}
+main.collaboration .paging ol + a {
+    background: url('https://adererror.com/images/ico-page-next.png') center no-repeat;
+}
+main.collaboration .paging a.last {
+    background: url('https://adererror.com/images/ico-page-last.png') center no-repeat;
+}
+main.collaboration .paging a.this {
+    opacity: 1;
+}
+main.collaboration .paging ol {
+    margin: 0 10px;
+}
+main.collaboration .paging ol,
+main.collaboration .paging ol > li {
+    display: inline-block;
+    padding-inline-start: 0;
+}
+main.collaboration .paging ol > li a {
+    padding: 0 10px 0 16px;
+}
+main.collaboration .paging ol > li .other:before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    transform: rotate(20deg);
+    background: #000;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    opacity: .6;
+}
+
+/* collaboration_1 */
+section.collaboration.new>article.list>.product>.gallery>.cont-2.on {
+    position: fixed;
+    top: 398px;
+    z-index: 1;
+}
+  
+section.collaboration.new>article.list>.product>.gallery>.cont {
+    height: 100%;
+    position: absolute;
+    left: 170px;
+    top: 0;
+}
+  
+section.collaboration.new>article.list>.product>.gallery>.cont>.box {
+    width: 100%;
+    text-align: left;
+}
+  
+section.collaboration.new>header.marginbottom0,
+main.collaboration section.media.marginbottom0 {
+    margin-bottom: 0;
+}
+  
+main.collaboration .margintop0 {
+    margin-top: 0;
+}
+
+main.collaboration .button {
+    width: 306px;
+    font-weight: 200;
+}
+  
+main.collaboration article.campaign .button {
+    width: 306px;
+    font-weight: 200;
+}
+
+section.collection>article>section>div.runway_text {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 11px;
+    font-weight: 400;
+}
+  
+section.collection>article>section>div.runway_text>p {
+    font-size: 11px;
+    font-weight: 400;
+}
+
+main.collaboration article.campaign .swiper-button-next,
+main.collaboration article.campaign .swiper-button-prev {
+    top: 115px;
+}
+
+main.collaboration.new>section.collaboration.new>img.mo {
+    width: 100%;
+}
+
+section.collaboration img.pc {
+    width: 100%;
+}
+
+main.collaboration sup {
+    font-size: .5em;
+    vertical-align: top;
+    font-weight: 400;
+}
+
+main.collaboration article.campaign h3 {
+    font-weight: 200;
+}
+
+main.collaboration>header h1 small {
+    padding-bottom: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    main.collaboration .list > ul {
+        display: table;
+        width: 100%;
+        overflow: hidden;
+    }
+    main.collaboration .list ul:after {
+        content : "" ;
+        width : 100% ;
+        height : 1px ;
+        background : #000 ;
+        bottom : -1px ;
+        left : 0 ;
+        position : absolute ;
+        display : inline-block ;
+    }
+    main.collaboration .list ul > li:nth-child(2n-1):after {
+        position: absolute;
+        content: "";
+        width: 200%;
+        height: 1px;
+        background: #000;
+        bottom: -1px;
+        left: 0;
+    }
+    main.collaboration .list ul > li {
+        display : inline-block ;
+        width : 50% ;
+        float : left ;
+        position : relative ;
+        border-top : solid 1px #000 ;
+        border-right : solid 1px #000;
+        border-bottom : none;
+        overflow: unset;
+    }
+    main.collaboration .list > ul > li:nth-child(3),
+    main.collaboration .list > ul > li:nth-child(4) {
+        border-top : solid 1px #000;
+    }
+    main.collaboration .list ul > li:nth-child(2n) {
+        border-right-color : transparent;
+    }
+    main.collaboration .list ul > li > a {
+        display : block ;
+        width : 100% ;
+        color : #000 ;
+        position : relative;
+    }
+    main.collaboration .list ul > li > a .name {
+        display : block ;
+        width : 100% ;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    main.collaboration .list ul > li > a .thumbnail {
+        width : 100% ;
+        padding-bottom : 152% ;
+        display : block ;
+        background-position : center ;
+        background-size : cover ;
+        background-repeat : no-repeat ;
+        position : relative;
+    }
+    main.collaboration .list ul > li > a .thumbnail .ext {
+        display : inline-block ;
+        bottom : 10px ;
+        left : 5px ;
+        position : absolute;
+    }
+    main.collaboration .list ul > li:nth-child(2n) > a .thumbnail {
+        width : calc( 100% + 1px );
+    }
+    main.collaboration .list ul > li:nth-child(2n) > a .image-over {
+        width : calc( 100% + 1px );
+    }
+    main.collaboration .list ul > li > a .box {
+        position : absolute ;
+        bottom : 8px ;
+        left : 0 ;
+        width : 100% ;
+        padding : 8px 0 0 4px;
+        text-align: left;
+        font-size: 10px;
+    }
+    main.collaboration .list > ul > li .box > strong * {
+        font-weight : 200;
+        font-size : 12px;
+    }
+    main.collaboration .list ul > li > a .box .tag {
+        display : block ;
+        text-decoration : underline ;
+        bottom : 25px ;
+        position : absolute ;
+    }
+    main.collaboration .list ul > li > a .price {
+        font-size : 10px ;
+        color : #aaaaaa ;
+        position : absolute ;
+        bottom : 0 ;
+        right : 4px ;
+        text-align : right ;
+        display : inline-block ;
+    }
+    main.collaboration .list ul > li > a .color {
+        color : #aaa ;
+        font-size : 10px ;
+    }
+    main.collaboration .list ul > li .tools {
+        position : absolute ;
+        top : 10px ;
+        right: 10px
+    }
+    main.collaboration .list ul > li .tools .wishlist .wish {
+        position : relative ;
+        width : 17px ;
+        height : 21px ;
+        display : inline-block ;
+        cursor : pointer
+    }
+    main.collaboration .list ul > li .tools .wishlist span.icon {
+        width : 17px ;
+        height : 21px
+    }
+    main.collaboration .list ul > li .tools .wishlist img {
+        opacity : 0 ;
+        width : 100% ;
+        height : 100% ;
+        position : absolute ;
+        top : 0 ;
+        left : 0
+    }
+    main.collaboration .list ul > li .sold-out {
+        display : inline-block ;
+    }
+    main.collaboration .list ul > li .sold-out > .cont > span {
+        display : none ;
+    }
+    main.collaboration .list ul > li .sold-out img {
+        display : none ;
+    }
+    main.collaboration .list > ul + .paging {
+        margin-top: 0;
+    }
+    main.collaboration .paging ol a {
+        font-size: 11px;
+    }
+    main.collaboration .paging > a {
+        height: 10px;
+    }
+    main.collaboration .paging ol {
+        margin: 0 8px;
+    }
+    main.collaboration .paging ol > li a {
+        padding: 0 10px 0 14px;
+    }
+
+    /* collaboration_1 */
+    section.collaboration.new>article.list>.describe>.text>h1 {
+        padding-bottom: 20px;
+        font-size: 14px;
+    }
+
+    main.collaboration article.campaign .button {
+        width: calc(100% - 30px);
+        font-weight: 200;
+    }
+
+    main.collaboration article.campaign .swiper-button-next,
+    main.collaboration article.campaign .swiper-button-prev {
+        top: 55px;
+    }
+
+    main.collaboration article.campaign .swiper-button-next {
+        right: 10px;
+    }
+
+    main.collaboration article.campaign .swiper-button-prev {
+        left: 10px;
+    }
+
+    main.collaboration article.campaign .swiper-container {
+        padding-top: 35px;
+    }
+
+    main.collaboration article.campaign h3 small {
+        margin-bottom: 10px;
+    }
+
+    main.collaboration article.campaign .swiper-container h3 {
+        margin-bottom: 30px;
+    }
+
+    section.collaboration article.campaign .swiper-pagination-bullet,
+    main.collaboration article.campaign .swiper-pagination-bullet {
+        width: 5px;
+        height: 5px;
+    }
+    main.collaboration > nav button.swiper-button-prev.collaboration-nav-button,
+    main.collaboration > nav button.swiper-button-next.collaboration-nav-button {
+        display: none;
+    }
+}
+
+/* swarovski */
+main.collaboration.swarovski .badge {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+}
+main.collaboration.swarovski .badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media only screen and (max-width: 1024px) {
+    main.collaboration.swarovski .badge {
+        bottom: 20px;
+        right: 20px;
+    }
+}

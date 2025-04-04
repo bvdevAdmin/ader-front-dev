@@ -15,14 +15,20 @@
  +=============================================================================
 */
 
-if (isset($country) && isset($msg_code)) {
+if (isset($_SERVER['HTTP_COUNTRY']) && isset($msg_code)) {
 	$msg_text = '';
 	
-	$msg_data = $db->get('MSG_MST', "MSG_CODE = ? ", array($msg_code));
-	if(sizeof($msg_data) > 0) {
+	$msg_data = $db->get('MSG_MST',"MSG_CODE = ? ",array($msg_code));
+	if (sizeof($msg_data) > 0) {
+		$data = $msg_data[0];
 		
-		$msg_text = $msg_data['MSG_TEXT_'.$country];
+		$msg_text = null;
+		if (isset($data['MSG_TEXT_'.$_SERVER['HTTP_COUNTRY']])) {
+			$msg_text = $data['MSG_TEXT_'.$_SERVER['HTTP_COUNTRY']];
+		}
 		
 		$json_result['data']['msg_text'] = $msg_text;
 	}
 }
+
+?>

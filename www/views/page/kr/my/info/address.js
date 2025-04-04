@@ -1,204 +1,222 @@
 $(document).ready(function() {
+	getAddress_list();
+});
+
+/* 마이페이지 배송지 - 회원 배송지 목록 조회 */
+function getAddress_list() {
 	$.ajax({
 		url: config.api + "member/address/get",
+		headers : {
+			country : config.language
+		},
 		error: function () {
-			makeMsgNoti('MSG_F_ERR_0046', null);
+			makeMsgNoti('MSG_F_ERR_0046',null);
 			//notiModal("계정", "배송지 목록을 불어오는데 실패했습니다.");
 		},
 		success: function (d) {
 			if (d.code == 200) {
-				let defaultList = $('.default__list');
-				let otherList = $('.other__list');
-				let defaultListStr = "";
-				let otherListStr = "";
+				let str_div = "";
+				
+				let div_list = $('#list');
+				div_list.html('');
+				
+				let data = d.data;
+				if (data != null && data.length > 0) {
+					data.forEach(function(row) {
+						let t_column = {
+							KR : {
+								't_00' : "등록된 배송지가 없습니다.",
+								't_01' : "배송지",
+								't_02' : "이름",
+								't_03' : "휴대전화",
+								't_04' : "우편번호",
+								't_05' : "주소",
+								't_06' : "기본 배송지",
+								
+								't_07' : "기본 배송지 설정",
+								't_08' : "배송지 수정",
+								't_09' : "배송지 삭제"
+							},
+							EN : {
+								't_00' : "There is no address.",
+								't_01' : "Place",
+								't_02' : "Receipt",
+								't_03' : "Mobile number",
+								't_04' : "Zipcode",
+								't_05' : "Address",
+								't_06' : "Default address",
 
-				defaultList.html('');
-				otherList.html('');
-
-				if(d.data != null) {
-					d.data.forEach((row) => {
-						let addr = row.to_road_addr ? row.to_road_addr : row.to_lot_addr;
-						let detailAddr = row.to_detail_addr ? row.to_detail_addr : '';
-
-						let fullAddrStr = '';
-						if (config.language == 'KR') {
-							fullAddrStr = `${addr} ${detailAddr}`;
+								't_07' : "Default address",
+								't_08' : "Edit",
+								't_09' : "Delete"
+							}
 						}
-						else {
-							fullAddrStr = `${row.to_address}, ${row.to_city}, ${row.to_province_name}, ${row.to_country_name}`;
-						}
 
+						let msg_default = "";
 						if (row.default_flg == true) {
-							defaultListStr +=
-								`
-							  <tr class="default_destination">
-								  <td>${row.to_place}</td>
-								  <td>${row.to_name}</td>
-								  <td>${row.to_mobile}</td>
-								  <td>${fullAddrStr}</td>
-								  <td>${row.to_zipcode}</td>
-								  <td class="order_to_btn_td">
-									  <div class="order_to_btn_wrap">
-											<div class="gray__mypage__btn update_order_to" idx="${row.order_to_idx}" data-i18n="p_edit">수정</div>
-											<div class="white__full__width__btn delete_order_to"  data-i18n="p_delete" idx="${row.order_to_idx}">삭제</div>
-									  </div>
-								  </td>
-							  </tr>
-						  `;
-						} else {
-							otherListStr +=
-								`
-							<tr class="other_destination">
-								<td>
-									<div class="other_destination_header">
-										<div>${row.to_place}</div>
-										<div class="order_to_idx change_default_order_to" idx="${row.order_to_idx}" data-i18n="p_set_default_address">기본 배송지로 저장</div>
+							msg_default = `<div class="msg_default">${t_column[config.language]['t_06']}</div>`;
+						}
+
+						str_div += `
+							<li data-no="146">
+								<div class="info">
+									<div class="address">
+										<dl>
+											<dt>${t_column[config.language]['t_01']}</dt>
+											<dd>${row.to_place}</dd>
+											<dt>${t_column[config.language]['t_02']}</dt>
+											<dd>${row.to_name}</dd>
+											<dt>${t_column[config.language]['t_03']}</dt>
+											<dd>${row.to_mobile}</dd>
+											<dt>${t_column[config.language]['t_04']}</dt>
+											<dd>${row.to_zipcode}</dd>
+											<dt>${t_column[config.language]['t_05']}</dt>
+											<dd>${row.txt_addr}</dd>
+										</dl>
+										
+										${msg_default}
 									</div>
-								</td>
-								<td>${row.to_name}</td>
-								<td>${row.to_mobile}</td>
-								<td>${fullAddrStr}</td>
-								<td>${row.to_zipcode}</td>
-								<td class="order_to_btn_td">
-									<div class="order_to_btn_wrap">
-										<div class="gray__mypage__btn update_order_to" idx="${row.order_to_idx}" data-i18n="p_edit">수정</div>
-										<div class="white__full__width__btn delete_order_to"  data-i18n="p_delete" idx="${row.order_to_idx}">삭제</div>
-									</div>
-								</td>
-							</tr>
+								</div>
+								<div class="buttons grid-3">
+									<button type="button" class="default" data-no="${row.order_to_idx}">${t_column[config.language]['t_07']}</button>
+									<button type="button" class="update" data-no="${row.order_to_idx}">${t_column[config.language]['t_08']}</button>
+									<button type="button" class="delete" data-no="${row.order_to_idx}">${t_column[config.language]['t_09']}</button>
+								</div>
+							</li>
 						`;
-						}
 					});
-
-					let default_exception_msg = "";
-					let other_exception_msg = "";
-
-					if (defaultListStr.length == 0) {
-
-						switch (getLanguage()) {
-							case "KR":
-								default_exception_msg = "기본 배송지 정보가 없습니다.";
-								break;
-
-							case "EN":
-								default_exception_msg = "There is no history.";
-								break;
-
-							case "CN":
-								default_exception_msg = "没有查询到相关资料。​";
-								break;
-
-						}
-						defaultListStr =
-							`
-							<tr>
-								<td class="no_order_to_msg">
-									<div>${default_exception_msg}</div>
-								</td>
-							</tr>
-						`;
-					}
-
-					if (otherListStr.length == 0) {
-						switch (getLanguage()) {
-							case "KR":
-								other_exception_msg = "다른 배송지 정보가 없습니다.";
-								break;
-
-							case "EN":
-								other_exception_msg = "There is no history.";
-								break;
-
-							case "CN":
-								other_exception_msg = "没有查询到相关资料。​";
-								break;
-
-						}
-						otherListStr =
-							`
-							  <tr>
-								  <td class="no_order_to_msg">
-									  <div>${other_exception_msg}</div>
-								  </td>
-							  </tr>
-						  `;
-					}
-
-					defaultList.append(defaultListStr);
-					otherList.append(otherListStr);
-
-					$(".update_order_to").on("click", function () {
-						let order_to_idx = $(this).attr('idx');
-
-						$('.profile__tab').hide();
-						$('.hidden_order_to_idx').val(order_to_idx);
-						getOrderTo();
-						$('.order__to__update__wrap').show();
-					});
-
-					$(".delete_order_to").on("click", function () {
-						deleteOrderTo(this);
-					});
-
-					$(".change_default_order_to").on("click", function () {
-						changeDefaultOrderTo(this);
-					});
-
-					changeLanguageR();
 				} else {
-					let default_exception_msg = "";
-					let other_exception_msg = "";
-					switch (getLanguage()) {
-						case "KR":
-							default_exception_msg = "기본 배송지 정보가 없습니다.";
-							other_exception_msg = "다른 배송지 정보가 없습니다.";
-							break;
-
-						case "EN":
-							default_exception_msg = "There is no history.";
-							other_exception_msg = "There is no history.";
-							break;
-
-						case "CN":
-							default_exception_msg = "没有查询到相关资料。​";
-							other_exception_msg = "没有查询到相关资料。​";
-							break;
-
-					}
-					defaultListStr =
-						`
-						  <tr>
-							  <td class="no_order_to_msg">
-								  <div>${default_exception_msg}</div>
-							  </td>
-						  </tr>
-					  `;
-					otherListStr =
-						`
-						  <tr>
-							  <td class="no_order_to_msg">
-								  <div>${other_exception_msg}</div>
-							  </td>
-						  </tr>
-					  `;
-
-					defaultList.append(defaultListStr);
-					otherList.append(otherListStr);
+					str_div += `
+						<li class="empty">
+							${t_column[config.language]['t_00']}
+						</li>
+					`;
 				}
-			} 
-			
-			else {
-				if(d.msg != null) {
+				
+				div_list.append(str_div);
+				
+				/* 마이페이지 배송지 - 기본 배송지 설정 버튼 클릭 처리 */
+				clickBTN_default();
+				
+				/* 마이페이지 배송지 - 배송지 수정 버튼 클릭 처리 */
+				clickBTN_update();
+				
+				/* 마이페이지 배송지 - 배송지 삭제 버튼 클릭 처리 */
+				clickBTN_delete();
+			} else {
+				if (d.msg != null) {
 					notiModal(d.msg);
 					if (d.code = 401) {
-						$('#notimodal-modal .close-btn').attr('onclick', 'location.href="/login"');
+						$('#notimodal-modal .close-btn').attr('onclick',`location.href = "${config.base_url}/login"`);
 					}
-				}
-				else {
-					makeMsgNoti(getLanguage(), 'MSG_F_WRN_0002', null);
+				} else {
+					makeMsgNoti('MSG_F_WRN_0002',null);
 				}
 			}
 		}
-	});
+	});	
+}
 
-});
+/* 마이페이지 배송지 - 기본 배송지 설정 버튼 클릭 처리 */
+function clickBTN_default() {
+	let btn_default = document.querySelectorAll('.default');
+	btn_default.forEach(btn => {
+		btn.addEventListener('click',function(e) {
+			let el = e.currentTarget;
+			
+			let address_idx = el.dataset.no;
+			if (address_idx != null) {
+				$.ajax({
+					url: config.api + "member/address/put",
+					headers : {
+						country : config.language
+					},
+					data :{
+						'action_type'		:"DEFAULT",
+						'address_idx'		:address_idx
+					},
+					error: function () {
+						makeMsgNoti('MSG_F_ERR_0046',null);
+					},
+					success: function (d) {
+						if (d.code == 200) {
+							/* 마이페이지 배송지 - 회원 배송지 목록 조회 */
+							getAddress_list();
+							
+							makeMsgNoti('MSG_F_INF_0014', null);
+						} else {
+							if (d.msg != null) {
+								notiModal(d.msg);
+								if (d.code = 401) {
+									$('#notimodal-modal .close-btn').attr('onclick',`location.href = "${config.base_url}/login"`);
+								}
+							}
+						}
+					}
+				});
+			}
+		});
+	});
+}
+
+/* 마이페이지 배송지 - 배송지 수정 버튼 클릭 처리 */
+function clickBTN_update() {
+	let btn_update = document.querySelectorAll('.update');
+	btn_update.forEach(btn => {
+		btn.addEventListener('click',function(e) {
+			let el = e.currentTarget;
+			
+			let address_idx = el.dataset.no;
+			if (address_idx != null) {
+				location.href = `${config.base_url}/my/info/address/put/${address_idx}`;
+			}
+		});
+	});
+}
+
+/* 마이페이지 배송지 - 배송지 삭제 버튼 클릭 처리 */
+function clickBTN_delete() {
+	let btn_delete = document.querySelectorAll('.delete');
+	btn_delete.forEach(btn => {
+		btn.addEventListener('click',function(e) {
+			let el = e.currentTarget;
+			
+			let address_idx = el.dataset.no;
+			if (address_idx != null) {
+				$.ajax({
+					url: config.api + "member/address/put",
+					headers : {
+						country : config.language
+					},
+					data :{
+						'action_type'		:"DELETE",
+						'address_idx'		:address_idx	
+					},
+					error: function () {
+						makeMsgNoti('MSG_F_ERR_0046',null);
+					},
+					success: function (d) {
+						if (d.code == 200) {
+							/* 마이페이지 배송지 - 회원 배송지 목록 조회 */
+							getAddress_list();
+							
+							makeMsgNoti('MSG_F_INF_0007',null);
+						} else {
+							if (d.msg != null) {
+								alert(
+									d.msg,
+									function() {
+										if (d.code == 401) {
+											sessionStorage.setItem('r_url',location.href);
+											location.href = `${config.base_url}/login`;
+										}
+									}
+								);
+							}
+						}
+					}
+				});
+			}
+		});
+	});
+}

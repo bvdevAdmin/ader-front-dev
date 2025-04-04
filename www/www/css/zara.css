@@ -1,0 +1,90 @@
+main.collaboration.zara-2nd section:not(#collaboration-nav) {
+    background-color: #0F0F0F;
+}
+main.collaboration.zara-2nd section.media-2nd {
+    display: flex;
+    text-align: center;
+}
+main.collaboration.zara-2nd section.media-2nd > video {
+    width: 56.25%;
+    height: auto;
+    display: inline-block;
+}
+main.collaboration.zara-2nd section.media-2nd .text-cont {
+    display: inline-block;
+    width: 43.75%;
+}
+main.collaboration.zara-2nd section.media-2nd .text-cont > p {
+    font-size: 11px;
+    line-height: 16px;
+    color: #fff;
+    position: relative;
+    top: 50%;
+}
+main.collaboration.zara-2nd section.media-4th {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    padding: 70px 0;
+}
+main.collaboration.zara-2nd section.media-4th > video {
+    width: 74.48%;
+    height: auto;
+}
+main.collaboration.zara-2nd ul.gallery {
+    width: 100%;
+    display: table;
+}
+main.collaboration.zara-2nd ul.gallery > li {
+    width: 25%;
+    display: inline-block;
+    float: left;
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 37.5%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+main.collaboration.zara-2nd ul.gallery > li video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+    main.collaboration.zara-2nd section.media > video,
+    main.collaboration.zara-2nd section.media > img {
+        border-top: none;
+        border-bottom: none;
+    }
+    main.collaboration.zara-2nd section.media-2nd {
+        flex-direction: column;
+    }
+    main.collaboration.zara-2nd section.media-2nd > video {
+        width: 100%;
+        height: auto;
+        margin-bottom: -3px;
+    }
+    main.collaboration.zara-2nd section.media > video {
+        width: 100%;
+        height: auto;
+        margin-bottom: -3px;
+    }
+    main.collaboration.zara-2nd section.media-2nd .text-cont {
+        width: auto;
+        padding: 125px 0;
+    }
+    main.collaboration.zara-2nd section.media .text-cont > p {
+        top: unset;
+    }
+    main.collaboration.zara-2nd section.media-4th {
+        padding: 120px 0;
+    }
+    main.collaboration.zara-2nd ul.gallery > li {
+        width: 50%;
+        padding-bottom: 75%;
+    }
+}

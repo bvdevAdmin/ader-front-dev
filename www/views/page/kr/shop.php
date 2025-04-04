@@ -1,7 +1,19 @@
-<main class="goods list fix-header">
+<main class="goods list has-header">
 	<header>
 		<section class="banner"></section>
 		<nav>
+			<section class="nav" id="goods-nav-top">
+                <ul></ul>
+            </section>
+			
+			<section class="nav" id="goods-nav-middle">
+                <ul></ul>
+            </section>
+			
+			<section class="nav" id="goods-nav-bottom">
+                <ul></ul>
+            </section>
+			
 			<section class="category">
 				<div class="swiper-container" id="goods-category">
 					<ul class="swiper-wrapper"></ul>
@@ -9,25 +21,8 @@
 					<button type="button" class="swiper-button-next"></button>
 				</div>
 			</section>
-			<section class="nav" id="goods-nav"></section>
 			<section class="tools">
 				<ul>
-					<!--
-					<li>
-						<button type="button" class="sort">
-							<span class="icon"></span>
-							정렬
-						</button>
-						<div class="dropdown">
-							<ul id="shoplist-tools-sort">
-								<li><label><input type="radio" name="sort" value="인기"><i></i>인기순</label></li>
-								<li><label><input type="radio" name="sort" value="신상품"><i></i>신상품순</label></li>
-								<li><label><input type="radio" name="sort" value="낮은가격"><i></i>낮은 가격순</label></li>
-								<li><label><input type="radio" name="sort" value="높은가격"><i></i>높은 가격순</label></li>
-							</ul>
-						</div>
-					</li>
-					-->
 					<li>
 						<button type="button" class="filter">
 							<span class="icon">
@@ -46,17 +41,17 @@
 							</header>
 							<div class="buttons">
 								<button type="button" class="reset no-over">초기화</button>
-								<button type="button" class="black"><span>0</span> 개의 제품보기</button>
+								<button type="button" class="black btn_filter"><span class="cnt_filter">0</span> 개의 제품보기</button>
 							</div>
 							<div class="grid">
 								<ul>
 									<li>
 										<h3>정렬</h3>
 										<div class="sort">
-											<label><input type="checkbox" name="sort" value=""><i></i>인기순</label>
-											<label><input type="checkbox" name="sort" value=""><i></i>낮은 가격순</label>
-											<label><input type="checkbox" name="sort" value=""><i></i>신상품순</label>
-											<label><input type="checkbox" name="sort" value=""><i></i>높은 가격순</label>
+											<label><input class="param_sort" type="radio" name="sort" value="POP"><i></i>인기순</label>
+											<label><input class="param_sort" type="radio" name="sort" value="MIN"><i></i>낮은 가격순</label>
+											<label><input class="param_sort" type="radio" name="sort" value="NEW"><i></i>신상품순</label>
+											<label><input class="param_sort" type="radio" name="sort" value="MAX"><i></i>높은 가격순</label>
 										</div>
 									</li>
 								</ul>
@@ -84,4 +79,7 @@
 	<section class="list">
 		<ul id="list"></ul>
 	</section>
+	<div class="div_top">
+		<button type="button" class="to-top"></button>
+	</div>
 </main>

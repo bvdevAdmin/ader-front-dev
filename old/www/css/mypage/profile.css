@@ -1,0 +1,752 @@
+.profile__wrap {
+  margin: 40px 0 100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  color: #343434;
+}
+
+.profile__wrap .title p {
+  font-size: 13px;
+}
+
+.profile__tab__wrap {
+  width: 470px;
+  margin: 0 auto;
+}
+
+.profile__wrap .contents__table {
+  border: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.profile__wrap .contents__table td {
+  border: none;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.profile__wrap .description p {
+  text-indent: 0;
+  line-height: 2;
+  margin: 0;
+}
+.description.tel_update_error,
+.description.pw_update_error {
+  width: 100%;
+  height: 16.5px;
+}
+
+.description.tel_update_error p,
+.description.pw_update_error p {
+  color: red;
+  text-align: right;
+}
+
+.p_msg {
+  margin-bottom: 40px;
+  font-size: 11px;
+}
+
+.list__delivery__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  font-size: 11px;
+  color: #343434;
+}
+
+.input__form__wrap {
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #343434;
+}
+
+.rows__contnets {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.black__btn {
+  width: 100%;
+  height: 40px;
+  background-color: #191919;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  border-radius: 1px;
+}
+
+.white__btn {
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  font-size: 11px;
+  color: #343434;
+  text-align: center;
+  border-radius: 1px;
+  border: solid 1px #808080;
+}
+
+.profile__delivery__wrap {
+  width: 470px;
+  margin: 0 auto;
+}
+.profile__delivery__wrap .title {
+  font-size: 13px;
+  height: auto !important;
+  border-bottom: solid 1px #dcdcdc;
+}
+.profile__delivery__wrap table {
+  width: 100%;
+}
+.profile__delivery__wrap .order_to_btn_wrap {
+  display: flex;
+  gap: 10px;
+}
+.profile__delivery__wrap .order_to_btn_td {
+  padding-right: 0;
+}
+.order__to__update__wrap .province-select-box .tui-select-box-dropdown,
+.order__to__update__wrap .country-select-box .tui-select-box-dropdown {
+  height: 150px;
+}
+.order__to__update__wrap
+  .province-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar,
+.order__to__update__wrap
+  .country-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar,
+.payment_select_wrap
+  .payment-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+.order__to__update__wrap
+  .province-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar-thumb,
+.order__to__update__wrap
+  .country-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar-thumb,
+.payment_select_wrap
+  .payment-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar-thumb {
+  background-color: #dcdcdc;
+}
+.order__to__update__wrap
+  .province-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar-track,
+.order__to__update__wrap
+  .country-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar-track,
+  .payment_select_wrap
+  .payment-select-box
+  .tui-select-box-dropdown::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.no_order_to_msg {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #dcdcdc;
+}
+.input__form__rows.marketing__receive {
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.profile__account__delete__wrap label {
+  padding-right: 5px;
+}
+#ck_sendcode_phone {
+  margin: 0 5px 3px 0;
+}
+.input__form__rows .alertms_tel {
+  color: red;
+  text-align: right;
+}
+.re_msg_notice_text {
+  float: right;
+}
+.profile__marketing__wrap .underline {
+  cursor: pointer;
+}
+.profile__marketing__wrap .marketing_checkbox_wrap div {
+  width: fit-content;
+  display: flex;
+  gap: 5px;
+}
+.profile__marketing__wrap .marketing_checkbox_wrap label {
+  padding-right: 0;
+  padding-top: 2px;
+  vertical-align: unset;
+}
+.save_marketing_check_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile__tab .title {
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.attach-text {
+  margin-left: -3px;
+}
+
+.title img {
+  height: 12px;
+}
+
+.profile__pw__update__wrap {
+  height: 409px;
+  width: 490px;
+  outline: 1px solid #808080;
+  padding: 20px;
+}
+
+.update_btn {
+  height: 24px;
+  width: 50px;
+  outline: 1px solid #808080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.profile__pw__update__wrap .pw_form {
+  margin-bottom: 10px;
+}
+.pw_form input {
+  margin-bottom: 10px;
+}
+
+.pw_form .none_margin_bottom {
+  margin-bottom: 0;
+}
+
+.profile__tel__update__wrap {
+  outline: 1px solid #808080;
+  padding: 20px;
+  font-size: 11px;
+}
+
+.underline span {
+  text-decoration: underline;
+}
+
+.profile__tel__update__confirm__wrap {
+  height: 360px;
+  width: 490px;
+  border: 1px solid #808080;
+  padding: 20px;
+}
+
+.profile__account__delete__wrap {
+  height: 360px;
+  width: 490px;
+  border: 1px solid #808080;
+  padding: 20px;
+}
+.profile__account__delete__wrap .contents_margin {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 65px;
+}
+#ck_account_delete {
+  margin-bottom: 3px;
+}
+.profile__account__delete__wrap .title {
+  margin-bottom: 20px;
+}
+.profile__tel__update__wrap .title {
+  margin-bottom: 40px;
+}
+
+.contents_margin p {
+  margin-bottom: 10px;
+}
+
+.delivery_table_wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__wrap .default_destination {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.profile__wrap .other_destination {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #dcdcdc;
+}
+
+.keyword_label {
+  display: none;
+}
+
+.code6 {
+  display: none;
+}
+
+.code5 {
+  font-size: 11px;
+  width: 34px;
+}
+
+.order__to__update__wrap {
+  width: 470px;
+}
+.order__to__update__wrap .input__form__rows {
+  margin-bottom: 15px;
+}
+.order__to__update__wrap .update_wrap_header {
+  display: flex;
+  justify-content: flex-end;
+}
+.delivery_regist_error_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.delivery_regist_error p {
+  color: red;
+}
+.order__to__update__wrap .post_result_rows {
+  clear: both;
+  position: absolute;
+  z-index: 2;
+}
+.order__to__update__wrap .change_order_to_btn {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.order__to__update__wrap .order_to_default_flg {
+  margin: 0 5px 2px 0;
+}
+.update_wrap_header .delivery_regist_error {
+  width: 100%;
+  height: 16px;
+}
+.update_wrap_header .delivery_regist_error p {
+  clear: both;
+  color: red;
+  text-align: right;
+}
+.profile__wrap .keyword {
+  height: 40px;
+}
+
+.order__to__update__wrap .search_button {
+  width: 111px;
+  height: 40px;
+  object-fit: contain;
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 1px;
+  background-color: #191919;
+  float: right;
+}
+
+.postcode_search_status {
+  font-size: 11px;
+  border: solid 1px #dcdcdc;
+  padding: 23px 19px;
+}
+
+.postcode_search_controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.post_change_result {
+  width: auto;
+  max-height: 285px;
+  margin: 0 !important;
+  background-color: #fff;
+  overflow: auto;
+  border: 1px solid #808080;
+  border-top: 0px;
+  top: -32px;
+}
+
+.postcodify_search_result {
+  font-size: 11px;
+  height: 95px;
+  border-bottom: solid 1px #dcdcdc;
+  padding: 23px 19px;
+}
+
+.postcodify_search_result .search_name {
+  white-space: nowrap;
+  color: #dcdcdc;
+}
+
+.extra_info {
+  display: none;
+}
+
+.black__full__width__btn.add_order_to {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.white__full__width__btn.delete_order_to,
+.gray__mypage__btn.update_order_to {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile__tab {
+  width: 100%;
+  height: 100%;
+}
+
+.btn__area.profile {
+  margin-top: 10px;
+}
+
+.black__full__width__btn.profile_save_btn,
+.white__full__width__btn.move_account_del {
+  margin: 20px 0;
+}
+
+.btn_padding {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.default_destination td,
+.other_destination td {
+  padding-bottom: 0;
+}
+.other_destination_header {
+  display: flex;
+  justify-content: space-between;
+}
+.change_default_order_to {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.profile_btn_padding {
+  padding-top: 40px;
+}
+.profile__customize__purchase__wrap .input__form__wrap {
+  margin-top: 20px;
+}
+.profile__customize__purchase__wrap .gender_checkbox_wrap {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.flex-container {
+  display: flex;
+  gap: 15px;
+}
+.flex-container .flex-two-item {
+  width: 50%;
+}
+
+
+.profile_addr_EN input,
+.profile_addr_CN input {
+  margin-top: 0px;
+}
+@media (max-width: 1024px) {
+  .profile__tab__wrap {
+    grid-column: 1/17;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .profile__wrap {
+    margin: 20px 0 60px;
+  }
+
+  .profile__wrap .contents__table {
+    width: 100%;
+  }
+
+  .profile__tab__wrap table {
+    width: 100%;
+  }
+
+  .btn__area.profile {
+    width: 100%;
+  }
+
+  .profile__pw__update__wrap {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .pw_form input {
+    width: 100%;
+  }
+
+  .profile__tel__update__wrap {
+    padding: 20px;
+  }
+  .sms_privacy_des {
+    font-size: 10px;
+  }
+
+  .profile__tel__update__wrap .black__btn {
+    width: 100%;
+  }
+
+  .profile__delivery__wrap {
+    width: 100%;
+  }
+  .order__to__update__wrap .search_button {
+    min-width: 115px;
+    height: 40px;
+    object-fit: contain;
+    font-size: 11px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    background-color: #191919;
+  }
+  .order__to__update__wrap .post_result_rows {
+    clear: both;
+    position: absolute;
+    width: calc(100% - 145px);
+  }
+
+  .profile__account__delete__wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  .black__full__width__btn.profile_save_btn,
+  .white__full__width__btn.move_account_del {
+    margin: 10px 0;
+  }
+
+  .notice_br {
+    display: inline;
+  }
+
+  .profile__tab .title {
+    margin-top: 0;
+  }
+  .profile__account__delete__wrap .title {
+    margin-bottom: 30px;
+  }
+  .profile__account__delete__wrap .contents_margin p {
+    margin-bottom: 0;
+  }
+  .profile__account__delete__wrap label {
+    padding-right: 0;
+  }
+  .profile_btn_padding {
+    padding-top: 30px;
+  }
+}
+
+@media (min-width: 600px) {
+  .profile__tab__wrap {
+    width: 470px;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+  .order__to__update__wrap .post_result_rows {
+    width: 345px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile__tab__wrap {
+    grid-column: 1/17;
+    width: 470px;
+    margin: 0 auto;
+    margin-top: 80px;
+  }
+  .order__to__update__wrap .post_result_rows {
+    width: 373px;
+  }
+
+  .notice_br {
+    display: none;
+  }
+}
+
+/* @media (max-width: 445px) {
+  .profile__tab__btn__container {
+    display: none;
+  }
+} */
+.profile__wrap .tab__btn__container {
+  display: none;
+}
+.tel_update_description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+.profile__tel__update__wrap .input__form__rows {
+  margin-bottom: 20px;
+}
+.profile__tel__update__confirm__wrap .title {
+  margin-bottom: 25px;
+}
+.tel_update_msg_send_notice {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tel_update_btn_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.account_delete_notice {
+  text-align: right;
+}
+.account_delete_notice .alertms_del {
+  color: red;
+}
+.account_delete_btn_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.profile__payment__list__wrap {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.payment__wrap {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.profile__payment__wrap .add_new_payment_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile__payment__update__wrap .close {
+  float: right;
+}
+.profile__payment__update__wrap .description {
+  margin-bottom: 10px;
+}
+.profile__payment__update__wrap .input__form__rows {
+  margin-top: 10px;
+}
+.profile__payment__update__wrap .payment_select_wrap {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+.close {
+  cursor: pointer;
+}
+.profile__customize__purchase__wrap
+  .tui-select-box-dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+.profile__customize__purchase__wrap
+  .tui-select-box-dropdown::-webkit-scrollbar-thumb {
+  background-color: #dcdcdc;
+}
+.payment_select_wrap .tui-select-box-dropdown {
+  height: 196px;
+  overflow-y: scroll;
+}
+.profile__customize__purchase__wrap .tui-select-box-dropdown {
+  height: 160px;
+  overflow-y: scroll;
+}
+.profile__customize__purchase__wrap .tui-select-box,
+.profile__customize__purchase__wrap .tui-select-box-item,
+.payment_select_wrap .tui-select-box,
+.payment_select_wrap .tui-select-box-item {
+  height: 40px;
+}
+
+.payment_select_wrap .payment-select-box,
+.payment_select_wrap .tui-select-box-item,
+.payment_select_wrap .tui-select-box-dropdown {
+  width: 230px;
+}
+.profile__customize__purchase__wrap .rows__title {
+  margin: 10px 0;
+}
+.profile__customize__purchase__wrap .put_customize_data_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.profile__customize__purchase__wrap .gender_checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile__customize__purchase__wrap .gender_checkbox input {
+  vertical-align: unset;
+}
+.profile__customize__purchase__wrap .gender_checkbox label {
+  padding-right: 0;
+  padding-top: 2px;
+  vertical-align: unset;
+}
+
+.profile__payment__update__wrap .checkbox_payment{
+  margin-right: 5px;
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="10" viewBox="0 0 40 10">
+    <g data-name="4칸보기아이콘">
+        <g data-name="사각형 1330" style="stroke:#343434;fill:#fff">
+            <path style="stroke:none" d="M0 0h40v10H0z"/>
+            <path style="fill:none" d="M.5.5h39v9H.5z"/>
+        </g>
+        <path data-name="선 1453" transform="translate(20 .5)" style="fill:none;stroke:#343434" d="M0 0v9"/>
+        <path data-name="선 1454" transform="translate(10 .5)" style="fill:none;stroke:#343434" d="M0 0v9"/>
+        <path data-name="선 1455" transform="translate(30 .5)" style="fill:none;stroke:#343434" d="M0 0v9"/>
+    </g>
+</svg>

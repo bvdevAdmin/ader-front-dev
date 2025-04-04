@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="13" viewBox="0 0 21 13">
+    <g data-name="사이즈가이드 아이콘">
+        <g data-name="그룹 6753">
+            <path data-name="사각형 1837" transform="translate(.5 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0h20v8H0z"/>
+            <path data-name="선 1874" transform="translate(2.723 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v4"/>
+            <path data-name="선 1875" transform="translate(5.315 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v2"/>
+            <path data-name="선 1876" transform="translate(7.908 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v4"/>
+            <path data-name="선 1877" transform="translate(10.5 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v2"/>
+            <path data-name="선 1878" transform="translate(13.093 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v4"/>
+            <path data-name="선 1879" transform="translate(15.686 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v2"/>
+            <path data-name="선 1880" transform="translate(18.278 4.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v4"/>
+        </g>
+        <g data-name="그룹 6754">
+            <path data-name="선 1881" transform="translate(20.5 .5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 2V0"/>
+            <path data-name="선 1882" transform="translate(.5 .5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0v2"/>
+            <path data-name="선 1883" transform="translate(.5 1.5)" style="fill:none;stroke:#7a7a7a;stroke-linecap:round;stroke-linejoin:round" d="M0 0h20"/>
+        </g>
+    </g>
+</svg>

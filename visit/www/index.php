@@ -1,0 +1,1 @@
+<?php require '/var/www/dev-247/_static/controller/view.php';

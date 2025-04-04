@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.83" height="24.964" viewBox="0 0 22.83 24.964">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #343434;
+      }
+    </style>
+  </defs>
+  <g id="그룹_7935" data-name="그룹 7935" transform="translate(-1178 -394.078)">
+    <rect id="사각형_2307" data-name="사각형 2307" class="cls-1" width="13.87" height="24.042" transform="translate(1178 395)"/>
+    <path id="사각형_2307_-_윤곽선" data-name="사각형 2307 - 윤곽선" class="cls-2" d="M.534.555V24.409H13.356V.555H.534M0,0H13.891V24.964H0Z" transform="translate(1178 394.078)"/>
+    <path id="선_2679" data-name="선 2679" class="cls-2" d="M13.4.034H0V-.5H13.4Z" transform="translate(1178.319 398.382)"/>
+    <path id="선_2676" data-name="선 2676" class="cls-2" d="M13.4.034H0V-.5H13.4Z" transform="translate(1178.243 414.063)"/>
+    <path id="선_2680" data-name="선 2680" class="cls-2" d="M4.468.034H0V-.5H4.468Z" transform="translate(1182.787 396.467)"/>
+    <circle id="타원_132" data-name="타원 132" class="cls-1" cx="1.277" cy="1.277" r="1.277" transform="translate(1183.745 415.107)"/>
+    <path id="타원_132_-_윤곽선" data-name="타원 132 - 윤곽선" class="cls-2" d="M1.277.534a.742.742,0,1,0,.742.742A.743.743,0,0,0,1.277.534m0-.534A1.277,1.277,0,1,1,0,1.277,1.277,1.277,0,0,1,1.277,0Z" transform="translate(1183.745 415.107)"/>
+    <ellipse id="타원_131" data-name="타원 131" class="cls-1" cx="6.93" cy="7.425" rx="6.93" ry="7.425" transform="translate(1186.285 398.638)"/>
+    <path id="타원_131_-_윤곽선" data-name="타원 131 - 윤곽선" class="cls-2" d="M7.573.606A6.968,6.968,0,0,0,2.647,12.5,6.967,6.967,0,0,0,12.5,2.647,6.921,6.921,0,0,0,7.573.606m0-.606A7.574,7.574,0,1,1,0,7.574,7.573,7.573,0,0,1,7.573,0Z" transform="translate(1185.684 398.416)"/>
+    <path id="선_2677" data-name="선 2677" class="cls-2" d="M3.358,2.512-.277.088l.336-.5L3.694,2.007Z" transform="translate(1189.278 407.062)"/>
+    <path id="선_2678" data-name="선 2678" class="cls-2" d="M.087,7.028l-.5-.346L4.436-.286l.5.346Z" transform="translate(1192.659 402.467)"/>
+  </g>
+</svg>

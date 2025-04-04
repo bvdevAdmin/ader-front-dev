@@ -2,8 +2,8 @@
 <?php include '_summary.php'; ?>
 	<nav>
 		<ul>
-			<li><a href="/my">마이페이지</a></li>
-			<li><a href="/my/standby">스탠바이</a></li>
+			<li><a href="/kr/my">마이페이지</a></li>
+			<li><a href="/kr/my/standby">스탠바이</a></li>
 		</ul>
 	</nav>
 	<section class="standby wrap-720">

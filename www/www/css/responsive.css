@@ -6,7 +6,7 @@
 
 @media only screen and (max-width: 1024px) {
 	* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-	::-webkit-scrollbar { width : 0, display: none; }
+	::-webkit-scrollbar { width : 0; display: none; }
 	html{ -webkit-text-size-adjust: none; text-size-adjust: none; touch-action: pan-y; }
 	body { min-width : 100% ; overflow-x : hidden }
 	body > main { padding-bottom : 150px ; overflow-x : hidden }
@@ -105,7 +105,7 @@
 	body > header > nav dl.gnb > dd > .cont > ul > li .row > dl > dd { display : none }
 	body > header > nav dl.gnb > dd > .cont > ul > li .row > dl > dt a { display : block ; width : 100% ; height : 44px ; line-height : 44px ; padding : 0 20px }
 	body > header > nav dl.gnb > dd.no-gallery > .cont > ul { display : block }
-	body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li { display : list-item ; line-height : 1 ; padding : 20px ; border-bottom : solid 1px var(--border-color) ; border-left : none !important }
+	body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li { display : list-item ; line-height : 1 ; padding : 0px ; border-left : none !important }
 	body > header > nav dl.gnb > dd.no-gallery > .cont > ul > li:last-child { border-bottom : none }
 
 	body > header > nav dl.gnb > dd > .cont > ul > li .image { height : 125px }
@@ -146,9 +146,9 @@
 	body.fold-nav button#btn-gnb .icon > span:nth-child(2) { transform : rotate(45deg) }
 	body.fold-nav button#btn-gnb .icon > span:nth-child(3) { transform : rotate(-45deg)}
 	body.fold-nav button#btn-gnb .text:before { content : "close" }
-	body.fold-nav > header { background-color : var(--white) ; height : 100vh ; overflow-y : auto }
+	body.fold-nav > header { background-color : var(--white) ; height : 100dvh ; overflow-y : auto }
 	body.fold-nav > header > nav:before { top : 0 ; height : 45px ; background-color : var(--white) ; border-bottom : solid 1px var(--border-color) ; z-index : 4 ; position : fixed }
-	body.fold-nav > header > nav { height : auto ; min-height : 100vh }
+	body.fold-nav > header > nav { height : auto ; min-height : 100dvh }
 	body.fold-nav > header > nav dl.gnb { display : block  }
 	body.fold-nav > header > nav > dl > dt.on + dd { display : list-item ; min-height : auto }
 	body.fold-nav > header > nav:after { content: ""; width: 100%; height: 1px; background-color: var(--border-color); position: absolute; top: 89px; height: 1px; left : 0 ; display: inline-block; z-index: 10; }
@@ -178,26 +178,27 @@
 
 	/** header // tnb -> aside **/
 	body > header > aside { box-shadow : 0 0 1px 1px var(--border-color) ; right : -1px }
-	body > header > aside.bluemark,
-	body > header > aside.customer,
-	body > header > aside.language,
-	body > header > aside.search { width : calc( 100vw + 1px ) }
+	body > header > aside.bluemark.on,
+	body > header > aside.customer.on,
+	body > header > aside.language.on,
+	body > header > aside.search.on { width : calc( 100vw + 1px ) }
 	body > header > aside > section article { width : 100vw ; padding : 80px 20px 20px 20px !important ; min-height : calc( 100vh - 46px ) }
 	body > header > aside:not(.shoppingbag) button.close { right : initial ; left:0 ; width : 100vw ; height : 45px ; top : 0 ; padding-left : 37px ; text-align : left ; background : url('/images/ico-back.svg') 20px center no-repeat ; border-bottom: solid 1px var(--border-color); }
-	body > header > aside:not(.shoppingbag) button.close:after { content : "뒤로가기" ; font-size : 10px }
+	body > header > aside:not(.shoppingbag) button.close.KR:after { content : "뒤로가기" ; font-size : 10px }
+	body > header > aside:not(.shoppingbag) button.close.EN:after { content : "Back" ; font-size : 10px }
 	body > header > aside button.close:hover { transform : none }
 	
-	body > header > aside.story, 
-	body > header > aside.bluemark, 
-	body > header > aside.language, 
-	body > header > aside.shoppingbag, 
+	body > header > aside.story.on,
+	body > header > aside.bluemark.on,
+	body > header > aside.language.on,
+	body > header > aside.shoppingbag.on,
 	body > header > aside.my { width : 100% !important ; right : 0 }
-	body > header > aside.bluemark > section.bluemark, 
-	body > header > aside.language > section.language, 
-	body > header > aside.story > section.story, 
-	body > header > aside.search > section.search, 
-	body > header > aside.shoppingbag > section.shoppingbag, 
-	body > header > aside.my > section.my { width : 100% ; display : block }
+	body > header > aside.bluemark.on > section.bluemark,
+	body > header > aside.language.on > section.language,
+	body > header > aside.story.on > section.story,
+	body > header > aside.search.on > section.search,
+	body > header > aside.shoppingbag.on > section.shoppingbag,
+	body > header > aside.my.on > section.my { width : 100% ; display : block }
 
 	/** header // tnb 스토리 **/
 	body > header > nav dl.tnb > dt:first-child.on + dd#tnb-story { display : block ; height : auto ; min-height : 100% ; background : var(--white) ; position : relative  }
@@ -217,7 +218,7 @@
 	body > header > nav dl.tnb dl#tnb-story-archive > dd h3 { position : absolute ; left : 0 ; bottom : 0 ; padding-bottom : 0 }
 	body > header > nav dl.tnb dl#tnb-story-archive > dd .image { height : calc( ( ( 100vw - 60px ) / 3 ) * ( 5 / 4 ) ) }
 
-	body > header > aside > section.story > article { padding : 44px 0 0 0 !important }
+	body > header > aside > section.story > article { padding : 44px 0 44px 0 !important }
 	body > header > aside > section.story > article > dl { padding : 0 ; display : block ; border-top : solid 1px var(--black) ; border-right : none }
 	body > header > aside > section.story > article > dl > dt { line-height : 44px ; border-bottom : solid 1px var(--border-color) ; padding : 0 20px }
 	body > header > aside > section.story > article > dl > dd {  }
@@ -249,8 +250,8 @@
 	body > header > aside.shoppingbag button.close { top : 17px ; right : 20px }
 	
 	/** header // tnb search **/
-	body > header > aside.search,
-	body > header > aside.search > section.search { min-width : 100% ; padding-top : 0 }
+	body > header > aside.search.on,
+	body > header > aside.search.on > section.search { min-width : 100% ; padding-top : 0 }
 	body > header > aside.search > section.search > article { margin-top : 15px }
 	body > header > aside.search > section.search h2 ~ h2 { margin-top : 50px ; margin-bottom : 20px }
 	body > header > aside.search > section.search ul { margin : 0 }
@@ -335,20 +336,20 @@
 	article.login section.customer { display : none }
 	
 	/** join **/
-	section.account > article.join > h1 { margin-bottom : 10px }
+	section.account > article.join > h1 { margin-bottom : 10px; padding-left: 50px; }
 	section.account > article.join .agrees { margin-bottom : 0 }
-	section.account > article.join.ok section.join-ok { padding-top : 50px }
+	section.account > article.join.ok section.join-ok {padding: 50px;}
 
 	/** main **/
 	.links a + a { margin-left : 35px }
 	.links a:after { width : 100% ; height : 1px }
 
 	main.intro { padding-bottom : 150px }
-	main.intro > section.campaign ul { grid-template-columns: 1fr ; grid-auto-rows: calc( 100vw * ( 54 / 36 ) ) }
+	main.intro > section.campaign ul { grid-template-columns: 1fr ; }
 	main.intro > section.campaign ul > li:first-child { grid-column : 1 }
 	main.intro > section.campaign ul > li .title { bottom : 40px }
 	main.intro > section.campaign ul > li .title .box h2 { font-size : 12px }
-	main.intro > section.goods ul { grid-template-columns: repeat(2,50%) ; grid-auto-rows: calc( 50vw * 1.25 ) }
+	main.intro > section.goods ul { grid-template-columns: repeat(2,50%) ; grid-auto-rows: calc( 50vw * 1.5 ) }
 	main.intro > section.goods a .name { font-size : 10px ; padding-bottom : 15px }
 
 	/*
@@ -399,7 +400,7 @@
 	main.goods.list > header nav .tools > ul > li > button.on + .dropdown { z-index : 110 ; top : 0 }
 	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown > header { padding : 0 20px ; line-height : 44px ; height : 45px }
 	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown > header button.close { top : 17px ; right : 20px }
-	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .buttons + .grid { max-height : auto ; height : calc( 100vh - 90px ) }
+	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .buttons + .grid { max-height : auto ; height : calc( 100dvh - 90px ) }
 	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid h3 { margin-bottom : 13px }
 	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li { padding : 20px 20px 40px 20px }
 	main.goods.list > header nav .tools > ul > li > button.filter + .dropdown .grid > ul > li .sort { grid-template-columns: 1fr }
@@ -415,6 +416,8 @@
 	main.goods.list > section.list.col-2 { padding : 0 }
 	main.goods.list > section.list.col-2 ul#list { display : block ; border-left : none ; border-right : none }
 	main.goods.list > section.list.col-2 ul#list > li { border-right : none }
+	main.goods.list > section.list.col-2 ul#list > li a { height: calc( 100% - 120px ) }
+	main.goods.list > section.list.col-2 ul#list > li .info { height : 120px ; padding : 7px 0 0 20px }
 	main.goods.list > section.list:not(.col-2) ul#list > li .info > .size { display : none }
 
 
@@ -436,7 +439,7 @@
 	main.goods.detail > section.cont { padding : 0 ; border : none }
 	main.goods.detail > section.cont > section.gallery { padding-left : 0 ; position : relative }
 	main.goods.detail > section.cont > section.gallery > nav { position : absolute ; top :initial ; bottom : 60px ; left : initial ; right : 10px }
-    main.goods.detail > section.cont > section.gallery #images-paging { background-color : var(--white) ; position : absolute ; top : initial ; left : 15px ; bottom : 17px ; width: 35px ; height : 20px ; line-height : 20px ; font-size : var(--fontsize-s) ; text-align : center }
+    main.goods.detail > section.cont > section.gallery #images-paging { background-color : var(--white) ; position : absolute!important ; top : initial!important ; left : 15px ; bottom : 17px ; width: 35px ; height : 20px ; line-height : 20px ; font-size : var(--fontsize-s) ; text-align : center }
 	main.goods.detail > section.cont > section.gallery > article #images { display : none }
 	main.goods.detail > section.cont > section.gallery > article .swiper-container { opacity : 1 ; z-index : 1 ; position : relative ; width: 100% ; height: auto }
 	main.goods.detail > section.cont > section.gallery > article .swiper-wrapper { background-color : var(--border-color) ; height : calc( ( 45 / 36 ) * 100vw ) }
@@ -489,11 +492,15 @@
 
 
 	/** 장바구니 > 결제 **/
+
 	main.my > section.pay { padding-top : 0 }
 	main.my > section.pay article.result { margin-top : 40px ; position : static ; border : none ; padding : 0 ; width : 100% }
 	main.my > section.pay .form-inline button.width150 { width : 100px }
 	main.my > section.pay .form-inline button.width150 + input { width : calc( 100% - 110px ) !important }
-
+	main.my > section.pay:not(.ok) { padding: 10px 20px; }
+	main.my > section.pay:not(.ok) article.result { position: initial ; padding : 20px; top: 0; right: 0; width : 100%; }
+	
+	.modal-pay-delivery article form { max-height:455px; overflow-y:scroll; padding:15px; }
 
 	/** 마이페이지 **/
 	main.my:before, 
@@ -524,6 +531,7 @@
 	.swiper-wrapper.goods > .swiper-slide .image { height : 203px }
 	.swiper-wrapper.goods > .swiper-slide .info { width : calc( 100% - 40px ) ; height : calc( 100% - 223px ) ; bottom : 10px ; left : 20px }
 	.swiper-wrapper.goods > .swiper-slide .info .price { position : static }
+	main.goods.list ul#list > li .info > .price { position : relative ; top : 10px ; right : 0; height: 30px;}
 	.swiper-wrapper.goods > .swiper-slide .info ul.size { display : none }
 	.swiper-wrapper.goods > .swiper-slide .info .color,
 	.swiper-wrapper.goods > .swiper-slide .info .price { margin-top : 2px }
@@ -546,10 +554,11 @@
 	main.my > section.faq { margin-top : 20px ; padding-left : 0 ; padding-right : 0 }
 	main.my > section.faq > article > h1,
 	main.my > section.faq > article > .searchform { padding : 0 20px }
-	main.my > section.faq > article > .category { height : 61px ; overflow-x : auto ; border : none ; padding : 0 ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.my > section.faq > article > .category { height : 61px ; overflow-x : hidden ; border : none ; padding : 0 20px ; -ms-overflow-style: none; scrollbar-width: none; }
+	main.my > section.faq > article > .category > div { overflow: hidden; }
 	main.my > section.faq > article > .category::-webkit-scrollbar { display: none }
-	main.my > section.faq > article > .category ul { border-top : solid 1px var(--border-gray-color) ; border-bottom : solid 1px var(--border-gray-color) ; padding : 0 15px }
-	main.my > section.faq > article > .category ul > li { line-height : 58px ; word-break: keep-all; }
+	main.my > section.faq > article > .category ul { padding : 0;	 display: flex; box-sizing: border-box;  }
+	main.my > section.faq > article > .category ul > li { line-height : 58px ; word-break: keep-all; flex-shrink: 0; width: auto; text-align: center; border-top : solid 1px var(--border-gray-color) ; border-bottom : solid 1px var(--border-gray-color); }
 	main.my > section.faq > article > .category ul > li.on:before { bottom : -1px }
 	main.my > section.faq > article .contents > dl > dd > h3 { padding-top : 0 }
 	
@@ -558,7 +567,7 @@
 	main.my > section.qna > article .info + ul.dot { margin-bottom : 20px }
 	main.my > section.qna > article h2 + ul.contents-list { margin-top : 0 }
 	main.my > section.qna > article.write .buttons { padding-top : 20px }
-	
+
 	
 	main.my > section.info.modify article.input { border : none ; padding : 0 ; margin-top : 50px }
 
@@ -599,6 +608,7 @@
 		
 	/** 마이페이지 > 마일리지 **/
 	main.my > section.mileage article.history { margin-top : 45px }
+    main.my > section.mileage-log #list-log { display: grid; grid-template-columns: repeat(5, 1fr) !important; }
 	
 	/** 마이페이지 > 바우처 **/
 	main.my > section.boucher .submit { padding-top : 4px }
@@ -626,7 +636,6 @@
 	/** 마이페이지 > A/S **/
 	main.my > section.as { padding-top : 40px }
 	main.my > section.as table.price { width : 100% }
-
 
 	/** 마이페이지 > 주문내역 **/
 	main.my > section.order ul.list > li { height : auto }
@@ -657,7 +666,9 @@
 	
 	main.my > section.order article.cancel ul.dot > li ~ li, main.my > section.order article.cancel-submit ul.dot > li ~ li { margin-top : 10px }
 	main.my > section.order article.detail dl.detail-info { margin-bottom : 20px }
-	
+
+	.date-search .inp > .item-date input[type="date"] {cursor: pointer;height: 43px;font-size: 12px;-webkit-appearance: none; -moz-appearance: none;appearance: none; background-color: transparent; position: relative; width: 70%; max-width: 120px;}
+	.date-search .inp > .item-date input[type="date"]::after {content: '';position: absolute;top: 50%;right: 2px;transform: translateY(-50%);width: 12px;height: 12px; background-image: url('/images/ico-date.svg');background-repeat: no-repeat;background-size: contain;pointer-events: none;}
 	/** 매장찾기 **/
 	main.stockist > section.search-tab { position: static ; width: 100% ; padding : 60px 20px 20px 20px }
 	main.stockist > section.tab { display : block ; border-bottom : none }
@@ -675,6 +686,9 @@
 	main.stockist section.store-card dl.stockist > dd { margin-top : 10px }
 	main.stockist section.store-card dl.stockist > dd .tel { display : block }
 
+	section.stockist.modal > .marker-card { width: 400px; }
+	section.stockist.modal > .marker-card .image { padding: 40px 10px;}
+
 	/** 스토리 공통 **/	
 	main.story > section.list > button.to-top { margin-top : 40px }
 	main.story > section.detail > header button.close { top : 20px ; right : 20px }
@@ -684,7 +698,7 @@
 	main.collection > header { padding : 14px 0 }
 	main.collection > header ul { padding : 0 7px }
 	main.collection > header ul > li { padding : 0 15px ; line-height : 32px }
-	main.collection > header ul > li.on:before { width : calc( 100% - 30px ) ; right :15px ; bottom : 3px }
+	main.collection > header ul > li.on:before { width : calc( 100% - 30px ) ; bottom : 3px }
 	main.collection > section.list ul { grid-template-columns: repeat(2, 1fr) }
 	main.collection > section.list > .info { left : 20px }
 	main.collection > section.detail > .gallery { display : block ; width : 100% ; position : relative }
@@ -699,6 +713,23 @@
 	main.editorial > section.detail .swiper-button-next { display : none }
 	main.editorial > section.detail .swiper-scrollbar { left : 0 ; bottom : 0 ; width : 100% ; height : 3px ; background : none }
 	main.editorial > section.detail .swiper-scrollbar .swiper-scrollbar-drag { border-radius : 0 ; background-color : var(--black) }
+
+	main.editorial-detail > section.list { display: none; }
+	main.editorial-detail > section.detail { display: none; }
+	main.editorial-detail > div.mobile { display: block; width: 100%; }
+	main.editorial-detail > div.mobile > .mobile-list { width: 100%; height: 116px; }
+	main.editorial-detail > div.mobile > .mobile-list .swiper-container { height: 100%; }
+	main.editorial-detail > div.mobile > .mobile-list .swiper-container > .swiper-wrapper .swiper-slide { height: 100%; width: 95px; }
+	main.editorial-detail > div.mobile > .mobile-list .swiper-container > .swiper-wrapper .swiper-slide.on { transform: translateY(-10px); }
+	main.editorial-detail > div.mobile > .mobile-list .swiper-container > .swiper-wrapper .item { height: 100%; width: 95px; padding: 11px 4px; cursor: pointer; }
+	main.editorial-detail > div.mobile > .mobile-list .swiper-container > .swiper-wrapper .item > img { width: 100%; height: 100%; object-fit: cover; }
+	main.editorial-detail > div.mobile > .mobile-detail { height: 100%; width: 100%; }
+	main.editorial-detail > div.mobile > .mobile-detail > .gallery { height: 100%; width: 100%; }
+	main.editorial-detail > div.mobile > .mobile-detail .swiper-container > .swiper-wrapper { width: 100%; height: 520px; }
+	main.editorial-detail > div.mobile > .mobile-detail .swiper-container > .swiper-wrapper > .swiper-slide { padding: 38px; opacity: 0; width: 100%; }
+	main.editorial-detail > div.mobile > .mobile-detail .swiper-container > .swiper-wrapper > .swiper-slide.swiper-slide-active { padding: 38px; opacity: 1; }
+ 	main.editorial-detail > div.mobile > .mobile-detail .swiper-container > .swiper-wrapper > .swiper-slide  *  { width: 100%; height: 100%; }
+
 
 	/** 콜라보레이션 **/
 	main.collaboration { padding-bottom : 50px }
@@ -758,4 +789,42 @@
 	main.collaboration .product-gallery.no-thumbnails > .goods .detail { padding : 0 }
 	main.collaboration .product-gallery.no-thumbnails > .goods .detail p { padding : 0 20px ; margin-left : 0 }
 	main.collaboration .product-gallery.no-thumbnails > .goods .detail .swiper-container { height : calc( 100vw * ( 475 / 360 ) ) }
+
+	main.wishlist.list ul#list { grid-template-columns: repeat(2,1fr); }
+	main.wishlist.list ul#list > li {  padding-bottom: calc( 125% + 90px ); }
+	main.wishlist.list ul#list > li:nth-child(2n) { border-right : none }
+	main.wishlist.list ul#list > li a { height: calc( 100% - 90px ) }
+	main.wishlist.list ul#list > li .info { height : 90px ; padding : 7px 0 0 20px }
+	main.wishlist.list ul#list > li .info > .price { position: relative; top: 10px;  right: 0; height: 30px; }
+	main.wishlist.list ul#list > li .info > .size { display : none }
+
+	main.collaboration.swarovski > section.list > ul#list { grid-template-columns: repeat(2, 1fr); }
+	main.collaboration.swarovski > section.list > ul#list > li { padding-bottom: calc(125% + 90px); }
+	main.collaboration.swarovski > section.list > ul#list > li a { height: calc(100% - 90px); }
+	main.collaboration.swarovski > section.list > ul#list > li .info { height: 90px;  padding: 7px 0 0 20px; }
+	main.collaboration.swarovski > section.list > ul#list > li .info > strong { font-size: var(--fontsize); font-weight: var(--fontweight-s); top: 15px; left: 40px; margin-bottom: 5px; text-overflow: ellipsis; overflow: hidden; width: 90%; white-space: nowrap; }
+	main.collaboration.swarovski > section.list > ul#list > li .info > .price { position: relative; top: 10px; right: 0; height: 30px; }
+	main.collaboration.swarovski > section.list > ul#list > li .info > .size { display: none; }
+
+	/** 마이페이지 > 블루마크 **/
+	.section__transfer .close { right:15px;top:15px; }
+}
+
+@media (max-width: 700px) {
+	main.goods.detail > section.cont > section.information > .sizeguide-cont { position : fixed ; top : 43px ; right : 0 ; width : 100% ; height : calc(100dvh - 43px) ; overflow-y: scroll; overflow-x: hidden ;z-index: 100;padding-bottom: 20px;overscroll-behavior: contain;}
+	main.goods.detail > section.cont > section.information > .sizeguide-cont > article { grid-template-columns : repeat(1,100%);margin:0 }
+	main.goods.detail > section.cont > section.information > .sizeguide-cont > article > .cont {padding-right: 0;}
+	main.goods.detail > section.cont > section.information > .sizeguide-cont ul.sizes {
+		display: table;
+		height: 45px;
+		margin: 20px auto;
+	}
+
+	/** 마이페이지 > 주문내역 **/
+	main.my > section.order ul.list > li { height : auto; padding: 20px 0 20px 150px;}
+	main.my > section.order ul.list > li ~ li { margin-top : 35px }
+	main.my > section.order ul.list > li > .info { padding : 10px ; height : auto ; position : static }
+	main.my > section.order ul.list > li div.info > div.left-info { width: 100%;}
+	main.my > section.order ul.list > li div.info > div.right-info { width: 100%;padding-right: 10px;}
+	
 }

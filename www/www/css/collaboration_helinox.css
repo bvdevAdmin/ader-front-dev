@@ -1,0 +1,556 @@
+main.collaboration.new>article.helinox {
+  padding-bottom: 200px;
+}
+
+main.collaboration.new>article.helinox>.describe {
+  text-align: center;
+}
+
+main.collaboration.new>article.helinox>.describe>.text {
+  padding: 150px 0;
+}
+
+main.collaboration.new>article.helinox>.describe>.text>h1 {
+  padding-bottom: 50px;
+  font-size: 25px;
+  text-align: center;
+}
+
+main.collaboration.new>article.helinox>.product {
+  background-color: #F3F3F3;
+  text-align: center;
+  /* height: 960px; */
+  height: auto;
+}
+
+main.collaboration.new>article.helinox>.product>.title {
+  padding: 50px 0 70px 0;
+}
+
+main.collaboration.new>article.helinox>.product>.title img {
+  width: 110px;
+  height: auto;
+  display: inline;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container h1 {
+  padding: 50px 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container p {
+  padding-bottom: 30px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-pagination {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button.white {
+  color: #fff;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button.white:before {
+  background: #fff;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div {
+  display: inline-block;
+  position: relative;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div:not(:last-child) {
+/* main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div:not(:last-of-type) { */
+  padding-right: 40px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure,
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button,
+section.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button {
+  width: 25px;
+  height: 25px;
+  border: solid 1px;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure:before,
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure:after,
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: calc(50% - 7px);
+  top: calc(50% - 1px);
+  font-size: 0 !important;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure:before {
+  transform: rotate(-90deg);
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide .parts {
+  display: none;
+  position: absolute;
+  top: 0;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide .parts.on {
+  display: block;
+  border: solid 1px #000;
+  height: 100%;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide .parts img {
+  width: 100%;
+  height: 100%;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button {
+  /* bottom: 20px; */
+  top: calc(100% - 45px);
+  left: 20px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic1>figure:nth-child(1) {
+  top: 90px;
+  left: 93px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic1>figure:nth-child(2) {
+  top: 142px;
+  left: 293px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic1>figure:nth-child(3) {
+  top: 292px;
+  left: 106px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(1) {
+  top: 12px;
+  left: 206px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(2) {
+  top: 142px;
+  left: 62px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(3) {
+  top: 188px;
+  left: 262px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(4) {
+  top: 317px;
+  left: 206px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic3>figure:nth-child(1) {
+  top: 155px;
+  left: 302px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic3>figure:nth-child(2) {
+  top: 168px;
+  left: 35px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic3>figure:nth-child(3) {
+  top: 280px;
+  left: 71px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic4>figure:nth-child(1) {
+  top: 205px;
+  left: 87px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic4>figure:nth-child(2) {
+  top: 317px;
+  left: 261px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic5>figure:nth-child(1),
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic6>figure:nth-child(1) {
+  top: 75px;
+  margin-left: 217px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic5>figure:nth-child(2),
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic6>figure:nth-child(2) {
+  top: 112px;
+  margin-left: 49px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic5>figure:nth-child(3),
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic6>figure:nth-child(3) {
+  top: 342px;
+  margin-left: 282px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic7>figure:nth-child(1) {
+  top: 75px;
+  left: 213px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic7>figure:nth-child(2) {
+  top: 156px;
+  left: 134px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic7>figure:nth-child(3) {
+  top: 349px;
+  left: 274px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic8>figure:nth-child(1) {
+  top: 164px;
+  left: 216px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic8>figure:nth-child(2) {
+  top: 200px;
+  left: 29px;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div.pic8>figure:nth-child(3) {
+  top: 278px;
+  left: 180px;
+}
+
+main.collaboration.new>article.helinox .swiper-button-next,
+main.collaboration.new>article.helinox .swiper-button-prev {
+  width: 150px;
+  height: 25px;
+  background-color: #fff;
+  top: calc(100% - 25px);
+}
+
+main.collaboration.new>article.helinox .swiper-button-prev {
+  left: calc(50% - 155px);
+}
+
+main.collaboration.new>article.helinox .swiper-button-next {
+  right: calc(50% - 155px);
+}
+
+main.collaboration.new>article.helinox .swiper-button span {
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 14px);
+  width: 15px;
+  height: 1px;
+  background-color: #000;
+}
+
+main.collaboration.new>article.helinox .swiper-button-next:before,
+main.collaboration.new>article.helinox .swiper-button-prev:before,
+main.collaboration.new>article.helinox .swiper-button-next:after,
+main.collaboration.new>article.helinox .swiper-button-prev:after {
+  width: 5px;
+}
+
+main.collaboration.new>article.helinox .swiper-button-next:after,
+main.collaboration.new>article.helinox .swiper-button-prev:after {
+  margin-top: -4px;
+}
+
+main.collaboration.new>article.helinox .swiper-button-next:before,
+main.collaboration.new>article.helinox .swiper-button-prev:before {
+  margin-top: 4px;
+}
+
+main.collaboration.new>article.helinox button.close {
+  background: none;
+}
+
+main.collaboration.new>article.helinox button.close:hover {
+  transform: none;
+}
+
+main.collaboration.new>article.helinox .swiper-pagination-bullet {
+  border: none;
+  background-color: #C1C1C1;
+}
+
+main.collaboration.new>article.helinox .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #007aff;
+}
+
+main.collaboration article.helinox .swiper-container .swiper-slide img {
+  display: inline-block;
+}
+
+main.collaboration article.helinox .swiper-button-next:before,
+main.collaboration article.helinox .swiper-button-prev:before,
+main.collaboration article.helinox .swiper-button-next:after,
+main.collaboration article.helinox .swiper-button-prev:after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  font-size: 0 !important;
+}
+
+main.collaboration article.helinox .swiper-button-next:after,
+main.collaboration article.helinox .swiper-button-prev:after {
+  transform: rotate(50deg);
+  margin-top: -7px;
+}
+
+main.collaboration article.helinox .swiper-button-next:before,
+main.collaboration article.helinox .swiper-button-prev:before {
+  transform: rotate(-50deg);
+  margin-top: 7px;
+}
+
+main.collaboration article.helinox .swiper-button-prev {
+  left: calc(50% - 50vw + 50px);
+  transform: rotate(180deg);
+}
+
+main.collaboration article.helinox .swiper-button-next {
+  right: calc(50% - 50vw + 50px);
+}
+
+main.collaboration article.helinox .swiper-button-next.swiper-button-disabled,
+main.collaboration article.helinox .swiper-button-prev.swiper-button-disabled {
+  opacity: .15;
+}
+
+main.collaboration.new>article.helinox>.product>.swiper-container .swiper-pagination {
+  padding-bottom: 75px;
+}
+
+main.collaboration article.helinox .describe .text h1,
+main.collaboration article.helinox .swiper-container {
+  font-weight: 200;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  main.collaboration.new>article.helinox>.describe>.text>h1 {
+    padding-bottom: 20px;
+    font-size: 14px;
+  }
+
+  main.collaboration.new>article.helinox>.product.mobile {
+    height: auto;
+  }
+
+  main.collaboration.new>article.helinox>.product>.swiper-container>h2 {
+    padding: 0 0 30px 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  main.collaboration.new>article.helinox>.product>.swiper-container .swiper-pagination {
+    position: relative;
+    padding: 30px 0;
+    padding-bottom: 105px;
+    top: 0px;
+  }
+
+  main.collaboration.new>article.helinox .swiper-button-next {
+    transform: rotate(0deg);
+  }
+
+  main.collaboration.new>article.helinox .swiper-button-next,
+  main.collaboration.new>article.helinox .swiper-button-prev {
+    top: calc(100% - 50px);
+  }
+
+  main.collaboration.new>article.helinox .swiper-container-horizontal>.swiper-pagination-bullets,
+  main.collaboration.new>article.helinox .swiper-pagination-custom,
+  main.collaboration.new>article.helinox .swiper-pagination-fraction {
+    bottom: 12px;
+  }
+
+  main.collaboration.new>article.helinox .swiper-pagination-bullet {
+    border-radius: 0;
+    width: 20px;
+    height: 1px;
+    transform: scale(1) !important;
+  }
+
+  main.collaboration.new>article.helinox .swiper-pagination-bullet-active {
+    background: #000;
+  }
+
+  main.collaboration.new>article.helinox .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #000;
+  }
+
+  main.collaboration.new>article.helinox .swiper-container-horizontal>.swiper-pagination-bullets,
+  main.collaboration.new>article.helinox .swiper-pagination-custom,
+  main.collaboration.new>article.helinox .swiper-pagination-fraction {
+    bottom: 22px;
+  }
+
+  main.collaboration.new>article.helinox .swiper-pagination-bullet-active-prev-prev,
+  main.collaboration.new>article.helinox .swiper-pagination-bullet-active-next-next {
+    opacity: .07;
+  }
+
+  main.collaboration.new>article.helinox .swiper-button-next,
+  main.collaboration.new>article.helinox .swiper-button-prev {
+    width: calc(50% - 4px);
+  }
+
+  main.collaboration.new>article.helinox .swiper-button-prev {
+    left: 0;
+  }
+
+  main.collaboration.new>article.helinox .swiper-button-next {
+    right: 0;
+  }
+
+  main.collaboration article.helinox .swiper-container {
+    margin: 0 15px;
+  }
+
+  main.collaboration article.helinox .swiper-container .swiper-slide:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  main.collaboration article.helinox .swiper-container .swiper-slide>div,
+  main.collaboration article.helinox .swiper-container .swiper-slide>div img {
+    width: 100%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic1>figure:nth-child(1) {
+    top: 22%;
+    left: 20%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic1>figure:nth-child(2) {
+    top: 32%;
+    left: 85%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic1>figure:nth-child(3) {
+    top: 67%;
+    left: 30%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(1) {
+    top: 5%;
+    left: 60%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(2) {
+    top: 35%;
+    left: 15%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(3) {
+    top: 45%;
+    left: 70%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic2>figure:nth-child(4) {
+    top: 70%;
+    left: 59%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic3>figure:nth-child(1) {
+    top: 25%;
+    left: 85%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic3>figure:nth-child(2) {
+    top: 30%;
+    left: 15%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic3>figure:nth-child(3) {
+    top: 60%;
+    left: 20%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic4>figure:nth-child(1) {
+    top: 45%;
+    left: 25%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic4>figure:nth-child(2) {
+    top: 70%;
+    left: 70%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic5>figure:nth-child(1),
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic6>figure:nth-child(1) {
+    top: 15%;
+    left: 65%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic5>figure:nth-child(2),
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic6>figure:nth-child(2) {
+    top: 20%;
+    left: 20%
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic5>figure:nth-child(3),
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic6>figure:nth-child(3) {
+    top: 75%;
+    left: 80%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic7>figure:nth-child(1) {
+    top: 18%;
+    left: 65%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic7>figure:nth-child(2) {
+    top: 30%;
+    left: 35%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic7>figure:nth-child(3) {
+    top: 77%;
+    left: 73%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic8>figure:nth-child(1) {
+    top: 32%;
+    left: 60%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic8>figure:nth-child(2) {
+    top: 42%;
+    left: 5%;
+  }
+
+  main.collaboration.new article.helinox>.product>.swiper-container .swiper-slide>div.pic8>figure:nth-child(3) {
+    top: 57%;
+    left: 50%;
+  }
+
+  main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure {
+    width: 20px;
+    height: 20px;
+    margin: 0 !important;
+  }
+
+  main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button {
+    width: 20px;
+    height: 20px;
+  }
+
+  main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure:before,
+  main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div>figure:after,
+  main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button:before {
+    width: 12px;
+    left: calc(50% - 6px);
+  }
+}

@@ -1,5 +1,5 @@
 <main class="my">
-    <?php include '../_summary.php'; ?>
+	<?php include $_CONFIG['PATH']['PAGE'].'kr/my/_summary.php'; ?>
 	<nav>
 		<ul>
 			<li><a href="/kr/my">마이페이지</a></li>
@@ -11,6 +11,7 @@
 		<h2 class="no-border">A/S 내역</h2>
 		<article class="list">
 			<ul class="list" id="list"></ul>
+            <div class="paging"></div>
 		</article>
 	</section>
 </main>

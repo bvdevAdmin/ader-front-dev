@@ -1,0 +1,501 @@
+/* collaboration */
+article.birkenstock {
+  padding: 0 !important;
+}
+
+article.birkenstock h2 {
+  text-align: center;
+  margin-top: -100px;
+  padding-bottom: 100px;
+  width: 100%;
+  display: block;
+}
+
+article.birkenstock h2 img {
+  display: inline;
+}
+
+article.birkenstock>.swiper {
+  width: 100%;
+}
+
+article.birkenstock>.swiper .swiper-slide {
+  width: 5549px;
+  height: 1288px;
+}
+
+article.birkenstock>.swiper .swiper-slide a {
+  position: absolute;
+  transition: ease-out .2s;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title {
+  width: 100%;
+  line-height: 1;
+  padding: 20px 20px 20px 70px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title .num {
+  width: 40px;
+  height: 40px;
+  border: solid 1px #000;
+  text-align: center;
+  line-height: 38px;
+  font-size: 14px;
+  font-family: "futura";
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title strong {
+  font-weight: 400;
+  display: block;
+  padding-bottom: 7px;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title em {
+  font-weight: 200;
+  font-size: 13px;
+  font-style: normal;
+}
+
+article.birkenstock>.swiper .swiper-slide a.text {
+  padding: 20px 0 0 70px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.text .title .num {
+  border-color: #000;
+  background-color: #0000c5;
+  color: #fff;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video {
+  padding: 20px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video video {
+  transition: ease-out .2s;
+  width: 149px;
+  border-radius: 10px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video .title {
+  height: 50px;
+  padding: 0 0 0 50px;
+  position: relative;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video .title .num {
+  top: 0;
+  left: 0;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video .title strong {
+  line-height: 40px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video.on video {
+  width: 618px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-1 {
+  top: 390px;
+  left: 0;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-2 {
+  top: 50px;
+  left: 790px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-3 {
+  top: 70px;
+  left: 1280px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-4 {
+  top: 350px;
+  left: 2105px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-5 {
+  top: 545px;
+  left: 2355px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-6 {
+  top: 50px;
+  left: 2989px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-7 {
+  top: 90px;
+  left: 3789px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-8 {
+  top: 490px;
+  right: 80px;
+}
+
+article.birkenstock>.swiper.on a:not(.on) {
+  opacity: .5;
+}
+
+article.birkenstock>.swiper .swiper-scrollbar {
+  bottom: initial;
+  top: 0;
+  height: 3px;
+  border-radius: 2px;
+}
+
+article.birkenstock>.swiper .swiper-scrollbar-drag {
+  background: #0000c5;
+}
+
+/* collaboration_0 */
+article.birkenstock {
+  padding: 0 !important;
+}
+
+article.birkenstock h2 {
+  text-align: center;
+  margin-top: -100px;
+  padding-bottom: 100px;
+  width: 100%;
+  display: block;
+}
+
+article.birkenstock h2 img {
+  display: inline;
+}
+
+article.birkenstock>.swiper {
+  width: 100%;
+}
+
+article.birkenstock>.swiper .swiper-slide {
+  width: 5549px;
+  height: 1288px;
+}
+
+article.birkenstock>.swiper .swiper-slide a {
+  position: absolute;
+  transition: ease-out .2s;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title {
+  width: 100%;
+  line-height: 1;
+  padding: 20px 20px 20px 70px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title .num {
+  width: 40px;
+  height: 40px;
+  border: solid 1px #000;
+  text-align: center;
+  line-height: 38px;
+  font-size: 14px;
+  font-family: "futura";
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title strong {
+  font-weight: 400;
+  display: block;
+  padding-bottom: 7px;
+}
+
+article.birkenstock>.swiper .swiper-slide a .title em {
+  font-weight: 200;
+  font-size: 13px;
+  font-style: normal;
+}
+
+article.birkenstock>.swiper .swiper-slide a.text {
+  padding: 20px 0 0 70px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.text .title .num {
+  border-color: #000;
+  background-color: #0000c5;
+  color: #fff;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video {
+  padding: 20px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video video {
+  transition: ease-out .2s;
+  width: 149px;
+  border-radius: 10px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video .title {
+  height: 50px;
+  padding: 0 0 0 50px;
+  position: relative;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video .title .num {
+  top: 0;
+  left: 0;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video .title strong {
+  line-height: 40px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.video.on video {
+  width: 618px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-1 {
+  top: 390px;
+  left: 0;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-2 {
+  top: 50px;
+  left: 790px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-3 {
+  top: 70px;
+  left: 1280px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-4 {
+  top: 350px;
+  left: 2105px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-5 {
+  top: 545px;
+  left: 2355px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-6 {
+  top: 50px;
+  left: 2989px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-7 {
+  top: 90px;
+  left: 3789px;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-8 {
+  top: 490px;
+  right: 80px;
+}
+
+article.birkenstock>.swiper.on a:not(.on) {
+  opacity: .5;
+}
+
+article.birkenstock>.swiper .swiper-scrollbar {
+  bottom: initial;
+  top: 0;
+  height: 3px;
+  border-radius: 2px;
+}
+
+article.birkenstock>.swiper .swiper-scrollbar-drag {
+  background: #0000c5;
+}
+
+/* collaboration_1 */
+article.birkenstock>.swiper .swiper-slide a .title {
+  text-align: left;
+}
+
+article.birkenstock>.swiper .swiper-slide a.item-4,
+article.birkenstock>.swiper .swiper-slide a.item-8 {
+  text-align: left;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  article.birkenstock h2 {
+    padding-top: 70px;
+    padding-bottom: 50px;
+  }
+
+  article.birkenstock h2 img {
+    width: 173px;
+  }
+
+  article.birkenstock>.swiper {
+    width: 100%;
+  }
+
+  article.birkenstock>.swiper .swiper-slide {
+    width: 2405px;
+    height: 760px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a {
+    position: absolute;
+    transition: ease-out .2s;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a img {
+    max-width: 459px
+  }
+
+  article.birkenstock>.swiper .swiper-slide a .title {
+    width: 100%;
+    line-height: 1;
+    padding: 20px 20px 20px 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a .title .num {
+    width: 40px;
+    height: 40px;
+    border: solid 1px #000;
+    text-align: center;
+    line-height: 38px;
+    font-size: 14px;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border-radius: 50%;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a .title strong {
+    font-weight: 400;
+    font-size: 13px;
+    display: block;
+    padding-bottom: 7px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a .title em {
+    font-weight: 200;
+    font-size: 13px;
+    font-style: normal;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.text {
+    padding: 20px 0 0 70px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.text .title .num {
+    border-color: #000;
+    background-color: #0000c5;
+    color: #fff;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.video {
+    padding: 20px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.video video {
+    transition: ease-out .2s;
+    width: 149px;
+    border-radius: 10px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.video .title {
+    height: 50px;
+    padding: 0 0 0 50px;
+    position: relative;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.video .title .num {
+    top: 0;
+    left: 0;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.video .title strong {
+    line-height: 40px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.video.on video {
+    width: calc(100vw - 20px);
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-1 {
+    top: 300px;
+    left: 0;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-2 {
+    top: 20px;
+    left: 290px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-3 {
+    top: 220px;
+    left: 580px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-4 {
+    top: 220px;
+    left: 905px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-5 img {
+    max-width: 350px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-5 {
+    top: 345px;
+    left: 1255px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-6 {
+    top: 60px;
+    left: 1439px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-6 video {
+    width: 100px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-7 {
+    top: 170px;
+    left: 1689px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-7 img {
+    max-width: 293px;
+  }
+
+  article.birkenstock>.swiper .swiper-slide a.item-8 {
+    top: 320px;
+    right: 40px;
+  }
+
+  main.collaboration article.birkenstock+article.campaign {
+    padding-top: 70px;
+  }
+}

@@ -2,8 +2,8 @@
     <?php include '_summary.php'; ?>
 	<nav>
 		<ul>
-			<li><a href="/my">마이페이지</a></li>
-			<li><a href="/my/mileage">적립금</a></li>
+			<li><a href="/kr/my">마이페이지</a></li>
+			<li><a href="/kr/my/mileage">적립금</a></li>
 		</ul>
 	</nav>
 	<section class="mileage wrap-720">
@@ -49,11 +49,13 @@
 					<ul class="list" id="list-1">
 						<li class="empty">적립 내역이 없습니다.</li>
 					</ul>
+                     <div class="paging" id="list-1-paging"></div>
 				</section>
 				<section>
 					<ul class="list" id="list-2">
 						<li class="empty">사용 내역이 없습니다.</li>
 					</ul>
+                     <div class="paging" id="list-2-paging"></div>
 				</section>
 			</div>
 			
@@ -63,7 +65,7 @@
 			<ul class="dot">
 				<li>최종 주문금액 80,000원 이상 구매시 적립금 사용이 가능합니다.</li>
 				<li>적립금은 최소 보유 금액 10,000원 이상부터 1,000원 단위로 사용 가능합니다.</li>
-				<li>이전 주문/구매 건의 적립금으로 새로운 주문/구매를 한 경우, 이전 주문/구매 건의 확불 시 현재 보유 적립금이 부족할 수 있습니다. 적립금을 사용한 주문/구매 시 주의 부탁드립니다.</li>
+				<li>이전 주문/구매 건의 적립금으로 새로운 주문/구매를 한 경우, 이전 주문/구매 건의 환불 시 현재 보유 적립금이 부족할 수 있습니다. 적립금을 사용한 주문/구매 시 주의 부탁드립니다.</li>
 			</ul>
 			
 			<a name="적립 가이드"></a>

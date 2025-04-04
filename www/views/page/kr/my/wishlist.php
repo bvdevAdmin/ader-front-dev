@@ -1,14 +1,18 @@
-<main class="my">
+<style>
+.wishlist.list.my .summary {border:none;}
+.wishlist.list.my .list.my-main.summary-wishlist header {border-bottom:solid 1px var(--border-color);}
+</style>
+
+<main class="wishlist list my">
 	<section class="summary">
 	</section>
-	<section class="swiper-row horiz" id="view-wishlist">
-		<h2>Wish list</h2>
-		<article>
-			<div class="swiper-container" id="swiper-wishlist">
-				<div class="swiper-wrapper goods"></div>
-				<button type="button" class="swiper-button-prev"></button>
-				<button type="button" class="swiper-button-next"></button>
-			</div>
-		</article>
+    <section class="list my-main summary-wishlist">
+		<header>
+			<h2>위시리스트</h2>
+		</header>
+		<ul id="list"></ul>
 	</section>
+	<div class="div_top">
+		<button type="button" class="to-top"></button>
+	</div>
 </main>

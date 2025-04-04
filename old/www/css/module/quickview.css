@@ -1,0 +1,662 @@
+#quickview {
+  position: absolute;
+  transition-duration: 0.3s;
+  z-index: 11;
+}
+
+.remove-btn {
+  display: flex;
+  position: relative;
+  right: 0;
+  margin: 0 10px 0 25px;
+  width: 10px;
+}
+
+.remove-btn img:nth-of-type(2) {
+  position: absolute;
+  transform: rotate(90deg);
+}
+
+.quickview__box {
+  position: fixed;
+  bottom: 0;
+  right: -80px;
+  min-height: 202px;
+}
+
+.wish-msg {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 60px;
+}
+
+/* .quickview__box.on {
+  position: absolute;
+} */
+
+.quickview__btn__wrap {
+  /* quickview_contents height에 종속되지 않기 위함  */
+  position: absolute;
+  right: 0px;
+  width: 60px;
+  height: 202px;
+  order: 2;
+  z-index: 20;
+  border: solid 1px #808080;
+  transform: translateX(60px);
+  transition: all 0.5s;
+  background-color: #ffffff;
+}
+
+.quickview__btn__wrap.open {
+  transform: translateX(-80px);
+  /*FAQ 클릭시 퀵메뉴영역 아래로 고정*/
+  bottom: 0;
+}
+
+.quickview__content__wrap {
+  height: 202px;
+  background-color: #ffffff;
+  transform: translateX(425px);
+  transition: all 0.5s;
+  order: 1;
+  border-bottom: solid 1px #808080;
+  border-top: solid 1px #808080;
+  border-left: solid 1px #808080;
+}
+
+.quickview__content__wrap.open {
+  min-width: 205px;
+  display: block;
+  transform: translateX(-79px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.swiper-quick-container {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 7px 30px 0 10px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0 5px;
+}
+
+.title__box--btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickview__btn__wrap .btn__box {
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  height: 50px;
+  border-bottom: solid 1px #808080;
+  padding-left: 7px;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.quickview__btn__wrap .btn__box:last-child {
+  border-bottom: solid 0px #808080;
+}
+
+.quickview__btn__wrap .btn__box img {
+  width: 13px;
+  height: 13px;
+}
+
+.quickview__btn__wrap .btn__box p {
+  visibility: hidden;
+  margin: 3px 0 0 1px;
+  font-size: 10px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.1;
+  text-align: left;
+  color: #343434;
+}
+
+.btn__box[data-quick="recent"].select img {
+  content: url("/images/svg/wish-recent-bk.svg");
+}
+
+.btn__box[data-quick="top"].select img {
+  content: url("/images/svg/wish-real-bk.svg");
+}
+
+.btn__box[data-quick="wish"].select img {
+  content: url("/images/svg/wish-list-bk.svg");
+}
+
+.btn__box[data-quick="qna"].select img {
+  content: url("/images/svg/wish-faq-bk.svg");
+}
+
+.btn__box[data-quick="recent"].select p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="top"].select p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="wish"].select p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="qna"].select p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="recent"]:hover img {
+  content: url("/images/svg/wish-recent-bk.svg");
+}
+
+.btn__box[data-quick="top"]:hover img {
+  content: url("/images/svg/wish-real-bk.svg");
+}
+
+.btn__box[data-quick="wish"]:hover img {
+  content: url("/images/svg/wish-list-bk.svg");
+}
+
+.btn__box[data-quick="qna"]:hover img {
+  content: url("/images/svg/wish-faq-bk.svg");
+}
+
+.btn__box[data-quick="recent"]:hover p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="top"]:hover p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="wish"]:hover p {
+  visibility: visible;
+}
+
+.btn__box[data-quick="qna"]:hover p {
+  visibility: visible;
+}
+
+.quickview__box .title__box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  color: #343434;
+}
+
+.title__box img {
+  width: 13px;
+  height: 13px;
+}
+
+.quickview__content__wrap .all-btn {
+  cursor: pointer;
+  color: #343434;
+}
+
+.show_all_wb {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 40px;
+  margin-top: 14px;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none!important;
+}
+.quickview-wish-swiper {
+  width: 100%;
+  height: 100%;
+}
+.quickview-wish-swiper .quick-login-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.quickview-wish-swiper .quick-login-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  margin-left: 20px;
+}
+.quickview-wish-swiper .quick-login-msg {
+  margin-bottom: 20px;
+}
+.quickview-wish-swiper .quick-login-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dcdcdc;
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+/* 스와이프 css */
+.quickview-wish-swiper .swiper-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickview-wish-swiper .swiper-box img {
+  background-color: #fbfbfb;
+}
+
+.quickview-wish-swiper a {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.quickview-wish-swiper .product-name {
+  width: 85%;
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
+  color: #343434;
+  letter-spacing: 0.25px;
+  font-size: 10px;
+  height: 24px;
+  line-height: 1.3;
+}
+
+.swiper-button-next::after {
+  content: url("/images/svg/sort-bottom.svg");
+  transform: rotate(270deg);
+  position: absolute;
+  left: 5px;
+}
+
+.quickview-wish-swiper .swiper-slide {
+  width: 80px !important;
+}
+
+.close-swiper {
+  max-width: 0;
+}
+
+.common-contents-container.hidden {
+  display: none;
+}
+
+.chat-box {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.arrow_box {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #343434;
+  max-width: 310px;
+  border-radius: 2px;
+  padding: 15px 20px;
+}
+
+.arrow_box :after,
+.arrow_box :before {
+  left: 100%;
+  top: 50%;
+  border: solid;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box :after {
+  border-color: rgba(255, 255, 255, 0);
+  border-left-color: #ffffff;
+  border-width: 10px;
+  margin-top: -10px;
+}
+
+.arrow_box :before {
+  border-color: rgba(128, 128, 128, 0);
+  border-left-color: #343434;
+  border-width: 11px;
+  margin-top: -11px;
+}
+
+.common-contents-container p,
+.common-contents-container span,
+.common-contents-container input {
+  font-size: 11px;
+}
+
+.contents-btn {
+  font-size: 11px;
+}
+
+.quickview__content__wrap .faq-btn-wrap.member .btn {
+  float: right;
+  vertical-align: middle;
+}
+
+.contents-footer {
+  /* display: flex; */
+  padding: 10px;
+  gap: 10px;
+}
+
+.contents-footer .file-upload-btn {
+  width: 60px;
+  height: 40px;
+  border: 1px solid #343434;
+}
+
+.contents-footer .file-upload-btn.upload{
+  background-color: #dcdcdc;
+}
+
+#inquiryTextBox {
+  height: 40px;
+  width: 100%;
+  border: 1px solid #343434;
+  padding: 10px;
+  outline: none;
+}
+
+.contents-footer .submit_btn {
+  width: 95px;
+  height: 40px;
+  border: 1px solid #343434;
+  background-color: #191919;
+  color: #fff;
+  text-align:center;
+  line-height:40px;
+  font-size:11px;
+  cursor: pointer;
+}
+
+.parent-move-link {
+  float: right;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.quickview__content__wrap .faq-btn-wrap.admin .contents {
+  margin-bottom: 20px;
+}
+
+.quickview__content__wrap .faq-btn-wrap.admin .question {
+  margin-top: 24px;
+}
+
+.quickview__content__wrap .faq-btn-wrap.admin .answer {
+  margin-top: 16px;
+}
+
+.quickview__content__wrap .faq-btn-wrap.member {
+  min-height: 46px;
+  margin-right: 10px;
+  margin-bottom: 22px;
+}
+.quickview__content__wrap .faq-btn-wrap .inquiry_info_wrap{
+  margin: 10px 0;
+}
+.swiper-box.product-title .red-dot{
+  content: url("/images/svg/wish-redsold.svg");
+  position: absolute;
+  bottom: 18px;
+  right: 3px;
+}
+
+@media (min-width: 1024px) {
+  .common-contents-container {
+    width: 425px;   
+  }
+
+  .quickview__content__wrap.open {
+    width: 425px;
+    min-height: 202px;
+    transform: translateX(-135px);
+    border: 1px solid #808080;
+  }
+
+  .quickview__content__wrap.faq.open {
+    height: 100%;
+    min-height: 202px;
+    max-height: calc(100vh - 52px);
+    transform: translateX(-139px);
+    flex-direction: column;
+    width: 421px;
+  }
+
+  .quickview__content__wrap.faq.open .common-contents-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 80px);
+  }
+
+  .quickview__content__wrap .faq-btn-wrap.admin {
+    margin: 0 80px 10px 27px;
+    background-color: #f8f8f8;
+    padding: 20px;
+  }
+
+  .quickview__content__wrap .faq-btn-wrap.admin .contents-header {
+    margin-bottom: 20px;
+  }
+
+  .quickview__content__wrap .faq-btn-wrap.admin .contents-btn {
+    height: 30px;
+    border: 1px solid #dcdcdc;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content-header {
+    margin-top: 6px;
+  }
+  .quickview__btn__wrap .btn__box p {
+    visibility: hidden;
+    margin-top: -2px;
+    margin-left: 1px;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.1;
+    text-align: left;
+    color: #343434;
+  }
+
+  .btn__box .btn_icon_wrap {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .quickview__box {
+    position: fixed;
+    width: 100vw;
+    min-height: auto;
+    bottom: 0;
+    height: auto;
+    right: 0;
+  }
+
+  .quickview__box .title__box {
+    font-size: 1rem;
+  }
+
+  .swiper-quick-container {
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
+  .quickview__content__wrap .all-btn.web {
+    display: none;
+  }
+
+  .quickview__content__wrap .all-btn.mobile {
+    display: block;
+    color: #343434;
+    text-decoration: underline;
+  }
+  .title__box--btn .all-btn.show_all_mo {
+    border-bottom: 1px solid #343434;
+    margin-top: -2px;
+  }
+  .quickview__content__wrap {
+    /* visibility: hidden; */
+    transform: translateX(0px);
+    transform: translateY(calc(100vh - 252px));
+    border-bottom: none;
+    border-right: 1px solid #808080;
+    visibility: hidden;
+  }
+
+  .quickview__content__wrap.open {
+    height: 102px;
+    max-width: 100vw;
+    visibility: visible;
+    margin-bottom: 40px;
+    transform: translateX(0px);
+  }
+
+  .quickview__btn__wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    border: 0;
+    right: 0;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    transform: translateX(0px);
+    transform: translateY(60px);
+  }
+  .quickview__btn__wrap.open {
+    transform: translateX(0);
+    width: 100vw;
+    height: 40px;
+  }
+
+  .btn__box {
+    border-right: 1px solid #808080;
+    box-sizing: border-box;
+    flex: auto;
+    flex-direction: row !important;
+    border-bottom: none !important;
+    justify-content: flex-start !important;
+    margin-left: 10px;
+    gap: 5px;
+  }
+
+  .btn__box.select p {
+    display: block;
+  }
+
+  .quickview__btn__wrap .btn__box {
+    padding: 0;
+    height: 40px;
+  }
+  .quickview-wish-swiper .quick-login-box {
+    height: 100%;
+    margin-top: 0;
+  }
+  .quickview-wish-swiper .quick-login-msg {
+    margin-bottom: 10px;
+  }
+  .wish-msg {
+    margin-top: 20px;
+  }
+  /* swiper css */
+  .quickview-wish-swiper .product-name {
+    display: none;
+  }
+
+  .quickview-wish-swiper .swiper-slide {
+    width: 55px !important;
+  }
+
+  .quickview-wish-swiper .swiper-box img {
+    width: 55px;
+    height: 68.8px;
+    object-fit: cover;
+  }
+
+  .quickview__content__wrap.faq.open {
+    height: 100%;
+    min-height: 100px;
+    max-height: calc(100vh - 205px);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quickview__content__wrap.faq.open .common-contents-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .quickview__content__wrap .faq-btn-wrap.admin {
+    width: calc(100% - 40px);
+    background-color: #f8f8f8;
+    margin: 20px 0 20px 20px;
+    padding: 20px;
+  }
+
+  .quickview__content__wrap .faq-btn-wrap.admin .contents-btn {
+    width: 100%;
+    height: 30px;
+    padding: 0 20px 0 20px;
+    border: 1px solid #dcdcdc;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+  }
+
+  #quickview .swiper-button-next::after {
+    top: 12px;
+  }
+
+  .swiper-box.product-title .red-dot{
+    content: url("/images/svg/wish-redsold.svg");
+    position: absolute;
+    bottom: 5px;
+    right: 3px;
+  }
+}

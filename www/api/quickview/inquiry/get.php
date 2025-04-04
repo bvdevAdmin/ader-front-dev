@@ -13,32 +13,24 @@
  | 
  +=============================================================================
 */
-$faq_idx = $_POST['faq_idx'];
 
-$country = null;
-if (isset($_SESSION['COUNTRY'])) {
-	$country = $_SESSION['COUNTRY'];
-} else if (isset($_SERVER['HTTP_COUNTRY'])) {
-	$country = $_SERVER['HTTP_COUNTRY'];
-}
-
-if (isset($country) && isset($faq_idx)) {
-	$get_faq_sql = "
+if (isset($faq_idx)) {
+	$selec_faq_sql = "
 		SELECT
-			SUBCATEGORY,
-			QUESTION,
-			ANSWER
+			FQ.SUBCATEGORY	AS SUB_CATEGORY,
+			FQ.QUESTION		AS QUESTION,
+			FQ.ANSWER		AS ANSWER
 		FROM
-			FAQ
+			FAQ FQ
 		WHERE
-			IDX = ".$faq_idx."
+			FQ.IDX = ?
 	";
 	
-	$db->query($get_faq_sql);
+	$db->query($selec_faq_sql,array($faq_idx));
 	
 	foreach($db->fetch() as $data){
 		$json_result['data'] = array(
-			'subcategory'	=> $data['SUBCATEGORY'],
+			'subcategory'	=> $data['SUB_CATEGORY'],
 			'question'		=> $data['QUESTION'],
 			'answer'		=> $data['ANSWER']
 		);

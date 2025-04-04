@@ -1,0 +1,17 @@
+<svg data-name="2,4 칸 보기" xmlns="http://www.w3.org/2000/svg" width="120" height="33" viewBox="0 0 120 33">
+    <path data-name="2,4칸 보기 영역" style="fill:none" d="M0 0h120v33H0z"/>
+    <g data-name="4칸보기">
+        <g data-name="4칸보기아이콘">
+            <g data-name="사각형 1330" style="stroke:#343434;fill:#fff">
+                <path style="stroke:none" d="M0 0h43v8H0z" transform="translate(10 14)"/>
+                <path style="fill:none" d="M.5.5h42v7H.5z" transform="translate(10 14)"/>
+            </g>
+            <path data-name="선 1453" transform="translate(24.333 14.5)" style="stroke:#343434;fill:none" d="M0 0v7"/>
+            <path data-name="선 1454" transform="translate(17.167 14.5)" style="stroke:#343434;fill:none" d="M0 0v7"/>
+            <path data-name="선 1455" transform="translate(31.5 14.5)" style="stroke:#343434;fill:none" d="M0 0v7"/>
+            <path data-name="선 2254" transform="translate(38.667 14.5)" style="stroke:#343434;fill:none" d="M0 0v7"/>
+            <path data-name="선 2255" transform="translate(45.833 14.5)" style="stroke:#343434;fill:none" d="M0 0v7"/>
+        </g>
+        <text transform="translate(63 22)" style="fill:#343434;font-size:12px;font-family:NotoSansKR-Regular,Noto Sans KR"><tspan x="0" y="0">작게보기</tspan></text>
+    </g>
+</svg>

@@ -18,432 +18,447 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 include $_CONFIG['PATH']['API'].'_legacy/common/check.php';
 
-$member_idx = 0;
-if (isset($_SESSION['MEMBER_IDX'])) {
-	$member_idx = $_SESSION['MEMBER_IDX'];
-}
-
-$member_level = 0;
-if (isset($_SESSION['LEVEL_IDX'])) {
-	$member_level = $_SESSION['LEVEL_IDX'];
-}
-
-$member_id = null;
-if (isset($_SESSION['MEMBER_ID'])) {
-	$member_id = $_SESSION['MEMBER_ID'];
-}
-
-if (!isset($country) || $member_idx == 0) {
-	$json_result['code'] = 401;
-	$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0018', array());
-	
-	echo json_encode($json_result);
-	exit;
-}
-
-/* 1. 상품 상세 페이지 쇼핑백 상품 등록처리 */
-if ($add_type == "product" && isset($product_idx) && isset($option_info)) {
-	
-	$db->begin_transaction();
-	
-	try {
-		/* 1-1. 일반 상품 쇼핑백 내 동일 상품 체크 */
-		if ($product_type == "B") {
-			$check_basket_result = checkProductDuplicate($db,"BSK",$country,$member_idx,$product_type,$product_idx,$option_info);
-			if ($check_basket_result != true) {
-				$json_result['code'] = 402;
-				//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0063', array());
-				$json_result['msg'] = "MSG_B_ERR_0063";
+if (isset($_SERVER['HTTP_COUNTRY']) && isset($_SESSION['MEMBER_IDX'])) {
+	if (isset($product_type) && isset($product_idx)) {
+		$db->begin_transaction();
+		
+		try {
+			$cnt_basket = 0;
+			/* 1. 쇼핑백 동일상품 중복 체크 */
+			if ($product_type == "B") {
+				$cnt_basket = $db->count("BASKET_INFO","COUNTRY = ? AND MEMBER_IDX = ? AND PRODUCT_IDX = ? AND OPTION_IDX = ? AND PARENT_IDX = 0 AND DEL_FLG = FALSE",array($_SERVER['HTTP_COUNTRY'],$_SESSION['MEMBER_IDX'],$product_idx,$option_idx));
+			} else if ($product_type == "S") {
+				$cnt_basket = $db->count("BASKET_INFO","COUNTRY = ? AND MEMBER_IDX = ? AND PRODUCT_IDX = ? AND OPTION_IDX = 0 AND DEL_FLG = FALSE",array($_SERVER['HTTP_COUNTRY'],$_SESSION['MEMBER_IDX'],$product_idx));
+			}
+			
+			if ($cnt_basket > 0) {
+				$json_result['code'] = 301;
+				$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0063',array());
 				
 				echo json_encode($json_result);
 				exit;
 			}
-		}
-		
-		/* 1-2. 쇼핑백에 추가하려는 상품의 구매 회원 등급 제한 체크 */
-		$check_result_level = checkProductLevel($db,$member_level,"PRD",$product_idx);
-		if ($check_result_level['result'] != true) {
-			$json_result['code'] = 403;
-			//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0098', array());
-			$json_result['msg'] = "MSG_B_ERR_0098";
 			
-			echo json_encode($json_result);
-			exit;
-		}
-		
-		/* 1-3. 쇼핑백에 추가하려는 상품의 옵션별 구매 제한 수량 체크 */
-		if ($product_type == "B") {
-			for ($i=0; $i<count($option_info); $i++) {
-				$check_result_qty = checkQtyLimit($db,$country,$member_idx,"PRD",$product_idx,$option_info[$i],1);
-				if ($check_result_qty['result'] != true) {
-					$json_result['code'] = 404;
-					$json_result['msg'] = $check_result_qty['msg'];
+			$limit = array();
+			if ($product_type == "B") {
+				$limit = getProduct_limit($db,$product_idx,$option_idx);
+			} else if ($product_type == "S" && count($option_info) > 0) {
+				$limit_P = getProduct_limit($db,$product_idx,$option_idx);
+				array_push($limit,$limit_P);
+				
+				foreach($option_info as $set) {
+					$limit_C = getProduct_limit($db,$set['product_idx'],$set['option_idx']);
+					array_push($limit,$limit_C);
+				}
+				
+				$limit = checkLimit_set($limit);
+			}
+			
+			if (sizeof($limit) > 0) {
+				/* 3. 쇼핑백 등록 전 상품 체크 */
+				
+				/* 3-1. 회원 등급 체크 */
+				if (!in_array("0",$limit['limit_member']) && !in_array($_SESSION['LEVEL_IDX'],$limit['limit_member'])) {
+					$json_result['code'] = 302;
+					$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0098',array());
 					
 					echo json_encode($json_result);
 					exit;
 				}
-			}
-		}
-		
-		/* 1-4. 쇼핑백에 추가하려는 상품의 ID당 구매제한 체크 */
-		$check_result_id = checkIdReorder($db,$country,$member_idx,"PRD",$product_idx);
-		if ($check_result_id['result'] != true) {
-			$json_result['code'] = 405;
-			//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0004', array());
-			$json_result['msg'] = "MSG_B_ERR_0004";
-			
-			echo json_encode($json_result);
-			exit;
-		}
-		
-		/* 1-5. 쇼핑백에 추가하려는 상품의 잔여재고 체크 */
-		$stock_result = checkProductBasketStockQty($db,$product_idx,$product_type,$option_info);
-		if ($stock_result != false) {
-			/* 1-6. 쇼핑백 상품 추가 처리 */
-			addProductBasketInfo($db,$country,$member_idx,$member_id,$product_type,$product_idx,$option_info);
-		} else {
-			$json_result['code'] = 406;
-			//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0044', array());
-			$json_result['msg'] = "MSG_B_ERR_0044";
-		}
-		
-		$db->commit();
-		
-		/* 1-7. 현재 쇼핑백 상품 수량 반환 */
-		$json_result['data'] = array(
-			'basket_cnt'		=>getBasketCnt($db,$country,$member_idx)
-		);
-	} catch(mysqli_sql_exception $exception){
-		print_r($exception);
-		
-		$db->rollback();
-		$json_result['code'] = 407;
-		
-		echo json_encode($json_result);
-		exit;
-	}
-}
-
-/* 2. 위시리스트 페이지 페이지 쇼핑백 상품 등록처리 */
-if ($add_type == "wish" && count($wish_info) > 0) {
-	$db->begin_transaction();
-	
-	try {
-		/* 2-1. 해당 회원의 위시리스트중 선택 한 상품이 존재하는지 확인 */
-		$check_wish_result = checkWishList($db,$country,$member_idx,$wish_info);
-		if ($check_wish_result != true) {
-			$json_result['code'] = 408;
-			//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0065', array());
-			$json_result['msg'] = "MSG_B_ERR_0065";
-			
-			echo json_encode($json_result);
-			exit;
-		}
-		
-		$err_cnt = 0;
-		for ($i=0; $i<count($wish_info); $i++) {
-			$product_type = $wish_info[$i]['product_type'];
-			$wish_idx = $wish_info[$i]['wish_idx'];
-			
-			$json_option_info = json_decode($wish_info[$i]['option_info'],true);
-			$option_info = json_decode($json_option_info,true);
-			
-			/* 2-2. 일반 상품 쇼핑백 내 동일 상품 체크 */
-			if ($product_type == "B") {
-				$check_basket_result = checkProductDuplicate($db,"WSH",$country,$member_idx,$product_type,$wish_idx,$option_info);
-				if ($check_basket_result != true) {
-					$json_result['code'] = 409;
-					//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0063', array());
-					$json_result['msg'] = "MSG_B_ERR_0063";
-					
-					return $check_basket_result;
-				}
-			}
-			
-			/* 2-3. 쇼핑백에 추가하려는 상품의 구매 회원 제한 레벨 체크 */
-			$check_result_level = checkProductLevel($db,$member_level,"WSH",$wish_idx);
-			if ($check_result_level['result'] != true) {
-				$json_result['code'] = 410;
-				//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0034', array());
-				$json_result['msg'] = "MSG_B_ERR_0034";
 				
-				echo json_encode($json_result);
-				exit;
-			}
-			
-			/* 2-4. 쇼핑백에 추가하려는 상품의 옵션별 구매수량  제한 체크 */
-			if ($product_type == "B") {
-				for ($j=0; $j<count($option_info); $j++) {
-					$check_result_qty = checkQtyLimit($db,$country,$member_idx,"WSH",$wish_idx,$option_info[$j],1);
-					if ($check_result_qty['result'] != true) {
-						$json_result['code'] = 411;
-						$json_result['msg'] = $check_result_qty['msg'];
+				/* 3-2. ID당 구매 제한 수량 체크 */
+				if ($limit['limit_id_flg'] == true && $limit['order_qty_P'] > 0) {
+					$json_result['code'] = 302;
+					$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0004',array());
+					
+					echo json_encode($json_result);
+					exit;
+				}
+				
+				/* 3-3. 상품별 구매 제한 수량 체크 */
+				if ($limit['limit_flg_P'] == true) {
+					if ($limit['product_qty'] <= $limit['order_qty_P']) {
+						$json_result['code'] = 303;
+						$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0092',array($limit['product_qty']));;
 						
 						echo json_encode($json_result);
 						exit;
 					}
 				}
-			}
-			
-			/* 2-5. 쇼핑백에 추가하려는 상품의 ID당 구매제한 체크 */
-			$check_result_id = checkIdReorder($db,$country,$member_idx,"WSH",$wish_idx);
-			if ($check_result_id['result'] != true) {
-				$json_result['code'] = 412;
-				//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0004', array());
-				$json_result['msg'] = "MSG_B_ERR_0004";
 				
-				echo json_encode($json_result);
-				exit;
+				/* 3-4. 옵션별 구매 제한 수량 체크 */
+				if ($limit['limit_flg_O'] == true) {
+					if ($limit['option_qty'] <= $limit['order_qty_O']) {
+						$json_result['code'] = 304;
+						$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0092',array($limit['option_qty']));;
+						
+						echo json_encode($json_result);
+						exit;
+					}
+				}
+				
+				/* 3-5. WCC 잔여 재고 체크 */
+				if ($limit['remain_qty'] == 0) {
+					$json_result['code'] = 305;
+					$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0045',array());;
+					
+					echo json_encode($json_result);
+					exit;
+				}
+				
+				/* 3-6. 구매 가능 수량 체크 */
+				if ($limit['limit_qty'] == 0) {
+					$json_result['code'] = 306;
+					$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0045',array());;
+					
+					echo json_encode($json_result);
+					exit;
+				}
+				
+				/* 4. 쇼핑백 등록 처리 */
+				$basket_idx = addBasket($db,$product_idx,$option_idx);
+				if (isset($basket_idx) && $product_type != "B") {
+					addBasket_set($db,$basket_idx,$option_info);
+				}
+				
+				$db->commit();
+				
+				$json_result['data'] = array(	
+					'basket_cnt'	=>$db->count("BASKET_INFO","COUNTRY = ? AND MEMBER_IDX = ?",array($_SERVER['HTTP_COUNTRY'],$_SESSION['MEMBER_IDX']))
+				);
 			}
-		}
-		
-		/* 쇼핑백에 담으려는 상품의 잔여재고 체크 */
-		$stock_result = checkWishListStockQty($db,$wish_info);
-		if ($stock_result != false) {
-			addWishListBasketInfo($db,$country,$member_idx,$member_id,$wish_info);
-		} else {
-			$json_result['code'] = 413;
-			//$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0044', array());
-			$json_result['msg'] = "MSG_B_ERR_0044";
+		} catch (mysqli_sql_exception $e) {
+			print_r($e);
+			
+			$db->rollback();
+			
+			$json_result['code'] = 407;
 			
 			echo json_encode($json_result);
 			exit;
 		}
-		
-		$db->commit();
-		
-		$json_result['data'] = array(
-			'basket_cnt'		=>getBasketCnt($db,$country,$member_idx)
-		);
-	} catch(mysqli_sql_exception $exception){
-		print_r($exception);
-		
-		$db->rollback();
-		$json_result['code'] = 414;
-		
-		echo json_encode($json_result);
-		exit;
 	}
+} else {
+	$json_result['code'] = 401;
+	$json_result['msg'] = getMsgToMsgCode($db, $_SERVER['HTTP_COUNTRY'], 'MSG_B_ERR_0018', array());
+	
+	echo json_encode($json_result);
+	exit;
 }
 
-/* 쇼핑백 상품 중복 체크 */
-function checkProductDuplicate($db,$check_type,$country,$member_idx,$product_type,$product_idx,$option_info) {
-	$check_result = false;
+function getProduct_limit($db,$product_idx,$option_idx) {
+	$product_B = array();
 	
-	$basket_cnt = 0;
-	for ($i=0; $i<count($option_info); $i++) {
-		$product_where = "";
-		if ($check_type == "WSH") {
-			/* 위시리스트 페이지 쇼핑백 추가 시 체크조건 */
-			$product_where = "
-				AND BI.PRODUCT_IDX = (
-					SELECT
-						WL.PRODUCT_IDX
-					FROM
-						WHISH_LIST WL
-					WHERE
-						WL.IDX = ".$product_idx."
-				)
-			";
-		} else {
-			/* 상품 상세 페이지 쇼핑백 추가 시 체크조건 */
-			$product_where = " AND BI.PRODUCT_IDX = ".$product_idx." ";
-		}
-		
-		$option_where = " AND BI.OPTION_IDX = ".$option_info[$i]." ";
-		
-		$tmp_cnt = $db->count("BASKET_INFO BI","BI.COUNTRY = '".$country."' AND BI.MEMBER_IDX = ".$member_idx." AND BI.PARENT_IDX = 0 AND BI.DEL_FLG = FALSE ".$product_where.$option_where);
-		$basket_cnt += $tmp_cnt;
-	}
+	$param_bind = array($option_idx,$option_idx,$_SERVER['HTTP_COUNTRY'],$_SESSION['MEMBER_IDX'],$_SERVER['HTTP_COUNTRY'],$_SESSION['MEMBER_IDX'],$option_idx,$product_idx);
 	
-	if (!$basket_cnt > 0) {
-		$check_result = true;
-	}
-	
-	return $check_result;
-}
-
-function checkWishList($db,$country,$member_idx,$wish_info) {
-	$check_result = false;
-	
-	$err_cnt = 0;
-	for ($i=0; $i<count($wish_info); $i++) {
-		$wish_idx = $wish_info[$i]['wish_idx'];
-		
-		$wish_cnt = $db->count("WHISH_LIST","COUNTRY = '".$country."' AND MEMBER_IDX = ".$member_idx." AND IDX = ".$wish_idx);
-		
-		if ($wish_cnt == 0) {
-			$err_cnt++;
-		}
-	}
-	
-	if (!$err_cnt > 0) {
-		$check_result = true;
-	}
-	
-	return $check_result;
-}
-
-/* 상품 상세 페이지 쇼핑백 상품 추가 전 재고 체크 */
-function checkProductBasketStockQty($db,$product_idx,$product_type,$option_info) {
-	$check_result = false;
-	
-	$err_cnt = 0;
-	for ($i=0; $i<count($option_info); $i++) {
-		$stock_result = false;
-		
-		if ($product_type == "B") {
-			$option_idx = $option_info[$i];
+	$select_shop_product_sql = "	
+		SELECT
+			PR.LIMIT_MEMBER				AS LIMIT_MEMBER,
 			
-			$stock_result = checkPurchaseableQty($db,$product_idx,$option_idx,1);
-		} else if ($product_type == "S") {
-			$tmp_product_idx = $option_info[$i]['product_idx'];
-			$tmp_option_idx = $option_info[$i]['option_idx'];
+			PR.LIMIT_ID_FLG				AS LIMIT_ID_FLG,
 			
-			$stock_result = checkPurchaseableQty($db,$tmp_product_idx,$tmp_option_idx,1);
-		}
-		
-		if ($stock_result != true) {
-			$err_cnt++;
-		}
-	}
-	
-	if (!$err_cnt > 0) {
-		$check_result = true;
-	}
-	
-	return $check_result;
-}
-
-/* 위시 리스트 페이지 쇼핑백 상품 추가 전 재고 체크 */
-function checkWishListStockQty($db,$wish_info) {
-	$check_result = false;
-	
-	$err_cnt = 0;
-	for ($i=0; $i<count($wish_info); $i++) {
-		$product_type = $wish_info[$i]['product_type'];
-		$wish_idx = $wish_info[$i]['wish_idx'];
-		
-		$json_option_info = json_decode($wish_info[$i]['option_info'],true);
-		$option_info = json_decode($json_option_info,true);
-		
-		if (!empty($wish_idx) && !empty($option_info) && count($option_info) > 0) {
-			for ($j=0; $j<count($option_info); $j++) {
-				
-				$product_idx = 0;
-				$option_idx = 0;
-				
-				if ($product_type == "B") {
-					$select_wish_list_sql = "
-						SELECT
-							WL.PRODUCT_IDX	AS PRODUCT_IDX,
-							WL.OPTION_IDX	AS OPTION_IDX
-						FROM
-							WHISH_LIST WL
-						WHERE
-							WL.IDX = ".$wish_idx."
-					";
-				} else if ($product_type == "S") {
-					$tmp_product_idx = $option_info[$j]['product_idx'];
-					$tmp_option_idx = $option_info[$j]['option_idx'];
+			PR.LIMIT_QTY_FLG			AS LIMIT_FLG_P,
+			IFNULL(
+				PR.LIMIT_PRODUCT_QTY,0
+			)							AS PRODUCT_QTY,
+			
+			IFNULL(
+				PO.LIMIT_QTY_FLG,FALSE
+			)							AS LIMIT_FLG_O,
+			IFNULL(
+				PO.LIMIT_OPTION_QTY,0
+			)							AS OPTION_QTY,
+			
+			IFNULL(
+				V_ST.REMAIN_WCC_QTY,0
+			)							AS REMAIN_QTY,
+			IFNULL(
+				V_ST.PURCHASEABLE_QTY,0
+			)							AS LIMIT_QTY,
+			IFNULL(
+				J_PP.ORDER_QTY_P,0
+			)							AS ORDER_QTY_P,
+			IFNULL(
+				J_PO.ORDER_QTY_O,0
+			)							AS ORDER_QTY_O
+		FROM
+			SHOP_PRODUCT PR
+			
+			LEFT JOIN PRODUCT_OPTION PO ON
+			PR.IDX = PO.PRODUCT_IDX AND
+			PO.OPTION_IDX = ?
+			
+			LEFT JOIN V_STOCK V_ST ON
+			PR.IDX = V_ST.PRODUCT_IDX AND
+			V_ST.OPTION_IDX = ?
+			
+			LEFT JOIN (
+				SELECT
+					S_OP.PRODUCT_IDX	AS PRODUCT_IDX,
+					S_OP.OPTION_IDX		AS OPTION_IDX,
+					SUM(
+						S_OP.REMAIN_QTY
+					)					AS ORDER_QTY_P
+				FROM
+					ORDER_INFO S_OI
 					
-					$select_wish_list_sql = "
-						SELECT
-							PR.IDX			AS PRODUCT_IDX,
-							OO.IDX			AS OPTION_IDX
-						FROM
-							SHOP_PRODUCT PR
-							LEFT JOIN ORDERSHEET_OPTION OO ON
-							PR.ORDERSHEET_IDX = OO.ORDERSHEET_IDX
-						WHERE
-							PR.IDX = ".$tmp_product_idx." AND
-							OO.IDX = ".$tmp_option_idx."
-					";
-				}
-				
-				$db->query($select_wish_list_sql);
-				
-				$product_qty = 0;
-				foreach($db->fetch() as $data_stock) {
-					$product_idx = $data_stock['PRODUCT_IDX'];
-					$option_idx = $data_stock['OPTION_IDX'];
-				}
-				
-				$check_result = checkPurchaseableQty($db,$product_idx,$option_idx,1);
-				
-				if ($check_result != true) {
-					$err_cnt++;
-				}
+					LEFT JOIN ORDER_PRODUCT S_OP ON
+					S_OI.IDX = S_OP.ORDER_IDX
+				WHERE
+					S_OI.COUNTRY = ? AND
+					S_OI.MEMBER_IDX = ? AND
+					S_OP.PRODUCT_TYPE NOT REGEXP 'V|D'
+			) AS J_PP ON
+			PR.IDX = J_PP.PRODUCT_IDX
+			
+			LEFT JOIN (
+				SELECT
+					S_OP.PRODUCT_IDX	AS PRODUCT_IDX,
+					S_OP.OPTION_IDX		AS OPTION_IDX,
+					SUM(
+						S_OP.REMAIN_QTY
+					)					AS ORDER_QTY_O
+				FROM
+					ORDER_INFO S_OI
+					
+					LEFT JOIN ORDER_PRODUCT S_OP ON
+					S_OI.IDX = S_OP.ORDER_IDX
+				WHERE
+					S_OI.COUNTRY = ? AND
+					S_OI.MEMBER_IDX = ? AND
+					S_OP.PRODUCT_TYPE NOT REGEXP 'V|D'
+			) AS J_PO ON
+			PR.IDX = J_PO.PRODUCT_IDX AND
+			J_PO.OPTION_IDX = ?
+		WHERE
+			PR.IDX = ? AND
+			PR.SALE_FLG = TRUE AND
+			PR.DEL_FLG = FALSE
+	";
+	
+	$db->query($select_shop_product_sql,$param_bind);
+	
+	foreach($db->fetch() as $data) {
+		$limit_member = array("0");
+		if ($data['LIMIT_MEMBER'] != null && strlen($data['LIMIT_MEMBER']) > 0) {
+			$limit_member = explode(",",$data['LIMIT_MEMBER']);
+		}
+		
+		$product_B = array(
+			'limit_member'		=>$limit_member,			//구매 제한 회원 등급
+			
+			'limit_id_flg'		=>$data['LIMIT_ID_FLG'],	//ID당 구매 제한
+			
+			'limit_flg_P'		=>$data['LIMIT_FLG_P'],		//상품별 구매 수량 제한 여부
+			'product_qty'		=>$data['PRODUCT_QTY'],		//상품별 구매 제한 수량
+			'order_qty_P'		=>$data['ORDER_QTY_P'],		//상품 기준 구매 수량
+			
+			'limit_flg_O'		=>$data['LIMIT_FLG_O'],		//옵션별 구매 수량 제한 여부
+			'option_qty'		=>$data['OPTION_QTY'],		//옵션별 구매 제한 수량
+			'order_qty_O'		=>$data['ORDER_QTY_O'],		//옵션 기준 구매 수량
+			
+			'remain_qty'		=>$data['REMAIN_QTY'],		//WCC 잔여재고
+			'limit_qty'			=>$data['LIMIT_QTY']		//구매 가능 수량
+		);
+	}
+	
+	return $product_B;
+}
+
+function checkLimit_set($param) {
+	$check_limit = array();
+	
+	$limit_member	= array();
+	$limit_id_flg	= false;
+	
+	$limit_flg_P	= false;
+	$product_qty	= null;
+	$order_qty_P	= null;
+	
+	$limit_flg_O	= false;
+	$option_qty		= 5;
+	$order_qty_O	= 5;
+	
+	$remain_qty		= null;
+	$limit_qty		= null;
+	
+	$tmp_member = array();
+	
+	foreach($param as $key => $limit) {
+		if ($key == 0) {
+			$limit_member	= $limit['limit_member'];
+			$limit_id_flg	= $limit['limit_id_flg'];
+			
+			$limit_flg_P	= $limit['limit_flg_P'];
+			$product_qty	= $limit['product_qty'];
+			$order_qty_P	= $limit['order_qty_P'];
+		} else {
+			array_merge($limit_member,$limit['limit_member']);
+			
+			if ($limit_id_flg == false && $limit['limit_id_flg'] == true) {
+				$limit_id_flg == true;
+			}
+			
+			if ($limit_flg_P == false && $limit['limit_flg_P'] == true) {
+				$limit_flg_P = true;
+			}
+			
+			if ($product_qty != null && ($product_qty > $limit['product_qty'])) {
+				$product_qty = $limit['product_qty'];
+			}
+			
+			if ($order_qty_P != null && ($order_qty_P > $limit['order_qty_P'])) {
+				$order_qty_P = $limit['order_qty_P'];
+			}
+			
+			if ($limit_flg_O == false && $limit['limit_flg_O'] == true) {
+				$limit_flg_O = true;
+			}
+			
+			if ($option_qty != null && ($option_qty > $limit['option_qty'])) {
+				$option_qty = $limit['option_qty'];
+			}
+			
+			if ($order_qty_O != null && ($order_qty_O > $limit['order_qty_O'])) {
+				$order_qty_O = $limit['order_qty_O'];
+			}
+			
+			if ($remain_qty == null || ($remain_qty > $limit['remain_qty'])) {
+				$remain_qty = $limit['remain_qty'];
+			}
+			
+			if ($limit_qty == null || ($limit_qty > $limit['limit_qty'])) {
+				$limit_qty = $limit['limit_qty'];
 			}
 		}
 	}
 	
-	if (!$err_cnt > 0) {
-		$check_result = true;
-	}
+	$check_limit = array(
+		'limit_member'		=>array_unique($limit_member),	//구매 제한 회원 등급
+		
+		'limit_id_flg'		=>$limit_id_flg,	//ID당 구매 제한
+		
+		'limit_flg_P'		=>$limit_flg_P,		//상품별 구매 수량 제한 여부
+		'product_qty'		=>$product_qty,		//상품별 구매 제한 수량
+		'order_qty_P'		=>$order_qty_P,		//상품 기준 구매 수량
+		
+		'limit_flg_O'		=>$limit_flg_O,		//옵션별 구매 수량 제한 여부
+		'option_qty'		=>$option_qty,		//옵션별 구매 제한 수량
+		'order_qty_O'		=>$order_qty_O,		//옵션 기준 구매 수량
+		
+		'remain_qty'		=>$remain_qty,		//WCC 잔여재고
+		'limit_qty'			=>$limit_qty		//구매 가능 수량
+	);
 	
-	return $check_result;
+	return $check_limit;
 }
 
-/* 상품 상세 페이지 쇼핑백 삼품 추가처리 */
-function addProductBasketInfo($db,$country,$member_idx,$member_id,$product_type,$product_idx,$option_info) {
-	if ($product_type == "B") {
-		/* 일반 상품 쇼핑백 추가 처리 */
-		for ($i=0; $i<count($option_info); $i++) {
-			$insert_basket_info_sql = "
-				INSERT INTO
-					BASKET_INFO
-				(
-					COUNTRY,
-					MEMBER_IDX,
-					MEMBER_ID,
-					PRODUCT_IDX,
-					PRODUCT_CODE,
-					PRODUCT_NAME,
-					OPTION_IDX,
-					BARCODE,
-					OPTION_NAME,
-					PRODUCT_QTY,
-					CREATER,
-					UPDATER
-				)
-				SELECT
-					'".$country."'		AS COUNTRY,
-					".$member_idx."		AS MEMBER_IDX,
-					'".$member_id."'	AS MEMBER_ID,
-					PR.IDX				AS PRODUCT_IDX,
-					PR.PRODUCT_CODE		AS PRODUCT_CODE,
-					PR.PRODUCT_NAME		AS PRODUCT_NAME,
-					OO.IDX				AS OPTION_IDX,
-					OO.BARCODE			AS BARCODE,
-					OO.OPTION_NAME		AS OPTION_NAME,
-					1					AS PRODUCT_QTY,
-					'".$member_id."'	AS CREATER,
-					'".$member_id."'	AS UPDATER
-				FROM
-					SHOP_PRODUCT PR
-					LEFT JOIN ORDERSHEET_OPTION OO ON
-					PR.ORDERSHEET_IDX = OO.ORDERSHEET_IDX
-				WHERE
-					PR.IDX = ".$product_idx." AND
-					OO.IDX = ".$option_info[$i]."
-			";
-			
-			$db->query($insert_basket_info_sql);
-		}
-	} else if ($product_type == "S") {
-		/* 세트 상품 쇼핑백 추가 처리 */
+function addBasket($db,$product_idx,$option_idx) {
+	$param_bind = array(
+		$_SERVER['HTTP_COUNTRY'],
+		$_SESSION['MEMBER_IDX'],
+		$_SESSION['MEMBER_ID'],
 		
-		/* 부모 세트 상품 추가 처리 */
-		$insert_basket_info_sql = "
+		$_SESSION['MEMBER_ID'],
+		$_SESSION['MEMBER_ID'],
+	);
+	
+	$table = " SHOP_PRODUCT PR ";
+	$where = " PR.IDX = ? ";
+	
+	array_push($param_bind,$product_idx);
+	
+	if (intval($option_idx) > 0) {
+		$column_option = "
+			OO.IDX				AS OPTION_IDX,
+			OO.BARCODE			AS BARCODE,
+			OO.OPTION_NAME		AS OPTION_NAME,
+		";
+		
+		$table .= "
+			LEFT JOIN SHOP_OPTION OO ON
+			PR.IDX = OO.PRODUCT_IDX
+		";
+		
+		$where .= " AND (OO.IDX = ?) ";
+		
+		array_push($param_bind,$option_idx);
+	} else {
+		$column_option = "
+			0					AS OPTION_IDX,
+			PR.PRODUCT_CODE		AS BARCODE,
+			'Set'				AS OPTION_NAME,
+		";
+	}
+	
+	$insert_basket_info_B_sql = "
+		INSERT INTO
+			BASKET_INFO
+		(
+			COUNTRY,
+			MEMBER_IDX,
+			MEMBER_ID,
+			PRODUCT_TYPE,
+			PRODUCT_IDX,
+			PRODUCT_CODE,
+			PRODUCT_NAME,
+			OPTION_IDX,
+			BARCODE,
+			OPTION_NAME,
+			PRODUCT_QTY,
+			CREATER,
+			UPDATER
+		)
+		SELECT
+			?					AS COUNTRY,
+			?					AS MEMBER_IDX,
+			?					AS MEMBER_ID,
+			PR.PRODUCT_TYPE		AS PRODUCT_TYPE,
+			PR.IDX				AS PRODUCT_IDX,
+			PR.PRODUCT_CODE		AS PRODUCT_CODE,
+			PR.PRODUCT_NAME		AS PRODUCT_NAME,
+			
+			".$column_option."
+			
+			1					AS PRODUCT_QTY,
+			?					AS CREATER,
+			?					AS UPDATER
+		FROM
+			".$table."
+		WHERE
+			".$where."
+	";
+	
+	$db->query($insert_basket_info_B_sql,$param_bind);
+	
+	$basket_idx = $db->last_id();
+	
+	return $basket_idx;
+}
+
+function addBasket_set($db,$basket_idx,$option_info) {
+	foreach($option_info as $set) {
+		$param_bind = array(
+			$_SERVER['HTTP_COUNTRY'],
+			$_SESSION['MEMBER_IDX'],
+			$_SESSION['MEMBER_ID'],
+			$basket_idx,
+			$_SESSION['MEMBER_ID'],
+			$_SESSION['MEMBER_ID'],
+			$set['product_idx'],
+			$set['option_idx']
+		);
+		
+		$insert_basket_info_S_sql = "
 			INSERT INTO
 				BASKET_INFO
 			(
 				COUNTRY,
 				MEMBER_IDX,
 				MEMBER_ID,
-				PRODUCT_IDX,
 				PRODUCT_TYPE,
+				PRODUCT_IDX,
+				PARENT_IDX,
 				PRODUCT_CODE,
 				PRODUCT_NAME,
 				OPTION_IDX,
@@ -454,231 +469,32 @@ function addProductBasketInfo($db,$country,$member_idx,$member_id,$product_type,
 				UPDATER
 			)
 			SELECT
-				'".$country."'		AS COUNTRY,
-				".$member_idx."		AS MEMBER_IDX,
-				'".$member_id."'	AS MEMBER_ID,
-				PR.IDX				AS PRODUCT_IDX,
+				?					AS COUNTRY,
+				?					AS MEMBER_IDX,
+				?					AS MEMBER_ID,
 				PR.PRODUCT_TYPE		AS PRODUCT_TYPE,
+				PR.IDX				AS PRODUCT_IDX,
+				?					AS PARENT_IDX,
 				PR.PRODUCT_CODE		AS PRODUCT_CODE,
 				PR.PRODUCT_NAME		AS PRODUCT_NAME,
-				0					AS OPTION_IDX,
-				PR.PRODUCT_CODE		AS BARCODE,
-				'Set'				AS OPTION_NAME,
+				OO.IDX				AS OPTION_IDX,
+				OO.BARCODE			AS BARCODE,
+				OO.OPTION_NAME		AS OPTION_NAME,
 				1					AS PRODUCT_QTY,
-				'".$member_id."'	AS CREATER,
-				'".$member_id."'	AS UPDATER
+				?					AS CREATER,
+				?					AS UPDATER
 			FROM
 				SHOP_PRODUCT PR
+				
+				LEFT JOIN SHOP_OPTION OO ON
+				PR.IDX = OO.PRODUCT_IDX
 			WHERE
-				PR.IDX = ".$product_idx."
+				PR.IDX = ? AND
+				OO.IDX = ?
 		";
 		
-		$db->query($insert_basket_info_sql);
-		
-		$parent_idx = $db->last_id();
-		if (!empty($parent_idx)) {
-			/* 자식 세트 상품 추가 처리 */
-			for ($i=0; $i<count($option_info); $i++) {
-				$set_product_idx = $option_info[$i]['product_idx'];
-				$set_option_idx = $option_info[$i]['option_idx'];
-				
-				$insert_basket_set_product_sql = "
-					INSERT INTO
-						BASKET_INFO
-					(
-						COUNTRY,
-						MEMBER_IDX,
-						MEMBER_ID,
-						PRODUCT_IDX,
-						PARENT_IDX,
-						PRODUCT_CODE,
-						PRODUCT_NAME,
-						OPTION_IDX,
-						BARCODE,
-						OPTION_NAME,
-						PRODUCT_QTY,
-						CREATER,
-						UPDATER
-					)
-					SELECT
-						'".$country."'		AS COUNTRY,
-						".$member_idx."		AS MEMBER_IDX,
-						'".$member_id."'	AS MEMBER_ID,
-						PR.IDX				AS PRODUCT_IDX,
-						".$parent_idx."		AS PARENT_IDX,
-						PR.PRODUCT_CODE		AS PRODUCT_CODE,
-						PR.PRODUCT_NAME		AS PRODUCT_NAME,
-						OO.IDX				AS OPTION_IDX,
-						OO.BARCODE			AS BARCODE,
-						OO.OPTION_NAME		AS OPTION_NAME,
-						1					AS PRODUCT_QTY,
-						'".$member_id."'	AS CREATER,
-						'".$member_id."'	AS UPDATER
-					FROM
-						SHOP_PRODUCT PR
-						LEFT JOIN ORDERSHEET_OPTION OO ON
-						PR.ORDERSHEET_IDX = OO.ORDERSHEET_IDX
-					WHERE
-						PR.IDX = ".$set_product_idx." AND
-						OO.IDX = ".$set_option_idx."
-				";
-				
-				$db->query($insert_basket_set_product_sql);
-			}
-		}
+		$db->query($insert_basket_info_S_sql,$param_bind);
 	}
 }
 
-/* 위시 리스트 페이지 쇼핑백 추가 처리 */
-function addWishListBasketInfo($db,$country,$member_idx,$member_id,$wish_info) {
-	for ($i=0; $i<count($wish_info); $i++) {
-		$product_type = $wish_info[$i]['product_type'];
-		$wish_idx = $wish_info[$i]['wish_idx'];
-		
-		$json_option_info = json_decode($wish_info[$i]['option_info'],true);
-		$option_info = json_decode($json_option_info,true);
-		
-		if ($product_type == "B") {
-			for ($j=0; $j<count($option_info); $j++) {
-				$insert_basket_info_sql = "
-					INSERT INTO
-						BASKET_INFO
-					(
-						COUNTRY,
-						MEMBER_IDX,
-						MEMBER_ID,
-						PRODUCT_IDX,
-						PRODUCT_CODE,
-						PRODUCT_NAME,
-						OPTION_IDX,
-						BARCODE,
-						OPTION_NAME,
-						PRODUCT_QTY,
-						CREATER,
-						UPDATER
-					)
-					SELECT
-						'".$country."'		AS COUNTRY,
-						".$member_idx."		AS MEMBER_IDX,
-						'".$member_id."'	AS MEMBER_ID,
-						PR.IDX				AS PRODUCT_IDX,
-						PR.PRODUCT_CODE		AS PRODUCT_CODE,
-						PR.PRODUCT_NAME		AS PRODUCT_NAME,
-						OO.IDX				AS OPTION_IDX,
-						OO.BARCODE			AS BARCODE,
-						OO.OPTION_NAME		AS OPTION_NAME,
-						1					AS PRODUCT_QTY,
-						'".$member_id."'	AS CREATER,
-						'".$member_id."'	AS UPDATER
-					FROM
-						WHISH_LIST WL
-						LEFT JOIN SHOP_PRODUCT PR ON
-						WL.PRODUCT_IDX = PR.IDX
-						LEFT JOIN ORDERSHEET_OPTION OO ON
-						PR.ORDERSHEET_IDX = OO.ORDERSHEET_IDX
-					WHERE
-						WL.IDX = ".$wish_idx." AND
-						OO.IDX = ".$option_info[$j]."
-				";
-				
-				$db->query($insert_basket_info_sql);
-			}
-		} else if ($product_type == "S") {
-			$insert_basket_info_sql = "
-				INSERT INTO
-					BASKET_INFO
-				(
-					COUNTRY,
-					MEMBER_IDX,
-					MEMBER_ID,
-					PRODUCT_IDX,
-					PRODUCT_TYPE,
-					PRODUCT_CODE,
-					PRODUCT_NAME,
-					OPTION_IDX,
-					BARCODE,
-					OPTION_NAME,
-					PRODUCT_QTY,
-					CREATER,
-					UPDATER
-				)
-				SELECT
-					'".$country."'		AS COUNTRY,
-					".$member_idx."		AS MEMBER_IDX,
-					'".$member_id."'	AS MEMBER_ID,
-					PR.IDX				AS PRODUCT_IDX,
-					PR.PRODUCT_TYPE		AS PRODUCT_TYPE,
-					PR.PRODUCT_CODE		AS PRODUCT_CODE,
-					PR.PRODUCT_NAME		AS PRODUCT_NAME,
-					0					AS OPTION_IDX,
-					PR.PRODUCT_CODE		AS BARCODE,
-					'Set'				AS OPTION_NAME,
-					1					AS PRODUCT_QTY,
-					'".$member_id."'	AS CREATER,
-					'".$member_id."'	AS UPDATER
-				FROM
-					WHISH_LIST WL
-					LEFT JOIN SHOP_PRODUCT PR ON
-					WL.PRODUCT_IDX = PR.IDX
-				WHERE
-					WL.IDX = ".$wish_idx."
-			";
-			
-			$db->query($insert_basket_info_sql);
-			
-			$parent_idx = $db->last_id();
-			
-			if (!empty($parent_idx)) {
-				for ($k=0; $k<count($option_info); $k++) {
-					$set_product_idx = $option_info[$k]['product_idx'];
-					$set_option_idx = $option_info[$k]['option_idx'];
-					
-					$insert_basket_set_product_sql = "
-						INSERT INTO
-							BASKET_INFO
-						(
-							COUNTRY,
-							MEMBER_IDX,
-							MEMBER_ID,
-							PRODUCT_IDX,
-							PRODUCT_TYPE,
-							PARENT_IDX,
-							PRODUCT_CODE,
-							PRODUCT_NAME,
-							OPTION_IDX,
-							BARCODE,
-							OPTION_NAME,
-							PRODUCT_QTY,
-							CREATER,
-							UPDATER
-						)
-						SELECT
-							'".$country."'		AS COUNTRY,
-							".$member_idx."		AS MEMBER_IDX,
-							'".$member_id."'	AS MEMBER_ID,
-							PR.IDX				AS PRODUCT_IDX,
-							PR.PRODUCT_TYPE		AS PRODUCT_TYPE,
-							".$parent_idx."		AS PARENT_IDX,
-							PR.PRODUCT_CODE		AS PRODUCT_CODE,
-							PR.PRODUCT_NAME		AS PRODUCT_NAME,
-							OO.IDX				AS OPTION_IDX,
-							OO.BARCODE			AS BARCODE,
-							OO.OPTION_NAME		AS OPTION_NAME,
-							1					AS PRODUCT_QTY,
-							'".$member_id."'	AS CREATER,
-							'".$member_id."'	AS UPDATER
-						FROM
-							SHOP_PRODUCT PR
-							LEFT JOIN ORDERSHEET_OPTION OO ON
-							PR.ORDERSHEET_IDX = OO.ORDERSHEET_IDX
-						WHERE
-							PR.IDX = ".$set_product_idx." AND
-							OO.IDX = ".$set_option_idx."
-					";
-					
-					$db->query($insert_basket_set_product_sql);
-				}
-			}
-		}
-	}
-}
+?>

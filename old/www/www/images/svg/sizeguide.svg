@@ -1,0 +1,24 @@
+<svg data-name="사이즈가이드 아이콘" xmlns="http://www.w3.org/2000/svg" width="15.833" height="11.417" viewBox="0 0 15.833 11.417">
+    <defs>
+        <clipPath id="mlrjuev18a">
+            <path data-name="사각형 2310" style="fill:none" d="M0 0h15.833v11.417H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 7760">
+        <g data-name="그룹 7759" style="clip-path:url(#mlrjuev18a)">
+            <path data-name="사각형 2309" transform="translate(.618 4.17)" style="stroke-miterlimit:10;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0h14.799v6.83H0z"/>
+        </g>
+    </g>
+    <path data-name="선 2685" transform="translate(2.901 4.346)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0v3.903"/>
+    <path data-name="선 2686" transform="translate(5.459 4.346)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0v1.951"/>
+    <path data-name="선 2687" transform="translate(8.018 4.346)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0v3.903"/>
+    <path data-name="선 2688" transform="translate(10.575 4.346)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0v1.951"/>
+    <path data-name="선 2689" transform="translate(13.133 4.346)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0v3.903"/>
+    <g data-name="그룹 7762">
+        <g data-name="그룹 7761" style="clip-path:url(#mlrjuev18a)">
+            <path data-name="선 2690" transform="translate(15.417)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 2.486V0"/>
+            <path data-name="선 2691" transform="translate(.417)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0v2.486"/>
+            <path data-name="선 2692" transform="translate(.417 1.243)" style="stroke-linejoin:round;stroke:#343434;stroke-width:.833px;fill:none" d="M0 0h15"/>
+        </g>
+    </g>
+</svg>

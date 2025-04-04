@@ -15,39 +15,33 @@
  +=============================================================================
 */
 
-if($country != null){
-	$select_notice_sql = "
+if ($country != null) {
+	$select_board_notice_sql = "
 		SELECT 
-			CM.CODE_NAME	AS CODE_NAME,
-			PB.IDX			AS NOTICE_IDX,
-			PB.COUNTRY		AS COUNTRY,
-			PB.TITLE		AS TITLE,
-			REPLACE(
-				PB.CONTENTS,
-				'/scripts/smarteditor2/upload/',
-				'https://wcc.fivespace.zone/scripts/smarteditor2/upload/'
-			)				AS CONTENTS,
-			PB.FIX_FLG		AS FIX_FLG
+			BN.IDX				AS NOTICE_IDX,
+			BN.COUNTRY			AS COUNTRY,
+			BN.BOARD_TITLE		AS BOARD_TITLE,
+			BN.BOARD_CONTENTS	AS BOARD_CONTENTS
 		FROM 
-			PAGE_BOARD PB
-			LEFT JOIN CODE_MST CM ON 	
-			PB.CATEGORY = CM.CODE_VALUE
+			BOARD_NOTICE BN
 		WHERE 
-			PB.DEL_FLG = FALSE AND
-			PB.BOARD_TYPE = 'NTC' AND
-			PB.COUNTRY = '".$country."'
+			BN.COUNTRY = ? AND
+			BN.DISPLAY_FLG = TRUE AND
+            (NOW() BETWEEN BN.DISPLAY_START_DATE AND BN.DISPLAY_END_DATE) AND
+			BN.DEL_FLG = FALSE
+		ORDER BY
+			BN.FIX_FLG DESC, BN.DISPLAY_NUM ASC
 	";
     
-	$db->query($select_notice_sql);
+	$db->query($select_board_notice_sql,array($country));
 
 	foreach($db->fetch() as $data){
+		$board_contents = str_replace('/scripts/smarteditor2/upload/',smart_editor,$data['BOARD_CONTENTS']);
 		$json_result['data'][] = array(
-			'code_name'         => $data['CODE_NAME'],
-			'notice_idx'        => $data['NOTICE_IDX'],
-			'country'           => $data['COUNTRY'],
-			'title'             => $data['TITLE'],
-			'contents'          => $data['CONTENTS'],
-			'fix_flg'           => $data['FIX_FLG'],
+			'notice_idx'		=>$data['NOTICE_IDX'],
+			'country'			=>$data['COUNTRY'],
+			'board_title'		=>$data['BOARD_TITLE'],
+			'board_contents'	=>$board_contents
 		);
 	}
 }

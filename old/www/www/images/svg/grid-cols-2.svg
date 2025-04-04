@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 8">
+    <g data-name="2칸보기">
+        <g data-name="사각형 1330" style="stroke:#343434;fill:#fff">
+            <path style="stroke:none" d="M0 0h16v8H0z"/>
+            <path style="fill:none" d="M.5.5h15v7H.5z"/>
+        </g>
+        <path data-name="선 1453" transform="translate(8 .5)" style="fill:none;stroke:#343434" d="M0 0v7"/>
+    </g>
+</svg>

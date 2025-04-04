@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="39.065" height="42.831" viewBox="0 0 39.065 42.831">
+    <defs>
+        <clipPath id="e3y4yhqd8a">
+            <path data-name="패스 6973" d="m36.9 28.076-11.048-1.409-1.467-7.356 2.776-11.149L20.667.536l-8.4 1.136-2.948 14.143 5.406 6.539-.519 2.829-8.97-1.145-4.629 4.628-.1 14.7h35.58l3.485-11.679z" transform="translate(946.286 121.103)" style="fill:none;stroke:#fff;stroke-miterlimit:10"/>
+        </clipPath>
+    </defs>
+    <g data-name="마스크 그룹 16" transform="translate(-946.789 -121.639)" style="clip-path:url(#e3y4yhqd8a)">
+        <circle data-name="타원 70" cx="25" cy="25" r="25" transform="translate(941 113)" style="fill:#343434"/>
+    </g>
+</svg>

@@ -42,13 +42,14 @@ function get_category_node($father_no, $country, $db) {
 		FROM
 			FAQ_CATEGORY FC
 		WHERE
-			FATHER_NO = ".$father_no." AND
-			LANG = '".$country."'
+			FATHER_NO	= ? AND
+			LANG		= ? AND
+			STATUS		= 'Y'
 		ORDER BY
 			SEQ, IDX ASC
 	";
 	
-	$db->query($select_category_sql);
+	$db->query($select_category_sql,array($father_no,$country,));
 
 	foreach($db->fetch() as $data) {
 		$no = intval($data['FC_IDX']);

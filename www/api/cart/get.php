@@ -16,256 +16,349 @@
  +=============================================================================
 */
 
-include_once $_CONFIG['PATH']['API'].'_legacy/common/check.php';
+include_once $_CONFIG['PATH']['API'].'_legacy/common.php';
 
-$member_idx = 0;
-if (isset($_SESSION['MEMBER_IDX'])) {
-	$member_idx = $_SESSION['MEMBER_IDX'];
-}
-
-if (!isset($country) || $member_idx == 0) {
-	$json_result['code'] = 401;
-	$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0018', array());
+if (isset($_SERVER['HTTP_COUNTRY']) && isset($_SESSION['MEMBER_IDX'])) {
+	$discount_per = 0;
 	
-	echo json_encode($json_result);
-	exit;
-}
+	$member_per = checkMember_percentage($db);
+	if (sizeof($member_per) > 0 && isset($member_per['discount_per'])) {
+		$discount_per = $member_per['discount_per'];
+	}
+	
+	$basket_info = array();
+	
+	$t_basket_price = 0;
 
-if ($member_idx > 0 && $country != null) {
-	$select_basket_sql = "
+	$select_basket_info_sql = "
 		SELECT
 			BI.IDX						AS BASKET_IDX,
+			BI.COUNTRY					AS COUNTRY,
 			BI.PRODUCT_IDX				AS PRODUCT_IDX,
 			BI.PRODUCT_TYPE				AS PRODUCT_TYPE,
 			BI.PARENT_IDX				AS PARENT_IDX,
 			PR.SET_TYPE					AS SET_TYPE,
-			(
-				SELECT
-					S_PI.IMG_LOCATION
-				FROM
-					PRODUCT_IMG S_PI
-				WHERE
-					S_PI.PRODUCT_IDX = BI.PRODUCT_IDX AND
-					S_PI.IMG_TYPE = 'P' AND
-					S_PI.IMG_SIZE = 'S'
-				ORDER BY
-					S_PI.IDX ASC
-				LIMIT
-					0,1
-			)							AS PRODUCT_IMG,
+			J_PI.IMG_LOCATION			AS IMG_LOCATION,
+			
 			BI.PRODUCT_NAME				AS PRODUCT_NAME,
 			PR.COLOR					AS COLOR,
 			PR.COLOR_RGB				AS COLOR_RGB,
-			BI.OPTION_IDX				AS OPTION_IDX,
-			BI.OPTION_NAME				AS OPTION_NAME,
-			PR.PRICE_".$country."		AS PRICE,
-			PR.DISCOUNT_".$country."	AS DISCOUNT,
-			PR.SALES_PRICE_".$country."	AS SALES_PRICE,
-			PR.SOLD_OUT_QTY				AS SOLD_OUT_QTY,
-			PR.REFUND_FLG				AS REFUND_FLG,
-			PR.REFUND_MSG_FLG			AS REFUND_MSG_FLG,
-			PR.SOLD_OUT_FLG				AS SOLD_OUT_FLG,
+			IFNULL(
+				OO.OPTION_NAME,'Set'
+			)							AS OPTION_NAME,
+			
+			PR.PRICE_KR					AS PRICE_KR,
+			PR.DISCOUNT_KR				AS DISCOUNT_KR,
+			PR.SALES_PRICE_KR			AS SALES_PRICE_KR,
+			
+			PR.PRICE_EN					AS PRICE_EN,
+			PR.DISCOUNT_EN				AS DISCOUNT_EN,
+			PR.SALES_PRICE_EN			AS SALES_PRICE_EN,
+			
+			PR.DISCOUNT_FLG				AS DISCOUNT_FLG,
+			IFNULL(
+				J_PD.DISCOUNT_PER,0
+			)							AS DISCOUNT_PER,
 			
 			BI.PRODUCT_QTY				AS BASKET_QTY,
-			BI.REORDER_FLG				AS REORDER_FLG
+			PR.SOLD_OUT_QTY				AS SOLD_OUT_QTY,
+			IFNULL(
+				V_ST.REMAIN_WCC_QTY,0
+			)							AS REMAIN_QTY,
+			IFNULL(
+				V_ST.PURCHASEABLE_QTY,0
+			)							AS LIMIT_QTY
 		FROM
 			BASKET_INFO BI
+			
 			LEFT JOIN SHOP_PRODUCT PR ON
 			BI.PRODUCT_IDX = PR.IDX
+			
+			LEFT JOIN SHOP_OPTION OO ON
+			BI.OPTION_IDX = OO.IDX
+			
+			LEFT JOIN (
+				SELECT
+					S_PD.PRODUCT_IDX	AS PRODUCT_IDX,
+					S_PD.DISCOUNT_PER	AS DISCOUNT_PER
+				FROM
+					PRODUCT_DISCOUNT S_PD
+				WHERE
+					S_PD.LEVEL_IDX = ?
+			) AS J_PD ON
+			PR.IDX = J_PD.PRODUCT_IDX
+			
+			LEFT JOIN (
+				SELECT
+					S_PI.PRODUCT_IDX	AS PRODUCT_IDX,
+					S_PI.IMG_LOCATION	AS IMG_LOCATION
+				FROM
+					PRODUCT_IMG S_PI
+				WHERE
+					S_PI.IMG_TYPE = 'P' AND
+					S_PI.IMG_SIZE = 'S' AND
+					S_PI.DEL_FLG = FALSE
+				GROUP BY
+					S_PI.PRODUCT_IDX
+			) AS J_PI ON
+			PR.IDX = J_PI.PRODUCT_IDX
+			
+			LEFT JOIN V_STOCK V_ST ON
+			PR.IDX = V_ST.PRODUCT_IDX AND
+			BI.OPTION_IDX = V_ST.OPTION_IDX
 		WHERE
-			BI.COUNTRY = '".$country."' AND
-			BI.MEMBER_IDX = ".$member_idx." AND
+			BI.MEMBER_IDX = ? AND
 			BI.PARENT_IDX = 0 AND
 			BI.DEL_FLG = FALSE AND
+			
+			PR.SALE_FLG = TRUE AND
 			PR.DEL_FLG = FALSE
 		ORDER BY
 			BI.IDX DESC
 	";
 	
-	$db->query($select_basket_sql);
+	$db->query($select_basket_info_sql,array($_SESSION['LEVEL_IDX'],$_SESSION['MEMBER_IDX']));
 	
-	$basket_st_info = array();	//재고 있음 | 품절 임박 상품 정보
-	$basket_so_info = array();	//재고 없음 상품 정보
+	$parent_idx = array();
 	
 	foreach($db->fetch() as $data) {
-		$basket_idx = $data['BASKET_IDX'];
+		array_push($parent_idx,$data['BASKET_IDX']);
 		
-		$product_idx = $data['PRODUCT_IDX'];
-		$option_idx = $data['OPTION_IDX'];
-		$product_type = $data['PRODUCT_TYPE'];
+		/* 상품 재고상태 설정 */
+		$stock_status = "STIN";
 		
-		$sold_out_qty = $data['SOLD_OUT_QTY'];
+		if ($data['LIMIT_QTY'] == 0) {
+			$stock_status = "STSO";
+		} else {
+			if ($data['REMAIN_QTY'] == 0) {
+				$stock_status = "STSO";
+			} else {
+				if ($data['REMAIN_QTY'] <= $data['SOLD_OUT_QTY']) {
+					$stock_status = "STCL";
+				}
+			}
+		}
+
+		$price			= $data['PRICE_'.$_SERVER['HTTP_COUNTRY']];
+		$t_price		= number_format($data['PRICE_'.$_SERVER['HTTP_COUNTRY']]);
+		$sales_price	= $data['SALES_PRICE_'.$_SERVER['HTTP_COUNTRY']];
+		$t_sales_price	= number_format($data['SALES_PRICE_'.$_SERVER['HTTP_COUNTRY']]);
 		
-		if (!empty($product_idx)) {
-			$stock_status = null;
+		if ($_SERVER['HTTP_COUNTRY'] == "EN") {
+			$price			= round($data['PRICE_'.$_SERVER['HTTP_COUNTRY']],1);
+			$t_price		= number_format($data['PRICE_'.$_SERVER['HTTP_COUNTRY']],1);
+			$sales_price	= round($data['SALES_PRICE_'.$_SERVER['HTTP_COUNTRY']],1);
+			$t_sales_price	= number_format($data['SALES_PRICE_'.$_SERVER['HTTP_COUNTRY']],1);
+		}
+		
+		$member_discount = $data['SALES_PRICE_'.$_SERVER['HTTP_COUNTRY']];
+		if ($data['DISCOUNT_FLG'] == true && $data['DISCOUNT_PER'] > 0) {
+			$member_discount = $sales_price * ($data['DISCOUNT_PER'] / 100);
+		} else {
+			$member_discount = $sales_price * ($discount_per / 100);
+		}
+
+		$t_member_discount = "0";
+		if ($member_discount > 0) {
+			if ($_SERVER['HTTP_COUNTRY'] == "KR") {
+				$t_member_discount = number_format($member_discount);
+			} else if ($_SERVER['HTTP_COUNTRY'] == "EN") {
+				$t_member_discount = number_format($member_discount,1);
+			}
+		}
+
+		$basket_price = $data['BASKET_QTY'] * $sales_price;
+		$t_basket_price += $basket_price;
+		if ($_SERVER['HTTP_COUNTRY'] == "KR") {
+			$basket_price = number_format($basket_price);
+		} else if ($_SERVER['HTTP_COUNTRY'] == "EN") {
+			$basket_price = number_format($basket_price,1);
+		}
+		
+		$basket_info[] = array(
+			'basket_idx'		=>$data['BASKET_IDX'],
+			'product_idx'		=>$data['PRODUCT_IDX'],
+			'product_type'		=>$data['PRODUCT_TYPE'],
+			'set_type'			=>$data['SET_TYPE'],
+			'product_img'		=>$data['IMG_LOCATION'],
+			'product_name'		=>$data['PRODUCT_NAME'],
+			'color'				=>$data['COLOR'],
+			'color_rgb'			=>$data['COLOR_RGB'],
+			'option_name'		=>$data['OPTION_NAME'],
 			
-			$set_product_info = array();
+			'price'				=>$price,
+			't_price'			=>$t_price,
+			'discount'			=>$data['DISCOUNT_'.$_SERVER['HTTP_COUNTRY']],
+			'sales_price'		=>$sales_price,
+			't_sales_price'		=>$t_sales_price,
 			
-			if ($product_type == "B") {
+			'member_discount'	=>$member_discount,
+			't_member_discount'	=>$t_member_discount,
+			
+			'stock_status'		=>$stock_status,
+			'basket_qty'		=>$data['BASKET_QTY'],
+			'basket_price'		=>$basket_price
+		);
+	}
+	
+	if (count($parent_idx) > 0) {
+		$basket_child = getBasket_child($db,$parent_idx);
+		if (sizeof($basket_info) > 0 && sizeof($basket_child) > 0) {
+			foreach($basket_info as $key => $basket) {
+				$parent_idx = $basket['basket_idx'];
+				$parent_status = $basket['stock_status'];
 				
-				$product_qty = getPurchaseableQtyByIdx($db,$product_idx,$option_idx);
-				$basket_qty = $data['BASKET_QTY'];
-				
-				$stock_status = calcProductStock($product_qty,$basket_qty,$sold_out_qty);
-			} else if ($product_type == "S") {
-				$select_set_product_sql = "
-					SELECT
-						BI.PARENT_IDX				AS PARENT_IDX,
-						(
-							SELECT
-								S_PI.IMG_LOCATION
-							FROM
-								PRODUCT_IMG S_PI
-							WHERE
-								S_PI.PRODUCT_IDX = BI.PRODUCT_IDX AND
-								S_PI.IMG_TYPE = 'P' AND
-								S_PI.IMG_SIZE = 'S'
-							ORDER BY
-								S_PI.IDX ASC
-							LIMIT
-								0,1
-						)							AS PRODUCT_IMG,
-						BI.PRODUCT_NAME				AS PRODUCT_NAME,
-						PR.COLOR					AS COLOR,
-						PR.COLOR_RGB				AS COLOR_RGB,
-						BI.OPTION_NAME				AS OPTION_NAME,
+				if (isset($basket_child[$parent_idx])) {
+					$cnt_soldout = 0;
+					
+					$tmp_child = $basket_child[$parent_idx];
+					foreach($tmp_child as $child) {
+						$basket_qty = $child['basket_qty'];
+						$sold_out_qty = $child['sold_out_qty'];
+						$remain_qty = $child['remain_qty'];
+						$limit_qty	= $child['limit_qty'];
 						
-						BI.PRODUCT_QTY				AS BASKET_QTY
-					FROM
-						BASKET_INFO BI
-						LEFT JOIN SHOP_PRODUCT PR ON
-						BI.PRODUCT_IDX = PR.IDX
-					WHERE
-						BI.PARENT_IDX = ".$basket_idx." AND
-						BI.DEL_FLG = FALSE AND
-						PR.DEL_FLG = FALSE
-				";
-				
-				$db->query($select_set_product_sql);
-				
-				$soldout_cnt = 0;
-				foreach($db->fetch() as $data_set) {
-					$sold_out_qty = 0;
-					
-					$set_product_idx = $data_set['PRODUCT_IDX'];
-					$set_option_idx = $data_set['OPTION_IDX'];
-					
-					$product_qty = getPurchaseableQtyByIdx($db,$set_product_idx,$set_option_idx);
-					$basket_qty = $data_set['BASKET_QTY'];
-					
-					$tmp_stock_status = calcProductStock($product_qty,$basket_qty,$sold_out_qty);
-					if ($tmp_stock_status == "STSO") {
-						$soldout_cnt++;
+						$child_status = "STIN";
+						if ($limit_qty == 0) {
+							$child_status = "STSO";
+						} else {
+							if ($remain_qty == 0) {
+								$child_status = "STSO";
+							} else {
+								if ($remain_qty <= $sold_out_qty) {
+									$child_status = "STCL";
+								}
+							}
+						}
+						
+						if ($child_status == "STSO") {
+							$cnt_soldout++;
+						}
 					}
 					
-					$set_product_info[] = array(
-						'parent_idx'		=>$data_set['PARENT_IDX'],
-						'product_img'		=>$data_set['PRODUCT_IMG'],
-						'product_name'		=>$data_set['PRODUCT_NAME'],
-						'color'				=>$data_set['COLOR'],
-						'color_rgb'			=>$data_set['COLOR_RGB'],
-						'option_name'		=>$data_set['OPTION_NAME'],
-						'stock_status'		=>$tmp_stock_status
-					);
-				}
-				
-				if ($soldout_cnt > 0) {
-					$stock_status = "STSO";
-				} else {
-					$stock_status = "STIN";
-				}
-			}
-			
-			if ($stock_status == "STSH" || $stock_status == "STIN" || $stock_status == "STCL") {
-				//[재고 있음] 장바구니 상품 데이터
-				$basket_st_info[] = array(
-					'basket_idx'		=>$data['BASKET_IDX'],
-					'product_idx'		=>$data['PRODUCT_IDX'],
-					'product_type'		=>$data['PRODUCT_TYPE'],
-					'set_type'			=>$data['SET_TYPE'],
-					'product_img'		=>$data['PRODUCT_IMG'],
-					'product_name'		=>$data['PRODUCT_NAME'],
-					'color'				=>$data['COLOR'],
-					'color_rgb'			=>$data['COLOR_RGB'],
-					'option_idx'		=>$data['OPTION_IDX'],
-					'option_name'		=>$data['OPTION_NAME'],
-					'price'				=>$data['PRICE'],
-					'price_txt'				=>number_format($data['PRICE']),
-					'discount'			=>$data['DISCOUNT'],
-					'sales_price'		=>$data['SALES_PRICE'],
-					'sales_price_txt'		=>number_format($data['SALES_PRICE']),
-					'product_qty'		=>$product_qty,
-					'basket_qty'		=>$data['BASKET_QTY'],
-					'stock_status'		=>$stock_status,
-					'reorder_flg'		=>$data['REORDER_FLG'],
-					'refund_flg'		=>$data['REFUND_FLG'],
-					'refund_msg_flg'	=>$data['REFUND_MSG_FLG'],
-					'sold_out_flg'		=>$data['SOLD_OUT_FLG'],
+					if ($cnt_soldout > 0) {
+						$parent_status = "STSO";
+					} else {
+						$parent_status = "STIN";
+					}
 					
-					'set_product_info'	=>$set_product_info
-				);
-			} else if ($stock_status == "STSO") {
-				$product_color = getProductColor($db,$product_idx);
-				
-				$product_size = getProductSize($db,$data['PRODUCT_TYPE'],$data['SET_TYPE'],$product_idx);
-				
-				//[재고 없음] 장바구니 상품 데이터
-				$basket_so_info[] = array(
-					'basket_idx'		=>$data['BASKET_IDX'],
-					'product_idx'		=>$data['PRODUCT_IDX'],
-					'product_type'		=>$data['PRODUCT_TYPE'],
-					'set_type'			=>$data['SET_TYPE'],
-					'product_img'		=>$data['PRODUCT_IMG'],
-					'product_name'		=>$data['PRODUCT_NAME'],
-					'color'				=>$data['COLOR'],
-					'color_rgb'			=>$data['COLOR_RGB'],
-					'option_idx'		=>$data['OPTION_IDX'],
-					'option_name'		=>$data['OPTION_NAME'],
-					'price'				=>$data['PRICE'],
-					'discount'			=>$data['DISCOUNT'],
-					'sales_price'		=>$data['SALES_PRICE'],
-					'product_qty'		=>$product_qty,
-					'basket_qty'		=>$data['BASKET_QTY'],
-					'stock_status'		=>$stock_status,
-					'product_color'		=>$product_color,
-					'product_size'		=>$product_size,
-					'reorder_flg'		=>$data['REORDER_FLG'],
-					'refund_flg'		=>$data['REFUND_FLG'],
-					'refund_msg_flg'	=>$data['REFUND_MSG_FLG'],
-					'sold_out_flg'		=>$data['SOLD_OUT_FLG'],
-					
-					'set_product_info'	=>$set_product_info
-				);
+					$basket_info[$key]['set_product'] = $basket_child[$parent_idx];
+					$basket_info[$key]['stock_status'] = $parent_status;
+				}
 			}
 		}
 	}
 	
-	$basket_cnt = $db->count("BASKET_INFO","COUNTRY = '".$country."' AND MEMBER_IDX = ".$member_idx." AND PARENT_IDX = 0 AND DEL_FLG = FALSE");
+	$cnt_basket = $db->count("BASKET_INFO","MEMBER_IDX = ? AND PARENT_IDX = 0 AND DEL_FLG = FALSE",array($_SESSION['MEMBER_IDX']));
 	
+	$default_address = false;
+	$price_delivery = 0;
+	
+	$order_to = getOrder_to($db,$_SERVER['HTTP_COUNTRY'],null);
+	if ($order_to != null) {
+		$default_address = true;
+
+		if ($_SERVER['HTTP_COUNTRY'] == "KR") {
+			/* 한국몰 && 상품 판매금액 80,000 KRW 미만 */
+			$price_delivery = $order_to['delivery_price'];
+		} else if ($_SERVER['HTTP_COUNTRY'] == "EN") {
+			/* 영문몰 && 상품 판매금액 300 USD 미만 */
+			$price_delivery = $order_to['delivery_price'];
+		}
+	}
+
 	$json_result['data'] = array(
-		'basket_cnt'		=>$basket_cnt,
-		'basket_st_info'	=>$basket_st_info,
-		'basket_so_info'	=>$basket_so_info
+		'basket_cnt'		=>$cnt_basket,
+		'basket_info'		=>$basket_info,
+
+		'default_address'	=>$default_address,
+		'price_delivery'	=>$price_delivery
 	);
+} else {
+	$json_result['code'] = 401;
+	$json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0018', array());
+	
+	echo json_encode($json_result);
+	exit;
 }
 
-function calcProductStock($product_qty,$basket_qty,$sold_out_qty) {
-	$stock_status = null;
+function getBasket_child($db,$parent_idx) {
+	$basket_child = array();
 	
-	if ($product_qty > 0) {
-		if ($basket_qty >= $product_qty) {
-			$stock_status = "STSH";		//재고 부족 (Stock shortage)
-		} else {
-			if ($product_qty >= $sold_out_qty) {
-				$stock_status = "STIN";	//재고 있음 (Stock in)
-			} else {
-				$stock_status = "STCL";	//품절 임박 (Stock sold out close)
-			}
-		}
-	} else {
-		$stock_status = "STSO";	//재고 없음(사선)		→ 증가 예정 재고 없음 (Stock sold out)
+	$select_basket_child_sql = "
+		SELECT
+			BI.IDX						AS BASKET_IDX,
+			BI.PARENT_IDX				AS PARENT_IDX,
+			J_PI.IMG_LOCATION			AS IMG_LOCATION,
+			BI.PRODUCT_NAME				AS PRODUCT_NAME,
+			PR.COLOR					AS COLOR,
+			PR.COLOR_RGB				AS COLOR_RGB,
+			OO.OPTION_NAME				AS OPTION_NAME,
+			
+			BI.PRODUCT_QTY				AS BASKET_QTY,
+			PR.SOLD_OUT_QTY				AS SOLD_OUT_QTY,
+			IFNULL(
+				V_ST.REMAIN_WCC_QTY,0
+			)							AS REMAIN_QTY,
+			IFNULL(
+				V_ST.PURCHASEABLE_QTY,0
+			)							AS LIMIT_QTY
+		FROM
+			BASKET_INFO BI
+			
+			LEFT JOIN SHOP_PRODUCT PR ON
+			BI.PRODUCT_IDX = PR.IDX
+			
+			LEFT JOIN SHOP_OPTION OO ON
+			BI.OPTION_IDX = OO.IDX
+			
+			LEFT JOIN (
+				SELECT
+					S_PI.PRODUCT_IDX	AS PRODUCT_IDX,
+					S_PI.IMG_LOCATION	AS IMG_LOCATION
+				FROM
+					PRODUCT_IMG S_PI
+				WHERE
+					S_PI.IMG_TYPE = 'P' AND
+					S_PI.IMG_SIZE = 'S' AND
+					S_PI.DEL_FLG = FALSE
+				GROUP BY
+					S_PI.PRODUCT_IDX
+			) AS J_PI ON
+			BI.PRODUCT_IDX = J_PI.PRODUCT_IDX
+			
+			LEFT JOIN V_STOCK V_ST ON
+			PR.IDX = V_ST.PRODUCT_IDX AND
+			OO.IDX = V_ST.OPTION_IDX
+		WHERE
+			BI.PARENT_IDX IN (".implode(',',array_fill(0,count($parent_idx),'?')).") AND
+			BI.DEL_FLG = FALSE
+	";
+	
+	$db->query($select_basket_child_sql,$parent_idx);
+	
+	foreach($db->fetch() as $data) {
+		$basket_child[$data['PARENT_IDX']][] = array(
+			'basket_idx'		=>$data['BASKET_IDX'],
+			'parent_idx'		=>$data['PARENT_IDX'],
+			'product_img'		=>$data['IMG_LOCATION'],
+			'product_name'		=>$data['PRODUCT_NAME'],
+			'color'				=>$data['COLOR'],
+			'color_rgb'			=>$data['COLOR_RGB'],
+			'option_name'		=>$data['OPTION_NAME'],
+			
+			'basket_qty'		=>$data['BASKET_QTY'],
+			'sold_out_qty'		=>$data['SOLD_OUT_QTY'],
+			'remain_qty'		=>$data['REMAIN_QTY'],
+			'limit_qty'			=>$data['LIMIT_QTY']
+		);
 	}
 	
-	return $stock_status;
+	return $basket_child;
 }
 
+function checkOrder_to($db,$order_to) {
+
+}
+
+?>

@@ -1,3 +1,13 @@
+<?php
+if (!isset($_SESSION['COUTNRY']) && !isset($_SESSION['MEMBER_IDX'])) {
+	echo "
+		<script>
+			location.href = config.base_url;
+		</script>
+	";
+}
+?>
+
 <main class="my">
     <?php include 'my/_summary.php'; ?>
 	<nav>
@@ -12,7 +22,8 @@
 		</header>
 		<article>
 			<div class="swiper-container" id="swiper-recently">
-				<div class="swiper-wrapper goods"></div>
+				<div class="swiper-wrapper goods">
+                </div>
 				<button type="button" class="swiper-button-prev"></button>
 				<button type="button" class="swiper-button-next"></button>
 			</div>
@@ -24,7 +35,8 @@
 		</header>
 		<article>
 			<div class="swiper-container" id="swiper-wishlist">
-				<div class="swiper-wrapper goods"></div>
+				<div class="swiper-wrapper goods">
+                </div>
 				<button type="button" class="swiper-button-prev"></button>
 				<button type="button" class="swiper-button-next"></button>
 			</div>

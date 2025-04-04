@@ -1,0 +1,1 @@
+<?php require '../../_static/controller/api.php';

@@ -22,7 +22,7 @@
 				<form id="frm-voucher">
 					<div class="form-inline">
 						<button type="submit">등록</button>
-						<input type="text" name="voucher" placeholder=" " required>
+						<input id="voucher_issue_code" type="text" name="voucher" placeholder=" " required>
 						<div class="control-label inline">바우처 코드</div>
 					</div>	
 				</form>

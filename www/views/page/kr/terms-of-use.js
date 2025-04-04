@@ -1,6 +1,9 @@
 $(document).ready(function() {
     $.ajax({
         url: config.api + "policy/get",
+        headers : {
+            country : config.language
+        },
         data: { type : 'TRM' },
         success: function(d) {
             if (d.code == 200) {

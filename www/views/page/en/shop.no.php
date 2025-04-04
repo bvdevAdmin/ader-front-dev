@@ -27,18 +27,18 @@
 								<dt>Size</dt>
 							</dl>
 							<div class="sizeguide">
-								<button type="button" id="btn-sizeguide">Size Guide</button>
+								<button type="button" id="btn-sizeguide">Size guide</button>
 							</div>
 						</div>
 						<div class="option" id="option-set"></div>
 						<div class="buttons" id="buy-buttons">
-							<button type="submit" class="no-over">쇼핑백에 담기</button>
+							<button type="submit" class="no-over">Add to shopping bag</button>
 						</div>
 					</form>
 				</article>
 				<article class="detail">
 					<dl id="details">
-						<dt class="material"><button type="button">Materials</button></dt>
+						<dt class="material"><button type="button">Material</button></dt>
 						<dd>
 							<div class="cont">
 								<div class="body"></div>
@@ -61,7 +61,7 @@
 			</section>
 			<section class="sizeguide-cont" id="sizeguide-cont">
 				<header>
-					<h2>Size Info</h2>
+					<h2>Size guide</h2>
 					<button type="button" class="close"></button>
 				</header>
 				<article></article>
@@ -69,7 +69,7 @@
 		</section>
 	</section>
 	<section class="swiper-row hidden" id="view-relation">
-		<h2>함께 스타일링 된 아이템</h2>
+		<h2>Styling with</h2>
 		<article>
 			<div class="swiper-container">
 				<div class="swiper-wrapper"></div>
@@ -79,7 +79,7 @@
 		</article>
 	</section>
 	<section class="swiper-row hidden" id="view-recommend">
-		<h2>추천 제품</h2>
+		<h2>Recommend</h2>
 		<article>
 			<div class="swiper-container">
 				<div class="swiper-wrapper"></div>

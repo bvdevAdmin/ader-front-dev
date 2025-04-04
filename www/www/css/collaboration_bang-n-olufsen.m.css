@@ -1,0 +1,368 @@
+body.unview-header > header {
+    display : none !important
+}
+
+body.unview-header > section.collaboration {
+    margin-top : 0 !important
+}
+
+body > section.collaboration > article.bang-n-olufsen {
+    background-color : #000 ;
+    color : #fff
+}
+
+body > section.collaboration > article.bang-n-olufsen img {
+    display : inline-flex;
+}
+
+body > section.collaboration > article.bang-n-olufsen:before {
+    content : "" ;
+    display : inline-block ;
+    position : fixed ;
+    z-index : 10 ;
+    top : 90px ;
+    right : 40px ;
+    background : url('https://adererror.com/upload/collaboration/bang-olufsen/bi.svg') top right no-repeat ;
+    width : 60px ;
+    height : 24px
+}
+
+body.unview-header > section.collaboration > article.bang-n-olufsen:before {
+    top : 40px
+}
+
+body > section.collaboration > article.bang-n-olufsen > section {
+    min-width : 100% ;
+    min-height : 100vh ;
+    position : relative
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-1h {
+    min-height : 50vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-2 {
+    min-height : 200vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-3 {
+    min-height : 300vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-4 {
+    min-height : 400vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-5 {
+    min-height : 500vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-6 {
+    min-height : 600vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-7 {
+    min-height : 700vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-8 {
+    min-height : 800vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-9 {
+    min-height : 900vh
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.page-12 {
+    min-height : 1200vh
+}
+
+body > section.collaboration > article.bang-n-olufsen video {
+    width : 100% ;
+    display : block
+}
+
+body > section.collaboration > article.bang-n-olufsen p {
+    line-height : 18px ;
+}
+
+body > section.collaboration > article.bang-n-olufsen p ~ p {
+    margin-top : 20px
+}
+
+body > section.collaboration > article.bang-n-olufsen p.bi {
+    font-size : 13px
+}
+
+body > section.collaboration > article.bang-n-olufsen .head {
+    font-size : 13px
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.intro-video {
+    min-height : auto
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.intro-video .place-center {
+    position : absolute ;
+    top : 0 ;
+    left : 0 ;
+    background-color : #000 ;
+    z-index : 2 ;
+    transition : ease-out 1s ;
+    width : 100% ;
+    height : 100%
+}
+
+body > section.collaboration > article.bang-n-olufsen > section.intro-video .place-center.fadeout {
+    opacity : 0
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix {
+    position : sticky ;
+    height : 100vh ;
+    top : 0 ;
+    padding : 90px 20px 50px 20px ;
+    z-index : 2 ;
+    overflow : hidden
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix .ab {
+    position : absolute
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix .ab.left {
+    left : 20px ;
+    max-width : calc( 100vw - 40px )
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix .ab.bottom {
+    bottom : 50px
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix .ab.bottom-130 {
+    bottom : 130px
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix .remark {
+    width : 100%
+}
+
+body > section.collaboration > article.bang-n-olufsen > section .fix p {
+    max-width : calc( 100vw - 40px )
+}
+
+body > section.collaboration > article.bang-n-olufsen .photo {
+    position : sticky ;
+    top : 0 ;
+    width : 100vw ;
+    height: 100vh
+}
+
+body > section.collaboration > article.bang-n-olufsen .photo ul {
+    position : absolute ;
+    right : 0 ;
+    top : 0 ;
+    height : 100vh
+}
+
+body > section.collaboration > article.bang-n-olufsen .photo:not(.image-change) ul > li {
+    position : absolute ;
+    top : 0 ;
+    left : 0 ;
+    opacity : 0 ;
+    transition : ease-out .5s ;
+    display : grid ;
+    place-items : center ;
+    width : 100% ;
+    height : 100vh ;
+    padding-bottom : 50px
+}
+
+body > section.collaboration > article.bang-n-olufsen .photo ul > li.on {
+    opacity : 1 ;
+    z-index : 2
+}
+
+body > section.collaboration > article.bang-n-olufsen .photo + .fix {
+    margin-top : -100vh
+}
+
+body > section.collaboration > article.bang-n-olufsen .photo img {
+    max-width : 100%
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-change {
+    overflow : hidden
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-change ul {
+    height : 100vh ;
+    height: -webkit-fill-available ;
+    height : fill-available ;
+    transition : ease-in-out .5s
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-change ul > li {
+    display : grid !important ;
+    place-items : center ;
+    width : 100% ;
+    height : 100vh ;
+    height: -webkit-fill-available ;
+    height : fill-available
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-change ul > li img {
+    width : 100vw
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-scroll-hoiz {
+    position : absolute ;
+    bottom : 100px ;
+    left : 150vw ;
+    height : auto
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-scroll-hoiz ul {
+    display : flex
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-scroll-hoiz ul > li {
+    margin-left : 10px ;
+    display: grid;
+    align-items: end
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-scroll-hoiz img {
+    min-width : 230px ;
+    max-width : 260px
+}
+
+body > section.collaboration > article.bang-n-olufsen .final-video {
+    width : 570px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards {
+    display : flex ;
+    margin-bottom : 78px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards.scroll {
+    overflow-y : auto ;
+    width : 100vw ;
+    padding : 0 20px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards .item > * {
+    display : block ;
+    color : #fff
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards .item a {
+    line-height : 25px ;
+    font-size : 11px ;
+    margin-top : 20px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards .item a:after {
+    content : ">" ;
+    vertical-align : middle ;
+    margin-left : 4px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards .item ~ .item {
+    margin-left : 10px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards .item video {
+    width : 230px
+}
+
+body > section.collaboration > article.bang-n-olufsen .cards .item img {
+    width : calc( ( 100vw - 50px ) / 2 )
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-obj-2 {
+    position: absolute;
+    top : 60vh ;
+    left : 0 ;
+    width : 100% ;
+    height : 115vh ;
+    z-index : 0
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-obj-2 ul > li {
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-obj-2 ul > li:first-child {
+    text-align : right
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-obj-2 ul > li:nth-child(2) {
+    margin-top : 40px
+}
+
+body > section.collaboration > article.bang-n-olufsen .image-obj-2 ul > li img {
+    width : calc( 100vw * ( 23 / 36 ) )
+}
+
+body > section.collaboration > article.bang-n-olufsen .popup-gallery {
+    margin-left : 200vw ;
+    margin-top : 35px
+}
+
+body > section.collaboration > article.bang-n-olufsen .popup-gallery ul {
+    display : flex
+}
+
+body > section.collaboration > article.bang-n-olufsen .popup-gallery ul > li ~ li {
+    margin-left : 20px
+}
+
+body > section.collaboration > article.bang-n-olufsen .popup-gallery img {
+    height : calc( 100vh - 400px )
+}
+
+body > section.collaboration > article.bang-n-olufsen .btn {
+    display : block ;
+    width : calc( 100% - 40px ) ;
+    height : 40px ;
+    line-height : 40px ;
+    background-color : #eaeaea ;
+    color : #000 ;
+    margin-top : 30px ;
+    text-align : center
+}
+
+body > section.collaboration > article.bang-n-olufsen p {
+    opacity : 0
+}
+
+body > section.collaboration > article.bang-n-olufsen .show-up {
+    animation : show-up 1s ease-out forwards
+}
+
+@keyframes show-up {
+    from {
+        opacity : 0 ;
+        transform : translateY(50px)
+    }
+
+    to {
+        opacity : 1 ;
+        transform : translateY(0)
+    }
+}
+
+.width100 {
+    width : 100%
+}
+
+.place-center {
+    display : grid ;
+    place-items : center
+}
+
+.padding-20 {
+    padding : 0 20px ;
+    width : 100%
+}

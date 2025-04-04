@@ -1,5 +1,7 @@
 $(`main.collaboration > nav a.swiper-slide`).each(function() {
-	if($(this).attr("href").indexOf(location.pathname.split("/")[3]) > -1) {
+	let href = $(this).attr("href")
+	// if(location.pathname == `${config.base_url}${href}`) {
+	if(location.pathname == `${href}`) {
 		$(this).addClass("on");
 	}
 });
@@ -14,13 +16,24 @@ const nav_swiper = new Swiper("#collaboration-nav",{
 		nextEl: "#collaboration-nav .swiper-button-next",
 		prevEl: "#collaboration-nav .swiper-button-prev"
 	},
+	// initialSlide:
 });
+
 $(`main.collaboration > nav button.swiper-button-next`).click(function() {
 	nav_swiper.slideNext();
 });
 $(`main.collaboration > nav button.swiper-button-prev`).click(function() {
 	nav_swiper.slidePrev();
 });
+
+$(document).ready(function () {
+	$(`main.collaboration > nav a.swiper-slide`).each(function( idx ) {
+		if($(this).attr("href") == $("body").data("path")) {
+			nav_swiper.slideTo(idx, 0)
+		}
+	});
+
+})
 
 /** swiper init **/
 let swiper_arr = [];
@@ -31,7 +44,7 @@ $("main.collaboration .swiper-container:not(#collaboration-nav)").each(function(
 		loop: $(this).data("loop") || false,
 		direction : $(this).data("direction") || "horizontal",
 		effect: "slide",
-		mousewheel : true,
+		// mousewheel : true,
 		navigation: {
 			nextEl: $(this).find(".swiper-button-next").get(0),
 			prevEl: $(this).find(".swiper-button-prev").get(0)
@@ -87,6 +100,15 @@ $("main.collaboration .swiper-container:not(#collaboration-nav)").each(function(
 		});
 	}
 
+	else if ($(this).hasClass("effect-fade")) {
+    option = Object.assign(option, {
+			effect: "fade",
+			fadeEffect: {
+				crossFade: true,
+			},
+    });
+	}
+
 	/** 썸네일이 있는 갤러리 **/
 	if($(this).parent().hasClass("with-thumbnails") == true) {
 		$(this).find(".swiper-slide").each(function() {
@@ -109,7 +131,8 @@ $(".product-gallery .thumbnails ul > li").click(function() {
 	let src = $(this).find("img").attr("src")
 		, obj = get_parent_by_class($(this),"goods");
 
-	$(obj).find(".image").css("backgroundImage",`url('${src}')`);
+	// $(obj).find(".image").css("backgroundImage",`url('${src}')`);
+	$(obj).find(".image").attr("style", `background-image: url('${src}') !important;`);
 	$(obj).find(".image img").attr("src",src);
 });
 $(".product-gallery .thumbnails button").click(function() {
@@ -133,3 +156,39 @@ $(".product-gallery > ul.list > li").click(function() {
 	$(obj).children(".goods").eq(idx).addClass("on");
 	$(obj).children(".goods").eq(idx).find(".thumbnails ul > li").eq(0).click();
 }).eq(0).click();
+
+// 캠페인 영상 보기
+$("main.collaboration article button.play").click(function() {
+	$("body").addClass("on-modal");
+	if($("main.collaboration").hasClass("new")) {
+		var video = $(this).parent().parent().find("video").get(0);
+		if (window.matchMedia("only screen and (max-width: 1024px)").matches) {
+			var mobileVideo = $(this).parent().parent().find("video.mobile").get(0);
+      if (mobileVideo) {
+        video = mobileVideo;
+      }
+		}
+		video.pause();
+
+		$("body").append(
+			'<div class="video-fullscreen">'
+			+'	<button type="button" class="close"></button>'
+			+'	<video playsinline src="' + video.src + '"></video>'
+			+'</div>'
+		);
+		$("body > .video-fullscreen video").get(0).currentTime = video.currentTime;
+		$("body > .video-fullscreen video").get(0).play();
+		$("body > .video-fullscreen > *").click(function() {
+			$("body").removeClass("on-modal");
+			video.currentTime = $("body > .video-fullscreen video").get(0).currentTime;
+			video.play();
+			$(this).parent().remove();
+		});
+
+		$("body > .video-fullscreen button.close").css({"background": "none"});
+	}
+	else {
+		$(this).parent().parent().parent().find("video").addClass("on");
+		$(this).parent().parent().parent().find("video").get(0).play();
+	}
+});

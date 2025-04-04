@@ -151,7 +151,9 @@ function get_query_string(sKey) {
 }
 
 function link_anchor(url) {
-	return url.replace('/product/list','/store').replace('/product/best','/store');
+	if (url != null && url.length > 0) {
+		return url.replace('/product/list','/store').replace('/product/best','/store');
+	}
 }
 
 
@@ -423,50 +425,161 @@ function set_calendar(obj,date,fn) {
 get_cart = (is_slide, all_check) => {
 	$.ajax({
 		url: config.api + "cart/get",
+		headers : {
+			country : config.language
+		},
 		error: function () {
-			makeMsgNoti("MSG_F_ERR_0023", null);
+			makeMsgNoti(config.language,"MSG_F_ERR_0023", null);
 		},
 		success: function (d) {
-			
+			let t_delivery = {
+				KR : "기본 배송지를 선택해주세요.",
+				EN : "Please select the default address."
+			};
+
 			function set_total_result() {
-				let result_goods_total = 0,result_delivery = 0;
-				$("#cart-list > li").each(function() {
-					let qty = parseInt($(this).find("input[name='qty']").val())
-						, price = $(this).find(".qty-cont").data("price");
-					result_goods_total += price * qty;
+				let result_goods_total	= 0;
+				let result_discount		= 0;
+				let result_delivery		= 0;
+				let result_goods_qty	= 0;
+				
+				$("#cart-list > li").has("input[name='cart_no[]']:checked").each(function() {
+					let qty	= parseInt($(this).find("input[name='qty']").val());
+					price		= $(this).find(".qty-cont").data("price");
+					discount	= $(this).find(".qty-cont").data("discount");
+					
+					result_goods_total	+= price * qty;
+					result_discount		+= discount * qty;
+					result_goods_qty++;
 				});
 
-				$("#frm-side-cart-total-goods").text(number_format(result_goods_total)); // 상품 합계
-				$("#frm-side-cart-delivery").text(number_format(result_delivery)); // 배송비
-				$("#frm-side-cart-total").text(number_format(result_goods_total + result_delivery)); // 총 결제 금액
+				if (config.language == "KR") {
+					if (result_goods_total - result_discount + result_delivery < 80000) {
+						result_delivery = d.data.price_delivery;
+					} else {
+						result_delivery = 0;
+					}
+				} else if (config.language == "EN") {
+					if (result_goods_total - result_discount + result_delivery < 300) {
+						result_delivery = d.data.price_delivery;
+					} else {
+						result_delivery = 0;
+					}
+				}
+
+				let price_pg = result_goods_total - result_discount + result_delivery;
+
+				if (config.language == "KR") {
+					result_goods_total	= number_format(result_goods_total)
+					result_discount		= number_format(result_discount)
+					result_delivery		= number_format(result_delivery)
+					price_pg			= number_format(price_pg)
+				} else {
+					result_goods_total	= result_goods_total.toLocaleString('en-US');
+					result_discount		= result_discount.toLocaleString('en-US');
+					result_delivery		= result_delivery.toLocaleString('en-US');
+					price_pg			= price_pg.toLocaleString('en-US');
+				}
+				
+				$("#frm-side-cart-total-goods").text(result_goods_total);	/* 상품 합계 */
+				$("#frm-side-cart-total-discount").text(result_discount);	/* 회원 할인 합계 */
+				$("#frm-side-cart-total").text(price_pg);					/* 총 결제 금액 */
+				$("#side-cart-num").text(result_goods_qty);
+
+				if (d.data.default_address == true) {
+					$("#frm-side-cart-delivery").text(result_delivery);		/* 배송비 */
+				} else {
+					$("#frm-side-cart-delivery").text(`${t_delivery[config.language]}`);		/* 기본 배송지 미선택 */
+				}
 			}
 			
-
 			if(d.code == 200) {
 				$("#cart-list").empty();
+
 				if(d.data && d.data.basket_cnt > 0) {
 					$("#frm-side-cart .empty").removeClass("on");
 					$("#side-cart-num").text(d.data.basket_cnt);
-					d.data.basket_st_info.forEach(row => {
+					
+					d.data.basket_info.forEach(row => {
+						option_name = row.option_name
+						if (row.product_type === "S" && Array.isArray(row.set_product)) {
+							let setOptions = row.set_product.map(product => product.option_name).join(" / ");
+							row.option_name += ` ( ${setOptions} )`;
+						}
+
+						let disabled = "";
+						if (row.stock_status == "STSO") {
+							//disabled = "disabled";
+						}
+
 						$("#cart-list").append(`
 							<li>
 								<div class="thumbnail" style="background-image:url('${config.cdn + row.product_img}')"></div>
-								<label class="check"><input type="checkbox" name="cart_no[]" value="${row.basket_idx}"><i></i></label>
-								<div class="name">${row.product_name}</div>
-								<div class="price">${number_format(row.price)}</div>
-								<div class="color">${row.color}<span class="colorchip" style="background-color:${row.color_rgb}"></span></div>
-								<div class="size">${row.option_name}</div>
-								<div class="qty-cont" data-goods_no="${row.product_idx}" data-price="${row.price}">
+								
+								<label class="check">
+									<input type="checkbox" name="cart_no[]" value="${row.basket_idx}" ${disabled}>
+									<i></i>
+								</label>
+								<div class="name">
+									${row.product_name}
+								</div>
+								<div class="price${row.discount > 0 ? ' discount' : ''}${row.stock_status === 'STSO' ? ' soldout' : ''}" data-discount="${row.discount}" data-saleprice="${row.sales_price}">
+									${row.t_price}
+								</div>
+								<div class="color">
+									${row.color}
+									<span class="colorchip" style="background-color:${row.color_rgb}"></span>
+								</div>
+								<div class="size">
+									${row.option_name}
+								</div>
+								<div class="qty-cont" data-goods_no="${row.product_idx}" data-price="${row.sales_price}" data-discount="${row.member_discount}">
 									<div class="label">Qty</div>
+									
 									<button type="button" class="decrease ${(row.basket_qty > 1)?'on':''}"></button>
 									<button type="button" class="increase on"></button>
-									<input type="number" name="qty" value="${row.basket_qty}">
+									
+									<input type="number" name="qty" value="${row.basket_qty}" readonly>
 								</div>
-								<div class="total-price">${number_format(row.price * row.basket_qty)}</div>
+								
+								<div class="total-price">
+									${row.basket_price}
+								</div>
 							</li>
 						`);
+						let $parentLi = $("#cart-list").children("li").last(); // 가장 최근에 추가된 <li> 요소 선택
+						let children = [];
+						if (row.product_type == 'S') {
+							row.set_product.forEach(row2 => {
+								const $childLi = $(`
+									<li class="${row.product_idx}" style="display: none;">
+										<div class="thumbnail" style="background-image:url('${config.cdn + row2.product_img}')"></div>
+										<div class="name">${row2.product_name}</div>
+										<div class="color">${row2.color}
+											<span class="colorchip" style="background-color:${row2.color_rgb}"></span>
+										</div>
+										<div class="size">${row2.option_name}</div>
+									</li>
+								`);
+								children.push($childLi);
+							});
+
+							$parentLi.css('cursor', 'pointer');
+							$parentLi.on('click', function () {
+								$(`.${row.product_idx}`).stop().slideToggle(300); // 300ms 동안 슬라이드 효과
+							});
+
+							children.forEach($childLi => {
+								$parentLi.after($childLi); // 부모의 바로 뒤에 자식들을 추가
+							});
+						}
 					});
-					set_total_result();
+					
+
+					$("#frm-side-cart input[name='cart_no[]']").change(function () {
+						set_total_result();
+					});
+
 					$("#cart-list .qty-cont button").click(function() {
 						if($(this).hasClass("on") == false) return;
 
@@ -491,10 +604,17 @@ get_cart = (is_slide, all_check) => {
 								basket_qty : qty,
 								product_idx : obj.data("goods_no")
 							},
+							async:false,
 							success: function (d) {
 								if(d.code == 200) {	
 									obj.find("input[name='qty']").val(qty);
-									obj.next().text(number_format(qty * price)); // 상품가격
+
+									if (config.language == "KR") {
+										obj.next().text(number_format(qty * price)); // 상품가격
+									} else if (config.language == "EN") {
+										obj.next().text((qty * price).toLocaleString('en-US')); // 상품가격
+									}
+									
 									set_total_result();
 								}
 								else {
@@ -508,15 +628,19 @@ get_cart = (is_slide, all_check) => {
 					$("#frm-side-cart .empty").addClass("on");
 				}
 				
-				if(typeof is_slide == 'boolean' && is_slide == true) {
+				if (typeof is_slide == 'boolean' && is_slide == true) {
 					$("#tnb a[data-side='shoppingbag']").click();
 				}
-				if(typeof all_check == 'boolean' && all_check == true) {
-					if($("#frm-side-cart input[name='all_check']:checked").length > 0) {
-						$("#frm-side-cart input[name='all_check']").click();
-					}
+				
+				if (typeof all_check == 'boolean' && all_check == true) {
 					$("#frm-side-cart input[name='all_check']").click();
 				}
+				
+				$("#frm-side-cart input[name='all_check']").click(function() {
+					set_total_result();
+				});
+				
+				set_total_result();
 			} else {
 				alert(d.msg);
 			}
@@ -538,8 +662,13 @@ modal = (url,data) => {
 		modal_close();
 	}
 	else {
+		let path_name = location.pathname;
+		path_name = path_name.replace(`${config.base_url}/`,'');
+		path_name = path_name.replace('/','-');
+		
 		$.ajax({
-			url: config.modal + location.pathname + "." + url,
+			//url: config.modal + location.pathname + "/" + url,
+			url: config.modal + path_name + "-" + url,
 			data: data,
 			dataType: "text",
 			error: function(msg) {
@@ -583,39 +712,42 @@ modal_close = (close_yn) => {
 }
 
 alert = (body,fn) => {
-	if(typeof body == 'string') {
-		body = {
-			msg : body,
-			ok : fn
-		};
-	}
-
-	let id = `_modal_alert_${new Date().getTime()}_${$("body > .modal.alert").length + 1}`;
-
-	$("body")
-		.addClass("on-modal")
-		.append(`
-			<section class="modal alert" id="${id}">
-				<section>
+	if ($('.modal.alert').length == 0) {
+		if(typeof body == 'string') {
+			body = {
+				msg : body,
+				ok : fn
+			};
+		}
+	
+		let id = `_modal_alert_${new Date().getTime()}_${$("body > .modal.alert").length + 1}`;
+	
+		$("body")
+			.addClass("on-modal")
+			.append(`
+				<section class="modal alert" id="${id}">
 					<section>
-						<button type="button" class="close"></button>
-						<article>
-							<p>${body.msg}</p>
-						</article>
+						<section>
+							<button type="button" class="close"></button>
+							<article>
+								<p>${body.msg}</p>
+							</article>
+						</section>
 					</section>
 				</section>
-			</section>
-		`);
-
-	$(`#${id}`).find("button.close,button.cancel").click(function() {
-		modal_close();
-		if(typeof body.ok == 'function') {
-			setTimeout(body.ok,1);
-		}
-	});
-	setTimeout(() => {
-		$(`#${id}`).addClass("on");
-	},1);	
+			`);
+	
+		$(`#${id}`).find("button.close,button.cancel").click(function() {
+			modal_close();
+			if(typeof body.ok == 'function') {
+				setTimeout(body.ok,1);
+			}
+		});
+		
+		setTimeout(() => {
+			$(`#${id}`).addClass("on");
+		},1);
+	}
 }
 
 confirm = (body,fn) => {
@@ -624,7 +756,59 @@ confirm = (body,fn) => {
 			msg : body,
 			ok : fn
 		};
-	}	
+	}
+	
+	let id = `_modal_alert_${new Date().getTime()}_${$("body > .modal.confirm").length + 1}`;
+	
+	let msg_btn = {
+		KR : {
+			't_01' : "확인",
+			't_02' : "취소"
+		},
+		EN : {
+			't_01' : "Confirm",
+			't_02' : "Cancel"
+		}
+	}
+
+	$("body")
+		.addClass("on-modal")
+		.append(`
+			<section class="modal confirm" id="${id}">
+				<section>
+					<section>
+						<button type="button" class="close"></button>
+						
+						<article>
+							<h3>${body.title}</h3>
+							<p></p>
+							<p>${body.body}</p>
+						</article>
+						
+						<div class="row_flex__body">
+							<button type="button" class="btn confirm">${msg_btn[config.language]['t_01']}</button>
+							<button type="button" class="btn cancel">${msg_btn[config.language]['t_02']}</button>
+						</div>
+					</section>
+				</section>
+			</section>
+		`);
+	
+	$(`#${id}`).find("button.confirm").click(function() {
+		if(typeof body.ok == 'function') {
+			setTimeout(body.ok,1);
+			
+			modal_close();
+		}
+	});
+	
+	$(`#${id}`).find("button.close,button.cancel").click(function() {
+		modal_close();
+	});
+	
+	setTimeout(() => {
+		$(`#${id}`).addClass("on");
+	},1);
 }
 
 decodeHTMLEntities = str => {
@@ -643,12 +827,15 @@ decodeHTMLEntities = str => {
 }
 
 
-makeMsgNoti = (msg_code, mapping_arr, fn) => {
+makeMsgNoti = (country, msg_code, mapping_arr, fn) => {
 	$.ajax({
+		url: config.api + "common/msg",
+		headers: {
+		   country : config.language
+		},
 		data: {
 			msg_code : msg_code
 		},
-		url: config.api + "common/msg",
 		error: function () {
 			alert("메세지정보를 얻는데 실패했습니다.");
 		},
@@ -660,18 +847,18 @@ makeMsgNoti = (msg_code, mapping_arr, fn) => {
 					msg_text = editMsgByMapping(msg_text,mapping_arr);
 				}
 				alert(msg_text,fn);
+				console.log( 'aa', msg_text, msg_code )
 
-				if(msg_code == 'MSG_F_INF_0018'){
-					let closeBtn = document.querySelector(`#notimodal-modal .close-btn`);
-					closeBtn.addEventListener('click', () => { location.href = '/logout' });
-				}
-				else if(msg_code == 'MSG_F_ERR_0074' || msg_code == 'MSG_F_ERR_0059' || msg_code == 'MSG_F_INF_0001'){
-					let closeBtn = document.querySelector(`#notimodal-modal .close-btn`);
-					closeBtn.addEventListener('click', () => { location.href = '/login' });
+				if(msg_code == 'MSG_F_ERR_0074' || msg_code == 'MSG_F_ERR_0059' || msg_code == 'MSG_F_INF_0001' || msg_code == 'MSG_B_ERR_0018' || msg_code == 'MSG_B_ERR_00125'){
+
+					let closeBtn = $("section.modal .close");
+					closeBtn.on('click', () => { location.href = `/${localStorage.getItem("lang").toLowerCase()}/login` });
 				}
 				else if(msg_code == 'MSG_F_ERR_0112' || msg_code == 'MSG_F_ERR_0113') {
-					let closeBtn = document.querySelector(`#notimodal-modal .close-btn`);
-					closeBtn.addEventListener('click', () => { location.href = '/main' });
+					let closeBtn = $("section.modal .close");
+					closeBtn.on('click', () => {
+						location.href = `/${localStorage.getItem("lang").toLowerCase()}`
+					});
 				}
 			}
 		}
@@ -679,7 +866,7 @@ makeMsgNoti = (msg_code, mapping_arr, fn) => {
 }
 
 alert_noti = (msg_code, mapping_arr, fn) => {
-	makeMsgNoti(msg_code, mapping_arr, fn);
+	makeMsgNoti(null, msg_code, mapping_arr, fn);
 }
 
 editMsgByMapping = (mapping_arr, text) => {
@@ -729,4 +916,68 @@ notiModal = (main, sub) => {
 			document.querySelector('#notimodal-modal').remove();
 		});
 	}
+}
+
+/*======================================================================================*/
+/*  페이징
+/*  --------------
+/*  작성일     : 2024.10.1
+/*  최종수정일 :  2024.10.1
+/*	사용법     : fnPaging(전체 갯수,현재 페이지,화면당 목록수,페이징 갯수,삽입 대상)
+/*				 템플릿 안에 <_page> 로 페이징 삽입
+/*======================================================================================*/
+function paging(obj) {
+	if(typeof obj != 'object' || 'total' in obj == false || 'el' in obj == false) {
+		return;
+	}
+	if('page' in obj == false) obj.page = 1;
+	if('rows' in obj == false) obj.rows = 10;
+	if('show_paging' in obj == false) obj.show_paging = 9;
+
+	let total_page = Math.ceil(obj.total/obj.rows);
+
+	// 이전 페이징
+	let prev = obj.page - 1;
+	if(prev < 1) prev = 1;
+
+	// 다음 페이징
+	let next = obj.page + 1;
+	if(next > total_page) next = total_page;
+
+	// 페이지 시작 번호
+	let start = obj.page - Math.ceil(obj.show_paging / 2 ) + 1;
+	if(start < 1) start = 1;
+
+	// 페이지 끝 번호
+	let end = start + obj.show_paging - 1;
+	if(end > total_page) {
+		end = total_page;
+		start = end - obj.show_paging + 1;
+		if(start < 1) start = 1;
+	}
+	if(end < 1) {
+		total_page = 1;
+		end = 1;
+		next = 1;
+		prev = 1;
+		start = 1;
+	}
+
+	let paging = [];
+	for(var i = start ; i <= end ; i++) {
+		paging.push(`<li ${((i==obj.page)?'class="now"':'')} data-page="${i}">${i}</li>`);
+	}
+	$(obj.el).html(`
+			<ul class="--paging">
+				<li class="first" data-page="1"></li>
+				<li class="prev" data-page="${prev}"><</li>
+				${paging.join("")}
+				<li class="next" data-page="${next}">></li>
+				<li class="last" data-page="${total_page}"></li>
+			</ul>
+		`);
+	$(obj.el).find("ul.--paging > li").click(function() {
+			if('fn' in obj == false) return;
+			obj.fn($(this).data("page"));
+		});
 }

@@ -1,0 +1,11 @@
+<svg data-name="쇼핑백 아이콘" xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14">
+    <defs>
+        <clipPath id="uxleb356la">
+            <path data-name="사각형 2276" style="fill:none;stroke:#fff" d="M0 0h10v14H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 7823" style="clip-path:url(#uxleb356la)">
+        <path data-name="패스 6970" d="M3 5.016V2.758a2.273 2.273 0 0 1 4.545 0v2.258" transform="translate(-.273 -.048)" style="stroke-miterlimit:10;fill:none;stroke:#fff"/>
+        <path data-name="사각형 2275" transform="translate(.455 4.516)" style="stroke-miterlimit:10;fill:none;stroke:#fff" d="M0 0h9.091v9.032H0z"/>
+    </g>
+</svg>

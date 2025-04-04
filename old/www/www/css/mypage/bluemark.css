@@ -1,0 +1,673 @@
+.close_result_tab {
+  float: right;
+}
+
+.bluemark__wrap {
+  margin-top: 40px;
+  width: 100%;
+  min-height: 350px;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+}
+
+.bluemark__wrap .title p {
+  font-size: 13px;
+}
+
+.bluemark__wrap .title {
+  color: #0000c5;
+}
+
+.verify__form__wrap {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.verify_form {
+  display: block;
+}
+
+.verify__form__wrap .form {
+  width: 100%;
+}
+
+.verify__form__wrap .description {
+  width: 100%;
+  text-align: left;
+  font-size: 11px;
+  color: #343434;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.verify__form__wrap .button {
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+
+.verify__form__wrap .button button {
+  width: 100%;
+  height: 40px;
+  border-radius: 1px;
+  background-color: #0000c5;
+  font-size: 11px;
+  color: #fff;
+  line-height: 40px;
+}
+
+.verify__success__wrap {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.verify__success__wrap .description {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: #343434;
+  margin-top: 60px;
+  padding-bottom: 40px;
+  padding-left: 6px;
+}
+
+.verify__success__wrap .button {
+  margin-bottom: 100px;
+}
+
+.verify__success__wrap .button div {
+  width: 100%;
+  height: 40px;
+  border-radius: 1px;
+  background-color: #0000c5;
+  font-size: 11px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+}
+.verify__success__wrap .description p {
+  text-align: center;
+}
+
+.verify__fail__wrap {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.verify__fail__wrap .description {
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+  color: #343434;
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+.verify__fail__wrap .button {
+  margin-bottom: 40px;
+}
+
+.verify__fail__wrap .button div {
+  width: 100%;
+  height: 40px;
+  border-radius: 1px;
+  background-color: #000000;
+  font-size: 11px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+}
+
+.verify__fail__wrap .footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  font-size: 11px;
+  margin-bottom: 100px;
+}
+
+.verify__list__wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.verify__list__wrap .description {
+  width: 100%;
+  text-align: left;
+  font-size: 11px;
+  color: #343434;
+  margin-top: 20px;
+  margin-bottom: 38.5px;
+}
+
+.verify__list__wrap .description p {
+  margin-bottom: 10px;
+}
+
+.verify__list__wrap .contents__table {
+  border-bottom: none;
+  padding-top: 0px;
+}
+
+table.border__bottom td {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.verify__list__wrap .footer {
+  margin-bottom: 100px;
+}
+.description.verify_pc {
+  white-space: nowrap;
+}
+.vertical__top {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.vertical__top p {
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.pc__view .bluemark_list_tr {
+  height: 156px;
+}
+
+.mobile__view .bluemark_list_tr {
+  height: 119px;
+}
+.bluemark_list_tr .bluemark_purchase_td {
+  text-align: right;
+}
+.bluemark_list_tr .bluemark_purchase_date {
+  margin-top: 11px;
+}
+
+.title_name {
+  color: #0000c5;
+}
+.bluemark__wrap .color-line {
+  display: flex;
+  margin-bottom: 10px;
+  gap: 3px;
+}
+.bluemark__wrap .color-name {
+  margin-bottom: 0;
+}
+.bluemark__wrap .color {
+  display: flex;
+  align-items: flex-end;
+}
+.bluemark__wrap .color::after {
+  background: var(--background-color);
+  content: "";
+  display: block;
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  border: 1px solid #dcdcdc;
+}
+
+.voucher__handover__wrap {
+  position: fixed;
+  border: 1px solid #808080;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #fff;
+  display: none;
+  z-index: 2;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 50%);
+  overflow: auto;
+}
+
+.certified__wrap {
+  height: 86px;
+  width: 100%;
+  border: 1px solid #808080;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.certified_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 69px;
+  height: 23px;
+  border-radius: 1px;
+  background-color: #0000c5;
+  font-size: 11px;
+  color: #fff;
+  line-height: 40px;
+}
+
+.certified_table {
+  width: 430px;
+  height: 66px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.certified_table p {
+  flex: 1 1 50%;
+}
+
+.certified_table td {
+  display: flex;
+  justify-content: center;
+}
+
+.black_transfer_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 1px;
+  background-color: #191919;
+  font-size: 11px;
+  color: #fff;
+  margin: 10px 0 20px 0;
+  cursor: pointer;
+}
+
+.title_transfer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description_transfer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 11px;
+}
+
+.description_transfer p {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.form input {
+  height: 40px;
+  width: 300px;
+  border: 1px solid #808080;
+  padding: 10px;
+}
+
+/* 국가별 선택옵션 */
+/* .bluemark_country {
+    position: relative;
+}
+
+.bluemark_country select {
+    display: none;
+}
+
+.select-selected {
+    color: #343434;
+    border-radius: 1px;
+    border: solid 1px #808080
+} */
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  color: #343434;
+  background-color: #fff;
+  padding: 12px 0 12px 10px;
+  border: solid 1px #808080;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: #f5f5f5;
+  border: solid 1px #808080;
+  border-top: none;
+}
+
+.form input {
+  margin-top: 0px;
+}
+
+.flex__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.flex__row p {
+  height: 11px;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+}
+
+.description.fail_pc p {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.description.fail_mobile p {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.description.verify_mobile p {
+  margin-bottom: 0px;
+}
+
+.bluemark_country {
+  display: flex;
+  gap: 10px;
+}
+.country-select {
+  width: 140px;
+  margin-top: 10px;
+}
+
+#handover_id {
+  width: 300px;
+}
+
+.bluemark_info {
+  margin-bottom: 0 !important;
+  text-indent: unset !important;
+  white-space: nowrap;
+}
+
+.tui-select-box-highlight {
+  background: #f8f8f8 !important;
+}
+
+.tui-select-box-placeholder {
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  padding: 5px 0;
+}
+
+.tui-selected {
+  color: #343434;
+}
+
+.tui-select-box-input:focus {
+  outline: 0px;
+}
+
+.tui-select-box-input {
+  border: 1px solid #808080;
+  height: 39px;
+}
+
+.tui-select-box-item {
+  color: var(--bk);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-bottom: 1px solid #eeeeee;
+  height: 35px;
+}
+
+.offline-bluemark-box {
+  margin-top: 10px;
+}
+.bluemark__err__msg {
+  width: 100%;
+  height: 16.5px;
+  color: red;
+  text-align: right;
+}
+.bluemark_list_img {
+  cursor: default;
+  object-fit: contain;
+}
+.bluemark_handover_title {
+  font-size: 13px;
+}
+.bluemark__tab .verify_pc,
+.bluemark__tab .verify_mobile {
+  margin-left: 6px;
+}
+.bluemark_no_history_td {
+  /* border-top: 1px solid #dcdcdc; */
+  border-bottom: 1px solid #dcdcdc;
+  text-align: center;
+  padding: 20px 0;
+}
+.bluemark_no_history_td p {
+  margin-bottom: 0;
+}
+/* 달력 CSS */
+.purchase-wrap.dropdown {
+  margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  .bluemark__tab__wrap {
+    grid-column: 1/17;
+    width: 100%;
+  }
+
+  .verify__form__wrap .description {
+    margin-top: 10px;
+  }
+
+  .bluemark__wrap {
+    max-width: 470px;
+    width: 100%;
+    margin: 20px auto 0 auto;
+  }
+
+  .bluemark__wrap .mobile__view {
+    margin: 0;
+  }
+
+  .description.fail_pc {
+    display: none;
+  }
+
+  .description.fail_mobile {
+    display: block;
+  }
+
+  .description.verify_pc {
+    display: none;
+  }
+
+  .description.verify_mobile {
+    display: block;
+  }
+
+  .voucher__handover__wrap {
+    width: 95%;
+    top: -10%;
+  }
+
+  .form {
+    display: block;
+  }
+
+  #handover_id {
+    width: 100%;
+  }
+
+  /* .bluemark_country {
+    width: 100%;
+    position: none;
+    margin-bottom: 10px;
+  } */
+
+  .bluemark__tab .notice_br {
+    display: inline;
+  }
+
+  .bluemark__tab .notice_br_explain {
+    display: none;
+  }
+
+  .bluemark_explain {
+    white-space: normal;
+  }
+
+  .verify__list__wrap .description {
+    margin: 10px 6px 30px;
+  }
+
+  .b_transfer_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 23px;
+    outline: 1px solid #808080;
+    cursor: pointer;
+    padding: 2px 10px 0;
+  }
+
+  .bluemark_info {
+    white-space: unset;
+  }
+
+  .tui-select-box {
+    padding: 0;
+  }
+  .handover__btn {
+    padding-left: 10px;
+  }
+  .handover__btn p {
+    text-align: left;
+  }
+  .bluemark__wrap .color-line {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 3px;
+  }
+  .bluemark__wrap .color-name {
+    margin-bottom: 0 !important;
+  }
+  .bluemark__wrap .color {
+    display: flex;
+    align-items: flex-end;
+  }
+  .bluemark__wrap .color::after {
+    background: var(--background-color);
+    content: "";
+    display: block;
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    border: 1px solid #dcdcdc;
+  }
+}
+
+@media (min-width: 600px) {
+  .voucher__handover__wrap {
+    width: 580px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bluemark__tab__wrap {
+    grid-column: 1/17;
+    width: 470px;
+    margin: 0 auto;
+  }
+
+  .description.fail_pc {
+    display: block;
+  }
+
+  .description.fail_mobile {
+    display: none;
+  }
+
+  .description.verify_pc {
+    display: block;
+    width: 100%;
+  }
+
+  .description.verify_mobile {
+    display: none;
+  }
+
+  .bluemark__tab .notice_br {
+    display: none;
+  }
+
+  .bluemark__tab .notice_br_explain {
+    display: inline;
+  }
+
+  .bluemark_explain {
+    white-space: nowrap;
+  }
+
+  .voucher__handover__wrap {
+    width: 470px;
+  }
+  .handover__btn {
+    text-align: center;
+  }
+  .b_transfer_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid #808080;
+    height: 23px;
+    margin: auto;
+    padding: 2px 10px 0;
+    cursor: pointer;
+    float: right;
+  }
+}
+
+.bluemark__wrap .select-items div,
+.select-selected {
+  margin-bottom: -1px;
+}
+
+.bluemark__wrap .select-hide {
+  margin-top: -1px;
+}

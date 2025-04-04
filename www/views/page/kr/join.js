@@ -1,5 +1,36 @@
+let f = $("#frm-join");
+
 $(document).ready(function() {
-	let f = $("#frm-join");
+	if (config.language == "EN") {
+		$('input[name="tel_mobile"]').on('keyup',function(e) {
+			let value = $(this).val().replace(/\D/g, "");
+	
+			let result = value.replace(/^(\d{3})(\d{4})(\d{4})$/,"$1-$2-$3");
+			$(this).val(result);
+		});
+	}
+
+	if (sessionStorage.getItem("mok-join") != null) {
+		let mok = JSON.parse(sessionStorage.getItem("mok-join"));
+
+		$('input[name="member_id"]').val(sessionStorage.getItem('mok-id'));
+		$('input[name="member_pw"]').val(sessionStorage.getItem('mok-pw'));
+		$('input[name="member_pw2"]').val(sessionStorage.getItem('mok-pw'));
+		$('input[name="member_name"]').val(mok.user_name);
+		$('input[name="tel_mobile"]').val(`${mok.user_phone.substring(0,3)}-${mok.user_phone.substring(3,7)}-${mok.user_phone.substring(7)}`);
+		$('input[name="member_birth"]').val(`${mok.user_birth.substring(0,4)}-${mok.user_birth.substring(4,6)}-${mok.user_birth.substring(6,9)}`);
+		$('input[name="member_gender"]').val(mok.user_gender);
+
+		$("#personal-certify-ok").removeClass("hidden");
+		$("#btn-personal-certify").parent().remove();
+
+		$('input[name="member_name"]').attr('readonly',true);
+		$('input[name="tel_mobile"]').attr('readonly',true);
+		$('input[name="member_birth"]').attr('readonly',true);
+		$('input[name="member_gender"]').attr('readonly',true);
+
+		$(f).prepend(`<input type="hidden" name="private_confirm" value="y">`);
+	}
 
 	$(f).prepend(`<input type="hidden" name="country" value="${config.language}">`);
 	
@@ -37,10 +68,10 @@ $(document).ready(function() {
 			, noti = $(this).parent().find(".vaild");
 		if($(this).val() != '' && reg.test($(this).val()) == false) {
 			noti.addClass("on");
-		}
-		else {
+		} else {
 			noti.removeClass("on");
 		}
+
 		chk_confirm_personal_certify();
 	});
 
@@ -62,28 +93,20 @@ $(document).ready(function() {
 		if($(this).hasClass("on") == false) return false;
 		
 		// 본인인증 모듈 호출
-		
-		
-		// 가입 진행
-		$(f).prepend(`<input type="hidden" name="private_confirm" value="y">`);
-		$("#personal-certify-ok").removeClass("hidden");
-		$(this).parent().remove();
+		if (config.language == "KR") {
+			if (!window.is_mobile) {
+				MOBILEOK.process("https://stg.adererror.com/_api/mok/mok-request", "WB", "mok_result");
+			} else {
+				sessionStorage.setItem('mok-id',$('input[name="member_id"]').val());
+				sessionStorage.setItem('mok-pw',$('input[name="member_pw"]').val());
 
-		/*
-		//let reg = new RegExp(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/)
-		let reg = new RegExp(/^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})?[0-9]{3,4}?[0-9]{4}$/)
-			, noti = $(f).find("input[name='tel_mobile']").parent().find(".vaild");
-		
-		if(reg.test($(f).find("input[name='tel_mobile']").val())) {
-			noti.addClass("off");
-			if($(f).find("input[name='private_confirm']").length == 0) {
-				$(f).prepend(`<input type="hidden" name="private_confirm" value="y">`);
+				MOBILEOK.process("https://stg.adererror.com/_api/mok/mok-join", "MB", "");
 			}
+		} else {
+			$(f).prepend(`<input type="hidden" name="private_confirm" value="y">`);
+			$("#personal-certify-ok").removeClass("hidden");
+			$(this).parent().remove();
 		}
-		else {
-			noti.addClass("on");
-		}
-		*/	
 	});
 
 	// 약관 동의
@@ -106,7 +129,11 @@ $(document).ready(function() {
 		
 	});
 	
-	$(f).submit(function() {		
+	$(f).submit(function() {
+		sessionStorage.removeItem('mok-id');
+		sessionStorage.removeItem('mok-pw');
+		sessionStorage.removeItem('mok-join');
+		
 		if($(f).find("input[name='private_confirm']").length == 0 || $(f).find("input[name='private_confirm']").val() != "y") {
 			alert("휴대전화 본인인증을 진행해주세요.");
 		}
@@ -116,6 +143,9 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				url : config.api + "member/join",
+				headers : {
+					country : config.language
+				},
 				data : new FormData($(this).get(0)),
 				processData:false,
 				contentType:false,
@@ -123,7 +153,7 @@ $(document).ready(function() {
 					if(d.code == 200) {
 						$("body > main.my > section.account").addClass("item-center");
 						$("#btn-mobile-history-back").remove();
-						$("section.account > article.join").addClass("ok");						
+						$("section.account > article.join").addClass("ok");	
 					}
 					else {
 						alert(d.msg);
@@ -134,3 +164,28 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+function mok_result(result) {
+	try {
+		result = JSON.parse(result);
+		
+		$("#personal-certify-ok").removeClass("hidden");
+		$("#btn-personal-certify").parent().remove();
+		
+		$('input[name="member_name"]').val(result.user_name);
+		$('input[name="tel_mobile"]').val(`${result.user_phone.substring(0,3)}-${result.user_phone.substring(3,7)}-${result.user_phone.substring(7)}`);
+		$('input[name="member_birth"]').val(`${result.user_birth.substring(0,4)}-${result.user_birth.substring(4,6)}-${result.user_birth.substring(6,9)}`);
+		$('input[name="member_gender"]').val(result.user_gender);
+
+		$('input[name="member_name"]').attr('readonly',true);
+		$('input[name="tel_mobile"]').attr('readonly',true);
+		$('input[name="member_birth"]').attr('readonly',true);
+		$('input[name="member_gender"]').attr('readonly',true);
+
+		$(f).prepend(`<input type="hidden" name="private_confirm" value="y">`);
+	} catch (error) {
+		alert(
+			'휴대폰 본인인증을 다시 진횅해주세요.'
+		);
+	}
+}

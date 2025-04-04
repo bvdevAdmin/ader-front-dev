@@ -1,0 +1,288 @@
+.info table {
+  width: 100%;
+}
+
+.voucher__wrap {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  margin: 40px 0 100px;
+  width: 100%;
+  color: #343434;
+}
+.voucher__wrap .no_history_msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 20px 0;
+}
+.no_history_msg_voucher_use {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 20px 0;
+}
+.voucher__wrap.title p {
+  font-size: 13px;
+}
+
+.voucher__tab {
+  width: 100%;
+  margin-top: 50px;
+  font-size: 11px;
+}
+
+.voucher__tab__wrap .title p {
+  font-size: 13px;
+}
+
+.voucher__tab__wrap .description {
+  margin-top: 0px;
+}
+.voucher_use_description .voucher_target_product {
+  margin-right: 5px;
+}
+
+.voucher__tab__wrap .voucher_possession_list {
+  border-top: 1px solid #dcdcdc;
+  font-size: 11px;
+}
+
+.form.voucher_input_wrap {
+  display: grid;
+  grid-template-columns: 1.87fr 1fr;
+  column-gap: 10px;
+  width: 100%;
+  margin-top: 10px
+}
+
+.date__info {
+  text-align: right;
+}
+
+.voucher__tab__wrap td {
+  vertical-align: top;
+}
+
+.gray__font {
+  color: #808080;
+}
+
+.use__voucher__form__wrap .table__wrap {
+  padding-bottom: 0px;
+  margin: 10px 0 60px;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.use__voucher__form__wrap .info {
+  border: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.voucher_possession_content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width:100%;
+  padding: 10px 0 40px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+.voucher_possession_row {
+  display: flex;
+  justify-content: space-between;
+}
+.voucher_use_content {
+  margin-bottom: 50px;
+}
+.voucher_use_content.expired {
+  color: #dcdcdc;
+}
+.voucher_use_description,
+.voucher_left_days_wrap {
+  display: flex;
+}
+.info__title__container {
+  margin: 0 auto;
+  width: 470px;
+  display: grid;
+  grid-template-columns: 215px 255px;
+}
+.info__title__container .info__title__item {
+  display: flex;
+  gap: 10px;
+}
+.info__body__container {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.voucher_description {
+  display: flex;
+}
+
+.voucher__notice__form__wrap .non__border {
+  padding-left: 6px
+}
+
+.voucher__notice__form__wrap .non__border p {
+  text-indent: -6px;
+}
+.voucher_regist_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#voucher_err_msg {
+  float: right;
+  color: red;
+  display: none;
+}
+@media (max-width: 1024px) {
+  .voucher__tab__wrap {
+      grid-column: 1/17;
+      width: 100%;
+      margin-top: 40px;
+  }
+
+  .voucher__wrap {
+      margin: 20px 0 60px;
+  }
+
+  .info__title__container {
+      width: 100%;
+      grid-template-columns: 57% 43%;
+      margin-top: 0;
+  }
+
+  .voucher__tab {
+      margin-top: 0;
+  }
+
+  .voucher__wrap .title {
+      margin-top: 0;
+  }
+
+  .info__wrap table {
+      width: 100%;
+  }
+
+  .info__wrap.possession table td:nth-child(1) {
+      width: 63%;
+  }
+
+  .info__wrap.possession table td:nth-child(2) {
+      width: 37%;
+  }
+
+  .voucher__regist__form__wrap .form {
+      display: grid;
+      grid-template-columns: 1.87fr 1fr;
+      column-gap: 10px;
+      width: 100%;
+  }
+
+  .voucher__regist__form__wrap .form input,
+  .voucher__regist__form__wrap .form button {
+      width: 100%;
+  }
+
+  .notice_br {
+      display: inline;
+  }
+
+  .use__voucher__form__wrap .table__wrap {
+      margin-bottom: 52.5px;
+  }
+}
+
+@media (min-width: 600px) {
+  .voucher__tab__wrap {
+      grid-column: 1/17;
+      width: 580px;
+      margin: 0 auto;
+      margin-top: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .voucher__tab__wrap {
+      grid-column: 1/17;
+      width: 470px;
+      margin: 0 auto;
+  }
+
+  .info__wrap.possession table td:nth-child(1) {
+      width: 330px;
+  }
+
+  .info__wrap.possession table td:nth-child(2) {
+      width: 140px;
+  }
+
+  .use__voucher__form__wrap .info {
+      margin-top: 0;
+  }
+
+  .notice_br {
+      display: none;
+  }
+}
+
+.voucher__regist__form__wrap .title {
+  margin-bottom: 30px;
+}
+
+.voucher__amount__form__wrap .title {
+  padding-bottom: 20px;
+}
+
+.voucher__amount__form__wrap .info {
+  margin-top: 0;
+}
+
+.use__voucher__form__wrap .title {
+  padding-bottom: 20px;
+}
+
+.use__voucher__form__wrap .info {
+  font-size: 11px;
+}
+
+.use__voucher__form__wrap .info__title__container {
+  display: flex;
+  gap: 30px;
+  padding: 10px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.use__voucher__form__wrap .table__wrap {
+  padding-top: 10px;
+}
+
+.use__voucher__form__wrap td {
+  padding: 0;
+  width: 100%;
+}
+
+.voucher__notice__form__wrap .title {
+  margin-bottom: 30px;
+}
+
+.voucher__notice__form__wrap .non__border {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.info.non__usable__info {
+  font-size: 11px;
+}
+
+.info.non__border p {
+  margin-bottom: 10px;
+}

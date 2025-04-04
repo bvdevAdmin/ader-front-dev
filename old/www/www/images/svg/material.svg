@@ -1,0 +1,12 @@
+<svg data-name="소재 아이콘" xmlns="http://www.w3.org/2000/svg" width="15.815" height="16" viewBox="0 0 15.815 16">
+    <defs>
+        <clipPath id="c17fwz5yya">
+            <path data-name="사각형 2312" style="fill:none" d="M0 0h15.815v16H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 7764" style="clip-path:url(#c17fwz5yya)">
+        <path data-name="패스 7093" d="m15.5 8.394-8 4.243L.5 9.2" style="stroke:#343434;stroke-linejoin:round;fill:none"/>
+        <path data-name="패스 7094" d="m15.5 11.257-8 4.243-7-3.437" style="stroke:#343434;stroke-linejoin:round;fill:none"/>
+        <path data-name="패스 7095" d="m.5 6.337 7 3.436s3.6-1.732 6.1-2.995a2.626 2.626 0 0 0 1.6-3.236L8.169.5a2.625 2.625 0 0 1-1.385 2.753z" style="stroke:#343434;stroke-linejoin:round;fill:none"/>
+    </g>
+</svg>

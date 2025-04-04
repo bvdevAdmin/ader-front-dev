@@ -1,0 +1,1152 @@
+section.disney article.logoplay { 
+	position : fixed ;
+	display : flex ;
+	top : 110px ;
+	right : 60px 
+}
+section.disney article.logoplay .logos {
+	position : relative ; 
+	margin-right : 10px 
+}
+section.disney article.logoplay .logos > * {
+	position : absolute ;
+	width : 67px ;
+	height : 100% ;
+	top : 0 ; 
+	right : 0 ;
+	text-align : right ;
+	display : grid ;
+	place-items : center ;
+	opacity : 0 ;
+}
+section.disney article.logoplay .logos > *:nth-child(1) {
+	animation : fade-in-out 4.5s ease-out infinite ;
+	animation-delay : 0s
+}
+section.disney article.logoplay .logos > *:nth-child(2) {
+	animation : fade-in-out 4.5s ease-out infinite ;
+	animation-delay : 1.5s
+}
+section.disney article.logoplay .logos > *:nth-child(3) {
+	animation : fade-in-out 4.5s ease-out infinite ;
+	animation-delay : 3s
+}
+@keyframes fade-in-out {
+	0% { opacity : 0 }
+	11% { opacity : 1 }
+	22% { opacity : 1 }
+	33% { opacity : 0 }
+	100% { opacity : 0 }
+}
+section.disney > article.redirect h1 {
+	color : #0000c5 ;
+	font-size : 15px ;
+	font-weight: 400;
+	line-height: 32px;
+}
+section.disney > article.redirect h1 img {
+	display : none 
+}
+section.disney .qr {
+	margin : 40px 0
+}
+section.disney .qr img {
+	width : 200px
+}
+.gray-1 {
+	color : #808080
+}
+
+.mb-40 { 
+	margin-bottom : 40px 
+}
+section.disney > article.intro { 
+	padding : 250px 0 160px 0 ;
+}
+section.disney > article.intro h1,
+section.disney > article.intro h2 {
+	font-size: 15px ;
+	line-height : 20px ;
+	font-weight : 400 ;
+}
+section.disney > article.intro h2 {
+	margin-top : 100px ;
+	margin-bottom : 40px ;
+}
+section.disney > article.intro p {
+	font-size: 11px ;
+	line-height : 18px ;
+	color : #000
+}
+section.disney > article.intro p.lh-14 {
+	line-height : 14px ;
+}
+section.disney > article.intro .rewards-img {
+	padding : 20px 0
+}
+section.disney > article.intro .rewards-img img {
+	width : 960px ;
+}
+.phone-slide {
+	width : 480px ;
+	margin : 0 auto 20px auto ;
+}
+.phone-slide .swiper { 
+	padding-bottom : 40px ;
+}
+.phone-slide .iphone-frame {
+	position : absolute ;
+	z-index : 100 ;
+}
+.phone-slide .iphone-frame.frame-1 {
+	width : 100% ;
+	height : 60px ;
+	background : url('https://adererror.com/upload/2024ss-disney/iphone_frame.png') top center ;
+	background-size : 480px ;
+	top : 0 ;
+	left : 0 ;
+}
+.phone-slide .iphone-frame.frame-2 {
+	width : 100% ;
+	height : 60px ;
+	background : url('https://adererror.com/upload/2024ss-disney/iphone_frame.png') bottom center ;
+	background-size : 480px ;
+	bottom : 40px ;
+	left : 0 ;
+}
+.phone-slide .iphone-frame.frame-3 {
+	width : 145px ;
+	height : calc( 100% - 160px ) ;
+	background : url('https://adererror.com/upload/2024ss-disney/iphone_frame.png') center left ;
+	background-size : 480px ;
+	top : 60px ;
+	left : 0 ;
+}
+.phone-slide .iphone-frame.frame-4 {
+	width : 145px ;
+	height : calc( 100% - 160px ) ;
+	background : url('https://adererror.com/upload/2024ss-disney/iphone_frame.png') center right ;
+	background-size : 480px ;
+	top : 60px ;
+	right : 0 ;
+}
+.phone-slide .swiper-pagination {
+	top : initial ;
+	bottom : 15px !important;
+}
+.phone-slide .swiper-pagination > .swiper-pagination-bullet {
+	border-radius : 50% ;
+	width : 10px ;
+	height : 10px ; 
+	border : solid 1px #dcdcdc ;
+	opacity : 1 ;
+	background : none ;
+}
+.phone-slide .swiper-pagination > .swiper-pagination-bullet.swiper-pagination-bullet-active {
+	border-color : #808080 ;
+	background-color : #808080 ;
+}
+.infobox {
+	width : 480px ; 
+	margin : 40px auto ;
+	border : solid 1px #808080 ;
+	padding : 20px ;
+	text-align : left ;
+	font-size : 11px ;
+	line-height : 18px ;
+}
+ul.dot > li {
+	padding-left : 7px ;
+	position : relative ;
+}
+ul.dot > li:before {
+	content : "";
+	width : 2px ;
+	height : 2px ;
+	background-color : #808080 ;
+	display : inline-block ;
+	position : absolute ;
+	top : 7px ;
+	left : 0
+}
+section.disney .phone-slide img {
+	width : 480px 
+}
+
+
+
+/***************** 이스터에그 *******************/
+a.disney {
+	position : fixed ;
+	display : inline-block ;
+	z-index : 10000 ;
+	background-size : contain ;
+	background-position : center ;
+	background-repeat : no-repeat ;
+}
+a.disney > .flicker {
+	color : #0000c5 ;
+	font-size : 14px ;
+	line-height : 17px ;
+	text-align : center ;
+	width : 100% ;
+	position : absolute ; 
+	left : 0;
+	bottom : 100% ;
+}
+a.disney > .flicker > * {
+	position : absolute ;
+	left : 0 ;
+	bottom : 0 ;
+	opacity : 0 ;
+	width : 100% ;
+	display : block ;
+}
+a.disney > .flicker .playgame {
+	animation : disney-flicker infinite 4s linear ;
+}
+a.disney > .flicker .challenge {
+	animation : disney-flicker infinite 4s linear ;
+	animation-delay : 2s ;
+}
+@keyframes disney-flicker {
+	0% { opacity : 1 }
+	24% { opacity : 1 }
+	25% { opacity : 0 }
+
+}
+a.disney.egg-1 {
+	width : 120px ;
+	height : 120px ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/toy-story_04.png') ;
+	top : 100vh ;
+	left : -120px ;
+	animation : disney-egg-1 linear forwards 1 7.5s 
+}
+@keyframes disney-egg-1 {
+	0% { top : 100vh ; left : -120px }
+	100% { top : -120px; left : 100vw }
+}
+
+a.disney.egg-2 {
+	width : 203px ;
+	height : 158px ;
+	background : url('https://adererror.com/upload/2024ss-disney/easter-egg/donald_05.png') left bottom no-repeat ;
+	background-size : 100px 100px ;
+	top : 80vh ;
+	left : -203px ;
+	animation : disney-egg-2 linear forwards 1 7.5s 
+}
+a.disney.egg-2 > .egg > span {
+	display : block ; 
+	position : absolute ;
+	top : 0;
+	right : 0;
+	width : 80px ;
+	height : 80px ;
+	opacity : 0 ;
+	background-size : 80px 80px ;
+	animation : disney-egg-2-hat infinite 1.275s linear ;
+}
+a.disney.egg-2 > .egg > span:nth-child(1) {
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/donald_hat_01.png') 
+}
+a.disney.egg-2 > .egg > span:nth-child(2) {
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/donald_hat_01-2.png') ;
+	animation-delay : .55s ;
+}
+a.disney.egg-2 > .egg > span:nth-child(3) {
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/donald_hat_01-3.png') ;
+	animation-delay : .825s ;
+}
+@keyframes disney-egg-2 {
+	0% { left : -120px }
+	100% { left : 100vw }
+}
+@keyframes disney-egg-2-hat {
+	0% { opacity : 1 }
+	32% { opacity : 1 }
+	33% { opacity : 0 }
+}
+
+
+a.disney.egg-3 {
+	width : 203px ;
+	height : 158px ;
+	top : 90vh ;
+	left : -203px ;
+	animation : disney-egg-3 linear forwards 1 5s 
+}
+a.disney.egg-3 > .egg > span {
+	display : block ; 
+	position : absolute ;
+	top : 0;
+	right : 0;
+	width : 60px ;
+	height : 60px ;
+	opacity : 0 ;
+	transform : rotate(45deg) ;
+	background-size : contain ;
+	animation : disney-egg-3-foot infinite .85s linear ;
+}
+a.disney.egg-3 > .egg > span:nth-child(1) {
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/toy-story_03.png') 
+}
+a.disney.egg-3 > .egg > span:nth-child(2) {
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/toy-story_03-2.png') ;
+	animation-delay : .275s ;
+}
+@keyframes disney-egg-3 {
+	0% { top : 100vh ; left : -120px }
+	100% { top : -120px; left : 100vw }
+}
+@keyframes disney-egg-3-foot {
+	0% { opacity : 1 }
+	32% { opacity : 1 }
+	33% { opacity : 0 }
+}
+
+
+
+a.disney.egg-4 {
+	width : 120px ;
+	height : 120px ;
+	left : 120px ;
+	bottom : 100px ;
+	animation : disney-egg-4 linear forwards 1 6s ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/mickey_07.png') 
+}
+a.disney.egg-4 + a.disney.egg-4 {
+	width : 140px ;
+	height : 140px ;
+	top : 170px ;
+	left : initial ;
+	right : 140px ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/mickey_12.png') 
+}
+@keyframes disney-egg-4 {
+	0% { opacity : 0 }
+	10% { opacity : 1 }
+}
+
+
+a.disney.egg-4 {
+	width : 120px ;
+	height : 120px ;
+	animation : disney-egg-4 linear forwards 1 6s ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/mickey_07.png') 
+}
+a.disney.egg-4 + a.disney.egg-4 {
+	width : 140px ;
+	height : 140px ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/mickey_12.png') 
+}
+@keyframes disney-egg-4 {
+	0% { opacity : 0 }
+	10% { opacity : 1 }
+}
+
+
+a.disney.egg-5 {
+	width : 300px ;
+	height : 300px ;
+	top : 170px ;
+	right : 0 ; 
+	animation : disney-egg-5 linear forwards 1 6s ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/easter-egg/ginie.png') 
+}
+@keyframes disney-egg-5 {
+	0% { opacity : 0 }
+	20% { opacity : .6 }
+	30% { opacity : 1 }
+	70% { opacity : .5 }
+	80% { opacity : .3 }
+	90% { opacity : .1 }
+	100% { opacity : 0 }
+}
+
+
+
+/***************** 모바일 *******************/
+@media (max-width:720px) {
+	section.disney > .logoplay { 
+		top : 70px ;
+		right : 20px ;
+		z-index : 100 ;
+	}
+	section.disney > .logoplay img { 
+		width : 100% ;
+	}
+	section.disney > .logoplay .logos {
+	    margin-right: 5px;
+	}
+	section.disney > .logoplay .logos > * {
+		width : 34px ;
+	}
+	section.disney > .logoplay .adererror {
+		width : 34px ;
+	}
+
+	section.disney > article.intro { 
+		padding : 100px 0 150px 0
+	}
+	section.disney > article.intro h2 {
+		font-size: 13px;
+		margin-top: 60px;
+	}
+	section.disney > article.intro p {
+		font-size: 11px ;
+		line-height : 16px ;
+		color : #000
+	}
+
+	.phone-slide {
+		width : 100% ;
+		overflow : hidden ;
+		display : flex ;
+	}
+	.phone-slide .swiper { 
+		width : 480px ;
+	}
+	.phone-slide .swiper-slide img { 
+		margin-left : calc( -240px + 50vw )
+	}
+	.phone-slide .iphone-frame.frame-3 {
+		left : calc( -240px + 50vw ) 
+	}
+	.phone-slide .iphone-frame.frame-4 {
+		width : 145px ;
+		height : calc( 100% - 160px ) ;
+		background : url('https://adererror.com/upload/2024ss-disney/iphone_frame.png') center right ;
+		background-size : 480px ;
+		top : 60px ;
+		right : calc( -240px + 50vw ) 
+	}
+	section.disney > article.intro .rewards-img {
+		padding : 20px
+	}
+	section.disney > article.intro .rewards-img img {
+		width : 100% ;
+	}
+	section.disney > article.intro .egg {
+		margin-top : -40px ;
+		display : block ;
+		padding : 20px 0 ;
+		width : 100% ;
+		position : relative ;
+	}
+	section.disney > article.intro .egg img {
+		width : 100% ;
+	}
+	section.disney > article.intro .egg:after {
+		display : inline-block ;
+		position : absolute ;
+		width : 50px;
+		height : 50px;
+		content : "";
+		background : url('https://adererror.com/upload/2024ss-disney/touch.svg') center no-repeat ;
+		top : 30% ;
+		right : 23% ;
+	}
+
+	.infobox {
+		width : calc( 100vw - 40px ) ; 
+		margin : 40px 20px 0 20px ;
+		padding : 10px ;
+	}
+
+
+	a.disney.egg-1 {
+		animation-duration : 5s 
+	}
+	a.disney.egg-2 {
+		animation-duration : 5s 
+	}
+	a.disney.egg-2 > .egg > span {
+		animation-duration : .75s ;
+	}
+	a.disney.egg-2 > .egg > span:nth-child(2) {
+		animation-delay : .25s ;
+	}
+	a.disney.egg-2 > .egg > span:nth-child(3) {
+		animation-delay : .5s ;
+	}
+
+	a.disney.egg-4 {
+		left : 0 ;
+		bottom : 70px ;
+	}
+	a.disney.egg-4 + a.disney.egg-4 {
+		top : 120px ;
+		right : 0 ;
+	}
+	a.disney.egg-5 {
+		width : 150px ;
+		height : 150px ;
+		top : 90px ;
+		left : 0 ;
+	}
+}
+
+
+
+/**************** 콜라보레이션 페이지 ********************/
+button {
+	font-weight : 400 !important 
+}
+
+section.collaboration.disney {
+	background-color : #CACACE ;
+	text-align : center ;
+	padding-right : 0 
+}
+section.collaboration.disney > * {
+	padding-right : 0 !important ;
+}
+section.collaboration.disney article.logoplay {
+	width: auto !important ;
+	top : 40px ;
+	right : 40px ;
+	z-index : 100 ;
+	position : absolute 
+}
+
+.item-center {
+	display : grid;
+	height : 100vh;
+	text-align : center;
+	place-items : center;
+}
+section.collaboration.disney section.paper {
+	display : block ; 
+	width : 100% ;
+	height : calc( 100vh - 50px ) ;
+	top : 50px ;
+	position : sticky ;
+	overflow : hidden 
+}
+section.collaboration.disney section.paper .bg {
+	position : absolute ;
+	width : 100% ;
+	height : 100% ;
+	top : 0 ;
+	left : 0 ;
+	background-size : cover ;
+	background-position : center ;
+	background-image : url('https://adererror.com/upload/2024ss-disney/paper/pc/pc_01.png')
+}
+
+section.collaboration.disney section.paper.fix .bg {
+	animation : paper-in 1 1s forwards ease-out
+}
+@keyframes paper-in {
+	0% { transform : scale(1) }
+	50% { transform : scale(1.75) ; opacity : 1 }
+	100% { transform : scale(1.75) ; opacity : .2 }
+}
+
+section.collaboration.disney > .book > .contents {
+	margin-top : 125vh;
+	height : 150vh ;
+	position : relative ;
+	z-index : 2 ;
+}
+section.collaboration.disney > .book > .contents > * {
+	position : sticky ;
+	top : 50px ;
+	width : 100% ;
+	height : calc( 100vh - 50px ) ;
+}
+section.collaboration.disney > .book > .contents > .cont-wrap > * {
+	position : absolute ;
+	top : 0;
+	width : 100%;
+	height : calc( 100vh - 50px ) ;
+	transition : ease-out .2s ;
+	opacity : 0 ;
+}
+section.collaboration.disney > .book > .contents > .cont-wrap > *:not(.on) {
+	display : none 
+}
+section.collaboration.disney > .book > .contents > .cont-wrap > *.on:not(.off) {
+	opacity : 1 ;
+}
+
+/** 로고플레이 **/
+section.collaboration.disney > .book > .contents .logoplay .logobody {
+	display : flex ;
+}
+section.collaboration.disney > .book > .contents .logoplay .logobody > .logos { 
+	height : 60px ; 
+	position : relative ;
+	overflow : hidden ;
+}
+section.collaboration.disney > .book > .contents .logoplay .logobody > .logos > * {
+	text-align : right ;
+	line-height : 60px ; 
+	height : 60px ;
+}
+section.collaboration.disney > .book > .contents .logoplay.on.s1 .logobody > .logos > * {
+	animation : logo-scroll-1 1 1.5s forwards ease-out ;	
+}
+section.collaboration.disney > .book > .contents .logoplay.on.s2 .logobody > .logos > * {
+	animation : logo-scroll-2 1 1.5s forwards ease-out ;	
+}
+section.collaboration.disney > .book > .contents .logoplay.on.s3 .logobody > .logos > * {
+	animation : logo-scroll-3 1 1.5s forwards ease-out ;	
+}
+
+@keyframes logo-scroll {
+	25% { transform : translateY(0) }
+	33.33%,55% { transform : translateY(-60px) }
+	66.66%,100% { transform : translateY(-120px) }
+}
+@keyframes logo-scroll-1 {
+	35%,100% { transform : translateY(0) }
+}
+@keyframes logo-scroll-2 {
+	0% { transform : translateY(0) }
+	35%,100% { transform : translateY(-60px) }
+}
+@keyframes logo-scroll-3 {
+	0% { transform : translateY(-60px) }
+	35%,100% { transform : translateY(-120px) }
+}
+
+section.collaboration.disney > .book > .contents .logoplay .logobody > .logos img {
+	width : 100px ; 
+	display : inline-block 
+}
+section.collaboration.disney > .book > .contents .logoplay .logobody > .logos > *:first-child img {
+	width : 108px 
+}
+section.collaboration.disney > .book > .contents .logoplay .logobody > .adererror { 
+	border-left : solid 2px #000 ; 
+	margin-left : 16px ;
+	padding-left : 16px ;
+	height : 60px ;
+	line-height : 60px ; 
+}
+section.collaboration.disney > .book > .contents .logoplay .logobody > .adererror > img {
+	width : 117px ;
+	display : inline-block ;
+}
+section.collaboration.disney > .book > .contents .logoplay p {
+	width : 100% ;
+	position : absolute ;
+	left : 0 ;
+	bottom : 170px ;
+	font-weight : 400 ;
+	opacity : 0 
+}
+section.collaboration.disney > .book > .contents .logoplay p {
+	animation : copyright-fadeinout 1 1.5s forwards ease-out ;
+}
+section.collaboration.disney > .book > .contents .logoplay p.copyright-2 {
+	animation-delay : 1.5s 
+}
+section.collaboration.disney > .book > .contents .logoplay p.copyright-3 {
+	animation-delay : 3s ;
+	animation-name : copyright-fadeout
+}
+@keyframes copyright-fadeinout {
+	0%,100% { opacity : 0 }
+	20%,80% { opacity : 1 }
+}
+@keyframes copyright-fadeout {
+	0% { opacity : 0 }
+	20%,100% { opacity : 1 }
+}
+
+
+/** 설명 **/
+section.collaboration.disney > .book > .contents .concept-summary {
+	cursor : pointer 
+}
+section.collaboration.disney > .book > .contents .concept-summary h1 {
+	font-size : 15px;
+	line-height : 20px;
+	font-weight : 400;
+	text-align: center;
+}
+section.collaboration.disney > .book > .contents .concept-summary p.mobile {
+	display : none;
+}
+section.collaboration.disney > .book > .contents .concept-summary p.pc {
+	margin : 100px 0
+}
+
+
+/** 화보집 **/
+section.collaboration.disney .bookbody {
+	width : 1200px ;
+	margin : auto ;
+	transform : translateY(100vh)
+}
+section.collaboration.disney .bookbody.on {
+	animation : bookbody-here 1.1s forwards 1 linear
+}
+@keyframes bookbody-here {
+	0% { transform : translateY(100vh) }
+	75% { transform : translateY(-5vh) }
+	85% { transform : translateY(-3vh) }
+	100% { transform : translateY(0) }
+}
+section.collaboration.disney .bookbody .book-contents div {
+	background-position : center ;
+	background-size : cover ;
+}
+section.collaboration.disney .bookbody .book-contents .page-cover-1 {
+	background-image : url('https://adererror.com/upload/2024ss-disney/magazine/magazine_cover_01.jpg');
+}
+section.collaboration.disney .bookbody .book-contents .page-cover-2 {
+	background-image : url('https://adererror.com/upload/2024ss-disney/magazine/magazine_cover_02.jpg');
+}
+section.collaboration.disney .bookbody .book-contents .page.even:after,
+section.collaboration.disney .bookbody .book-contents .page.odd:after {
+	content : "";
+	display : block ; 
+	width : 30px ;
+	height : calc( 100% + 16px ) ;
+	position : absolute ;
+	background : url('https://adererror.com/upload/2024ss-disney/paper/shadow.svg') center center no-repeat ;
+	background-size : 100% 100% ;
+	top : -8px ;
+}
+section.collaboration.disney .bookbody .book-contents .page.even:after { 
+	right : -15px 
+}
+section.collaboration.disney .bookbody .book-contents .page.odd:after {
+	left : -15px 
+}
+
+section.collaboration.disney .bookbody .paging,
+section.collaboration.disney .bookbody .paging-open {
+	margin-top : 25px ;
+	font-size : 14px ; 
+	line-height : 17px ;
+	display : inline-flex;
+	width : 150px ;
+}
+section.collaboration.disney .bookbody .paging-open {
+	display : none ;
+	width : auto ;
+}
+section.collaboration.disney .bookbody .paging-open button {
+	height : 14px ;
+	cursor : pointer ;
+	color : #000;
+}
+section.collaboration.disney .bookbody .paging-open button#btn-paging-open1 {
+	padding-right : 50px ; 
+    background : url('https://adererror.com/upload/2024ss-disney/btn-paging-next.svg') right center no-repeat ;
+}
+section.collaboration.disney .bookbody .paging-open button#btn-paging-open2 {
+	padding-left : 50px ; 
+    background : url('https://adererror.com/upload/2024ss-disney/btn-paging-prev.svg') left center no-repeat ;
+}
+section.collaboration.disney .bookbody .paging span {
+	font-weight : 400 ;
+	text-align : center ;
+	width : 16px ;
+}
+section.collaboration.disney .bookbody .paging span.paging-num {
+	width : 60px ;
+}
+section.collaboration.disney .bookbody .paging button {
+	width : 7px ;
+	height : 14px ;
+	background-position : center ;
+	background-repeat : no-repeat ;
+	vertical-align: middle ;
+	cursor : pointer 
+}
+section.collaboration.disney .bookbody .paging button.prev {
+	background-image : url('https://adererror.com/upload/2024ss-disney/btn-paging-prev.svg') 
+}
+section.collaboration.disney .bookbody .paging button.next {
+	background-image : url('https://adererror.com/upload/2024ss-disney/btn-paging-next.svg') 
+}
+
+section.collaboration.disney > .book > .contents ~ section {
+	position : relative ;
+	z-index : 10 ;
+}
+body:not(.show-all) > section.collaboration.disney > .book > .contents ~ section {
+	display : none ;
+}
+section.collaboration.disney > .book > .egg-game h1 {
+	font-weight : 400 ;
+	font-size: 15px ;
+	color : #0000c5;
+}
+section.collaboration.disney > .book > .egg-game .qr img {
+	width : auto 
+}
+
+section.collaboration.disney > .book > .buy a {
+	display : inline-block ;
+	width : 480px ;
+	height : 600px ;
+	background-position : center ;
+	background-repeat : no-repeat ;
+	background-size : cover ;
+	padding : 20px ;
+	text-align : left ;
+	font-size : 13px ;
+	line-height : 20px ;
+	margin : 0 20px 
+}
+section.collaboration.disney > .book > .buy a.adult img,
+section.collaboration.disney > .book > .buy a.child img {
+    display : none;
+}
+section.collaboration.disney > .book > .buy a.adult {
+	background-image : url('https://adererror.com/upload/2024ss-disney/buy-adult.jpg');
+}
+section.collaboration.disney > .book > .buy a.child {
+	background-image : url('https://adererror.com/upload/2024ss-disney/buy-child.jpg');
+}
+@media (max-width:780px) {
+    section.collaboration.disney > .book > .buy a.adult img,
+    section.collaboration.disney > .book > .buy a.child img {
+        display : flex;
+    }
+    section.collaboration.disney > .book > .buy a.adult br,
+    section.collaboration.disney > .book > .buy a.child br {
+        display : none;
+    }
+    section.collaboration.disney > .book > .buy a.adult,
+    section.collaboration.disney > .book > .buy a.child {
+        background-image : none;
+    }
+}
+section.collaboration.disney > .book > .editorial {
+	text-align : left;
+}
+section.collaboration.disney > .book > .editorial a.mobile {
+    display : none;
+}
+section.collaboration.disney > .book > .editorial a.pc {
+	position : absolute ;
+	top : 20px ;
+	left : 20px ;
+	display : inline-block ;
+	font-size : 15px ;
+	line-height : 20px ;
+	font-weight : 400 ;
+	color : #fff ;
+}
+section.collaboration.disney > .book > .editorial video {
+	width : 100% ;
+	display : block ;
+}
+@media (max-width:780px) {
+    section.collaboration.disney > .book > .editorial {
+        display : grid;
+        height : 100vh;
+        text-align : center;
+        place-items : center;
+    }
+    section.collaboration.disney > .book > .editorial video {
+        width : 100% ;
+        display : block ;
+    }
+}
+#flipbook { transition : ease-out .2s ; }
+#flipbook .page { background-color : #fff }
+#flipbook.center-left {	
+	margin-left : -600px;
+}
+#flipbook.center-right {
+	margin-left : 600px;
+}
+#flipbook.center-left ~ .paging,
+#flipbook.center-right ~ .paging {
+	display : none ;
+}
+#flipbook.center-left ~ .paging-open.next,
+#flipbook.center-right ~ .paging-open.prev {
+	display : inline-block ;
+}
+
+.fullscreen {
+    display: none;
+}
+
+/***************** 모바일 *******************/
+@media (max-width:780px) {
+	section.collaboration.disney section.paper.fix {
+		max-width : 100vw ;
+		overflow : hidden 
+	}
+
+	section.collaboration.disney > .book > .contents .logoplay .logobody > .logos { 
+		height : 33px 
+	}
+	section.collaboration.disney > .book > .contents .logoplay .logobody > .logos > * {
+		line-height : 33px ; 
+		height : 33px ;
+	}
+	section.collaboration.disney > .book > .contents .logoplay .logobody > .logos img {
+		width : 56px ; 
+	}
+	section.collaboration.disney > .book > .contents .logoplay .logobody > .logos > *:first-child img {
+		width : 58px 
+	}
+	section.collaboration.disney > .book > .contents .logoplay .logobody > .adererror { 
+		border-left-width : 1px ; 
+		margin-left : 8px ;
+		padding-left : 8px ;
+		height : 33px ;
+		line-height : 33px ; 
+	}
+	section.collaboration.disney > .book > .contents .logoplay .logobody > .adererror > img {
+		width : 62px ;
+	}
+	section.collaboration.disney > .book > .contents .logoplay p {
+		bottom : 25vh ;
+	}
+	@keyframes logo-scroll-2 {
+		0% { transform : translateY(0) }
+		35%,100% { transform : translateY(-33px) }
+	}
+	@keyframes logo-scroll-3 {
+		0% { transform : translateY(-33px) }
+		35%,100% { transform : translateY(-66px) }
+	}
+
+	section.collaboration.disney > .book > .contents .concept-summary h1 {
+		font-size : 11px ;
+	}
+	section.collaboration.disney > .book > .contents .concept-summary p.pc {
+		display: none;
+	}
+	section.collaboration.disney > .book > .contents .concept-summary p.mobile {
+        height: 40vh;
+        display: block;
+		margin : 30px 0;
+        padding : 0 55px;
+        /* font-size : 11px; */
+        font-size : 10px;
+        overflow-y: scroll;
+	}
+
+	section.collaboration.disney article.logoplay {
+		top : 20px ;
+		right : 20px ;
+	}
+
+	/** 화보집 **/
+	section.collaboration.disney .bookbody {
+		width : calc( 100vw - 40px ) ;
+	}
+	section.collaboration.disney .bookbody .paging,
+	section.collaboration.disney .bookbody .paging-open {
+		margin-top : 20px ;
+		font-size : 12px ; 
+		width : 90px ;
+	}
+	section.collaboration.disney .bookbody .paging-open button {
+		height : 12px ;
+	}
+	section.collaboration.disney .bookbody .paging-open button#btn-paging-open1 {
+		padding-right : 40px ; 
+		background-size : contain ;
+	}
+	section.collaboration.disney .bookbody .paging-open button#btn-paging-open2 {
+		padding-left : 40px ; 
+		background-size : contain ;
+	}
+	section.collaboration.disney .bookbody .paging span.paging-num {
+		width : 85px ;
+	}
+	section.collaboration.disney .bookbody .paging button {
+		width : 13px ;
+		height : 14px ;
+		background-size : cover ;
+	}
+
+	section.collaboration.disney .egg {
+		position : relative ;
+		display : block ;
+	}
+	section.collaboration.disney .egg:after {
+		display : inline-block ;
+		position : absolute ;
+		width : 50px;
+		height : 50px;
+		content : "";
+		background : url('https://adererror.com/upload/2024ss-disney/touch.svg') center no-repeat ;
+		top : 30% ;
+		right : 23% ;
+	}
+	.egg-launch {
+		width : 100% ;
+		margin : 40px 0 0 0 !important ;
+		text-align : center ;
+	}
+	.egg-launch a {
+		display : inline-block ;
+		max-width: 240px;
+		width : 100% ;
+		height: 45px;
+		border-radius: 10px ;
+		text-align : center ;
+		line-height : 45px ;
+		font-size : 15px ;
+		color : #fff;
+		font-weight : 400 ; 
+		background-color : #0000c5 
+	}
+	#flipbook.center-left {	
+		margin-left : calc( ( -100vw + 40px ) / 2 ) ;
+	}
+	#flipbook.center-right {
+		margin-left : calc( ( 100vw - 40px ) / 2 ) ;
+	}
+	section.collaboration.disney > .book > .buy {
+		padding : 0 20px !important 
+	}
+	section.collaboration.disney > .book > .buy > div {
+		width : 100% ; 
+		display : grid ;
+		grid-template-columns : 1fr 1fr ;
+		grid-gap : 10px ;
+	}
+	section.collaboration.disney > .book > .buy a {
+		width : auto ;
+		height : auto ;
+		padding : 0 ;
+		font-size : 11px ;
+		margin : 0
+	}
+	section.collaboration.disney > .book > .buy a img {
+		width : 100% ;
+		display : block ;
+		margin-bottom : 10px ;
+	}
+
+	section.collaboration.disney > .book > .editorial {
+		display : grid;
+        height : 100vh;
+        text-align : center;
+        place-items : center;
+	}
+    section.collaboration.disney > .book > .editorial a.pc {
+        display : none;
+    }
+    section.collaboration.disney > .book > .editorial a.mobile {
+        display : block;
+        position : static ;
+        font-size : 11px ;
+        text-decoration : underline ;
+        color : #000 ;
+    }
+	section.collaboration.disney > .book > .editorial video {
+		margin-bottom : 10px ;
+	}
+
+	.fullscreen {
+		display: block;
+		padding : 20px 0 0 0 !important;
+	}
+	.fullscreen button {
+		color : #808080;
+		font-size : 12px;
+	}
+	.fullscreen button img {
+        display: inline-block;
+		vertical-align : middle;
+		margin-right : 6px !important;
+	}
+}
+section.egg-game {
+	display : none 
+}
+section.book-gallery {
+	display : grid ;
+	place-items : center ;
+	width : 0 ;
+	height : 0 ;
+	top : 0 ;
+	left : 0 ;
+	margin-top : 0 ;
+	z-index : -1 ;
+	position : absolute ;
+	background-color : #fff ;
+}
+section.book-gallery.on {
+	z-index : 10000 ;
+	width : 100vw ;
+	height : 100vh ;
+	position : fixed ; 
+}
+section.book-gallery img {
+	width : 100% ;
+}
+section.book-gallery > button.close {
+	position : absolute ;
+	top : 0 ;
+	right : 0;
+	width : 32px ;
+	height : 32px ;
+	z-index : 10 ;
+	background : url('https://adererror.com/upload/2024ss-disney/btn-close.svg') left bottom no-repeat 
+}
+section.book-gallery > .swiper {
+	width : 100vw ;
+	height : 100vh ;
+	display : block 
+}
+section.book-gallery > .swiper .swiper-slide {
+	background-position : center ;
+	background-repeat : no-repeat ;
+	background-size : contain 
+}
+section.book-gallery > .swiper .swiper-button-prev,
+section.book-gallery > .swiper .swiper-button-next {
+	width : 40px ;
+	height : 100% ;
+	top : 0 ;
+	margin-top : 0 ;
+}
+section.book-gallery > .swiper .swiper-button-prev:before,
+section.book-gallery > .swiper .swiper-button-next:before {
+    content: "";
+	width : 34px ;
+	height : 14px ;
+	top : calc( 50% - 7px ) ;
+	left : 0 ;
+	background : url('https://adererror.com/upload/2024ss-disney/btn-arrow.svg') center center no-repeat !important 
+}
+section.book-gallery > .swiper .swiper-button-prev:before {
+	transform : rotate(-90deg);
+}
+section.book-gallery > .swiper .swiper-button-next:before {
+	transform : rotate(90deg);
+}
+section.book-gallery > .swiper .swiper-button-prev:after,
+section.book-gallery > .swiper .swiper-button-next:after {
+	display : none;
+}
+section.book-gallery > .swiper .swiper-button-prev {
+	left : 0 !important;
+}
+section.book-gallery > .swiper .swiper-button-next {
+	right : 0 !important;
+}
+
+@media (orientation: portrait) {
+	section.book-gallery:after {
+		content : "" ;
+		display : inline-block ;
+		position : absolute ;
+		z-index : 2 ;
+		width : 100% ;
+		height : 100%;
+		top : 0;
+		left :0;
+		background : url('https://adererror.com/upload/2024ss-disney/display-refresh.svg') center center no-repeat rgba(0,0,0,.4) 
+	}
+}

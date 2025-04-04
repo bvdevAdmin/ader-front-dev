@@ -14,42 +14,29 @@
  +=============================================================================
 */
 
-$country = null;
-if (isset($_SESSION['COUNTRY'])) {
-	$country = $_SESSION['COUNTRY'];
-} else if (isset($_SERVER['HTTP_COUNTRY'])) {
-	$country = $_SERVER['HTTP_COUNTRY'];
-}
-
-$category_idx = 0;
-if (isset($_POST['category_idx'])) {
-	$category_idx = $_POST['category_idx'];
-}
-
-if (isset($country) && isset($category_idx)) {
+if (isset($category_idx)) {
 	$select_sub_category_sql = "
 		SELECT
-			IDX				AS CATEGORY_IDX,
-			SUBCATEGORY		AS SUB_CATEGORY
+			FQ.IDX				AS CATEGORY_IDX,
+			FQ.SUBCATEGORY		AS SUB_CATEGORY
 		FROM
-			FAQ
+			FAQ FQ
 		WHERE
 			(
-				CATEGORY_NO = ".$category_idx." OR
-				CATEGORY_NO IN (
+				FQ.CATEGORY_NO = ? OR
+				FQ.CATEGORY_NO IN (
 					SELECT
-						IDX
+						FC.IDX
 					FROM
-						FAQ_CATEGORY
+						FAQ_CATEGORY FC
 					WHERE 
-						FATHER_NO = ".$category_idx."
+						FC.FATHER_NO = ?
 				)
-			)
-        AND
+			) AND
             STATUS = 'Y'
 	";
 	
-	$db->query($select_sub_category_sql);
+	$db->query($select_sub_category_sql,array($category_idx,$category_idx));
 	
 	foreach($db->fetch() as $data){
 		$json_result['data'][] = array(

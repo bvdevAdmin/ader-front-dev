@@ -1,0 +1,329 @@
+article.eastpak {
+  text-align: center;
+  overflow: hidden;
+}
+
+main.collaboration article.eastpak .slide {
+  position: relative;
+  width: 100%;
+  height: 780px;
+  overflow: hidden;
+  margin: 200px 0;
+}
+
+main.collaboration article.eastpak .line {
+  width: 100%;
+  height: 100%;
+}
+
+main.collaboration article.eastpak .line ul {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 400%;
+  animation: scroll-left 50s infinite linear;
+}
+
+@keyframes scroll-left {
+  from {
+    left: 0
+  }
+
+  to {
+    left: -200%
+  }
+}
+
+main.collaboration article.eastpak .line ul>li {
+  display: inline-block;
+  width: 625px;
+  margin-right: 10px;
+}
+
+main.collaboration article.eastpak>.product-wrap>.cont {
+  padding-right: 50%;
+  position: relative;
+}
+
+article.eastpak>.product-wrap>.product {
+  width: 100%;
+  font-size: 0;
+}
+
+main.collaboration article.eastpak>.product-wrap>.cont video {
+  width: 100%;
+}
+
+main.collaboration article.eastpak>.product-wrap>.cont .title {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 50%;
+  background: #F3F3F3;
+}
+
+main.collaboration article.eastpak>.product-wrap>.cont .title .box {
+  width: 100%;
+  text-align: center;
+}
+
+main.collaboration article.eastpak>.product-wrap>.product {
+  width: 100%;
+  font-size: 0;
+}
+
+main.collaboration article.eastpak>.product-wrap>.product>.cont {
+  width: calc(100% - 860px);
+  display: inline-block;
+  margin: 0 110px;
+}
+
+main.collaboration article.eastpak>.product-wrap>.product>.cont>.box {
+  padding-top: 95px;
+}
+
+main.collaboration article.eastpak>.product-wrap>.product>.cont>.box>* {
+  font-size: 14px;
+  display: block;
+  padding-bottom: 10px;
+}
+
+main.collaboration article.eastpak #swiper-product {
+  overflow: hidden;
+  position: relative;
+}
+
+main.collaboration article.eastpak #swiper-product .swiper-slide {
+  text-align: center;
+}
+
+article.eastpak>.product-wrap>.product {
+  width: 100%;
+  font-size: 0;
+}
+
+article.eastpak #swiper-product .swiper-slide {
+  text-align: center;
+}
+
+article.eastpak>.product-wrap>* {
+  margin-bottom: 150px;
+}
+
+main.collaboration article.eastpak .swiper-button-prev:after,
+main.collaboration article.eastpak .swiper-button-next:after,
+main.collaboration article.eastpak+article.campaign .swiper-button-prev:after,
+main.collaboration article.eastpak+article.campaign .swiper-button-next:after {
+  background-size: 9px;
+}
+
+main.collaboration article.eastpak+article.campaign .swiper-pagination {
+  height: fit-content;
+}
+
+main.collaboration article.eastpak .line.pause ul {
+  animation-play-state: paused;
+}
+
+main.collaboration article.eastpak .product-wrap .swiper-slide {
+  width: 625px;
+}
+
+main.collaboration article.eastpak .product-wrap .swiper-slide img {
+  width: 100%;
+}
+
+main.collaboration article.eastpak>.product-wrap>* {
+  margin-bottom: 150px;
+}
+
+main.collaboration article.eastpak>.product-wrap>.product>video {
+  width: 637px;
+}
+
+main.collaboration article.eastpak #swiper-product .swiper-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #000;
+}
+
+main.collaboration article.eastpak>.product-wrap>.product>img {
+  vertical-align: top;
+}
+
+.eastpak-pc {
+  display: unset;
+}
+
+.eastpak-mo {
+  display: none;
+}
+
+article.eastpak .product-wrap .product .cont .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+article.eastpak .product-wrap .product .cont .swiper-slide img {
+  max-width: 626px;
+}
+
+main.collaboration article.eastpak .swiper-pagination {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  main.collaboration article.eastpak .slide {
+    height: 230px;
+    margin: 70px 0;
+  }
+
+  main.collaboration article.eastpak .line ul {
+    width: 2000%;
+  }
+
+  main.collaboration article.eastpak .line ul>li {
+    width: 185px;
+    margin-right: 5px;
+  }
+
+  main.collaboration article.eastpak .line ul>li img {
+    width: 100%;
+  }
+
+  main.collaboration article.eastpak .line ul {
+    animation: scroll-left 90s infinite linear;
+    left: 0;
+  }
+
+  @keyframes scroll-left {
+    from {
+      left: 0
+    }
+
+    to {
+      left: -1000%
+    }
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.cont .title {
+    position: relative;
+    left: unset;
+    width: 100%;
+    height: 375px;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.cont:first-child {
+    padding-right: 0;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.product>video {
+    width: 100%;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.product>.cont {
+    width: 100%;
+    text-align: left;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.product>.cont>.box {
+    padding: 0 10px;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.product>.cont>.box>* {
+    font-size: 13px;
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.product>img {
+    width: 100%;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>.product>.cont {
+    margin: 0;
+    margin-bottom: 50px;
+  }
+
+  main.collaboration article.eastpak .product-wrap .swiper-slide {
+    width: 100%;
+  }
+
+  main.collaboration article.eastpak+article.campaign {
+    padding: 70px 0;
+  }
+
+  main.collaboration article.eastpak+article.campaign .media {
+    width: calc(100% - 30px);
+    margin: 0 0 20px 0;
+  }
+
+  main.collaboration article.eastpak+article.campaign .buttons {
+    padding: 0;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>* {
+    margin-bottom: 50px;
+  }
+
+  .eastpak-pc {
+    display: none;
+  }
+
+  .eastpak-mo {
+    display: unset;
+  }
+
+  main.collaboration>section.eastpak-section {
+    margin-top: 0;
+  }
+
+  main.collaboration article.eastpak #swiper-product .swiper-button {
+    width: 20px;
+    height: 20px;
+  }
+
+  main.collaboration article.eastpak .swiper-button-prev:after,
+  main.collaboration article.eastpak .swiper-button-next:after {
+    background-size: 6px;
+  }
+
+  main.collaboration article.eastpak .swiper-button-prev {
+    left: 6px;
+  }
+
+  main.collaboration article.eastpak .swiper-button-next {
+    right: 6px;
+  }
+
+  main.collaboration article.eastpak .swiper-pagination {
+    display: block;
+  }
+
+  main.collaboration article.eastpak .swiper-pagination-bullet {
+    border-color: #000000;
+    width: 5px;
+    height: 5px;
+    margin: 0 10px;
+  }
+
+  main.collaboration article.eastpak .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background-color: #000000;
+  }
+
+  main.collaboration article.eastpak .swiper-product {
+    margin-bottom: 30px;
+  }
+
+  main.collaboration article.eastpak>.product-wrap>*:not(.cont) {
+    margin-bottom: 0;
+  }
+}

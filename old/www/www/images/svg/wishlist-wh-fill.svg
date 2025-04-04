@@ -1,0 +1,10 @@
+<svg data-name="위시리스트 아이콘" xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14">
+    <defs>
+        <clipPath id="3wz2yqmz2a">
+            <path data-name="사각형 2277" style="fill:#FFFFFF" d="M0 0h16v14H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 7825" style="clip-path:url(#3wz2yqmz2a)">
+        <path data-name="패스 6971" d="M15.461 4.946A4.291 4.291 0 0 0 11.317.522a4.078 4.078 0 0 0-3.329 1.751A4.079 4.079 0 0 0 4.67.5 4.288 4.288 0 0 0 .5 4.9a4.514 4.514 0 0 0 1.442 3.348l4.844 4.99L8.59 11.6l.8.873 4.683-4.248a4.516 4.516 0 0 0 1.388-3.279z" transform="translate(.019 .03)" style="fill:#FFFFFF"/>
+    </g>
+</svg>

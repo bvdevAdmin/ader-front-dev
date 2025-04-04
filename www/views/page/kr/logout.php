@@ -8,7 +8,7 @@
 				감사합니다.
 			</p>
 			<div class="buttons">
-				<a href="/" class="btn">처음 화면으로 돌아가기</a>
+				<a href="/kr" class="btn">처음 화면으로 돌아가기</a>
 			</div>
 		</article>
 	</section>

@@ -11,16 +11,28 @@
 			<h1>멤버십</h1>
 			<div class="--describe">
 				<p>
-					<big data-field="member_name"></big> <small>님은</small><br>
-					<big data-field="member_membership"></big> <small>등급입니다.</small>
+					<big data-field="member_name"></big>
+					<small>
+						<font class="f_member_name"></font>
+						님은
+					</small><br>
+					
+					<big data-field="member_membership"></big>
+					<small>
+						<font class="f_member_level"></font>
+						등급입니다.
+					</small>
 				</p>
 				<p>
-					구매 금액 : <span data-field="member_buytotal">0</span> 원<br>
-					다음 등급까지 구매금액 <u data-field="member_nextlevel_to_buy">0원</u> 남았습니다.
+					구매 금액 :
+					<span data-field="member_buytotal">
+						<font class="f_buy_total">0</font>
+					</span> 원<br>
+					<font class="f_next_price"></font>
 				</p>
 				<p>
-					등급 적용일 : <span data-field="member_level_accept_date">2023.10.01</span><br>
-					산정 기간 : <span data-field="member_level_accept_date_from">2022.09.01</span> - <span data-field="member_level_accept_date_to">2023.09.30</span>
+					등급 적용일 : <span data-field="member_level_accept_date">2025.01.01</span><br>
+					산정 기간 : <span data-field="member_level_accept_date_from">2024.01.01</span> - <span data-field="member_level_accept_date_to">2024.12.31</span>
 				</p>
 			</div>
 			<h2>등급 혜택 안내</h2>

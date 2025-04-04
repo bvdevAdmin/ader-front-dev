@@ -1,5 +1,4 @@
 <main class="my">
-    <?php include '../_summary.php'; ?>
 	<nav>
 		<ul>
 			<li><a href="/kr/my">마이페이지</a></li>
@@ -17,7 +16,9 @@
 				</form>
 			</div>
 			<div class="category">
-				<ul id="faq-category"></ul>
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper" id="faq-category"></ul>
+                </div>
 			</div>
 			<div class="contents" id="faq-contents"></div>
 		</article>

@@ -14,53 +14,55 @@
  +=============================================================================
 */
 
-$member_idx = 0;
-if (isset($_SESSION['MEMBER_IDX'])) {
-	$member_idx = $_SESSION['MEMBER_IDX'];
-}
+if (isset($_SERVER['HTTP_COUNTRY']) && isset($_SESSION['MEMBER_IDX'])) {
+	$select_mileage_info_sql = "
+		SELECT
+			MI.MILEAGE_BALANCE			AS MILEAGE_BALANCE,
+			MI.MILEAGE_USABLE_INC		AS MILEAGE_USABLE_INC,
+			MI.MILEAGE_USABLE_DEC		AS MILEAGE_USABLE_DEC,
+			MI.MILEAGE_UNUSABLE			AS MILEAGE_UNUSABLE
+		FROM
+			V_MILEAGE MI
+			
+			LEFT JOIN (
+				SELECT
+					S_MI.COUNTRY		AS COUNTRY,
+					S_MI.MEMBER_IDX		AS MEMBER_IDX,
+					SUM(
+						S_MI.MILEAGE_USABLE_INC
+					)					AS MILEAGE_USABLE_INC
+				FROM
+					MILEAGE_INFO S_MI
+				WHERE
+					S_MI.MILEAGE_USABLE_DATE > NOW()
+				GROUP BY
+					S_MI.COUNTRY,S_MI.MEMBER_IDX
+			) AS J_MI ON
+			MI.COUNTRY = J_MI.COUNTRY AND
+			MI.MEMBER_IDX = J_MI.MEMBER_IDX
+		WHERE
+			MI.COUNTRY = ? AND
+			MI.MEMBER_IDX = ?
+	";
+	
+	$param_bind = array($_SERVER['HTTP_COUNTRY'],$_SESSION['MEMBER_IDX']);
+	
+	$db->query($select_mileage_info_sql,$param_bind);
 
-if (!isset($country) || $member_idx == 0) {
-    $json_result['code'] = 401;
-    $json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0018', array());
+	foreach($db->fetch() as $data){
+		$json_result['data'] = array(
+			'mileage_balance'		=>number_format($data['MILEAGE_BALANCE']),
+			'mileage_inc'			=>number_format($data['MILEAGE_USABLE_INC']),
+			'mileage_dec'			=>number_format($data['MILEAGE_USABLE_DEC']),
+			'mileage_unusable'		=>number_format($data['MILEAGE_UNUSABLE']),
+		);
+	}
+} else {
+	$json_result['code'] = 401;
+    $json_result['msg'] = getMsgToMsgCode($db,$_SERVER['HTTP_COUNTRY'],'MSG_B_ERR_0018',array());
 	
 	echo json_encode($json_result);
 	exit;
 }
 
-if (isset($country) && $member_idx > 0) {
-	$select_mileage_info_sql = "
-		SELECT 
-			IFNULL(
-				(
-					SELECT 
-						S_MI.MILEAGE_BALANCE 
-					FROM 
-						MILEAGE_INFO  S_MI
-					WHERE 
-						COUNTRY = '".$country."' AND
-						MEMBER_IDX = ".$member_idx."
-					ORDER BY 
-						IDX DESC 
-					LIMIT 0,1
-				),0
-			)								AS MILEAGE_BALANCE,
-			SUM(MI.MILEAGE_USABLE_DEC)		AS REFUND_SCHEDULED,
-			SUM(MI.MILEAGE_UNUSABLE)		AS USED_MILEAGE
-		FROM
-			MILEAGE_INFO MI
-		WHERE
-			MI.COUNTRY = '".$country."' AND
-			MI.MEMBER_IDX = ".$member_idx."
-	";
-
-	$db->query($select_mileage_info_sql);
-
-	foreach($db->fetch() as $data){
-		$json_result['data'] = array(
-			'mileage_balance'		=> number_format($data['MILEAGE_BALANCE']),
-			'refund_scheduled'		=> number_format($data['REFUND_SCHEDULED']),
-			'used_mileage'			=> number_format($data['USED_MILEAGE']),
-		);
-	}
-}
-
+?>

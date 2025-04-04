@@ -6,7 +6,7 @@
 <section class="collaboration new"><header class="marginbottom0"><h1>
 			<small>2022</small>
 			ADER X CASETiFY REVIVAL COLLECTION
-			<div class="more"><a href="/product/list.html?cate_no=423" class="button">더많은 제품보러가기<span class="over"><span class="text">더많은 제품보러가기</span></span></a></div>
+			<div class="more"><a href="/en/product/list.html?cate_no=423" class="button">더많은 제품보러가기<span class="over"><span class="text">더많은 제품보러가기</span></span></a></div>
 		</h1>
 		<img src="/collaboration/casetify/2022/intro.jpg"></header><article class="casetify"><div class="describe">
 			<div class="text">

@@ -1,0 +1,15 @@
+<svg data-name="옵션 선택 아이콘" xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12">
+    <defs>
+        <clipPath id="grg6pxd0ua">
+            <path data-name="사각형 2331" style="fill:none" d="M0 0h13v12H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 7803" style="clip-path:url(#grg6pxd0ua)">
+        <path data-name="선 2741" transform="translate(6.5 2.631)" style="stroke-linejoin:round;stroke-width:1.2px;stroke:#343434;fill:none" d="M0 4V0"/>
+        <path data-name="패스 7101" d="M5.65 9.2a.75.75 0 1 1 .75.75.751.751 0 0 1-.75-.75" transform="translate(.1 -1)" style="fill:#343434"/>
+        <g data-name="사각형 2332" style="stroke:#343434;fill:none">
+            <path style="stroke:none" d="M0 0h12v12H0z" transform="translate(.5)"/>
+            <path style="fill:none" d="M.5.5h11v11H.5z" transform="translate(.5)"/>
+        </g>
+    </g>
+</svg>

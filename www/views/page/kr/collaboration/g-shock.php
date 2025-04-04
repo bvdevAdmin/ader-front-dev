@@ -1,13 +1,15 @@
-<main class="collaboration">
+<main class="collaboration new">
     <?php include $_CONFIG['PATH']['PAGE'].$_CONFIG['M'][0].'/collaboration/_nav.php'; ?>
 	<header>
 		<h1>
 			<small>2018</small>
-			ADER ERROR X G-SHOCK
+			ADER x G-SHOCK COLLABORATION
 		</h1>
 	</header>
 	<section class="media">
-		<video loop muted autoplay playsinline src="https://d340a4zb19l6y1.cloudfront.net/collaboration/gshock/ADERxGSHOCK_PC.mp4"></video>
+		<img class="pc" src="https://adererror.com/collaboration/g-shock/intro.jpg">
+		<img class="mo" src="https://adererror.com/collaboration/g-shock/mobile/intro.jpg">
+		<!-- <video loop muted autoplay playsinline src="https://d340a4zb19l6y1.cloudfront.net/collaboration/gshock/ADERxGSHOCK_PC.mp4"></video>
 		<article>
 			<p>
 				아더와 지샥이 협업을 통해 시간에 대한 새로운 철학을 선보입니다. <br>
@@ -18,9 +20,23 @@
 			<div class="buttons">
 				<button type="button" class="play">캠페인 메인 영상 보기</button>
 			</div>
-		</article>
+		</article> -->
 	</section>
-	<section class="gallery">
+	<article class="campaign">
+		<h3>ADER x G-SHOCK</h3>
+		<div class="media">
+			<video class="both" loop muted autoplay playsinline src="https://ader-video-s3-bucket.s3.ap-northeast-2.amazonaws.com/collaboration/gshock/G-SHOCK_campaign_1920x1080.mp4"></video>
+		</div>
+		<div>
+			<button type="button" class="button play">
+				캠페인 영상 보기
+				<span class="over">
+					<span class="text">캠페인 영상 보기</span>
+				</span>
+			</button>
+		</div>
+	</article>
+	<!-- <section class="gallery">
 		<article class="product-gallery">
 			<section class="goods on">
 				<section class="detail">
@@ -44,6 +60,6 @@
 		<div class="buttons">
 			<a href="" class="btn">콜라보레이션 제품 전체 보기</a>
 		</div>
-	</section>
-	<button type="button" class="to-top"></button>
+	</section> -->
+	<!-- <button type="button" class="to-top"></button> -->
 </main>

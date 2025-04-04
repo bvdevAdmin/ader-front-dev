@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+/** PRESET **/
+* { margin-inline-start: 0 ; margin-block-start: 0 ; margin-block-end: 0 ; margin:0 ; padding:0; border:none ; outline : 0 ; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box ; } 
+.hidden { display : none !important }
+.width-100p { width : 100% }
+.width-1200 { width : 1200px !important }
+.width-1300 { width : 1300px !important }
+.width-1400 { width : 1400px !important }
+.width-1500 { width : 1500px !important }
+.width-1600 { width : 1600px !important }
+.height-1600 { height : 1600px !important }
+.text-left { text-align : left  !important }
+.text-right { text-align : right  !important }
+.text-center { text-align : center !important }
+.margin-top-5 { margin-top : 5px }
+.margin-top-30 { margin-top : 30px }
+.margin-top-50 { margin-top : 50px }
+.margin-bottom-20 { margin-bottom : 20px }
+.margin-left-5 { margin-left : 5px }
+.round-3 { border-radius : 3px }
+
+ul { list-style-type : none ;     padding-inline-start: 0 }
+input::-webkit-inner-spin-button { display: none; -webkit-appearance: none; }
+/* input[type="date"]::-webkit-calendar-picker-indicator { display: none; -webkit-appearance: none; } */
+
+.scrollbar-macosx > .scroll-element .scroll-bar { background-color: var(--scroll-bar-color) ; }
+
+/** XEICON **/
+.xi-wallet:before { content: "\e7f0"; }
+.xi-coupon:before { content: "\e816"; }
+.xi-crown:before { content: "\e711"; }
+.xi-shop:before { content: "\e80d"; }
+.xi-cog:before { content: "\e686"; }
+.xi-users:before { content: "\e6c0"; }
+.xi-humidity:before { content: "\e87e"; }
+.xi-snow:before { content: "\e87f"; }
+.xi-wrench:before { content: "\e68b";}
+.xi-funnel:before { content: "\e7f7";}
+.xi-help:before { content: "\e6fb"; }
+.xi-folder:before { content: "\e7c2"; }
+.xi-gps:before { content: "\e774"; }
+.xi-scissors:before { content: "\e675"; }
+.xi-wind:before { content: "\e889"; }
+.xi-timer:before { content: "\e7a2"; }
+.xi-toggle-off:before { content: "\e648"; }
+.xi-wifi:before { content: "\e669"; }
+.xi-keyboard:before { content: "\e78e"; }
+
+
+/** UI : LOADING **/
+.loading:before { content : "" ; background : rgba(0,0,0,.5) ; width : 100% ; height : 100% ; position : absolute ; top : 0 ; left : 0 ; z-index : 5 }
+.loading:after { content : "" ; position : absolute ; top : 50% ; left : 50% ; margin : -25px 0 0 -25px ; display: inline-block;  width: 50px;  height: 50px;  border: 3px solid rgba(255,255,255,.3);  border-radius: 50%;  border-top-color: #fff;  animation: spin 1s ease-in-out infinite;  -webkit-animation: spin 1s ease-in-out infinite; z-index : 6 }
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+/** UI : GRID **/
+.row { width : 100% ; display : table }
+.row > * { display : table-cell ; position : relative ; padding : 0 10px /* 0 20px */ ; vertical-align : top }
+.row > *:first-child { padding-left : 0 !important }
+.row > *:last-child { padding-right : 0 !important }
+.row > .col-2,.row > .col-4-2 { width : 50% }
+.row > .col-3 { width : calc( 100% / 3 ) }
+.row > .col-3-2 { width : calc( 100% / ( 3 / 2 ) ) }
+.row > .col-4 { width : calc( 100% / 4 ) }
+.row > .col-4-3 { width : calc( 100% / ( 4 / 3 ) ) }
+.row > .col-5 { width : 20% }
+.row > .col-5-2 { width : 40% }
+.row > .col-5-3 { width : 60% }
+.row > .col-5-4 { width : 80% }
+.row > .col-7 { width : 14.28571428571429% }
+.row > .col-7-2 { width : 28.57142857142857% }
+.row > .col-7-5 { width : 71.42857142857143% }
+.row > .col-8 { width : 12.5% }
+.row > *.width-100p { width : 100% }
+.row.padding { padding : 30px 60px }
+.row.padding > * { padding : 0 30px }
+.row.padding-5 > *,.form-inline .row > * { padding : 0 5px }
+.row.no-padding > * { padding : 0 }
+.row.only-col2 > *:first-child { display : none }
+.row.only-col2 > *:nth-child(2) { width : 100% ; padding : 0 }
+
+
+/** UI : CODE EDITOR **/
+.code-editor { font-family: 'Courier', sans-serif ; font-size: 18px !important ; }
+.code-editor:focus { background-color : #000 !important ; color : #eee !important }
+
+
+/** UI : FORM **/
+.form-inline { width: 100% ; position : relative ; padding : 38px 0 8px 0 ; display : inline-block }
+.form-inline .control-label { font-size : 13px /* 12px */ ; font-weight : 400 ; position : absolute ; top : 14px ; left : 0 ; color : var(--form-label-color) ; transition : ease-out .2s ; /* width : 100% */}
+.form-inline .control-label .check { /* float : right ; */ left : 12px ; font-size : 10px ; height : 15px !important }
+.form-inline .control-label .check > input[name="rand_tel"] {height : 15px !important }		/* 210804 kkh */
+.form-inline .control-label .check i { width : 14px ; height : 14px }
+.form-inline .control-label .check i:before { line-height : 12px ; font-size : 10px }
+.form-inline .control-label .label-status { font-size : 8px ; display : inline-block ; margin-left : 8px ; height : 14px ; line-height : 14px ; padding : 0 5px ; border-radius : 7px ; background : #fff ; color : #000 }
+.form-inline .control-label .label-status.red { background : #ff4500 ; color : var(--text-color) }
+.form-inline .control-label .label-status.red:before { content : "\ea2d" ; font-family : xeicon!important }
+.form-inline .control-label .label-status.green { background : #21edcf }
+.form-inline .control-label .label-status.green:before { content : "\e6e0" ; font-family : xeicon!important }
+.form-inline .control-label button { font-family : xeicon!important ; display : inline-block ; font-size : 12px ; margin-left : 5px ; cursor : pointer ; color : #aac6df ; transition : ease-out }
+.form-inline .control-label button:before { margin-right : 6px }
+.form-inline .control-label button:after { font-size : 10px ; opacity : .75}
+.form-inline .control-label button:hover,.form-inline .control-label button.on { color : var(--text-color) }
+.form-inline .control-label button.refresh:before { content : "\e642" }
+.form-inline .control-label button.refresh:hover:after { content : "기기를 재시작합니다" }
+.form-inline .control-label button.refresh:hover:before,.form-inline .control-label button.refresh.on:before { animation: xi-spin 2s infinite linear; }
+.form-inline input,.form-inline textarea,.form-inline .textarea,.form-inline select { width : 100% ; height : 40px /* 36px */ ; border-radius : 0 ; background-color : var(--input-bg) ; color : var(--text-color) ; padding : 0 15px ; font-weight : 400 ; transition : ease-out .2s ; font-size : 14px }
+.form-inline textarea,.form-inline .textarea { height : auto ; min-height : 208px ; padding : 15px ; cursor : text }
+.form-inline .btn { position : absolute ; display : inline-block ; height : 31px ; padding : 0 8px ; border-radius : 3px ; background-color : #ccc ; color : #212338 ; top : calc( 50% - 15px ) ; right : 7px ; cursor : pointer ; transition : ease-out .2s ; line-height : 31px }
+.form-inline .btn:hover { background-color : var(--btn-hover-bg) ; color : var(--btn-hover-color) }
+.form-inline input:focus,.form-inline textarea:focus,.form-inline .textarea:focus { background-color : var(--input-focus-bg) ; color : var(--input-focus-color) }
+.form-inline input:focus ~ .control-label,.form-inline textarea:focus ~ .control-label,.form-inline .textarea:focus ~ .control-label { color : var(--input-focus-bg) }
+
+.form-inline label:not(.control-label):not(.switch) { position : relative ; height : 40px ; display : inline-block ; transition : ease-out .2s }
+.form-inline label:not(.control-label) * { cursor : pointer }
+.form-inline label:not(.control-label) input { opacity : 0 ; position : absolute ; top : 0 ; left : 0 ; width : 100% ; height : 100% }
+.form-inline label:not(.control-label):not(.switch) span { display : inline-block ; width : 100% ; height : 100% ; line-height : 38px ; background-color : var(--input-bg) ; color : var(--form-label-color) ; text-align : center ; transition : ease-out .2s ; font-size : 13px ; border : solid 2px transparent }
+.form-inline label:not(.control-label):not(.switch):hover { transform : scale(1.04) ; z-index : 2 }
+.form-inline label:not(.control-label):hover input + span { color : var(--text-color) ; box-shadow : 0 0 6px 3px rgba(0,0,0,.1)}
+.form-inline label:not(.control-label) input:checked + span { color : var(--text-color) }
+.form-inline label:not(.control-label):nth-child(n):hover input + span { border-color : var(--form-radio-hover-border-color) }
+.form-inline label:not(.control-label):nth-child(2n):hover input + span { border-color : var(--form-radio-hover-border-color-2) }
+.form-inline label:not(.control-label):nth-child(3n):hover input + span { border-color : var(--form-radio-hover-border-color-3) }
+.form-inline label:not(.control-label):nth-child(4n):hover input + span { border-color : var(--form-radio-hover-border-color-4) }
+.form-inline label:not(.control-label):nth-child(5n):hover input + span { border-color : var(--form-radio-hover-border-color-5) }
+
+.form-inline label:not(.control-label):nth-child(n) input:checked + span { background: var(--form-radio-bg) ; border-color : var(--form-radio-checked-border-color) }
+.form-inline label:not(.control-label):nth-child(2n) input:checked + span { background: var(--form-radio-bg-2) ; border-color : var(--form-radio-checked-border-color-2) }
+.form-inline label:not(.control-label):nth-child(3n) input:checked + span { background: var(--form-radio-bg-3) ; border-color : var(--form-radio-checked-border-color-3) }
+.form-inline label:not(.control-label):nth-child(4n) input:checked + span { background: var(--form-radio-bg-4) ; border-color : var(--form-radio-checked-border-color-4) }
+.form-inline label:not(.control-label):nth-child(5n) input:checked + span { }
+
+/* 모달 위 테두리 모달과 같게 수정 210714 kkh */
+section.modal > article .form-inline label:not(.control-label):nth-child(n)  input + span { border-color : #eee }
+section.modal > article .form-inline label:not(.control-label):nth-child(2n) input + span { border-color : #eee }
+section.modal > article .form-inline label:not(.control-label):nth-child(3n) input + span { border-color : #eee }
+section.modal > article .form-inline label:not(.control-label):nth-child(4n) input + span { border-color : #eee }
+section.modal > article .form-inline label:not(.control-label):nth-child(5n) input + span { border-color : #eee }
+
+
+label.check { position : relative }
+label.check > input { position : absolute ; width : 100% ; height : 100% ; top : 0 ; left : 0 ; opacity : 0 }
+.form-inline.check-1 *,label.check * { cursor : pointer }
+.form-inline.check-1 label:not(.control-label) > span { background : none ; color : #333 ; width : auto ; padding-right : 15px }
+.form-inline.check-1 label:not(.control-label) > i,label.check > i { display : inline-block ; width : 18px ; height : 18px; border-radius : 2px ; border : solid 1px #999 ; vertical-align : bottom ; margin-right : 5px ; transition : ease-out .2s }
+.form-inline.check-1 label:not(.control-label) > i:before,label.check > i:before { border-color : #000 }
+.form-inline.check-1 label:not(.control-label):hover > i,label.check:hover > i { border-color : #000 }
+.form-inline.check-1 label:not(.control-label) > input:checked + i,label.check > input:checked + i { background-color : var(--input-switch-bg) ; border-color : var(--input-switch-bg) }
+.form-inline.check-1 label:not(.control-label) > input:checked + i:before,label.check > input:checked + i:before { content : "\e928" ; font-family : "xeicon"!important ; width : 100% ; text-align : center ; line-height : 16px ; display : inline-block ; font-size : 12px ; color : var(--text-color) }
+.form-inline.check-1 label:not(.control-label):hover > input:checked + i,label.check:hover > input:checked + i { background : none ; border-color : #000 }
+.form-inline.check-1 label:not(.control-label):hover > input:checked + i:before,label.check:hover > input:checked + i:before { color : #000 }
+
+.form-inline .minicolors-theme-default.minicolors { width : 100% }
+.form-inline .minicolors-theme-default.minicolors input { width : 100% ; padding-left : 56px ; font-family: 'campton', 'Noto Sans KR', sans-serif }
+.form-inline .minicolors-theme-default .minicolors-swatch { width : 40px ; height : 40px ; left : 0 ; top : 0 ; border : none }
+
+.form-inline span.center { width: 100% ; height : 40px ; line-height : 40px ; text-align : center ; display : table }
+
+.form-inline .inp-row { display : table ; position : relative ; width : 100% ; min-height : 35px ; line-height : 35px }
+.form-inline .inp-row > * { display : table-cell }
+.form-inline .inp-row > span { width : max-content ; font-size : 14px ; background : var(--input-bg) ; padding : 0 8px ; text-align: center ; min-width : 42px ; transition : ease-out .2s ; font-family: 'campton', 'Noto Sans KR', sans-serif }
+.form-inline .inp-row.number > span { /*background : #eee ; */width : 55px }
+.form-inline .inp-row.number > input,.form-inline .inp-row > input.text-right { text-align : right ; font-family: 'campton', 'Noto Sans KR', sans-serif}
+.form-inline .inp-row > input:focus + span { background : var(--input-focus-bg) ; color : var(--input-focus-color) }
+
+
+.form-inline.no-title { padding-top : 8px }
+.form-inline.no-title > .control-label { display : none }
+.form-inline.buttons > * { margin-left : 0 !important }
+.form-inline.buttons button { height : 40px ; line-height : 40px }
+
+/** UI : NOTE **/
+.note { display : inline-block ; width : 100% ; padding : 7px ; background : rgba(255,184,34,.1) ; color: #d59204 ; font-weight : 400 }
+.note ul { padding-left : 20px }
+.note ul > li { list-style-type : disc ; padding : 3px 0 }
+.note + .row { margin-top : 30px }
+
+
+/** UI : STATUS BAR **/
+.line-status { width : 100% ; height : 50px ; position : relative ; padding : 10px 0 10px 70px ; margin : 2px 0 }
+.line-status > .bar { display : inline-block ; top : 0px ; height : 30px ; width : 100% ; background : rgba(0,0,0,.1) ; overflow : hidden ; border-radius : 3px ; position : relative }
+.line-status > .bar > .progress { position : absolute ; left : 0 ; top : 0 ; background : #fd397a ; height : 100% }
+.line-status > .nav { color : var(--text-color) ; font-size : 12px ; position : absolute ; top : 10px ; left : 80px ; z-index : 2 ; line-height : 30px ; font-family: 'campton', 'Noto Sans KR', sans-serif }
+.line-status > .nav:after { content : " %" }
+.line-status > .control-label { display : inline-block ; position : absolute ; top : 15px ; left : 0 ; font-size : 12px ; lien-height : 30px ; width : 50px ; text-align : right }
+.line-status.has-button { padding-right : 50px }
+.line-status > button { display : inline-block ; padding : 3px 6px ; border-radius : 15px ; position : absolute ; right : 0 ; top : 50% ; margin-top : -15px ; height : 30px ; background : var(--header-remocon-color) ; font-size : 16px ; text-align: center ; width: 30px ; cursor : pointer ; transition : ease-out .2s }
+.line-status > button:hover { transform : scale(1.05) ; box-shadow : 0 0 2px 2px rgba(0,0,0,.2) }
+.line-status > button:hover > i { transform : rotate(7200deg) ; transition : linear 100s }
+
+/** UI : FORM SUBMIT **/
+.row.submit { text-align : right }
+.row.submit.layout { text-align : center ; margin-top : 20px }
+.row.submit > button { display : inline-block ; height: 45px ; border : solid 1px transparent ; line-height : 43px ; text-align : center ; font-family: 'campton', 'Noto Sans KR', sans-serif ; background-color : var(--btn-bg) ; color : var(--btn-color) ; /* background : #212338 ; color : var(--text-color) ; */ transition : ease-out .2s ; cursor : pointer ; font-weight : 600 ; margin-left : 10px ; padding : 0 40px !important ; border-radius : 5px }
+.row.submit > button:first-child { margin-left : 0 }
+.row.submit > button[type=submit]:after { content : "정보 변경" ; font-size : 14px}
+.row.submit > button[type=submit]:hover { transform : translateY(-6px) ; background-color : var(--text-color) ; color : #212338 ; box-shadow : 0 4px 5px 4px rgba(20,20,20,.4) }
+.row.submit > button.custom {  }
+.row.submit > button.custom:after { display:none }
+.row.submit > button:hover { transform : translateY(-6px) ; background-color : var(--text-color) ; color : #212338 ; box-shadow : 0 4px 5px 4px rgba(20,20,20,.4) }
+
+
+/** UI : FORM FILE **/
+.form-inline.file { }
+.form-inline.file * { cursor : pointer }
+.form-inline.file > .cont { width : 100% ; min-height : 180px ; position : relative ; display : inline-flex ; align-items : center ; background-color : var(--input-bg) ; text-align : center ; transition : ease-out .2s }
+.form-inline.file > .cont input { width : 100% ; height : 100% ; position : absolute ; top : 0 ; left : 0 ; opacity : 0 ; z-index : 3 }
+.form-inline.file > .cont img { max-width : 100% ; width : auto ; height : auto ; min-height : 100% ; display: block; margin: auto; }
+.form-inline.file > .cont img[src] + i { display : none }
+.form-inline.file > .cont i { width : 100% ; height : 100px ; line-height : 100px ; text-align : center ; font-size : 40px ; position : absolute ; top : 50% ; left : 0 ; margin-top : -50px ; transition : ease-out .2s ; color : var(--text-color) ; opacity : .5 }
+.form-inline.file > .cont:hover { background-color : var(--input-focus-bg) }
+.form-inline.file > .cont:hover i { opacity : 1 ; color : var(--text-color) }
+
+
+.form-inline .select-popup { display : none ; position : absolute ; left : 0 ; bottom : 100% ; /* background : #000 ; */ color : var(--text-color) ; padding : 8px ; border-radius : 3px ; margin-bottom : -5px }
+.form-inline:hover .select-popup { display : table }
+.form-inline .select-popup:after { content : "" ; border-top : solid 5px #000 ; border-left : solid 5px transparent ; border-right : solid 5px transparent ; position : absolute ; display : inline-block ; top : 100% ; left: 40px }
+.form-inline .select-popup > label { position : relative ; display : table-cell ; height : 28px ; padding-right : 5px }
+.form-inline .select-popup > label:last-child { padding-right : 0 }
+.form-inline .select-popup > label * { cursor : pointer }
+.form-inline .select-popup > label > input { opacity : 0 ; position : absolute ; width : 100% ; height : 100% ; top : 0 ; left : 0 }
+.form-inline .select-popup > label > span { display : inline-block ; height : 28px ; line-height : 28px ; background : #333 ; padding : 0 8px ; word-break : keep-all }
+.form-inline .select-popup > label:hover > span { color : #19f0e0 }
+.form-inline .select-popup > label > input:checked + span { background-color : #19f0e0 ; color : #000 }
+
+
+
+/** UI : FORM SWITCH **/
+label.switch { display : inline-block ; vertical-align : baseline ; height : 20px ; width : 40px ; border-radius : 10px ; overflow : hidden ; position : relative }
+label.switch * { transition : ease-out .2s ; cursor : pointer }
+label.switch span { border : none !important }
+label.switch input { width : 100% ; height : 100% ; position : absolute ; top : 0 ; left : 0 ; opacity : 0 }
+label.switch input ~ .bg { background : rgba(0,0,0,.25) ; position : absolute ; top : 0 ; left : 0 ; width : 100% ; height: 100% ; display : inline-block ; box-shadow : 0 0 3px 3px rgba(0,0,0,.1) inset ; border-radius : 10px }
+label.switch input ~ .trigger { position : absolute ; width : 16px ; height : 16px ; border-radius : 50% ; background-color : #ddd ; top : 50% ; left : 2px ; margin-top : -8px ; display : inline-block ; box-shadow: 0 0 3px 3px rgba(0,0,0,.3) }
+label.switch input:checked ~ .bg { background : var(--input-switch-bg) !important }
+label.switch input:checked ~ .trigger { left : 21px ; background-color : var(--input-switch-trigger-color) }
+.form-inline label.switch  { margin : 9px 10px 9px 0 ; display : inline-block ; vertical-align : middle }
+
+
+/** UI : TABLE **/
+table > thead.fix > tr > * { position : sticky ; top : 0 }
+
+.sticky { width : 100% ; max-height : 300px ; overflow-y : auto }
+.sticky table { position : relative }
+.sticky table > thead > tr > * { position : sticky ; top : 0 }
+
+
+/** UI : PAGING **/
+ul.--paging { display : table ; border-spacing : 4px ; margin-left : -2px }
+ul.--paging > li { display : table-cell ; vertical-align : middle ; background : var(--pagination-item-bg) ; font-size : 12px ; padding : 0 4px ; border : solid 1px transparent ; min-width : 34px ; color : #999 ; text-align: center ; font-family : "campton",sans-serif ; cursor : pointer ; margin : 0 2px ; border-radius : 5px ; transition : ease-out .2s ; height : 34px ; line-height : 32px }
+ul.--paging > li:hover { border-color : var(--pagination-hover-border-color) ; color : var(--pagination-hover-color) }
+ul.--paging > li.now { border-color : var(--pagination-hover-border-color) ; background-color : #EF3F3F ; background-color : var(--pagination-active-bg) ; color : var(--pagination-active-color) }
+ul.--paging > li:before { font-family : "xeicon" ; display : inline-block }
+ul.--paging > li.first:before { content : "\e912" ; transform : rotate(-90deg) }
+ul.--paging > li.last:before { content : "\e912" ; transform : rotate(90deg) }
+ul.--paging > li.prev:before { content : "\e908" }
+ul.--paging > li.next:before { content : "\e90b" }
+

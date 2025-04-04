@@ -1,0 +1,98 @@
+main.collaboration.camper article.campaign p {
+  padding: 20px 0;
+}
+
+main.collaboration.camper section.media {
+  margin-bottom: 0;
+}
+
+main.collaboration.camper section.collaboration.new {
+  margin-top: 0;
+}
+
+main.collaboration.camper section.collaboration.new>article.list {
+  position: relative;
+}
+
+main.collaboration.camper section.collaboration.new>article.list>.side-nav {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  main.collaboration.camper article.campaign .media {
+    width: calc(100% - 30px);
+    margin: 0;
+  }
+
+  main.collaboration.camper article.campaign .buttons {
+    margin: 0;
+  }
+
+  main.collaboration.camper article.campaign p.mo {
+    padding-bottom: 25px;
+  }
+
+  main.camper section.collaboration.new>article.list>.product>.gallery>.cont {
+    position: relative;
+    left: 0;
+  }
+
+  main.camper section.collaboration.new>article.list>.product>.gallery {
+    width: 100%;
+    padding-left: 20%;
+    position: relative;
+    padding-bottom: 100px;
+    padding-top: 100px;
+  }
+
+  main.camper section.collaboration.new>article.list>.product>.gallery>img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 70px;
+  }
+
+  main.camper section.collaboration.new>article.list>.describe {
+    padding-bottom: 270px;
+  }
+
+  main.camper section.collaboration.new>article.list>.describe>.text {
+    top: 70px;
+  }
+
+  main.collaboration.camper section.collaboration.new>article.list>.side-nav {
+    display: block;
+  }
+
+  main.collaboration.camper section.collaboration.new>article.list>.side-nav {
+    position: absolute;
+    left: 30px;
+    top: 275px;
+  }
+
+  main.collaboration.camper section.collaboration.new>article.list>.side-nav.on {
+    position: fixed;
+    top: 215px;
+    z-index: 1;
+  }
+
+  main.collaboration.camper section.collaboration.new>article.list>.side-nav>span {
+    cursor: pointer;
+    display: block;
+    width: 7px;
+    height: 7px;
+    border: solid 1px #000;
+    margin: 25px 0;
+    background: none;
+    opacity: 1;
+    border-radius: 50%;
+  }
+
+  main.collaboration.camper section.collaboration.new>article.list>.side-nav>span.on {
+    background: #000;
+  }
+
+  main.collaboration.camper article.campaign .buttons {
+    padding: 0;
+  }
+}

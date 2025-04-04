@@ -12,22 +12,18 @@
 			<div class="date-search">
 				<form id="frm-order-search">
 					<ul class="term">
-						<li><button type="button">1주일</button></li>
-						<li><button type="button">1개월</button></li>
-						<li><button type="button">3개월</button></li>
-						<li><button type="button">최근 1년</button></li>
+						<li><button type="button" id="one-week">1주일</button></li>
+						<li><button type="button" id="one-month">1개월</button></li>
+						<li><button type="button" id="three-month">3개월</button></li>
+						<li><button type="button" id="one-year">최근 1년</button></li>
 					</ul>
 					<div class="inp">
-						<div class="item">
-							<input type="date" name="sdate">
-							<div class="select">날짜 선택</div>
-							<div class="calendar"></div>
+						<div class="item-date">
+							<input type="date" id="date_from" class="input_date" name="date_from" placeholder="YYYY-MM-DD">
 						</div>
 						<span class="t">-</span>
-						<div class="item">
-							<input type="date" name="edate">
-							<div class="select">날짜 선택</div>
-							<div class="calendar"></div>
+						<div class="item-date">
+							<input type="date" id="date_to" class="input_date" name="date_to" placeholder="YYYY-MM-DD">
 						</div>
 					</div>
 					<button type="submit" class="btn">조회</button>
@@ -42,8 +38,11 @@
 				</div>
 				<section>
 					<ul class="list" id="list"></ul>
+                    <div class="paging" id="list-paging"></div>
 				</section>
 				<section>
+                    <ul class="list" id="list2"></ul>
+                    <div class="paging" id="list2-paging"></div>
 				</section>
 			</div>
 		</article>

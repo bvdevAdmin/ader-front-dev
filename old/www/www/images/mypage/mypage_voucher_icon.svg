@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.932" height="12.102" viewBox="0 0 20.932 12.102">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        stroke: #343434;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        fill: #343434;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="사각형_2291" data-name="사각형 2291" class="cls-1" width="20.933" height="11.775" transform="translate(0)"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_7918" data-name="그룹 7918" transform="translate(-823 -311.75)">
+    <g id="마스크_그룹_19" data-name="마스크 그룹 19" class="cls-2" transform="translate(823 311.75)">
+      <circle id="타원_114" data-name="타원 114" class="cls-3" cx="2.617" cy="2.617" r="2.617" transform="translate(-1.962 3.271)"/>
+      <path id="타원_114_-_윤곽선" data-name="타원 114 - 윤곽선" class="cls-4" d="M2.617.654A1.962,1.962,0,1,0,4.579,2.617,1.965,1.965,0,0,0,2.617.654m0-.654A2.617,2.617,0,1,1,0,2.617,2.617,2.617,0,0,1,2.617,0Z" transform="translate(-1.962 3.271)"/>
+    </g>
+    <path id="선_2656" data-name="선 2656" class="cls-4" d="M.154,3.271H-.5V0H.154Z" transform="translate(823.5 312.077)"/>
+    <path id="선_2661" data-name="선 2661" class="cls-4" d="M.154,2.617H-.5V0H.154Z" transform="translate(837.891 312.077)"/>
+    <path id="선_2662" data-name="선 2662" class="cls-4" d="M.154,3.925H-.5V0H.154Z" transform="translate(837.891 316.002)"/>
+    <path id="선_2663" data-name="선 2663" class="cls-4" d="M.154,2.617H-.5V0H.154Z" transform="translate(837.891 321.235)"/>
+    <path id="선_2660" data-name="선 2660" class="cls-4" d="M.154,11.775H-.5V0H.154Z" transform="translate(843.778 312.077)"/>
+    <path id="선_2658" data-name="선 2658" class="cls-4" d="M20.933.154H0V-.5H20.933Z" transform="translate(823 312.25)"/>
+    <path id="선_2659" data-name="선 2659" class="cls-4" d="M20.278.154H0V-.5H20.278Z" transform="translate(823.327 323.697)"/>
+    <path id="선_2657" data-name="선 2657" class="cls-4" d="M.154,3.925H-.5V0H.154Z" transform="translate(823.5 319.927)"/>
+  </g>
+</svg>

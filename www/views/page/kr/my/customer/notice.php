@@ -1,5 +1,5 @@
 <main class="my">
-    <?php include '../_summary.php'; ?>
+<!--    --><?php //include '../_summary.php'; ?>
 	<nav>
 		<ul>
 			<li><a href="/kr/my">마이페이지</a></li>

@@ -10,7 +10,7 @@
 		<article class="context">
 			<h2>
 				계정 정보
-				<a href="/kr/my/info/modify">수정하기</a>
+				<a href="/kr/my/modify">수정하기</a>
 			</h2>
 			<dl class="grid col-2 myinfo">
 				<dt>이름</dt>
@@ -32,15 +32,16 @@
 				마케팅 정보 수신 및 활용 동의
 				<a href="/kr/my/info/marketing">설정하기</a>
 			</h2>
-
+			
+			<!--
 			<h2>
 				결제 수단
 				<a href="/kr/my/info/paymethod">등록하기</a>
 			</h2>
-			
+			-->
 			<h2>
 				구매 맞춤 정보
-				<a href="/kr/my/info/purchase/custom">등록하기</a>
+				<a href="/kr/my/info/purchase">등록하기</a>
 			</h2>
 		</article>
 	</section>

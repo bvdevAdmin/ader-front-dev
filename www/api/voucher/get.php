@@ -15,95 +15,134 @@
  +=============================================================================
 */
 
-$member_idx = 0;
-if (isset($_SESSION['MEMBER_IDX'])) {
-	$member_idx = $_SESSION['MEMBER_IDX'];
-}
-
-if (!isset($country) || $member_idx == 0) {
-    $code = 401;
-    $msg = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0018', array());
-	
-} 
-
-elseif(isset($country) && $member_idx > 0 && isset($list_type)){
-	$where = '';
-	$where .= "
-		VI.MEMBER_IDX = ".$member_idx." AND
-		VI.COUNTRY = '".$country."'
+if (isset($_SERVER['HTTP_COUNTRY']) && isset($_SESSION['MEMBER_IDX'])) {
+	$table = "
+		VOUCHER_ISSUE VI
+		
+		LEFT JOIN VOUCHER_MST VM ON
+		VI.VOUCHER_IDX = VM.IDX
 	";
 	
-	if ($list_type == 'possession') {
-		$where .= "
-			AND (
-				VI.USED_FLG = FALSE AND
-				VI.USABLE_END_DATE > NOW()
-			)
-		";
-	} else if ($list_type == 'use') {
-		$where .= "
-			AND (
-				VI.USED_FLG = TRUE OR
-				VI.USABLE_END_DATE < NOW()
-			)
-		";
-	} else {
-		$where .= " AND 1 = 0 ";
-	}
-
+	$where = "
+		VI.IDX IS NOT NULL AND
+		VM.IDX IS NOT NULL AND
+		VI.MEMBER_IDX = ? AND
+		VI.COUNTRY = ?
+	";
+	
+	$param_bind = array($_SESSION['MEMBER_IDX'],$_SERVER['HTTP_COUNTRY']);
+	
 	$select_voucher_issue_sql = "
 		SELECT
-			VI.VOUCHER_ISSUE_CODE	VOUCHER_ISSUE_CODE,
-			CASE
-				WHEN
-					VM.SALE_TYPE = 'PRC'
-					THEN
-						CONCAT(VM.SALE_PRICE,'원 OFF')
-				WHEN
-					VM.SALE_TYPE = 'PER'
-					THEN
-						CONCAT(VM.SALE_PRICE,'% OFF')
-			END						AS SALE_PRICE_TYPE,
+			VI.VOUCHER_ISSUE_CODE	AS VOUCHER_ISSUE_CODE,
+			VM.SALE_TYPE			AS SALE_TYPE,
+			VM.SALE_PRICE			AS SALE_PRICE,
 			VM.MIN_PRICE			AS MIN_PRICE,
 			VM.VOUCHER_NAME			AS VOUCHER_NAME,
 			VI.USED_FLG				AS USED_FLG,
 			DATE_FORMAT(
 				VI.USABLE_START_DATE,
-				'%Y.%m.%d'
+				'%Y-%m-%d %H:%i'
 			)						AS USABLE_START_DATE,
+			DATE_FORMAT(
+				VI.USABLE_START_DATE,
+				'%Y.%m.%d'
+			)						AS T_USABLE_START_DATE,
+			DATE_FORMAT(
+				VI.USABLE_END_DATE,
+				'%Y-%m-%d %H:%i'
+			)						AS USABLE_END_DATE,
 			DATE_FORMAT(
 				VI.USABLE_END_DATE,
 				'%Y.%m.%d'
-			)						AS USABLE_END_DATE,
+			)						AS T_USABLE_END_DATE,
 			TIMESTAMPDIFF(
-				DAY,CURDATE(),VI.USABLE_END_DATE
+				DAY,
+				CURDATE(),
+				VI.USABLE_END_DATE
 			)						AS DATE_INTERVAL,
 			DATE_FORMAT(
 				VI.UPDATE_DATE,
 				'%Y.%m.%d'
 			)						AS UPDATE_DATE
 		FROM
-			VOUCHER_ISSUE VI
-			LEFT JOIN VOUCHER_MST VM ON
-			VI.VOUCHER_IDX = VM.IDX
+			".$table."
 		WHERE
 			".$where."
+		ORDER BY
+			VI.USED_FLG ASC, DATE_INTERVAL DESC
 	";
-
-	$db->query($select_voucher_issue_sql);
-
-	foreach($db->fetch() as $data){
-		$json_result['data'][] = array(
-			'voucher_issue_code'	=> $data['VOUCHER_ISSUE_CODE'],
-			'sale_price_type'		=> $data['SALE_PRICE_TYPE'],
-			'min_price'				=> $data['MIN_PRICE'],
-			'voucher_name'			=> $data['VOUCHER_NAME'],
-			'usable_start_date'		=> $data['USABLE_START_DATE'],
-			'usable_end_date'		=> $data['USABLE_END_DATE'],
-			'date_interval'			=> $data['DATE_INTERVAL'],
-			'used_flg'				=> $data['USED_FLG'],
-			'update_date'			=> $data['UPDATE_DATE']
-		);
+	
+	if (isset($rows)) {
+		$limit_start = (intval($page)-1)*$rows;
+		
+		$select_voucher_issue_sql .= " LIMIT ?,? ";
+		
+		array_push($param_bind,$limit_start);
+		array_push($param_bind,$rows);
 	}
+
+	$db->query($select_voucher_issue_sql,$param_bind);
+	
+	$voucher_used	= array();
+	$voucher_usable	= array();
+	
+	foreach($db->fetch() as $data){
+		$sale_price_type = "";
+		
+		if ($data['SALE_TYPE'] == "PER") {
+			$sale_price_type = $data['SALE_PRICE']."% OFF";
+		} else if ($data['SALE_TYPE'] == "PRC") {
+			$sale_price_type = number_format($data['SALE_PRICE'])." OFF";
+		}
+		
+		$usable_flg = false;
+		
+		$today				= strtotime(date('Y-m-d H:i'));
+		$usable_start_date	= strtotime($data['USABLE_START_DATE']);
+		$usable_end_date	= strtotime($data['USABLE_END_DATE']);
+		
+		if ($today >= $usable_start_date && $today <= $usable_end_date) {
+			$usable_flg = true;
+		}
+		
+		if ($data['USED_FLG'] == true) {
+			$voucher_used[] = array(
+				'voucher_issue_code'	=>$data['VOUCHER_ISSUE_CODE'],
+				'sale_price_type'		=>$sale_price_type,
+				'min_price'				=>$data['MIN_PRICE'],
+				'voucher_name'			=>$data['VOUCHER_NAME'],
+				'usable_start_date'		=>$data['T_USABLE_START_DATE'],
+				'usable_end_date'		=>$data['T_USABLE_END_DATE'],
+				'date_interval'			=>$data['DATE_INTERVAL'],
+				'used_flg'				=>$data['USED_FLG'],
+				'update_date'			=>$data['UPDATE_DATE']
+			);
+		} else {
+			$voucher_usable[] = array(
+				'voucher_issue_code'	=>$data['VOUCHER_ISSUE_CODE'],
+				'sale_price_type'		=>$sale_price_type,
+				'min_price'				=>$data['MIN_PRICE'],
+				'voucher_name'			=>$data['VOUCHER_NAME'],
+				'usable_start_date'		=>$data['T_USABLE_START_DATE'],
+				'usable_end_date'		=>$data['T_USABLE_END_DATE'],
+				'date_interval'			=>$data['DATE_INTERVAL'],
+				'used_flg'				=>$data['USED_FLG'],
+				'update_date'			=>$data['UPDATE_DATE'],
+				'usable_flg'			=>$usable_flg
+			);
+		}
+	}
+
+	$json_result['data'] = array(
+		'voucher_usable'	=>$voucher_usable,
+		'voucher_used'		=>$voucher_used
+	);
+} else {
+    $json_result = array(
+		'code'		=>401,
+		'msg'		=>getMsgToMsgCode($db, $_SERVER['HTTP_COUNTRY'], 'MSG_B_ERR_0018', array())
+	);
 }
 
+?>

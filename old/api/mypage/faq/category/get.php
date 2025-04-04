@@ -1,0 +1,75 @@
+<?php
+/*
+ +=============================================================================
+ | 
+ | FAQ 카테고리 취득 api
+ | -------
+ |
+ | 최초 작성	: 박성혁
+ | 최초 작성일	: 2023.01.09
+ | 최종 수정일	: 
+ | 버전		: 1.0
+ | 설명		: 
+ | 
+ +=============================================================================
+*/
+
+include_once(dir_f_api."/common.php");
+
+$country = null;
+if (isset($_SESSION['COUNTRY'])){
+	$country = $_SESSION['COUNTRY'];
+} else if (isset($_SERVER['HTTP_COUNTRY'])) {
+	$country = $_SERVER['HTTP_COUNTRY'];
+}
+
+if (!isset($country)) {
+	$json_result['code'] = 300;
+	$json_result['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0002', array());
+	
+	echo json_encode($json_result);
+	exit;
+} else {
+	$json_result['data'] = get_category_node($db,$country,0);
+}
+
+function get_category_node($db,$country,$father_no) {
+    $result = array();
+	
+	$select_category_sql = "
+		SELECT
+			FC.IDX			AS FC_IDX,
+			FC.SEQ			AS SEQ,
+			FC.FATHER_NO	AS FATHER_NO,
+			FC.LANG			AS LANG,
+			FC.SUBTITLE		AS SUBTITLE,
+			FC.TITLE		AS TITLE,
+			FC.STATUS		AS STATUS,
+			FC.REG_DATE		AS REG_DATE
+		FROM
+			FAQ_CATEGORY FC
+		WHERE
+			FATHER_NO = ".$father_no." AND
+			LANG = '".$country."' AND
+			STATUS = 'Y'
+		ORDER BY
+			SEQ, IDX ASC
+	";
+	
+	$db->query($select_category_sql);
+
+	foreach($db->fetch() as $data) {
+		$no = intval($data['FC_IDX']);
+		
+		$result[] = array(
+			'no'			=>$no,
+			'title'			=>$data['TITLE'],
+			'reg_date'		=>$data['REG_DATE'],
+			'children'		=>get_category_node($db,$country,$no)
+		);
+	}
+	
+    return $result;
+}
+
+?>

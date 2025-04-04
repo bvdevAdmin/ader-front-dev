@@ -103,7 +103,7 @@ function getProductInfo($db,$idx_type,$param_idx) {
 			PR.MILEAGE_FLG					AS MILEAGE_FLG,
 			PR.EXCLUSIVE_FLG				AS EXCLUSIVE_FLG,
 			PR.LIMIT_MEMBER					AS LIMIT_MEMBER,
-			PR.LIMIT_PURCHASE_QTY_FLG		AS LIMIT_PURCHASE_QTY_FLG,
+			PR.LIMIT_QTY_FLG				AS LIMIT_QTY_FLG,
 			PR.LIMIT_PRODUCT_QTY			AS LIMIT_PRODUCT_QTY,
 			PR.LIMIT_ID_FLG					AS LIMIT_ID_FLG,
 			PR.REORDER_CNT					AS REORDER_CNT,
@@ -122,7 +122,7 @@ function getProductInfo($db,$idx_type,$param_idx) {
 			'mileage_flg'				=>$product_data['MILEAGE_FLG'],
 			'exclusive_flg'				=>$product_data['EXCLUSIVE_FLG'],
 			'limit_member'				=>$product_data['LIMIT_MEMBER'],
-			'limit_purchase_qty_flg'	=>$product_data['LIMIT_PURCHASE_QTY_FLG'],
+			'limit_purchase_qty_flg'	=>$product_data['LIMIT_QTY_FLG'],
 			'limit_product_qty'			=>$product_data['LIMIT_PRODUCT_QTY'],
 			'limit_id_flg'				=>$product_data['LIMIT_ID_FLG'],
 			'reorder_cnt'				=>$product_data['REORDER_CNT'],
@@ -137,15 +137,15 @@ function getProductInfo($db,$idx_type,$param_idx) {
 function checkProductSaleFlg($db,$idx_type,$param_idx) {
 	$check_result = array();
 	
-	$check_result['result'] = false;
-	
 	/* (공통) 상품 체크 전 항목 정보 조회처리 */
 	$product_info = getProductInfo($db,$idx_type,$param_idx);
-	$sale_flg = $product_info['sale_flg'];					//[독립몰 상품] 테이블 판매 여부 플래그
 	
-	if ($sale_flg == true) {
-		$check_result['result'] = true;
+	$sale_flg = false;
+	if (isset($product_info['sale_flg']) && $product_info['sale_flg'] == true) {
+		$sale_flg = true;
 	}
+	
+	$check_result['result'] = $sale_flg;
 	
 	return $check_result;
 }

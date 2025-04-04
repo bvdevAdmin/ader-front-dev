@@ -1,0 +1,90 @@
+.collaboration-wrap {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    min-height: 90vh;
+    height: 100%;
+}
+.collaboration-wrap .banner {
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    box-sizing: border-box;
+}
+
+.collaboration-wrap .banner .banner-box{
+    height: 100%;
+}
+.collaboration-wrap .banner .banner-box img{
+    position: relative;
+    transform: scale(0.47) translateY(-30%);
+}
+.collaboration-wrap .banner .banner-logo {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+/*hover */
+
+.collaboration-wrap .banner:hover img{
+    transform: initial;
+    object-fit: cover;
+    height: 100%;
+}
+.collaboration-wrap .banner:hover .banner-logo img{
+    filter: var(--filter-wh);
+}
+
+@media(max-width:1025px){ 
+    header {
+        border-bottom: 1px solid #dcdcdc;
+    }
+    .collaboration-wrap {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin-top: 15px;
+        min-height: 60vh;
+        height: 100%;
+    }
+    .collaboration-wrap .banner {
+        justify-content: normal;
+        border: 0px;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .collaboration-wrap .banner .banner-box{
+        border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+    .collaboration-wrap .banner .banner-box img{
+        transform: none;
+        height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .collaboration-wrap .banner .banner-logo {
+        display: flex;
+        height: 100%;
+        position: static;
+        padding-bottom: 0;
+        transform: scale(0.6);
+        align-items: flex-end;
+    }
+    .collaboration-wrap .banner:hover .banner-logo img{
+        filter: none;
+        height: auto;
+    }
+
+
+
+}

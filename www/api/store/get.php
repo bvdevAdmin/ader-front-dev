@@ -16,180 +16,289 @@
  +=============================================================================
 */
 
-
-if (isset($_SESSION['COUNTRY'])) {
-	$country = $_SESSION['COUNTRY'];
-} 
-else if (isset($_SERVER['HTTP_COUNTRY'])) {
-	$country = $_SERVER['HTTP_COUNTRY'];
+$current_lat = null;
+if (isset($lat)) {
+	$current_lat = floatval($lat);
 }
 
-if (!isset($country)) {
-	$code = 301;
-	$msg = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0072', array());
+$current_lng = null;
+if (isset($lng)) {
+	floatval($lng);
 }
-else {
-	$paramCountry = '';
-	if($country != 'KR'){
-		$paramCountry .= "_".$country;
-	}
+
+if (isset($_SERVER['HTTP_COUNTRY'])) {
+	$where = "
+		SI.DEL_FLG = FALSE
+	";
 	
-	$where = " SI.DEL_FLG = FALSE ";
+	$param_bind = array();
 	
-	if (isset($store_keyword) && trim($store_keyword) != '') {
+	if (isset($keyword) && trim($keyword) != '') {
 		$where .= "
 			AND (
-				COUNTRY_KR REGEXP '".$store_keyword."' OR
-				COUNTRY_EN REGEXP '".$store_keyword."' OR
-				COUNTRY_CN REGEXP '".$store_keyword."' OR
-				SI.STORE_NAME REGEXP '".$store_keyword."' OR
-				SI.STORE_ADDR REGEXP '".$store_keyword."' OR
-				SI.STORE_KEYWORD REGEXP '".$store_keyword."' OR
-				SI.INSTAGRAM_ID REGEXP '".$store_keyword."'
+				COUNTRY_KR LIKE			? OR
+				COUNTRY_EN LIKE			? OR
+				
+				SI.STORE_NAME LIKE		? OR
+				SI.STORE_ADDR LIKE		? OR
+				SI.STORE_ADDR_EN LIKE	? OR
+				SI.STORE_KEYWORD LIKE	? OR
+				SI.INSTAGRAM_ID REGEXP	?
 			)
 		";
+		
+		$param_bind = array(
+			"%".$keyword."%",
+			"%".$keyword."%",
+			
+			"%".$keyword."%",
+			"%".$keyword."%",
+			"%".$keyword."%",
+			"%".$keyword."%",
+			"%".$keyword."%"
+		);
+	}
+
+	$distance = setDistance($current_lat,$current_lng);
+	
+	/* 매장 정보 조회 - 스페이스 */
+	$store_space = getStore_space($db,$country,$where,$param_bind,$distance);
+	$contents_space = getContents_space($db);
+	if (sizeof($store_space) > 0 && sizeof($contents_space) > 0) {
+		foreach($store_space as $key => $space) {
+			$store_idx = $space['store_idx'];
+			
+			$store_space[$key]['contents_info'] = $contents_space[$store_idx];
+		}
 	}
 	
+	/* 매장 정보 조회 - 플러그샵 */
+	$store_plugshop = getStore_plugshop($db,$country,$where,$param_bind,$distance);
+	$contents_plugshop = getContents_plugshop($db);
+	if (sizeof($store_plugshop) && sizeof($contents_plugshop) > 0) {
+		foreach($store_plugshop as $key => $plugshop) {
+			$store_idx = $plugshop['store_idx'];
+			
+			$store_plugshop[$key]['contents_info'] = $contents_plugshop[$store_idx];
+		}
+	}
+	
+	/* 매장 정보 조회 - 스톡키스트 */
+	$store_stockist = getStore_stockist($db,$country,$where,$param_bind);
+	
+	$json_result['data'] = array(
+		'space_info'		=>$store_space,
+		'plugshop_info'		=>$store_plugshop,
+		'stockist_info'		=>$store_stockist
+	);
+} else {
+	$json_encode['code'] = 301;
+	$json_encode['msg'] = getMsgToMsgCode($db, $country, 'MSG_B_ERR_0072', array());
+
+	echo json_encode($json_result);
+	exit;
+}
+
+function getStore_space($db,$country,$where,$param,$distance) {
+	$store_space = array();
+	
+	$column_distance	= "";
+	$order_distance		= "";
+	$distance_bind		= array();
+
+	if ($distance != null) {
+		$column_distance	= $distance['column'];
+		$order_distance		= $distance['order'];
+		$distance_bind		= $distance['bind'];
+	}
+
 	$select_store_space_sql = "
 		SELECT
-			SI.IDX								AS SPACE_IDX,
-			SI.COUNTRY_".$country."				AS COUNTRY,
-			SI.STORE_NAME						AS STORE_NAME,
-			SI.STORE_ADDR".$paramCountry."		AS STORE_ADDR,
-			SI.STORE_TEL						AS STORE_TEL,
-			SI.STORE_SALE_DATE".$paramCountry."	AS STORE_SALE_DATE,
-			SI.STORE_LINK						AS STORE_LINK,
-			SI.INSTAGRAM_ID						AS INSTAGRAM_ID,
-			SI.LAT								AS LAT,
-			SI.LNG								AS LNG
+			SI.IDX					AS SPACE_IDX,
+			SI.COUNTRY_KR			AS COUNTRY_KR,
+			SI.COUNTRY_EN			AS COUNTRY_EN,
+			SI.STORE_NAME			AS STORE_NAME,
+			SI.STORE_ADDR			AS STORE_ADDR_KR,
+			SI.STORE_ADDR_EN		AS STORE_ADDR_EN,
+			SI.STORE_TEL			AS STORE_TEL,
+			SI.STORE_SALE_DATE		AS STORE_SALE_DATE_KR,
+			SI.STORE_SALE_DATE_EN	AS STORE_SALE_DATE_EN,
+			SI.STORE_LINK			AS STORE_LINK,
+			SI.INSTAGRAM_ID			AS INSTAGRAM_ID,
+			SI.LAT					AS LAT,
+			SI.LNG					AS LNG,
+			SI.LINK_MAP				AS LINK_MAP
+
+			".$column_distance."
 		FROM
 			STORE_SPACE SI
 		WHERE
 			".$where."
 		ORDER BY
-			SI.DISPLAY_NUM ASC
+			".$order_distance."SI.DISPLAY_NUM ASC
 	";
-	$db->query($select_store_space_sql);
 	
-	$space_info = array();
+	$param_bind = null;
+	if (count($distance_bind) > 0 || count($param) > 0) {
+		$param_bind = array_merge($distance_bind,$param);
+	}
+
+	if ($param_bind != null) {
+		$db->query($select_store_space_sql,$param_bind);
+	} else {
+		$db->query($select_store_space_sql);
+	}
 	
-	foreach ($db->fetch() as $space_data) {
-		$space_idx = $space_data['SPACE_IDX'];
-		
-		$contents_info = array();
-		if (!empty($space_idx)) {
-			$select_contents_sql = "
-				SELECT
-					CI.CONTENTS_LOCATION		AS CONTENTS_LOCATION
-				FROM
-					CONTENTS_SPACE CI
-				WHERE
-					CI.STORE_IDX = ".$space_idx." AND
-					CI.DEL_FLG = FALSE
-			";
-			
-			$db->query($select_contents_sql);
-			
-			foreach($db->fetch() as $space_contents_data) {
-				$contents_info[] = array(
-					'contents_location'		=>$space_contents_data['CONTENTS_LOCATION']
-				);
-			}
-		}
-		
-		$space_info[] = array(
-			'store_idx'			=>$space_idx,
+	foreach ($db->fetch() as $data) {
+		$store_space[] = array(
+			'store_idx'			=>$data['SPACE_IDX'],
 			'store_type'		=>"SPC",
-			'country'			=>$space_data['COUNTRY'],
-			'store_name'		=>$space_data['STORE_NAME'],
-			'store_addr'		=>$space_data['STORE_ADDR'],
-			'store_tel'			=>$space_data['STORE_TEL'],
-			'store_sale_date'	=>$space_data['STORE_SALE_DATE'],
-			'store_link'		=>$space_data['STORE_LINK'],
-			'instagram_id'		=>$space_data['INSTAGRAM_ID'],
-			'lat'				=>$space_data['LAT'],
-			'lng'				=>$space_data['LNG'],
-			
-			'contents_info'		=>$contents_info
+			'country'			=>$data['COUNTRY_'.$country],
+			'store_name'		=>$data['STORE_NAME'],
+			'store_addr'		=>$data['STORE_ADDR_'.$country],
+			'store_tel'			=>$data['STORE_TEL'],
+			'store_sale_date'	=>$data['STORE_SALE_DATE_'.$country],
+			'store_link'		=>$data['STORE_LINK'],
+			'instagram_id'		=>$data['INSTAGRAM_ID'],
+			'lat'				=>$data['LAT'],
+			'lng'				=>$data['LNG'],
+			'link_map'			=>$data['LINK_MAP']
 		);
 	}
 	
+	return $store_space;
+}
+
+function getContents_space($db) {
+	$contents_space = array();
+	
+	$select_contents_space_sql = "
+		SELECT
+			CI.STORE_IDX			AS STORE_IDX,
+			CI.CONTENTS_LOCATION	AS CONTENTS_LOCATION
+		FROM
+			CONTENTS_SPACE CI
+		WHERE
+			CI.DEL_FLG = FALSE
+	";
+
+	$db->query($select_contents_space_sql);
+
+	foreach($db->fetch() as $data) {
+		$contents_space[$data['STORE_IDX']][] = array(
+			'contents_location'		=>$data['CONTENTS_LOCATION']
+		);
+	}
+	
+	return $contents_space;
+}
+
+function getStore_plugshop($db,$country,$where,$param,$distance) {
+	$store_plugshop = array();
+
+	$column_distance	= "";
+	$order_distance		= "";
+	$distance_bind		= array();
+
+	if ($distance != null) {
+		$column_distance	= $distance['column'];
+		$order_distance		= $distance['order'];
+		$distance_bind		= $distance['bind'];
+	}
+
 	$select_store_plugshop_sql = "
 		SELECT
-			SI.IDX								AS PLUGSHOP_IDX,
-			SI.COUNTRY_".$country."				AS COUNTRY,
-			SI.STORE_NAME						AS STORE_NAME,
-			SI.STORE_ADDR".$paramCountry."		AS STORE_ADDR,
-			SI.STORE_TEL						AS STORE_TEL,
-			SI.STORE_SALE_DATE".$paramCountry."	AS STORE_SALE_DATE,
-			SI.STORE_LINK						AS STORE_LINK,
-			SI.INSTAGRAM_ID						AS INSTAGRAM_ID,
-			SI.LAT								AS LAT,
-			SI.LNG								AS LNG
+			SI.IDX					AS PLUGSHOP_IDX,
+			SI.COUNTRY_KR			AS COUNTRY_KR,
+			SI.COUNTRY_EN			AS COUNTRY_EN,
+			SI.STORE_NAME			AS STORE_NAME,
+			SI.STORE_ADDR			AS STORE_ADDR_KR,
+			SI.STORE_ADDR_EN		AS STORE_ADDR_EN,
+			SI.STORE_TEL			AS STORE_TEL,
+			SI.STORE_SALE_DATE		AS STORE_SALE_DATE_KR,
+			SI.STORE_SALE_DATE_EN	AS STORE_SALE_DATE_EN,
+			SI.STORE_LINK			AS STORE_LINK,
+			SI.INSTAGRAM_ID			AS INSTAGRAM_ID,
+			SI.LAT					AS LAT,
+			SI.LNG					AS LNG
+
+			".$column_distance."
 		FROM
 			STORE_PLUGSHOP SI
 		WHERE
 			".$where."
 		ORDER BY
-			SI.DISPLAY_NUM ASC
+			".$order_distance."SI.DISPLAY_NUM ASC
 	";
 	
-	$db->query($select_store_plugshop_sql);
+	$param_bind = null;
+	if (count($distance_bind) > 0 || count($param) > 0) {
+		$param_bind = array_merge($distance_bind,$param);
+	}
+
+	if ($param_bind != null) {
+		$db->query($select_store_plugshop_sql,$param_bind);
+	} else {
+		$db->query($select_store_plugshop_sql);
+	}
 	
-	$plugshop_info = array();
-	foreach ($db->fetch() as $plugshop_data) {
-		$plugshop_idx = $plugshop_data['PLUGSHOP_IDX'];
-		
-		$contents_info = array();
-		if (!empty($plugshop_idx)) {
-			$select_contents_sql = "
-				SELECT
-					CI.CONTENTS_LOCATION		AS CONTENTS_LOCATION
-				FROM
-					CONTENTS_PLUGSHOP CI
-				WHERE
-					CI.STORE_IDX = ".$plugshop_idx." AND
-					CI.DEL_FLG = FALSE
-			";
-			
-			$db->query($select_contents_sql);
-			
-			foreach($db->fetch() as $plugshop_contents_data) {
-				$contents_info[] = array(
-					'contents_location'		=>$plugshop_contents_data['CONTENTS_LOCATION']
-				);
-			}
-		}
-		
-		$plugshop_info[] = array(
-			'store_idx'			=>$plugshop_idx,
+	foreach ($db->fetch() as $data) {
+		$store_plugshop[] = array(
+			'store_idx'			=>$data['PLUGSHOP_IDX'],
 			'store_type'		=>"PLG",
-			'country'			=>$plugshop_data['COUNTRY'],
-			'store_name'		=>$plugshop_data['STORE_NAME'],
-			'store_addr'		=>$plugshop_data['STORE_ADDR'],
-			'store_tel'			=>$plugshop_data['STORE_TEL'],
-			'store_sale_date'	=>$plugshop_data['STORE_SALE_DATE'],
-			'store_link'		=>$plugshop_data['STORE_LINK'],
-			'instagram_id'		=>$plugshop_data['INSTAGRAM_ID'],
-			'lat'				=>$plugshop_data['LAT'],
-			'lng'				=>$plugshop_data['LNG'],
-			
-			'contents_info'		=>$contents_info
+			'country'			=>$data['COUNTRY_'.$country],
+			'store_name'		=>$data['STORE_NAME'],
+			'store_addr'		=>$data['STORE_ADDR_'.$country],
+			'store_tel'			=>$data['STORE_TEL'],
+			'store_sale_date'	=>$data['STORE_SALE_DATE_'.$country],
+			'store_link'		=>$data['STORE_LINK'],
+			'instagram_id'		=>$data['INSTAGRAM_ID'],
+			'lat'				=>$data['LAT'],
+			'lng'				=>$data['LNG']
 		);
 	}
 	
+	return $store_plugshop;
+}
+
+function getContents_plugshop($db) {
+	$contents_plugshop = array();
+	
+	$select_contents_plugshop_sql = "
+		SELECT
+			CI.STORE_IDX			AS STORE_IDX,
+			CI.CONTENTS_LOCATION	AS CONTENTS_LOCATION
+		FROM
+			CONTENTS_PLUGSHOP CI
+		WHERE
+			CI.DEL_FLG = FALSE
+	";
+	
+	$db->query($select_contents_plugshop_sql);
+	
+	foreach($db->fetch() as $data) {
+		$contents_plugshop[$data['STORE_IDX']][] = array(
+			'contents_location'		=>$data['CONTENTS_LOCATION']
+		);
+	}
+	
+	return $contents_plugshop;
+}
+
+function getStore_stockist($db,$country,$where,$param) {
+	$store_stockist = array();
+	
 	$select_store_stockist_sql = "
 		SELECT
-			SI.IDX						AS STORE_IDX,
-			SI.COUNTRY_".$country."		AS COUNTRY,
-			SI.STORE_NAME				AS STORE_NAME,
-			SI.STORE_ADDR				AS STORE_ADDR,
-			SI.STORE_TEL				AS STORE_TEL,
-			SI.STORE_SALE_DATE			AS STORE_SALE_DATE,
-			SI.STORE_LINK				AS STORE_LINK,
-			SI.INSTAGRAM_ID				AS INSTAGRAM_ID,
-			SI.LAT						AS LAT,
-			SI.LNG						AS LNG
+			SI.IDX					AS STORE_IDX,
+			SI.COUNTRY_KR			AS COUNTRY_KR,
+			SI.COUNTRY_EN			AS COUNTRY_EN,
+			SI.STORE_NAME			AS STORE_NAME,
+			SI.STORE_TEL			AS STORE_TEL,
+			SI.STORE_LINK			AS STORE_LINK,
+			SI.INSTAGRAM_ID			AS INSTAGRAM_ID,
+			SI.LAT					AS LAT,
+			SI.LNG					AS LNG
 		FROM
 			STORE_STOCKIST SI
 		WHERE
@@ -199,28 +308,52 @@ else {
 			SI.DISPLAY_NUM ASC
 	";
 	
-	$db->query($select_store_stockist_sql);
+	if (count($param) > 0) {
+		$db->query($select_store_stockist_sql,$param);
+	} else {
+		$db->query($select_store_stockist_sql);
+	}
 	
-	$stockist_info = array();
-	foreach ($db->fetch() as $stockist_data) {
-		$stockist_info[] = array(
-			'store_idx'			=>$stockist_data['STORE_IDX'],
+	
+	foreach ($db->fetch() as $data) {
+		$store_stockist[] = array(
+			'store_idx'			=>$data['STORE_IDX'],
 			'store_type'		=>"STC",
-			'country'			=>$stockist_data['COUNTRY'],
-			'store_name'		=>$stockist_data['STORE_NAME'],
-			'store_addr'		=>$stockist_data['STORE_ADDR'],
-			'store_tel'			=>$stockist_data['STORE_TEL'],
-			'store_sale_date'	=>$stockist_data['STORE_SALE_DATE'],
-			'store_link'		=>$stockist_data['STORE_LINK'],
-			'instagram_id'		=>$stockist_data['INSTAGRAM_ID'],
-			'lat'				=>$stockist_data['LAT'],
-			'lng'				=>$stockist_data['LNG']
+			'country'			=>$data['COUNTRY_'.$country],
+			'store_name'		=>$data['STORE_NAME'],
+			'store_tel'			=>$data['STORE_TEL'],
+			'store_link'		=>$data['STORE_LINK'],
+			'instagram_id'		=>$data['INSTAGRAM_ID'],
+			'lat'				=>$data['LAT'],
+			'lng'				=>$data['LNG']
 		);
 	}
 	
-	$json_result['data'] = array(
-		'space_info'		=>$space_info,
-		'plugshop_info'		=>$plugshop_info,
-		'stockist_info'		=>$stockist_info
-	);
+	return $store_stockist;
 }
+
+function setDistance($lat,$lng) {
+	$distance = null;
+
+	if ($lat != null && $lng != null) {
+		$column_distance = "
+			,(
+				6371 * acos(cos(radians(?)) * cos(radians(SI.LAT)) * cos(radians(SI.LNG) - radians(?)) + sin(radians(?)) * sin(radians(SI.LAT)))
+			) AS DISTANCE
+		";
+
+		$bind_distance = array($lat,$lng,$lat);
+
+		$order_distance = " DISTANCE ASC, ";
+
+		$distance = array(
+			'column'		=>$column_distance,
+			'bind'			=>$bind_distance,
+			'order'			=>$order_distance
+		);
+	}
+
+	return $distance;
+}
+
+?>

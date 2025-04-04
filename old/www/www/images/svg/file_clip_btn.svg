@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.799" height="19.674" viewBox="0 0 19.799 19.674">
+    <g data-name="그룹 7994">
+        <path data-name="타원 148" d="M3.313.947A2.367 2.367 0 1 0 5.68 3.313 2.369 2.369 0 0 0 3.313.947m0-.947A3.313 3.313 0 1 1 0 3.313 3.313 3.313 0 0 1 3.313 0z" transform="rotate(-57 16.07 12.236)" style="fill:#343434"/>
+        <path data-name="타원 150" d="M1.989.995a.995.995 0 1 0 .995.995 1 1 0 0 0-.995-.995m0-.995A1.989 1.989 0 1 1 0 1.989 1.989 1.989 0 0 1 1.989 0z" transform="rotate(-57 12.924 .398)" style="fill:#343434"/>
+        <path data-name="타원 149" d="M5.281 1.174a4.107 4.107 0 1 0 4.107 4.107 4.112 4.112 0 0 0-4.107-4.107m0-1.174A5.281 5.281 0 1 1 0 5.281 5.281 5.281 0 0 1 5.281 0z" transform="rotate(-57 11.705 4.446)" style="fill:#343434"/>
+        <path data-name="선 2881" d="M11.678.447H0V-.5h11.678z" transform="rotate(-57 14.89 8.964)" style="fill:#343434"/>
+        <path data-name="패스 7107" d="M-.035 0h4.26L1.134 4.57a1.5 1.5 0 0 1-1.553-.458C-1.115 3.348-.035 0-.035 0z" transform="rotate(-57 15.614 9.056)" style="fill:#fff"/>
+        <path data-name="패스 7103" d="M-.578-.125h4.807v4.733h-4.26z" transform="rotate(-57 15.148 8.185)" style="fill:#fff"/>
+        <path data-name="패스 7104" d="M0-.125h5.269v4.733H0z" transform="rotate(-57 13.09 4.392)" style="fill:#fff"/>
+        <path data-name="패스 7105" d="M0-.127a16.849 16.849 0 0 1 4.427.281c1.189.451.3 1.612.3 1.612H-.031z" transform="rotate(-57 11.731 1.886)" style="fill:#fff"/>
+        <path data-name="사각형 2390" transform="rotate(-57 8.903 1.113)" style="fill:#fff" d="M0 0h3.975v.947H0z"/>
+        <path data-name="패스 7106" d="M0 0h5.68s.5 2.6 0 2.633S0 2.84 0 2.84z" transform="rotate(-57 17.913 1.076)" style="fill:#fff"/>
+        <path data-name="선 2882" d="M7.331.624H0V-.5h7.331z" transform="rotate(-57 21.85 1.384)" style="fill:#343434"/>
+        <path data-name="패스 7102" d="m-.076.089 3-.089v2.84H0z" transform="rotate(-57 18.99 -5.05)" style="fill:#fff"/>
+        <path data-name="선 2884" d="M8.594.447H0V-.5h8.594z" transform="rotate(-57 16.543 5.772)" style="fill:#343434"/>
+        <path data-name="선 2883" d="M10.487.447H0V-.5h10.487z" transform="rotate(-57 20.105 6.095)" style="fill:#343434"/>
+    </g>
+</svg>

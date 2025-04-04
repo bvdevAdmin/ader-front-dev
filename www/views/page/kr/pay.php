@@ -14,23 +14,27 @@
 					<dd>
 						<button type="button" id="btn-delivery-change" class="btn small">변경</button>
 						<div id="delivery-info">
-                            <input type="hidden" name="to_road_addr">
-                            <input type="hidden" name="to_lot_addr">
-                            <input type="hidden" name="to_detail_addr">
-                            <input type="hidden" name="price_charge_point">
-                            <input type="hidden" name="to_place">
-                            <input type="hidden" name="to_name">
-                            <input type="hidden" name="to_mobile">
-                            <input type="hidden" name="to_zipcode">
+                            
 						</div>
 						<div class="form-inline height45">
-							<select name="order_memo">
-								<option value="">배송메세지</option>
+							<select class="order_memo" name="order_memo">
+								<option value="0">배송시 요청사항을 선택해주세요.</optoin>
 							</select>
+							<input class="delivery_message hidden" type="text" name="delivery_message" value="">
 							<span class="control-label"></span>
 						</div>
 					</dd>
 				</dl>
+
+				<input type="hidden" name="to_road_addr">
+				<input type="hidden" name="to_lot_addr">
+				<input type="hidden" name="to_detail_addr">
+				<input type="hidden" name="price_charge_point">
+				<input type="hidden" name="to_place">
+				<input type="hidden" name="to_name">
+				<input type="hidden" name="to_mobile">
+				<input type="hidden" name="to_zipcode">
+				<input type="hidden" name="order_to_idx" id="order_to_idx">
 			</article>
 			<article class="goods">
 				<dl class="fold">
@@ -40,20 +44,19 @@
 					</dd>
 				</dl>
 			</article>
-			<article class="boucher">
+			<article class="voucher">
 				<dl class="fold">
 					<dt><h2 class="border">바우처/적립금</h2></dt>
 					<dd>
 						<div class="form-inline height45">
-							<select name="voucher_idx">
-								<option value="0">선택 안함</option>
-							</select>
-							<span class="control-label">바우처 <small>(사용가능 <span id="boucher-useful">0</span>장 / 보유 <span id="boucher-has">0</span>장)</small></span>
+							<div class="tui_select" id="voucher-select"></div>	
+							
+							<span class="control-label">바우처 <small>(사용가능 <span id="voucher-useful">0</span>장 / 보유 <span id="voucher-has">0</span>장)</small></span>
 						</div>
 						<div class="form-inline height45">
-							<button type="button" class="black width150">모두 적용</button>
-							<input type="number" name="price_mileage_point" value="0">
-							<span class="control-label">적립금 <small>(사용가능 0)</small></span>
+							<button type="button" class="black width150" id="mileage-button">모두 적용</button>
+							<input type="number" name="price_mileage_point" id="mileage-point" value="0" step="1">
+							<span class="control-label" id="mileage-display">적립금 <small>(사용가능 0)</small></span>
 						</div>
 					</dd>
 				</dl>
@@ -65,8 +68,10 @@
 						<dl>
 							<dt>제품 합계</dt>
 							<dd id="result-goods-total">0</dd>
+							<dt>회원 할인 합계</dt>
+							<dd id="result-goods-discount">0</dd>
 							<dt>바우처 사용</dt>
-							<dd id="result-use-boucher">0</dd>
+							<dd id="result-use-voucher">0</dd>
 							<dt>적립금 사용</dt>
 							<dd id="result-use-mileage">0</dd>
 							<dt>배송비</dt>
@@ -102,5 +107,3 @@
 		</form>
 	</section>
 </main>
-
-<script src="https://js.tosspayments.com/v1/payment-widget"></script>

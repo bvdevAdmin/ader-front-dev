@@ -1,0 +1,281 @@
+input {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.content__wrap {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content__wrap .content__wrap__msg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.font__underline.font__red {
+    color: red;
+    text-align: right;
+}
+
+.content__wrap .content__title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 16px;
+    object-fit: contain;
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #343434;
+}
+
+.content__wrap.login_btn {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.content__row .checkbox__label {
+    float: left;
+}
+
+.login__card [type="checkbox"] {
+    vertical-align: middle;
+    appearance: none;
+    border: 1px solid #dcdcdc;
+    width: 10px;
+    height: 10px;
+    margin-bottom: 2px;
+    padding: 0px;
+}
+
+.login__card [type="checkbox"]:checked {
+    background-color: #343434;
+}
+
+.login__card label p,
+label span {
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #343434;
+}
+
+.text__align__center {
+    text-align: center;
+}
+
+.font__small {
+    height: 16px;
+    object-fit: contain;
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #343434;
+}
+
+.font__underline {
+    text-decoration: underline;
+    height: 16px;
+    object-fit: contain;
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    float: right;
+    color: #343434;
+}
+.font__underline.find_button {
+  cursor: pointer;
+}
+
+.card__footer {
+    margin-top: 20px;
+}
+
+.sns-login-btn{
+    width:30px;
+    height:30px;
+}
+.kakao__btn {
+    float: left;
+    margin-right: 10px;
+}
+.empty_item{
+    height:30px;
+}
+.content__row.sns__account__login {
+    width: 70px;
+    margin: auto;
+    margin-top: 20px;
+}
+.black_btn {
+    object-fit: contain;
+    font-size: 11px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    padding-top: 3px;
+    border-radius: 1px;
+    background-color: #191919;
+}
+
+@media (min-width: 1024px) {
+    .login__card label {
+        padding-right: 10px;
+        vertical-align: middle;
+    }
+
+    .content__row .email_checkbox {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .email_checkbox .checkbox__label {
+        display: flex;
+        align-items: center;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+        width: 470px;
+        height: 40px;
+        font-size: 11px;
+        padding-left: 12px;
+        object-fit: contain;
+        border-top: none;
+        border-bottom: solid 1px #808080;
+        border-left: none;
+        border-right: none;
+    }
+
+    .font__large {
+        height: 19px;
+        object-fit: contain;
+        font-size: 13px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #343434;
+    }
+
+    .login__card {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 229.5px;
+        padding-bottom: 231px;
+        color: #343434;
+    }
+
+    .login__card>div {
+        width: 480px;
+        margin: 0 auto;
+    }
+
+    .login__card .card__header {
+        margin-bottom: 50px;
+    }
+
+    .contour__line {
+        width: 470px;
+        height: 1px;
+        margin-top: 39.5px;
+        margin-bottom: 49.5px;
+        object-fit: contain;
+        background-color: #eee;
+    }
+
+    .content__title.sns__account__login {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .login__card label {
+        padding-right: 4px;
+        vertical-align: middle;
+    }
+
+    .content__row .email_checkbox {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .email_checkbox .checkbox__label {
+        display: flex;
+        align-items: center;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+        width: 340px;
+        height: 40px;
+        font-size: 1.1rem;
+        padding-left: 12px;
+        object-fit: contain;
+        border-radius: 1px;
+        border: solid 1px #808080;
+    }
+
+    .font__large {
+        object-fit: contain;
+        font-size: 1.2rem;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #343434;
+    }
+
+    .login__card {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 10px;
+        margin-bottom: 40px;
+    }
+
+    .login__card>div {
+        width: 340px;
+        margin: 0 auto;
+    }
+
+    .login__card .card__header {
+        margin-bottom: 60px;
+    }
+
+    .contour__line {
+        width: 340px;
+        height: 1px;
+        margin-top: 40.5px;
+        margin-bottom: 49.5px;
+        object-fit: contain;
+        background-color: #eee;
+    }
+
+    .content__title.sns__account__login {
+        margin-top: 41px;
+    }
+}

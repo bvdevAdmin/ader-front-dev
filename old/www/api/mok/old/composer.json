@@ -1,0 +1,12 @@
+{
+    "name": "root/composer",
+    "type": "composer-plugin",
+    "require": {
+        "phpseclib/phpseclib": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Root\\Composer\\": "src/"
+        }
+    }
+}

@@ -3,7 +3,7 @@
  * 사이트 운영 환경
  ******************************************************************************/
 define('THIS_IS_HELIX',		true);	// 변조여부 확인 변수
-define('STATIC_PATH',		'/var/www/dev-aws/_static/');	// 운영에 필요한 필수 파일 위치 
+define('STATIC_PATH',		'/var/www/dev-tmp/_static/');	// 운영에 필요한 필수 파일 위치 
 define('SESSION_PREFIX',	'SS_'); // 기본 세션 헤더
 define('BIZTALK',array(
 	'ID'=>'',

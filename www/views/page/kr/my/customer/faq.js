@@ -5,15 +5,28 @@ $(document).ready(function() {
 		
 		return str.replaceAll(keyword,`<u>${keyword}</u>`);
 	}
-	
+
+	new Swiper(".swiper-container", {
+		slidesPerView : 'auto',
+		direction: 'horizontal',
+		speed: 200,
+		loop: false,
+		touchStartPreventDefault: false,
+		allowTouchMove: true,
+		simulateTouch: true
+	});
+
 	/** 분류 불러오기 **/
 	$.ajax({
 		url : config.api + "faq/category",
+		headers : {
+			country : config.language
+		},
 		success: function(d) {
 			if(d.code == 200) {
 				d.data.forEach(row => {
 					$("#faq-category").append(`
-						<li data-no="${row.no}">${row.title}</li>
+						<li class="swiper-slide" data-no="${row.no}">${row.title}</li>
 					`);
 				});
 
@@ -31,37 +44,43 @@ $(document).ready(function() {
 					/** 내용 불러오기 **/
 					$.ajax({
 						url : config.api + "faq/get",
+						headers : {
+							country : config.language
+						},
 						data : data,
 						success: function(d2) {
 							if(d2.code == 200) {
 								$("#faq-contents").empty();
-								d2.data.forEach(row => {
-									$("#faq-contents").append(`
-										<h2>${replace_keyword_underline(row.category_title)}</h2>
-										<dl></dl>
-									`);
-									row.faq_info.forEach(cont => {
+								
+								if (d2.data != null && d2.data.length > 0) {
+									d2.data.forEach(row => {
+										$("#faq-contents").append(`
+											<h2>${replace_keyword_underline(row.title)}</h2>
+											<dl></dl>
+										`);
+	
 										$("#faq-contents > dl").last().append(`
-											<dt>${replace_keyword_underline(decodeHTMLEntities(cont.question))}</dt>
+											<dt>${replace_keyword_underline(decodeHTMLEntities(row.question))}</dt>
 											<dd>
-												<h3>${cont.subcategory}</h3>
-												${replace_keyword_underline(decodeHTMLEntities(cont.answer))}
+												<h3>${row.subcategory}</h3>
+												${replace_keyword_underline(decodeHTMLEntities(row.answer))}
 											</dd>
 										`);
+	
 									});
-								});
-								
-								$("#faq-contents > dl > dt").click(function() {
-									$(this).siblings("dt").removeClass("on");
-									$(this).siblings("dd").slideUp("fast");
-									$(this).toggleClass("on");
-									if($(this).hasClass("on")) {
-										$(this).next().slideDown("fast");
-									}
-									else {
-										$(this).next().slideUp("fast");
-									}
-								});
+	
+									$("#faq-contents > dl > dt").click(function() {
+										$(this).siblings("dt").removeClass("on");
+										$(this).siblings("dd").slideUp("fast");
+										$(this).toggleClass("on");
+										if($(this).hasClass("on")) {
+											$(this).next().slideDown("fast");
+										}
+										else {
+											$(this).next().slideUp("fast");
+										}
+									});
+								}
 							}
 							else {
 								alert(d2.msg);

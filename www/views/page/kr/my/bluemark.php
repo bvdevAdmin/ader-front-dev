@@ -22,25 +22,50 @@
 				<section>
 					<form id="frm-bluemark-regist">
 						<div class="form-inline height45">
-							<select name="store_no">
+							<select class="store_no" name="store_no">
+								<?php
+									$select_purchase_mall_sql = "
+										SELECT
+											IDX				AS MALL_IDX,
+											MALL_NAME		AS MALL_NAME
+										FROM
+											PURCHASE_MALL PM
+										WHERE
+											PM.COUNTRY = ?
+									";
+									
+									$db->query($select_purchase_mall_sql,array("KR"));
+									
+									foreach($db->fetch() as $data) {
+								?>
+								<option value="<?=$data['MALL_IDX']?>"><?=$data['MALL_NAME']?></option>
+								<?php
+									}
+								?>
+								<!--
 								<option>공식 온라인 스토어</option>
 								<option>공식 오프라인 스토어</option>
 								<option>W컨셉</option>
 								<option>카카오</option>
+								-->
 							</select>
+							
 							<div class="control-label">구매처</div>
 						</div>
+						
 						<div class="form-inline height45">
-							<input type="text" name="bluemark" placeholder="택에 동봉된 블루 커버 내 시리얼 코드 입력" required>
+							<input class="bluemark" type="text" name="bluemark" placeholder="택에 동봉된 블루 커버 내 시리얼 코드 입력" required>
 							<div class="control-label">Bluemark 시리얼 코드</div>
 						</div>
+						
 						<div class="buttons">
-							<button type="submit" class="blue no-over">VERIFY</button>
+							<button type="button" class="blue no-over">VERIFY</button>
 						</div>
 					</form>
 				</section>
 				<section>
 					<ul class="list" id="list"></ul>
+                    <div class="paging"></div>
 				</section>
 			</div>			
 		</article>

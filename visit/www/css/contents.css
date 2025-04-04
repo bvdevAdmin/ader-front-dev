@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+* { -webkit-tap-highlight-color:transparent; font-family : "campton", "Noto Sans KR", sans-serif }
+:root {
+	--white : #ffffff ;
+	--black : #000000 ; 
+	--gray : #808080 ; 
+	--blue : #0000C5 ;
+	--red : #EB3838 ;
+	--bg-tab : rgba(0,0,0,.1) ;
+	--shadow : 0 1px 5px 1px rgba(0,0,0,.16) ;
+}
+
+
+.hidden { display : none }
+
+body { margin : 0 }
+body > section { display : grid ; align-items : center ; padding : 54px ; width : 100% ; height : 100vh }
+body > section:not(.on) { display : none }
+body > section > h1 { font-size : 25px ; width : 100% ; position : absolute ; top : 75px ; left : 0 ; text-align : center }
+body > section > footer { position : absolute ; bottom : 54px ; left : 0 ; width : 100% ; text-align : center }
+.btn,
+button { width : 360px ; height : 45px ; background-color : #191919 ; color : #fff ; font-size : 15px }
+h1,h2 { font-size : 25px ; text-align : center }
+h2 { font-weight : 400 }
+
+/** 탭 **/
+ul.tab { display : grid ; grid-template-columns : 1fr 1fr ; width : 100% ; height : 90px }
+ul.tab > li { font-size : 30px ; line-height : 90px ;  text-align : center }
+ul.tab > li.on,
+ul.tab ~ article { background-color : var(--white) ; box-shadow : 0 -6px 6px 1px rgba(0,0,0,.15) }
+
+/** 키패드 **/
+div.form { width : 328px ; margin : auto }
+article.keypad ul { display : grid ; width : 328px ; grid-template-columns : repeat(3, 1fr) ; grid-gap : 14px ; text-align : center }
+article.keypad ul > li { width : 96px ; height : 96px }
+article.keypad ul > li button { width : 96px ; height : 96px ; font-size : 35px ; background : url('/images/keypad-button.svg') center no-repeat ; color : #000 }
+article.keypad ul > li button[data-key="del"] { background-image : url('/images/keypad-del.svg') }
+article.keypad input { font-size : 30px ; margin-bottom : 35px ; border : none ; text-align : center ;width : 100% }
+
+/** 사용자 선택 **/
+.buttons { width : 100% ; max-width : 360px ; margin: auto }
+.buttons label,.buttons label span { display : block ; width : 100% ; height : 45px ; text-align : center ; position : relative }
+.buttons label ~ label { margin-top : 20px }
+.buttons label span { line-height : 43px ; font-size : 13px ; border : solid 1px transparent ; box-shadow : var(--shadow)  }
+.buttons label input { position : absolute ; top : 0 ; left : 0 ;width : 100% ; height : 100% ; opacity : 0 }
+.buttons label input:checked + span { border-color : #808080 }
+
+/** 음료 선택 **/
+article.goods-list { width : 492px ; overflow-y : auto ; padding : 0 36px ; margin : auto }
+article.goods-list > ul { width : 100% }
+article.goods-list > ul > li { width : 100% ; height : 60px ; position : relative }
+article.goods-list > ul > li ~ li { margin-top : 20px }
+article.goods-list > ul > li .title { font-size : 20px ; padding-left : 20px ; line-height : 60px }
+article.goods-list > ul > li .qty { position : absolute ; width : 140px ; height : 40px ; top : 10px ; right : 10px }
+article.goods-list > ul > li .qty button { width : 40px ; height : 40px ; background-position : center ; background-repeat : no-repeat ; box-shadow : var(--shadow) ; background-color : var(--white) ; top : 0 ; position : absolute }
+article.goods-list > ul > li .qty button.dn { background-image : url('/images/btn-dn.svg') ; left : 0 }
+article.goods-list > ul > li .qty button.up { background-image : url('/images/btn-up.svg') ; right : 0 }
+article.goods-list > ul > li .qty input { font-size : 30px ; width : 60px ; height : 40px ; position : absolute ; border : none ; top 0 ; left : 40px ; text-align : center ; background : none }
+
+#page-order-fin p { font-size : 25px ; text-align : center }
+
+/** 카운터 **/
+#page-admin { padding : 90px 0 0 0 ; align-items : initial ; background : var(--bg-tab) }
+#page-admin > .tab { position : absolute ;top : 0 ; left : 0 }
+#page-admin > article { padding : 60px 50px 50px 50px ; height : calc( 100vh - 90px ) }
+#page-admin > article:not(.on) { display : none }
+
+#page-order { display : grid ; grid-template-columns : 1fr 1fr ; grid-gap : 112px ; text-align : center }
+#page-order button { width : 100% }
+#page-order > section { display : grid ; align-items : center ; background-color : #fbfbfb ; box-shadow : var(--shadow) ; overflow-y : auto ; position : relative ; padding : 96px 0 30px 0 }
+#page-order > section h2 { position : absolute ; top : 40px ; left : 0 ; width : 100% }
+#page-order > #new-order ul { width : 100% ; position : relative }
+#page-order > #new-order ul > li { width : 100% ; left : 0 ; padding : 0 50px ; font-size : 25px }
+#page-order > #new-order ul > li big.order-number { font-size : 50px }
+#page-order > #new-order ul > li button { height : 60px ; margin-top : 45px }
+#page-order > #new-order ul > li:first-child ~ li { display : none }
+#page-order ul#order-list { padding : 0 30px }
+#page-order ul#order-list > li { font-size : 25px ; border : solid 1px var(--gray) ; padding : 20px ; background-color : var(--white) ; position : relative ; text-align : left }
+#page-order ul#order-list > li ~ li { margin-top : 40px }
+#page-order ul#order-list > li .order-number { font-size : 30px ; position : absolute ; top : 20px ; right : 20px }
+#page-order ul#order-list > li button { height : 60px ; margin-top : 40px ; background : var(--white) ; color : var(--black) ; border : solid 1px var(--gray) }
+
+#page-goods > * { width : 558px ; margin: auto}
+#page-goods > section { height : calc( 100vh - 290px ) }
+#page-goods > section button { font-size : 15px ; box-shadow : var(--shadow) }
+#page-goods > section form { position : relative ; padding : 0 23px }
+#page-goods > section form input { border : none ; border-bottom : solid 1px var(--gray) ; width : 100% ; height : 80px ; font-size : 25px ; padding-right : 160px }
+#page-goods > section form button { position : absolute ; top : 10px ; right : 23px ; width : 160px ; height : 60px ; color : var(--black) ; background-color : var(--white) ; border : solid 1px var(--gray) }
+#page-goods > section > ul { padding : 6px 23px ; max-height : calc( 100vh - 310px ) ; overflow-y : auto }
+#page-goods > section > ul > li { height : 100px ; position : relative ; box-shadow : var(--shadow) }
+#page-goods > section > ul > li ~ li { margin-top : 40px }
+#page-goods > section > ul > li span { display : block ; padding-left : 20px ; line-height : 100px ; font-size : 25px }
+#page-goods > section > ul > li button { width : 160px ; height : 60px ; position : absolute ; top : 20px ; right: 20px ; box-shadow : none }
+#page-goods > section > ul > li button.sell { background-color : var(--blue) }
+#page-goods > section > ul > li button.soldout { background-color : var(--red) }
+#page-goods > footer { padding : 0 23px }
+#page-goods > footer button { width : 100% ; height : 60px ; font-size : 25px ; color : var(--black) ; background-color : var(--white) ; box-shadow : var(--shadow) }
+
+#page-goods.add-form > footer button#btn-goods-add,
+#page-goods:not(.add-form) > section form,
+#page-goods:not(.add-form) > section button.delete,
+#page-goods:not(.add-form) > section ul > li:not(.soldout) button.soldout,
+#page-goods:not(.add-form) > section ul > li.soldout button.sell,
+#page-goods:not(.add-form) > footer button#btn-goods-list { display : none }
+#page-goods.add-form > section { height : calc( 100vh - 265px ) }
+#page-goods.add-form > section > form { display : block ; height : 100px ; margin-top : -25px }
+#page-goods.add-form > section > ul { max-height : calc( 100vh - 385px ) }

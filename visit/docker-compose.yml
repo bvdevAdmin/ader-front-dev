@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: visit-web
+    ports:
+      - 7080:80
+    volumes:
+      - ./www:/var/www/visit/www
+      - ./views:/var/www/visit/views
+      - ./api:/var/www/visit/api
+      - /var/www/_cron:/var/www/_cron
+      - /var/www/_resources:/var/www/_resources
+      - /var/www/_static:/var/www/_static
+      - ./config.php:/var/www/visit/config.php
+      - ./config.table.php:/var/www/visit/config.table.php
+

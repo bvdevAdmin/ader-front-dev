@@ -1,0 +1,353 @@
+section.collaboration.new>article.kitsune {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 1600px;
+  text-align: center;
+  /* margin-top: -100px; */
+  overflow: hidden;
+}
+
+section.collaboration.new>article.kitsune>.describe {
+  padding-bottom: 100px;
+}
+
+section.collaboration.new>article.kitsune>.describe>.text>h1 {
+  font-size: 18px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+section.collaboration.new>article.kitsune>.describe>.text>h2 {
+  font-size: 11px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+section.collaboration.new>article.kitsune>.describe>.text>p {
+  font-size: 14px;
+  padding-bottom: 100px;
+}
+
+section.collaboration.new>article.kitsune>.describe>ul {
+  width: 100%;
+  padding-bottom: 100px;
+  min-width: 1100px;
+}
+
+section.collaboration.new>article.kitsune>.describe>ul>li:not(:last-child) {
+  margin-right: 70px;
+}
+
+section.collaboration.new>article.kitsune>.describe>ul>li {
+  display: inline-block;
+  width: calc(25% - 70px);
+  max-width: 308px;
+}
+
+section.collaboration.new>article.kitsune>.product {
+  padding-bottom: 200px;
+}
+
+section.collaboration.new>article.kitsune>.product h1 {
+  font-size: 18px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+section.collaboration.new>article.kitsune>.product p {
+  font-size: 14px;
+  padding-bottom: 50px;
+}
+
+section.collaboration.new>article.kitsune>.product>.mySwiper {
+  position: relative;
+}
+
+section.collaboration.new>article.kitsune>.product>.mySwiper.left>.swiper-static {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  z-index: 2;
+}
+
+section.collaboration.new>article.kitsune>.product>.mySwiper.right>.swiper-static {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  z-index: 2;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.cont {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.cont>* {
+  display: block;
+  text-align: left;
+  font-size: 10px;
+  color: #999;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.cont>.tag>img {
+  height: 14px;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.image {
+  display: inline-block;
+  width: 100%;
+  height: 582px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.cont>.name {
+  font-size: 11px;
+  color: #000;
+  padding-top: 5px;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.cont>.color {
+  padding-top: 3px;
+}
+
+section.collaboration.new>article.kitsune>.product .swiper-wrapper>.swiper-slide>.cont>.price {
+  padding-top: 4px;
+}
+
+section.collaboration.new>article.kitsune .describe .describe-img {
+  margin: 0 auto;
+}
+
+main.collaboration article.kitsune+article.campaign .swiper-button-prev:after,
+main.collaboration article.kitsune+article.campaign .swiper-button-next:after {
+  background-size: 9px;
+}
+
+main.collaboration article.kitsune+article.campaign .swiper-pagination {
+  height: fit-content;
+}
+
+article.kitsune>.product .mySwiper.right .swiper-button-next:after {
+  transform: rotate(180deg);
+}
+
+article.kitsune>.product .mySwiper.right .swiper-button-prev:after {
+  transform: rotate(0deg);
+}
+
+article.kitsune>.product .mySwiper.left .swiper-button-next:after,
+article.kitsune>.product .mySwiper.left .swiper-button-prev:after,
+article.kitsune>.product .mySwiper.right .swiper-button-next:after,
+article.kitsune>.product .mySwiper.right .swiper-button-prev:after {
+  width: 16px;
+  height: 16px;
+}
+
+article.kitsune>.product .swiper-button-disabled {
+  opacity: 0;
+}
+
+.kitsune-banner {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+main.collaboration article.kitsune .list ul>li:nth-child(2n-1):after {
+  background: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  section.collaboration.new>article.kitsune {
+    width: 100%;
+    margin: 70px auto 0 auto;
+    text-align: center;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>.text>h2 {
+    font-size: 11px;
+    padding-bottom: 10px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>.text>h1 {
+    font-size: 14px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>.text>h1+p {
+    padding-top: 30px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>.text>p {
+    font-size: 11px;
+    padding: 50px 0;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul {
+    padding: 0 15%;
+    font-size: 0;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul>li {
+    display: inline-block;
+    width: calc(50% - 7px);
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul {
+    min-width: unset;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul>li:not(:last-child) {
+    margin-right: 0;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul>li:first-child {
+    margin-right: 7px;
+    margin-bottom: 7px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul>li:nth-child(2) {
+    margin-bottom: 7px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul>li:nth-child(3) {
+    margin-right: 7px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>ul>li>img {
+    width: 100%;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>img {
+    width: 100%;
+  }
+
+  section.collaboration.new>article.kitsune>.list {
+    position: relative;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.nav-product {
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.nav-product.on {
+    position: fixed;
+    top: 45px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.nav-product>ul {
+    padding: 5%;
+    box-shadow: 2px 2px 2px #f1f1f1;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.nav-product>ul>li {
+    display: inline-block;
+    width: calc(25% - 5px);
+    opacity: 0.25;
+    cursor: pointer;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.nav-product>ul>li.on {
+    opacity: 1;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.nav-product>ul>li img {
+    width: 100%;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul.on {
+    display: block;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul {
+    margin: 0 10px;
+    overflow: hidden;
+    display: none;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li {
+    display: inline-block;
+    width: calc(50% - 3.5px);
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li:nth-child(2n-1) {
+    margin-right: 7px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .image {
+    display: inline-block;
+    height: 216px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 9px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .cont {
+    display: block;
+    text-align: left;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .cont>* {
+    display: block;
+    color: #929292;
+    font-size: 10px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .cont>.tag>img {
+    padding-bottom: 4px;
+    height: 14px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .cont>.name {
+    font-size: 12px;
+    color: #000;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .cont>.color {
+    padding-top: 2px;
+  }
+
+  section.collaboration.new>article.kitsune>.list>.product>ul>li .cont>.price {
+    padding-top: 4px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe>.text>h1 {
+    padding-bottom: 0;
+  }
+
+  section.collaboration.new>article.kitsune+article.campaign .media {
+    width: calc(100% - 30px);
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  section.collaboration.new>article.kitsune>.describe {
+    padding-bottom: 0;
+  }
+
+  main.collaboration article.kitsune .list ul:after {
+    background: none;
+  }
+
+  main.collaboration article.kitsune .list ul>li {
+    border: none;
+    float: none;
+  }
+
+  main.collaboration article.campaign.kitsune-campaign .swiper-container {
+    padding-top: 35px;
+  }
+
+  main.collaboration article.campaign.kitsune-campaign .buttons {
+    padding: 0;
+  }
+}

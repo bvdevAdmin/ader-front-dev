@@ -87,7 +87,8 @@ if(PAGE_TYPE != '') {
 			$code = 999;
 			$msg = $e->getMessage();
 		}
-
+		
+		/*
 		$msg = (!isset($msg) || is_string($msg) === FALSE)?$_CODE[$code]:$msg;
         if($_CONFIG['M'][0] == '_api') {
 			header('P3P: CP="CAO PSA OUR"');
@@ -102,6 +103,22 @@ if(PAGE_TYPE != '') {
 			if(isset($callback) && is_string($callback)) echo ')';
 		}
 		activity_log($_inc_path);
+		*/
+		
+		if($_CONFIG['M'][0] == '_api' && $_CONFIG['M'][1] != "mok") {
+			header('P3P: CP="CAO PSA OUR"');
+			header('Access-Control-Allow-Headers: *');
+			header('Content-Type: application/json');
+
+			if(isset($callback) && is_string($callback)) echo $callback.'(';
+			echo json_encode(array_merge(array(
+				'code'=>$code,
+				'msg'=>(!isset($msg) || is_string($msg) === FALSE)?$_CODE[$code]:$msg
+			),(isset($json_result) && is_array($json_result))?$json_result:array()),JSON_UNESCAPED_UNICODE);
+			if(isset($callback) && is_string($callback)) echo ')';
+		}
+		activity_log($_inc_path);
+		
 		$db->close();
 		exit(0);
 	}

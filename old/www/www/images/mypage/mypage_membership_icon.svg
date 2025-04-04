@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.43" height="14.573" viewBox="0 0 19.43 14.573">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #343434;
+      }
+
+      .cls-3 {
+        stroke: #343434;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+
+      .cls-5 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="그룹_7923" data-name="그룹 7923" transform="translate(-1305 -311.242)">
+    <rect id="사각형_2297" data-name="사각형 2297" class="cls-1" width="19.226" height="13.733" transform="translate(1305.203 311.936)"/>
+    <path id="사각형_2297_-_윤곽선" data-name="사각형 2297 - 윤곽선" class="cls-2" d="M.694.729V13.844H18.736V.729H.694M0,0H19.43V14.573H0Z" transform="translate(1305 311.242)"/>
+    <g id="사각형_2298" data-name="사각형 2298" class="cls-3" transform="translate(1305.203 314.683)">
+      <rect class="cls-4" width="19.226" height="1.831"/>
+      <rect class="cls-5" x="0.5" y="0.5" width="18.226" height="0.831"/>
+    </g>
+    <path id="사각형_2298_-_윤곽선" data-name="사각형 2298 - 윤곽선" class="cls-2" d="M.694.463V.925H18.736V.463H.694M0,0H19.43V1.388H0Z" transform="translate(1305 315.406)"/>
+    <path id="선_2658" data-name="선 2658" class="cls-2" d="M6.245.194H0V-.5H6.245Z" transform="translate(1315.409 319.722)"/>
+    <path id="선_2659" data-name="선 2659" class="cls-2" d="M3.47.194H0V-.5H3.47Z" transform="translate(1315.409 322.372)"/>
+  </g>
+</svg>

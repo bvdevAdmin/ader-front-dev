@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25.654" height="24.709" viewBox="0 0 25.654 24.709">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #343434;
+      }
+    </style>
+  </defs>
+  <g id="그룹_7934" data-name="그룹 7934" transform="translate(-949.5 -389.871)">
+    <circle id="타원_128" data-name="타원 128" class="cls-1" cx="2.147" cy="2.147" r="2.147" transform="translate(955.673 410.287)"/>
+    <path id="타원_128_-_윤곽선" data-name="타원 128 - 윤곽선" class="cls-2" d="M2.147.537a1.61,1.61,0,1,0,1.61,1.61A1.612,1.612,0,0,0,2.147.537m0-.537A2.147,2.147,0,1,1,0,2.147,2.147,2.147,0,0,1,2.147,0Z" transform="translate(955.673 410.287)"/>
+    <circle id="타원_127" data-name="타원 127" class="cls-1" cx="2.147" cy="2.147" r="2.147" transform="translate(968.018 410.287)"/>
+    <path id="타원_127_-_윤곽선" data-name="타원 127 - 윤곽선" class="cls-2" d="M2.147.537a1.61,1.61,0,1,0,1.61,1.61A1.612,1.612,0,0,0,2.147.537m0-.537A2.147,2.147,0,1,1,0,2.147,2.147,2.147,0,0,1,2.147,0Z" transform="translate(968.018 410.287)"/>
+    <path id="선_2679" data-name="선 2679" class="cls-2" d="M4.294.037H0V-.5H4.294Z" transform="translate(949.5 395.221)"/>
+    <path id="선_2673" data-name="선 2673" class="cls-2" d="M15.452.171,0,.037,0-.5l15.456.134Z" transform="translate(957.017 409.579)"/>
+    <path id="선_2675" data-name="선 2675" class="cls-2" d="M20.287.037H0V-.5H20.287Z" transform="translate(954.868 399.917)"/>
+    <path id="선_2676" data-name="선 2676" class="cls-2" d="M2.732,14.5-.488.008.036-.108,3.256,14.384Z" transform="translate(954.02 395.039)"/>
+    <path id="선_2674" data-name="선 2674" class="cls-2" d="M.036,9.67l-.523-.122L1.77-.114l.523.122Z" transform="translate(972.696 399.873)"/>
+    <ellipse id="타원_129" data-name="타원 129" class="cls-1" cx="7.89" cy="7.89" rx="7.89" ry="7.89" transform="translate(957.12 389.871)"/>
+    <path id="타원_129_-_윤곽선" data-name="타원 129 - 윤곽선" class="cls-2" d="M7.89.631A7.258,7.258,0,0,0,2.757,13.022,7.259,7.259,0,1,0,13.023,2.757,7.212,7.212,0,0,0,7.89.631M7.89,0A7.89,7.89,0,1,1,0,7.89,7.89,7.89,0,0,1,7.89,0Z" transform="translate(957.12 389.871)"/>
+    <path id="선_2677" data-name="선 2677" class="cls-2" d="M3.156.131H0V-.5H3.156Z" transform="translate(961.854 398.577)"/>
+    <path id="선_2678" data-name="선 2678" class="cls-2" d="M.131,5.681H-.5V0H.131Z" transform="translate(965.445 392.712)"/>
+  </g>
+</svg>

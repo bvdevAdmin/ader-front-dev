@@ -1,0 +1,12 @@
+<svg data-name="제품 상세 정보 아이콘" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+    <defs>
+        <clipPath id="evw46udxea">
+            <path data-name="사각형 2313" transform="translate(-2 -2)" style="fill:none" d="M0 0h17v17H0z"/>
+        </clipPath>
+    </defs>
+    <g data-name="그룹 7766" transform="translate(2 2)" style="clip-path:url(#evw46udxea)">
+        <circle data-name="타원 89" cx="7" cy="7" r="7" transform="translate(-.5 -.5)" style="stroke:#343434;stroke-linejoin:round;fill:none"/>
+        <path data-name="선 2693" transform="translate(6.5 5.768)" style="stroke-width:1.5px;stroke:#343434;stroke-linejoin:round;fill:none" d="M0 0v5"/>
+        <path data-name="패스 7096" d="M7.6 4.35a.85.85 0 1 1-.85-.85.851.851 0 0 1 .85.85" transform="translate(-.25 -.8)" style="fill:#343434"/>
+    </g>
+</svg>

@@ -24,6 +24,7 @@ if (isset($_SESSION['MEMBER_IDX'])) {
 }
 
 if ($country != null && $member_idx != null) {
+	/*
 	$member_info = getMemberInfo($db,$country,$member_idx);
 	
 	$page_info = getRecommendPageInfo($db,$country,$member_idx);
@@ -305,6 +306,7 @@ function checkRecommendOption($option_info,$member_info) {
 	}
 	
 	return $check_result;
+	*/
 }
 
 ?>

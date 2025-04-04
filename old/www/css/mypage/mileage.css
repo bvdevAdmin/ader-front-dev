@@ -1,0 +1,138 @@
+.mileage__wrap {
+  margin: 40px 0 100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+}
+
+.mileage__wrap table {
+  width: 100%
+}
+
+.mileage__notice__wrap .title {
+  margin-bottom: 30px;
+}
+
+.mileage__wrap .title p {
+  margin: 0;
+  font-size: 13px !important;
+}
+.mileage__wrap .contents__table thead p {
+  margin-bottom: 10px;
+}
+.mileage__wrap .contents__table p {
+  margin: 0;
+}
+.mileage__tab__wrap {
+  grid-column: 1/17;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 710px;
+}
+
+.mileage__tab__wrap .contents__table {
+  border-top: none;
+  border-bottom: none;
+  margin-top: 40px;
+  padding-top: 0;
+}
+
+.description.tab__total {
+  padding-left: 6px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.description.tab__notice {
+  padding-left: 6px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.mileage__tab__wrap table.border__bottom td {
+  border-bottom: 1px solid #dcdcdc;
+  padding: 10px 0;
+}
+
+table.border__bottom__th {
+  text-align: left;
+}
+
+table.border__bottom__th th {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.mileage__table tr {
+  height: 55px;
+}
+
+.mileage__table tbody p {
+  margin-bottom: 0px;
+}
+
+.mileage__table thead p {
+  margin-bottom: 0px;
+}
+.mileage__table thead p {
+  margin-bottom: 0px;
+}
+.mileage_point_td {
+  padding: 5px 0 !important;
+}
+.mileage_unu_txt {
+  color: #909090 !important;
+}
+
+@media (max-width: 1024px) {
+  .mileage__wrap {
+      margin: 20px 0 60px;
+  }
+
+  .mileage__tab__wrap {
+      grid-column: 1/17;
+      width: 100%;
+      padding: 0 10px;
+      margin-top: 40px;
+  }
+
+  .notice_br {
+      display: inline;
+  }
+
+  .mileage__wrap .title {
+      margin-top: 0;
+      font-size: 13px;
+  }
+
+  .mileage__tab__wrap .contents__table {
+      margin-top: 30px;
+  }
+
+  .description.tab__notice {
+      margin: 0;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .notice_br {
+      display: none;
+  }
+}
+
+.mileage__tab .underline {
+  width: 70px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+}
+.mileage__tab .mileage_no_history {
+  padding: 20px 0 !important;
+  text-align: center
+}
+.mileage__tab .mileage_list_tr {
+  height: 62px;
+}

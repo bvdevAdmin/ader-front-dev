@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>ADERERROR RSS</title>
+		<link>/</link>
+		<description>ADERERROR SHOPPING MALL</description>
+		<language>en-us</language>
+		<copyright><![CDATA[ ADERERROR ]]></copyright>
+		<image>
+			<url>https://s3-cloud-bucket-ader.s3.ap-northeast-2.amazonaws.com/s3-cloud-bucket-ader-user/images/landing/logo.png</url>
+			<title>ADERERROR RSS</title>
+			<link>/</link>
+		</image>
+		<item>
+			<title>ADERERROR - NEW PRODUCT</title>
+			<link>/product/detail?product_idx=13950</link>
+			<pubDate>Fri, 21 Sep 2023 12:00:00 GMT</pubDate>
+			<author>ADERERROR</author>
+			<category>SEO</category>
+			<description><![CDATA[ 
+			<h1>ADERERROR - NEW PRODUCT</h1>
+			제품 상세정보 (한글)
+			]]></description>
+		</item>
+	</channel>
+</rss>

@@ -1,5 +1,4 @@
 <main class="my">
-    <?php include '../_summary.php'; ?>
 	<nav>
 		<ul>
 			<li><a href="/kr/my">마이페이지</a></li>
@@ -28,8 +27,9 @@
 		<article>
 			<h2>문의내역</h2>
 			<ul class="contents-list" id="list">
-				<li class="empty">등록된 문의내역이 없습니다.</li>
+				
 			</ul>
+			<div class="paging" id="list-paging"></div>
 		</article>
 	</section>
 </main>

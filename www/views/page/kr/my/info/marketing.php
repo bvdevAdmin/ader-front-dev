@@ -15,6 +15,8 @@
 				<li>개인정보 수집 및 이용에 대한 자세한 내용은 <a href="/kr/privacy-policy" target="_blank">개인 정보 취급 방침</a>을 확인하세요.</li>
 			</ul>
 			<form id="frm">
+				<input type="hidden" name="action_type" value="MARKETING">
+				
 				<div class="select-target grid col-3">
 					<div>
 						<label class="check">

@@ -1,3 +1,7 @@
+<style>
+.form-inline.no-label .textarea {margin-top:40px;}
+</style>
+
 <main class="my">
     <?php include $_CONFIG['PATH']['PAGE'].'kr/my/_summary.php'; ?>
 	<nav>
@@ -17,6 +21,7 @@
 						<li>인증 불가 제품</li>
 					</ul>
 				</div>
+				
 				<section>
 					<ul class="dot">
 						<li>인증 내역이 보이지 않는 경우, 마이페이지 - 블루마크 메뉴에서 코드 인증이 필요합니다.</li>
@@ -24,21 +29,45 @@
 						<li>콜라보레이션 제품 및 일부 제품군의 경우, 블루마크가 포함되어 있지 않아 ‘인증 불가 제품’으로 신청 부탁드립니다.</li>
 					</ul>
 					<ul class="list" id="list"></ul>
-					<ul class="paging" id="paging"></ul>
+					<div class="paging"></div>
 				</section>
+				
 				<section>
 					<article class="submit">
 						<ul class="dot">
 							<li>정품 여부 확인이 어려운 제품은 A/S가 불가할 수 있습니다.</li>
 						</ul>
 						<form id="frm-as-submit-nocerty">
+							<input class="as_contents" type="hidden" name="as_contents">
+							
 							<div class="grid col-2 gap-20">
 								<div class="form-inline inline-label">
-									<select class="category"></select>
+									<select class="as_category" name="as_category">
+										<option value=""></option>
+										<?php
+											$select_as_category_sql = "
+												SELECT
+													AC.IDX					AS CATEGORY_IDX,
+													AC.TXT_CATEGORY_KR		AS TXT_CATEGORY_KR,
+													AC.TXT_CATEGORY_EN		AS TXT_CATEGORY_EN
+												FROM
+													AS_CATEGORY AC
+											";
+											
+											$db->query($select_as_category_sql);
+											
+											foreach($db->fetch() as $data) {
+										?>
+										<option value="<?=$data['CATEGORY_IDX']?>"><?=$data['TXT_CATEGORY_KR']?></option>
+										<?php
+											}
+										?>
+									</select>
 									<span class="control-label">제품 카테고리</span>
 								</div>
+								
 								<div class="form-inline inline-label no-margin">
-									<input type="text" class="goods_code" placeholder=" " required>
+									<input type="text" class="barcode" name="barcode" placeholder=" " required>
 									<span class="control-label">제품 코드</span>
 								</div>
 							</div>
@@ -49,102 +78,110 @@
 							</div>
 							<div class="form-inline image">
 								<label class="image">
-									<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+									<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
 								</label>
-								<div class="image">
-									<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+								<label class="image">
+									<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
-								</div>
-								<div class="image">
-									<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+								</label>
+								<label class="image">
+									<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
-								</div>
-								<div class="image">
-									<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+								</label>
+								<label class="image">
+									<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
-								</div>
-								<div class="image">
-									<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+								</label>
+								<label class="image">
+									<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
-								</div>
+								</label>
 								<span class="control-label">사진 첨부</span>
 							</div>
+							
 							<div class="form-inline image">
 								<label class="image">
-									<input type="file" name="image_history[]" accept=".jpg, .jpeg, .png, .gif">
+									<input type="file" name="receipt_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
 								</label>
 								<label class="image">
-									<input type="file" name="image_history[]" accept=".jpg, .jpeg, .png, .gif">
+									<input type="file" name="receipt_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
 								</label>
 								<label class="image">
-									<input type="file" name="image_history[]" accept=".jpg, .jpeg, .png, .gif">
+									<input type="file" name="receipt_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
 								</label>
 								<label class="image">
-									<input type="file" name="image_history[]" accept=".jpg, .jpeg, .png, .gif">
+									<input type="file" name="receipt_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
 								</label>
 								<label class="image">
-									<input type="file" name="image_history[]" accept=".jpg, .jpeg, .png, .gif">
+									<input type="file" name="receipt_img[]" accept=".jpg, .jpeg, .png, .gif">
 									<img>
 								</label>
 								<span class="control-label">구매 이력, 증빙 이미지 첨부</span>
 							</div>
+							
 							<ul class="dot">
 								<li>제품 전체 및 상세 사진과 파손 부분의 사진을 함께 첨부해주시면 더욱 정확한 확인이 가능합니다.</li>
 								<li>파일은 jpg, jpeg, png와 gif 형식만 업로드가 가능하며, 용량은 개당 10MB이하 최대 5개까지만 가능합니다.</li>
 							</ul>
 							<div class="buttons">
-								<button type="submit" class="black">A/S 신청</button>
+								<button type="button" class="btn_add">A/S 신청</button>
 								<button type="button" class="cancel">취소</button>
 							</div>
 						</form>
 					</article>
+
 				</section>
 		</article>
-		<article class="submit">
+		
+		<article class="article submit">
 			<form id="frm-as-submit">
-				<input type="hidden" name="bluemark_no">
-				<input type="hidden" name="contents">
+				<input class="serial_code" type="hidden" name="serial_code" value="0">
+				<input class="as_contents" type="hidden" name="as_contents">
+				
 				<div class="form-inline no-label">
 					<div class="textarea" contentEditable="true"></div>					
 				</div>
+				
 				<div class="form-inline image">
 					<label class="image">
-						<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+						<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 						<img>
 					</label>
 					<label class="image">
-						<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+						<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 						<img>
 					</label>
 					<label class="image">
-						<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+						<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 						<img>
 					</label>
 					<label class="image">
-						<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+						<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 						<img>
 					</label>
 					<label class="image">
-						<input type="file" name="image[]" accept=".jpg, .jpeg, .png, .gif">
+						<input type="file" name="product_img[]" accept=".jpg, .jpeg, .png, .gif">
 						<img>
 					</label>
 					<span class="control-label">사진 첨부</span>
 				</div>
+				
 				<ul class="dot">
 					<li>제품 전체 및 상세 사진과 파손 부분의 사진을 함께 첨부해주시면 더욱 정확한 확인이 가능합니다.</li>
 					<li>파일은 jpg, jpeg, png와 gif 형식만 업로드가 가능하며, 용량은 개당 10MB이하 최대 5개까지만 가능합니다.</li>
 				</ul>
 				<div class="buttons">
-					<button type="submit">A/S 신청</button>
+					<button type="button" class="btn_add">A/S 신청</button>
 					<button type="button" class="cancel">취소</button>
 				</div>
 			</form>
 		</article>
+		
 		<article class="submit-ok">
 			<p>A/S 신청이 완료되었습니다.</p>
 			<ul class="dot">

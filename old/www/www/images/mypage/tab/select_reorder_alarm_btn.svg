@@ -1,0 +1,7 @@
+<svg data-name="소분류 버튼" xmlns="http://www.w3.org/2000/svg" width="70" height="24" viewBox="0 0 70 24">
+    <g data-name="사각형 1942" style="stroke:gray;fill:none">
+        <rect width="70" height="24" rx="1" style="stroke:none"/>
+        <rect x=".5" y=".5" width="69" height="23" rx=".5" style="fill:none"/>
+    </g>
+    <text transform="translate(35 17)" style="fill:#343434;font-size:11px;font-family:NotoSansKR-Regular,Noto Sans KR"><tspan x="-20.24" y="0">알림완료</tspan></text>
+</svg>

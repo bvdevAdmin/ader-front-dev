@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+    <g data-name="그룹 7977">
+        <g data-name="사각형 2328" style="stroke:gray;fill:none">
+            <rect width="53" height="53" rx="1" style="stroke:none"/>
+            <rect x=".5" y=".5" width="52" height="52" rx=".5" style="fill:none"/>
+        </g>
+        <path data-name="선 2855" transform="translate(21.5 26.5)" style="stroke:gray;fill:none" d="M0 0h10"/>
+        <path data-name="선 2856" transform="translate(26.5 21.5)" style="stroke:gray;fill:none" d="M0 0v10"/>
+    </g>
+</svg>

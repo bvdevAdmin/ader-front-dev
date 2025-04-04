@@ -16,7 +16,7 @@
 
 if (isset($country) && isset($category_type)) {
 	if ($category_type == 'FAQ') {
-		$faq_category_get_sql = "
+		$select_faq_category_sql = "
 			SELECT
 				FC.IDX			AS CATEGORY_IDX,
 				FC.TITLE		AS CATEGORY_TITLE
@@ -25,33 +25,34 @@ if (isset($country) && isset($category_type)) {
 			WHERE
 				FC.FATHER_NO = 0 AND
 				FC.STATUS = 'Y' AND
-				FC.LANG = '".$country."'
+				FC.LANG = ?
 			ORDER BY 
 				FC.SEQ ASC
 		";
 		
-		$db->query($faq_category_get_sql);
+		$db->query($select_faq_category_sql,array($country));
 		
 		foreach($db->fetch() as $data){
-			$json_result['data'][] = array(
+			$json_result['data'][] = array( 
 				'category_idx'		=>$data['CATEGORY_IDX'],
 				'category_title'	=>$data['CATEGORY_TITLE']
 			);
 		}
 	} else if ($category_type == 'INQ') {
-		$inquiry_category_get_sql = "
+		$select_question_category_sql = "
 			SELECT 
-				DISTINCT CODE_VALUE,
-				CODE_NAME
+				QC.IDX					AS CATEGORY_IDX,
+				QC.CATEGORY_NAME_KR		AS CATEGORY_NAME_KR,
+				QC.CATEGORY_NAME_EN		AS CATEGORY_NAME_EN
 			FROM
-				CODE_MST
+				QUESTION_CATEGORY QC
 			WHERE
-				CODE_TYPE = 'BOARD_CATEGORY'
-			AND 
-				CODE_VALUE IN ('CAR','OAP','FAD','RAE','AFS','DAE','RST','PIQ','BGP','VUC','OSV')
+				QC.DEL_FLG = FALSE
+			ORDER BY
+				QC.DISPLAY_NUM ASC
 		";
 		
-		$db->query($inquiry_category_get_sql);
+		$db->query($select_question_category_sql);
 		
 		foreach($db->fetch() as $data){
 			$json_result['data'][] = array(

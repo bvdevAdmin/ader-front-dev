@@ -22,9 +22,10 @@
 
             <dl class="contents-list">
                 <dt>법적 고지사항</dt>
-                <dd><a href="/kr/my/customer/online-store-guide">온라인 스토어 이용가이드</a></dd>
-                <dd><a href="/kr/my/customer/terms-of-use">이용 약관</a></dd>
-                <dd><a href="/kr/my/customer/privacy-policy">개인정보 처리방침</a></dd>
+                <dd><a href="/kr/online-store-guide">온라인 스토어 이용가이드</a></dd>
+                <dd><a href="/kr/terms-of-use">이용 약관</a></dd>
+                <dd><a href="/kr/privacy-policy">개인정보 처리방침</a></dd>
+                <dd><a href="/kr/cookie-policy">쿠키정책</a></dd>
             </dl>
 
 		</article>

@@ -93,7 +93,6 @@ input, textarea, button, select { appearance: none; -moz-appearance: none; -webk
 .bl { background-color : var(--black) }
 .wh { background-color : var(--white) }
 
-
 .hidden { display : none !important }
 .width-100p { width : 100% }
 .width-1200 { width : 1200px !important }
@@ -142,8 +141,8 @@ body { font-weight : 300 ; margin : 0 ; background-color : var(--white) ; color 
 ul { padding-inline-start: 0 ; list-style-type : none }
 ol { padding-inline-start: 0 ; padding-left : 20px }
 ol > li { padding-left : 10px }
-button { background : none ; font-weight : 300 ; display : inline-block ; cursor : pointer }
-input { }
+button { background : none ; font-weight : 300 ; display : inline-block ; cursor : pointer ; color : var(--black)}
+input { color : var(--black)}
 em { font-weight : 600 ; font-style : normal }
 a { text-decoration : none ; color : var(--black) }
 body,button,input,::before,::after {font-family: 'FuturaLTPro', 'Noto Sans KR', sans-serif }

@@ -1,14 +1,25 @@
-<main class="collaboration">
+<main class="collaboration new">
     <?php include $_CONFIG['PATH']['PAGE'].$_CONFIG['M'][0].'/collaboration/_nav.php'; ?>
 	<header>
 		<h1>
 			<small>2020</small>
 			ADER x ALPHA INDUSTRIES COLLABORATION
+			<div class="more">
+				<a href="#" class="button">
+					제품보러가기
+					<span class="over">
+						<span class="text">제품보러가기</span>
+					</span>
+				</a>
+			</div>
 		</h1>
 	</header>
 	<section class="media">
-		<video loop muted autoplay playsinline src="https://player.vimeo.com/external/473760776.hd.mp4?s=39100483a7cabc23fd1ec52352971976d575a132&profile_id=175"></video>
-		<article>
+		<img class="pc" src="https://adererror.com/collaboration/alpha-industries/intro.jpg">
+		<img class="mo" src="https://adererror.com/collaboration/alpha-industries/mobile/intro.jpg">
+		<!-- <video loop="" muted="" autoplay="" playsinline="" src="https://d340a4zb19l6y1.cloudfront.net/collaboration/alphaindustries/campaign_1920x1080.mp4"></video> -->
+		<!-- <video loop muted autoplay playsinline src="https://player.vimeo.com/external/473760776.hd.mp4?s=39100483a7cabc23fd1ec52352971976d575a132&profile_id=175"></video> -->
+		<!-- <article>
 			<p>
 				'Out Of the Rule' <br><br>
 				아더와 알파 인더스트리가 공중을 향해하는 파일럿에서 영감을 받은 협업 컬렉션을 선보입니다.  <br class="not-mobile">
@@ -18,9 +29,23 @@
 			<div class="buttons">
 				<button type="button" class="play">캠페인 메인 영상 보기</button>
 			</div>
-		</article>
+		</article> -->
 	</section>
-	<section class="gallery">
+	<article class="campaign">
+		<h3>ADER x ALPHA INDUSTRIES</h3>
+		<div class="media">
+			<video loop="" muted="" autoplay="" playsinline="" src="https://d340a4zb19l6y1.cloudfront.net/collaboration/alphaindustries/campaign_1920x1080.mp4"></video>
+		</div>
+		<div>
+			<button type="button" class="button play">
+				캠페인 영상 보기
+				<span class="over">
+					<span class="text">캠페인 영상 보기</span>
+				</span>
+			</button>
+		</div>
+	</article>
+	<!-- <section class="gallery">
 		<article class="product-gallery no-thumbnails">
 			<ul class="list">
 				<li><span class="thumbnail"><img src="/upload/collaboration/alpha-industries/hartman_01.jpg"></span><p>Hartmann M-65</p></li>
@@ -94,5 +119,5 @@
 		<div class="buttons">
 			<a href="" class="btn">콜라보레이션 제품 전체 보기</a>
 		</div>
-	</section>
+	</section> -->
 </main>

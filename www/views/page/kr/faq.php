@@ -1,8 +1,8 @@
 <main class="my">
 	<nav>
 		<ul>
-			<li><a href="/">HOME</a></li>
-			<li><a href="/faq">자주 묻는 질문</a></li>
+			<li><a href="/kr">HOME</a></li>
+			<li><a href="/kr/faq">자주 묻는 질문</a></li>
 		</ul>
 	</nav>
 	<section class="faq">

@@ -1,7 +1,27 @@
 <nav>
     <section id="collaboration-nav" class="swiper-container">
         <div class="swiper-wrapper">
+            <a href="/kr/collaboration/bearbrick_2nd/2nd" class="swiper-slide">
+                <span class="thumbnail"></span>
+                BE@RBRICK 2nd
+            </a>
+            <a href="/kr/collaboration/disney" class="swiper-slide">
+                <span class="thumbnail"></span>
+                DISNEY
+            </a>
+            <a href="/kr/collaboration/bang-n-olufsen" class="swiper-slide">
+                <span class="thumbnail"></span>
+                BANG & OLUFSEN
+            </a>
+            <a href="/kr/collaboration/swarovski" class="swiper-slide">
+                <span class="thumbnail"></span>
+                SWAROVSKI
+            </a>
             <a href="/kr/collaboration/converse/2023/2nd" class="swiper-slide">
+                <span class="thumbnail"></span>
+                CONVERSE 2nd
+            </a>
+            <a href="/kr/collaboration/converse/2023" class="swiper-slide">
                 <span class="thumbnail"></span>
                 CONVERSE
             </a>
@@ -55,8 +75,8 @@
             </a>
         </div>
     </section>
-	<button type="button" class="swiper-button-prev"></button>
-	<button type="button" class="swiper-button-next"></button>
+	<button type="button" class="swiper-button-prev collaboration-nav-button"></button>
+	<button type="button" class="swiper-button-next collaboration-nav-button"></button>
 </nav>
 <script>
 $(document).ready(function() {

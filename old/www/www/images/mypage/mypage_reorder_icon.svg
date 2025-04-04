@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.5" height="21" viewBox="0 0 16.5 21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #343434;
+      }
+    </style>
+  </defs>
+  <g id="그룹_7926" data-name="그룹 7926" transform="translate(-1148 -309)">
+    <circle id="타원_120" data-name="타원 120" class="cls-1" cx="2.5" cy="2.5" r="2.5" transform="translate(1154 309)"/>
+    <path id="타원_120_-_윤곽선" data-name="타원 120 - 윤곽선" class="cls-2" d="M2.25.75a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,2.25.75m0-.75A2.25,2.25,0,1,1,0,2.25,2.25,2.25,0,0,1,2.25,0Z" transform="translate(1154 309)"/>
+    <path id="사각형_2301" data-name="사각형 2301" class="cls-1" d="M7,0H7a7,7,0,0,1,7,7v5a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V7A7,7,0,0,1,7,0Z" transform="translate(1149 312)"/>
+    <path id="사각형_2301_-_윤곽선" data-name="사각형 2301 - 윤곽선" class="cls-2" d="M6.75.75a6.007,6.007,0,0,0-6,6v6h13.5v-6a6.007,6.007,0,0,0-6-6H6.75m0-.75h1.5A6.75,6.75,0,0,1,15,6.75V13.5H0V6.75A6.75,6.75,0,0,1,6.75,0Z" transform="translate(1148.75 311.25)"/>
+    <circle id="타원_119" data-name="타원 119" class="cls-1" cx="3.5" cy="3.5" r="3.5" transform="translate(1153 323)"/>
+    <path id="타원_119_-_윤곽선" data-name="타원 119 - 윤곽선" class="cls-2" d="M3.75.75a3,3,0,1,0,3,3,3,3,0,0,0-3-3m0-.75A3.75,3.75,0,1,1,0,3.75,3.75,3.75,0,0,1,3.75,0Z" transform="translate(1152.5 322.5)"/>
+    <rect id="사각형_2302" data-name="사각형 2302" class="cls-1" width="16" height="4" transform="translate(1148 323)"/>
+    <path id="사각형_2302_-_윤곽선" data-name="사각형 2302 - 윤곽선" class="cls-2" d="M.75.75v3h15v-3H.75M0,0H16.5V4.5H0Z" transform="translate(1148 322.5)"/>
+  </g>
+</svg>

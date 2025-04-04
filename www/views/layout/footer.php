@@ -2,7 +2,7 @@
 	<section class="notice">
 		<button type="button" class="prev"></button>
 		<button type="button" class="next"></button>
-		<button type="button" class="close"></button>
+		<button type="button" class="close KR"></button>
 		<article class="noti">
 			<p>CS 및 배송시스템 개편 안내</p>
 			<a href="/kr/notice/">자세히보기</a>
@@ -26,11 +26,17 @@
 			<dt><a class="side" data-side="bluemark"><span class="text">Bluemark</span><span class="over"><span class="text">Bluemark</span></span></a></dt>
 			<dt><a class="side" data-side="search">검색</a></dt>
 			<dt><a class="side" data-side="language">KR</a></dt>
-			<dt><a href="/kr/my/wishlist">Wishlist</a></dt>
+			<dt><a class="side" href="/kr/my/wishlist">Wishlist</a></dt>
 			<dt><a class="side" data-side="shoppingbag">Shopping bag</a></dt>
 		</dl>
 		<ul class="tnb-mobile mobile" id="tnb-mobile">
-			<li><a class="my" data-side="my">로그인</a><a href="/kr/my" class="my">마이페이지</a></li>
+			<li>
+                <?php if (isset($_SESSION['MEMBER_IDX'])): ?>
+                    <a href="/kr/my" class="my">마이페이지</a>
+                <?php else: ?>
+                    <a class="my" data-side="my">로그인</a>
+                <?php endif; ?>
+            </li>
 			<li><a class="bluemark" data-side="bluemark">Bluemark</a></li>
 			<li><a class="customer" data-side="customer">고객서비스</a></li>
 			<li><a class="language" data-side="language">Language</a></li>
@@ -41,8 +47,9 @@
 		</button>
 	</nav>
 	<aside>
-		<button type="button" class="close"></button>
 		<section class="story">
+			<button type="button" class="close KR"></button>
+			
 			<article>
 				<dl class="fold" id="tnb-story-new-m">
 					<dt>새로운 소식</dt>
@@ -53,6 +60,8 @@
 			</article>
 		</section>
 		<section class="bluemark">
+			<button type="button" class="close KR"></button>
+			
 			<article>
 				<h2>Bluemark</h2>
 				<p>
@@ -63,12 +72,14 @@
 					위하여 적극적으로 대응중입니다.
 				</p>
 				<div class="buttons">
-					<a href="/kr/bluemark" class="btn certify no-over">블루마크 인증하기</a>
-					<a href="/kr/my/bluemark" class="btn no-over">블루마크 인증 내역</a>
+					<a href="/kr/my/bluemark?type=regist" class="btn certify no-over">블루마크 인증하기</a>
+					<a href="/kr/my/bluemark?type=list" class="btn no-over">블루마크 인증 내역</a>
 				</div>
 			</article>
 		</section>
 		<section class="language">
+			<button type="button" class="close KR"></button>
+			
 			<article>
 				<h2>언어 선택</h2>
 				<p>
@@ -76,13 +87,14 @@
 					선택한 언어에 해당되는 홈페이지로 리디렉션됩니다.
 				</p>
 				<div class="buttons">
-					<a href="/kr" class="btn">한국어</a>
-					<a href="/en" class="btn off">English</a>
-					<a href="/cn" class="btn off">中文</a>
+					<a class="btn" data-country="KR">한국어</a>
+					<a class="btn off" data-country="EN">English</a>
 				</div>
 			</article>
 		</section>
 		<section class="search">
+			<button type="button" class="close KR"></button>
+			
 			<article id="tnb-search">
 				<form id="frm-side-search" class="search">
 					<input type="text" name="keyword" placeholder="검색어를 입력하세요">
@@ -104,7 +116,9 @@
 		<section class="shoppingbag">
 			<article>
 				<form id="frm-side-cart">
-					<h2>쇼핑백</h2>
+					<h2>장바구니</h2>
+                    <button type="button" class="close">                        
+                    </button>
 					<div class="info-box no-login">
 						<div class="login">
 							<p>로그인 후 이용 가능한 서비스 입니다.</p>
@@ -135,6 +149,8 @@
 						<dl>
 							<dt>제품 합계</dt>
 							<dd id="frm-side-cart-total-goods">0</dd>
+							<dt>회원 할인 합계</dt>
+							<dd id="frm-side-cart-total-discount">0</dd>
 							<dt>배송비</dt>
 							<dd id="frm-side-cart-delivery">0</dd>
 							<dt>총 결제 금액</dt>
@@ -146,38 +162,37 @@
 					</footer>
 				</form>
 			</article>
-		</section>
+		</section> 
 		<section class="my">
 			<article class="login">
 				<section>
-					<h2>
-						로그인
-					</h2>
+					<h2>로그인</h2>
+					<button type="button" class="close KR"></button>
 					<form id="frm-side-login">
 						<input type="hidden" name="r_url" value="">
 						<div class="form-inline inline-label">
-							<input type="email" name="member_id" placeholder=" " data-msg1="이메일 입력해주세요." data-msg2="올바른 이메일을 형식을 입력해주세요." required>
+							<input type="email" name="member_id" placeholder=" " data-msg1="이메일 입력해주세요." data-msg2="올바른 이메일을 형식을 입력해주세요." required tabindex="1">
 							<span class="control-label">E-mail</span>
 						</div>
 						<div class="form-inline inline-label">
-							<button type="button" class="pw-view-toggle"></button>
-							<input type="password" name="member_pw" placeholder=" " data-msg1="비밀번호를 입력해주세요." required>
+							<button type="button" class="pw-view-toggle" tabindex="-1"></button>
+							<input type="password" name="member_pw" placeholder=" " data-msg1="비밀번호를 입력해주세요." required tabindex="2">
 							<span class="control-label">비밀번호</span>
 						</div>
 						<span class="result-msg" id="side-login-result"></span>
-						<button type="submit" class="btn login black">로그인</button>
+						<button type="submit" class="btn login black" tabindex="3">로그인</button>
 						<div class="rows">
 							<div class="left">
 								<label>
-									<input type="checkbox" name="save_id" value="y">
+									<input type="checkbox" name="save_id" value="y"  tabindex="4">
 									<i></i>
 									아이디저장
 								</label>
 							</div>
 							<div class="right">
-								<a href="/kr/find-account">아이디</a>
+								<a href="/kr/find-account?type=id">아이디</a>
 								|
-								<a href="/kr/find-account#password">비밀번호 찾기</a>
+								<a href="/kr/find-account?type=pw">비밀번호 찾기</a>
 							</div>
 						</div>
 					</form>
@@ -186,6 +201,7 @@
 						<ul>
 							<li><button type="button" class="login-kakao" id="btn-login-kakao">카카오 로그인</button></li>
 							<li><button type="button" class="login-naver" id="btn-login-naver">네이버 로그인</button></li>
+							<li><button type="button" class="login-google" id="btn-login-google">구글 로그인</button></li>
 						</ul>
 					</div>
 					<hr />
@@ -209,39 +225,50 @@
 		<li class="recently-viewed">
 			<button type="button" class="quick" id="btn-quick-recently-viewed"></button>
 			<section>
-				<button type="button" class="close"></button>
+				<button type="button" class="close KR"></button>
 				<header>최근 본 제품</header>
 				<article>
 					<div class="tab">
 						<div class="tab-container">
 							<ul id="quick-tabs">
-								<li class="recently"></li>
+								<li class="recently on"></li>
 								<li class="popular"></li>
 								<li class="wishlist"></li>
 							</ul>
 						</div>
-						<section class="recently">
+						<section class="recently on">
 							<ul class="list" id="quick-recently-list">
-								<li class="empty">최근 본 제품이 비어있습니다.</li>
+								<?php if (!isset($_SESSION['MEMBER_IDX'])): ?>
+									<li class="empty">로그인 해 주세요.</li>
+								<?php endif; ?>
 							</ul>
 							<footer>
-								<a href="/kr/recently" class="btn">최근 본 제품으로 이동하기</a>
+								<?php if (!isset($_SESSION['MEMBER_IDX'])): ?>
+                                    <a href="/kr/login" class="btn">로그인 하기</a>
+                                <?php else: ?>
+                                    <a href="/kr/recently" class="btn">최근 본 제품으로 이동하기</a>
+                                <?php endif; ?>
 							</footer>
 						</section>
 						<section class="popular">
 							<ul class="list" id="quick-popular-list">
-								<li class="empty">실시간 인기 제품이 비어있습니다.</li>
 							</ul>
 							<footer>
-								<a href="/kr/best" class="btn">실시간 인기 제품으로 이동하기</a>
+                                <a href="/kr/best" class="btn">실시간 인기 제품으로 이동하기</a>
 							</footer>
 						</section>
 						<section class="wishlist">
 							<ul class="list" id="quick-wishlist-list">
-								<li class="empty">위시리스트가 비어있습니다.</li>
+								<?php if (!isset($_SESSION['MEMBER_IDX'])): ?>
+									<li class="empty">로그인 해 주세요.</li>
+								<?php endif;?>
 							</ul>
 							<footer>
-								<a href="/kr/my/wishlist" class="btn">위시리스트로 이동하기</a>
+								<?php if (!isset($_SESSION['MEMBER_IDX'])): ?>
+                                    <a href="/kr/login" class="btn">로그인 하기</a>
+                                <?php else: ?>
+                                    <a href="/kr/my/wishlist" class="btn">위시리스트로 이동하기</a>
+                                <?php endif;?>
 							</footer>
 						</section>
 					</div>
@@ -251,7 +278,7 @@
 		<li class="qna">
 			<button type="button" class="quick"></button>
 			<section id="quick-qna">			
-				<button type="button" class="close"></button>
+				<button type="button" class="close KR"></button>
 				<header><i></i>QnA</header>
 				<article id="quick-qna-category" class="category">
 					<p>무엇을 도와드릴까요?</p>
@@ -269,7 +296,7 @@
 </aside>
 <section class="cookie-agree">
 	<article class="banner">
-		<button type="button" class="close"></button>
+		<button type="button" class="close KR"></button>
 		<p>당사는 사이트 탐색을 개선하고 이용을 분석하고 마케팅 노력을 지원하기 위해 쿠키 및 이와 유사한 기술을 사용합니다. 아더에러의 온라인 스토어를 계속 이용하는 것으로, 귀하는 이러한 이용 약관에 동의 의사를 표하게 됩니다.</p>
 		<div class="buttons">
 			<button type="button" class="config">쿠키 설정</button>
@@ -280,7 +307,7 @@
 		<section class="cont">
 			<header>
 				쿠키 설정
-				<button type="button" class="close"></button>
+				<button type="button" class="close KR"></button>
 			</header>
 			<article>
 				<form id="frm-cookie-accept">
