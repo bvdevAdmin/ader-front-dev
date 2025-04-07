@@ -127,7 +127,7 @@
 		</div>
 
 	</article>
-	<article class="campaign">
+	<article class="campaign converse-campaign">
 		<div class="media">
 			<video class="pc" loop autoplay muted playsinline src="https://ader-video-s3-bucket.s3.ap-northeast-2.amazonaws.com/collaboration/converse_1st/CONVERSE+1ST_PC)campaign_1920x900.mp4"></video>
 			<video class="mobile" loop autoplay muted playsinline src="https://ader-video-s3-bucket.s3.ap-northeast-2.amazonaws.com/collaboration/converse_1st/CONVERSE+1ST_MO)campaign_1124x1400.mp4"></video>

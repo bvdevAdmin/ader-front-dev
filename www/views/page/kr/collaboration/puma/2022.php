@@ -155,7 +155,3 @@
         </article>
     </section>
 </main>
-
-<script>
-
-</script>

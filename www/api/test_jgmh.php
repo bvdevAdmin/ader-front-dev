@@ -8,20 +8,9 @@
  | 
  +=============================================================================
 */
-/*
-  L_BANNER_MST IDX가 1,2,3 뽑고,
-      LANDING_BANNER
-          BANNER_CONTENTS
-*/ 
-
 // 1
 $landing_banner_mst_sql = "
-  SELECT
-    *
-  FROM
-    L_BANNER_MST
-  WHERE
-    IDX IN (1,2,3)
+  SELECT * FROM L_BANNER_MST WHERE IDX = 1
 ";
 
 $db->query($landing_banner_mst_sql);
@@ -40,7 +29,7 @@ foreach($db->fetch() as $mst_data) {
 
 // 2
 $landing_banner_sql = "
-  SELECT * FROM LANDING_BANNER WHERE IDX = 1
+  SELECT * FROM LANDING_BANNER WHERE MST_IDX = 1
 ";
 
 $db->query($landing_banner_sql);
@@ -71,12 +60,16 @@ foreach($db->fetch() as $banner_data){
 }
 
 // 결과 ?
-foreach($landing_banner_mst as $mst){
-  
+foreach($landing_banner_mst as &$mst){
+  foreach($landing_banber as $layout) {
+    if(isset($layout['mst_idx']) && $mst['idx'] == $layout['mst_idx']) {
+      $mst['landing_banner'][] = $layout;
+    }
+  }
 }
 
-$json_result['data1'] = $landing_banner_mst;
-$json_result['data2'] = $landing_banber;
-$json_result['data3'] = $banner_contents;
-
+// $json_result['data1'] = $landing_banner_mst;
+// $json_result['data2'] = $landing_banber;
+// $json_result['data3'] = $banner_contents;
+$json_result['data'] = $landing_banner_mst;
 ?>

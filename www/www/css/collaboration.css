@@ -46,7 +46,7 @@ main.collaboration > nav .swiper-button-prev:after,
 main.collaboration > nav .swiper-button-next:after { width : 30px ; height : 30px }
 main.collaboration > nav .swiper-button-prev:after { background-image : url('/images/ico-angle-collabo-prev.svg') }
 main.collaboration > nav .swiper-button-next:after { background-image : url('/images/ico-angle-collabo-next.svg') }
-main.collaboration > nav .swiper-button-prev { top : 40px ; left : calc( 50% - 410px ) ; transform : rotate(180deg) }
+main.collaboration > nav .swiper-button-prev { top : 40px ; left : calc( 50% - 400px ) ; transform : rotate(180deg) }
 main.collaboration > nav .swiper-button-next { top : 40px ; right : calc( 50% - 400px ) }
 
 main.collaboration > header { width : 100% ; padding : 100px 0 ; }
