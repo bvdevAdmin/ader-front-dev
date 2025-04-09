@@ -1,29 +1,51 @@
-<main class="collaboration">
+<main class="collaboration new">
     <?php include $_CONFIG['PATH']['PAGE'].$_CONFIG['M'][0].'/collaboration/_nav.php'; ?>
 	<header>
 		<h1>
 			<small>2020</small>
 			ADER x ALPHA INDUSTRIES COLLABORATION
+			<div class="more">
+				<a href="#" class="button">
+					제품보러가기
+					<span class="over">
+						<span class="text">제품보러가기</span>
+					</span>
+				</a>
+			</div>
 		</h1>
 	</header>
 	<section class="media">
-        <video loop="" muted="" autoplay="" playsinline="" src="https://d340a4zb19l6y1.cloudfront.net/collaboration/alphaindustries/campaign_1920x1080.mp4"></video>
-<!--		<video loop muted autoplay playsinline src="https://player.vimeo.com/external/473760776.hd.mp4?s=39100483a7cabc23fd1ec52352971976d575a132&profile_id=175"></video>-->
-		<article>
+		<img class="pc" src="https://adererror.com/collaboration/alpha-industries/intro.jpg">
+		<img class="mo" src="https://adererror.com/collaboration/alpha-industries/mobile/intro.jpg">
+		<!-- <video loop="" muted="" autoplay="" playsinline="" src="https://d340a4zb19l6y1.cloudfront.net/collaboration/alphaindustries/campaign_1920x1080.mp4"></video> -->
+		<!-- <video loop muted autoplay playsinline src="https://player.vimeo.com/external/473760776.hd.mp4?s=39100483a7cabc23fd1ec52352971976d575a132&profile_id=175"></video> -->
+		<!-- <article>
 			<p>
 				'Out Of the Rule' <br><br>
-				ADER and Alpha Industries showcase their pilot-inspired collaboration collection. <br class="not-mobile">
-				This collaboration collection, which interprets the journey of a pilot<br>
-				sailing through the air with countless equipment on his body, is <br class="not-mobile">
-				Like the pilot's voyage, the journey of young people<br>
-				who experience countless choices and decisions is expressed under the theme of "Assembling Youth."
+				아더와 알파 인더스트리가 공중을 향해하는 파일럿에서 영감을 받은 협업 컬렉션을 선보입니다.  <br class="not-mobile">
+				무수한 장비를 몸에 걸친 채 공중을 항해하는 파일럿의 여정을 청춘의 여정을 해석한 이번 협업 컬렉션은<br class="not-mobile">
+				파일럿의 항해처럼 무수한 선택과 결정을 경험하는   청춘들의 여정을 ‘청춘을 조립한다’ 라는 테마로 표현하였습니다. 
 			</p>
 			<div class="buttons">
-				<button type="button" class="play">Show campaign main videos</button>
+				<button type="button" class="play">캠페인 메인 영상 보기</button>
 			</div>
-		</article>
+		</article> -->
 	</section>
-	<section class="gallery">
+	<article class="campaign">
+		<h3>ADER x ALPHA INDUSTRIES</h3>
+		<div class="media">
+			<video loop="" muted="" autoplay="" playsinline="" src="https://d340a4zb19l6y1.cloudfront.net/collaboration/alphaindustries/campaign_1920x1080.mp4"></video>
+		</div>
+		<div>
+			<button type="button" class="button play">
+				캠페인 영상 보기
+				<span class="over">
+					<span class="text">캠페인 영상 보기</span>
+				</span>
+			</button>
+		</div>
+	</article>
+	<!-- <section class="gallery">
 		<article class="product-gallery no-thumbnails">
 			<ul class="list">
 				<li><span class="thumbnail"><img src="/upload/collaboration/alpha-industries/hartman_01.jpg"></span><p>Hartmann M-65</p></li>
@@ -44,13 +66,10 @@
 						<button class="swiper-button-prev"></button>
 					</div>
 					<p>
-						Alpha Industries' durable and functional M-65 and M-1,<br>
-						the two outerwear are lined pouches that<br>
-						can be transformed into crossbacks,<br>
-						<br>
-						It consists of detachable patches and more.<br>
-						Experience unique collection pieces<br>
-						with seasonal details reinterpreted by ADER.
+						알파 인더스트리의 내구성과 기능성을 지닌 M-65 와 M-1,<br>
+						두 아우터는 크로스백으로 변형할 수 있는 안감 파우치,<br>
+						탈부착 가능한 패치 등으로 구성되었습니다. 아더가 재해석한<br>
+						시즌 디테일이 담긴 유니크한 컬렉션 피스들을 경험해보세요. 
 					</p>
 				</section>
 			</section>
@@ -69,13 +88,10 @@
 						<button class="swiper-button-prev"></button>
 					</div>
 					<p>
-						Alpha Industries' durable and functional M-65 and M-1,<br>
-						the two outerwear are lined pouches that<br>
-						can be transformed into crossbacks,<br>
-						<br>
-						It consists of detachable patches and more.<br>
-						Experience unique collection pieces<br>
-						with seasonal details reinterpreted by ADER.
+						알파 인더스트리의 내구성과 기능성을 지닌 M-65 와 M-1,<br>
+						두 아우터는 크로스백으로 변형할 수 있는 안감 파우치,<br>
+						탈부착 가능한 패치 등으로 구성되었습니다. 아더가 재해석한<br>
+						시즌 디테일이 담긴 유니크한 컬렉션 피스들을 경험해보세요. 
 					</p>
 				</section>
 			</section>
@@ -101,7 +117,7 @@
 			</ul>
 		</article>
 		<div class="buttons">
-			<a href="" class="btn">Show entire collaboration products</a>
+			<a href="" class="btn">콜라보레이션 제품 전체 보기</a>
 		</div>
-	</section>
+	</section> -->
 </main>

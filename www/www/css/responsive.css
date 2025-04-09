@@ -407,17 +407,26 @@
 	main.goods.list > header nav .tools > ul > li > button.column .icon { margin : 0 ; width : 12px !important ; transition : none }
 	main.goods.list > header nav .tools > ul > li > button.column .icon:after { display : none }
 	main.goods.list > header nav .tools > ul > li > button.column:not(.on) .icon { background-image : url('/images/ico-list-grid-1.svg') }
-	main.goods.list ul#list { grid-template-columns: repeat(2,1fr); }
-	main.goods.list ul#list > li {  padding-bottom: calc( 125% + 90px ); }	
+	/* 20250408 윤재은 */
+	/* main.goods.list ul#list { grid-template-columns: repeat(2,1fr); } */
+	main.goods.list ul#list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	/* main.goods.list ul#list > li {  padding-bottom: calc( 125% + 90px ); } */
+
 	main.goods.list ul#list > li:nth-child(2n) { border-right : none }
 	main.goods.list ul#list > li a { height: calc( 100% - 90px ) }
-	main.goods.list ul#list > li .info { height : 90px ; padding : 7px 0 0 20px }
+	/* 20250408 윤재은 */
+	/* main.goods.list ul#list > li .info { height : 90px ; padding : 7px 0 0 20px } */
+	main.goods.list ul#list > li .info { height : 90px ; padding : 10px 0 0 20px }
+
 	main.goods.list ul#list > li .info > .price { position : static }
 	main.goods.list > section.list.col-2 { padding : 0 }
 	main.goods.list > section.list.col-2 ul#list { display : block ; border-left : none ; border-right : none }
 	main.goods.list > section.list.col-2 ul#list > li { border-right : none }
 	main.goods.list > section.list.col-2 ul#list > li a { height: calc( 100% - 120px ) }
-	main.goods.list > section.list.col-2 ul#list > li .info { height : 120px ; padding : 7px 0 0 20px }
+
+	/* main.goods.list > section.list.col-2 ul#list > li .info { height : 120px ; padding : 7px 0 0 20px } */
+	main.goods.list > section.list.col-2 ul#list > li .info { height : 120px ; }
+
 	main.goods.list > section.list:not(.col-2) ul#list > li .info > .size { display : none }
 
 

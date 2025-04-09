@@ -1081,8 +1081,11 @@ main.goods.list > header nav .tools > ul > li > button.column:not(.on) .on,
 main.goods.list > header nav .tools > ul > li > button.column.on .off { display : none }
 
 /** 상품 > 목록 : 기본 4칸보기 **/
-main.goods.list ul#list { display : grid ; grid-template-columns : repeat(4,1fr);grid-auto-flow: dense; } 
-main.goods.list ul#list > li { position : relative ; height : calc( ( 68 / 48 ) * 25vw ) ; border-bottom : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) }
+/* 20250408 윤재은 */
+/* main.goods.list ul#list { display : grid ; grid-template-columns : repeat(4,1fr);grid-auto-flow: dense; }  */
+main.goods.list ul#list { display : grid ; grid-template-columns : repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; } 
+/* main.goods.list ul#list > li { position : relative ; height : calc( ( 68 / 48 ) * 25vw ) ; border-bottom : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) } */
+main.goods.list ul#list > li { position : relative ; border-bottom : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) }
 /** 사이즈가 다른 셀 반영을 위해 주석 처리
 main.goods.list ul#list > li:nth-child(4n) { border-right : none }
  **/
@@ -1093,24 +1096,59 @@ main.goods.list ul#list > li.asset { overflow: hidden; position: relative;}
 main.goods.list ul#list > li.asset video,
 main.goods.list ul#list > li.asset img {position: absolute;inset: 0;width: 100%;height: 100%;object-fit: cover;object-position: center center; display: block;}
 main.goods.list ul#list > li.asset video { pointer-events: none;}
-main.goods.list ul#list > li a { display : block ; width : 100% ; height : calc( 100% - 120px ) ; position : absolute; top : 0 ; left :0 ; overflow : hidden }
-main.goods.list ul#list > li a > * { display : block ; width : 100% ; height : 100% ; position : absolute ; top : 0 ; left : 0 ; background-size : cover ; background-position : center ; }
-main.goods.list ul#list > li .info { position : absolute ; bottom : 0 ; left : 0 ; width : 100% ; height : 120px ; font-size : var(--fontsize-s) ; padding : 15px 0 0 40px }
+
+/* 20250408 윤재은 */
+/* main.goods.list ul#list > li a { display : block ; width : 100% ; height : calc( 100% - 120px ) ; position : absolute; top : 0 ; left :0 ; overflow : hidden } */
+main.goods.list ul#list > li a { display : block ; width : 100% ; aspect-ratio: 5 / 6 ; position : relative; top : 0 ; left :0 ; overflow : hidden }
+/* main.goods.list ul#list > li a > * { display : block ; width : 100% ; height : 100% ; position : absolute ; top : 0 ; left : 0 ; background-size : cover ; background-position : center ; } */
+main.goods.list ul#list > li a > * { display : block ; width : 100% ; height : 100% ; background-size : cover ; background-position : center ; }
+
+/* main.goods.list ul#list > li .info { position : absolute ; bottom : 0 ; left : 0 ; width : 100% ; height : 120px ; font-size : var(--fontsize-s) ; padding : 15px 0 0 40px } */
+main.goods.list ul#list > li .info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* gap: 10px; */
+  width : 100% ;
+  height : 120px ;
+  font-size : 11px;
+  padding : 15px 40px 0;
+}
+/* main.goods.list ul#list > li .info .info-top { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
 main.goods.list ul#list > li .info > * { display : block }
 main.goods.list ul#list > li .info > * > ul { display : table }
 main.goods.list ul#list > li .info > * > ul > li { display : table-cell }
-main.goods.list ul#list > li .info > strong { font-size : var(--fontsize) ; font-weight : var(--fontweight-s) ; top : 15px ; left : 40px ; margin-bottom : 5px; text-overflow:ellipsis; overflow: hidden; width: 75%; white-space: nowrap;}
-@media (max-width: 1025px) {
-  main.goods.list ul#list > li .info > strong { font-size : var(--fontsize) ; font-weight : var(--fontweight-s) ; top : 15px ; left : 40px ; margin-bottom : 5px; text-overflow:ellipsis; overflow: hidden; width: 90%; white-space: nowrap; }
+/* 20250408 윤재은 */
+main.goods.list ul#list > li .info > strong {
+  font-size : var(--fontsize);
+  font-weight : var(--fontweight-s);
+  text-overflow:ellipsis;
+  overflow: hidden;
+  width: 75%;
+  white-space: nowrap;
 }
-main.goods.list ul#list > li .info > .price { position : absolute ; top : 18px ; right : 40px }
+@media (max-width: 1025px) {
+  main.goods.list ul#list > li .info > strong { font-size : var(--fontsize) ; font-weight : var(--fontweight-s) ; margin-bottom : 5px; text-overflow:ellipsis; overflow: hidden; width: 90%; white-space: nowrap; }
+}
+/* 20250408 윤재은 */
+main.goods.list ul#list > li .info > .price {
+  font-size: 10px;
+}
+
 main.goods.list ul#list > li .info > .color { bottom : 12px ; left : 40px }
 main.goods.list ul#list > li .info > .color ul > li { cursor : pointer ; position : relative }
 main.goods.list ul#list > li .info > .color ul > li .name { white-space: nowrap; display : inline-block }
 main.goods.list ul#list > li .info > .color ul > li ~ li .name { display : none }
 main.goods.list ul#list > li .info > .color .colorchip { margin-left : 8px }
 main.goods.list ul#list > li .info > .color .colorchip.white { background-color : var(--white) ; border : solid 1px var(--border-color) }
-main.goods.list ul#list > li .info > .size { margin-top : 6px }
+/* 20250408 윤재은 */
+/* main.goods.list ul#list > li .info > .size { margin-top : 6px } */
+
 main.goods.list ul#list > li .info > .size ul > li { padding-right : 12px ; line-height : 11px }
 main.goods.list ul#list > li .info > .size ul > li.soldout { opacity : .5 }
 main.goods.list ul#list > li .info > .size ul > li.reorder { opacity : .5 }
@@ -1121,7 +1159,11 @@ main.goods.list ul#list > li.soldout .info > .price .cont:after { content : "" ;
 
 /** 상품 > 목록 : 2칸보기 **/
 main.goods.list > section.list.col-2 { padding : 0 calc( 100vw / 6 ) }
-main.goods.list > section.list.col-2 ul#list { grid-template-columns : repeat(2,1fr) ; border-left : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) } 
+
+/* 20250408 윤재은 */
+/* main.goods.list > section.list.col-2 ul#list { grid-template-columns : repeat(2,1fr) ; border-left : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) }  */
+main.goods.list > section.list.col-2 ul#list { grid-template-columns : repeat(2, minmax(0, 1fr)) ; border-left : solid 1px var(--border-color) ; border-right : solid 1px var(--border-color) } 
+
 main.goods.list > section.list.col-2 ul#list > li:nth-child(2n) { border-right : none }
 /*
 main.goods.list > section.list.col-2 ul#list > li .info > strong,
@@ -1130,13 +1172,34 @@ main.goods.list > section.list.col-2 ul#list > li .info > .price,
 main.goods.list > section.list.col-2 ul#list > li .info > .size { right : 130px }
 */
 /*main.goods.list > section.list.col-2 .swiper-container { opacity : 1 }*/
-main.goods.list > section.list .swiper-container { position : relative ; height : 100% ; opacity : 0 } 
+/* main.goods.list > section.list .swiper-container { position : relative ; height : 100% ; opacity : 0 ; }  */
+/* main.goods.list > section.list.outfit .swiper-container.product { z-index : -1 }
 main.goods.list > section.list.outfit .swiper-container.product { z-index : -1 }
-main.goods.list > section.list.outfit .swiper-container.product { z-index : -1 }
-main.goods.list > section.list:not(.outfit) .swiper-container.outfit { z-index : -1 }
+main.goods.list > section.list:not(.outfit) .swiper-container.outfit { z-index : -1 } */
 main.goods.list > section.list .swiper-container .swiper-slide { width : 100% }
-main.goods.list > section.list .swiper-container .image-cont { display : grid ; place-items:  center ; height : 100% }
-main.goods.list > section.list .swiper-container .image-cont img { max-width : 100% ; max-height : 100% }
+/* main.goods.list > section.list .swiper-container .image-cont { display : grid ; place-items:  center ; height : 100% } */
+/* main.goods.list > section.list .swiper-container .image-cont img { max-width : 100% ; max-height : 100% }
+
+/* 20250408 윤재은 */
+/* main.goods.list > section.list .swiper-container { position : relative ; height : 100% ; }  */
+main.goods.list > section.list .swiper-container {
+  position :absolute;
+  width: inherit;
+  height : inherit;
+} 
+main.goods.list > section.list .swiper-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+main.goods.list > section.list:not(.outfit) .swiper-container.product,
+main.goods.list > section.list.outfit .swiper-container.outfit {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+main.goods.list > section.list .swiper-container .image-cont { display : flex ; width: 100% ; height : 100% ; }
+main.goods.list > section.list .swiper-container .image-cont img { width : inherit ; height : inherit ; object-fit : cover ; }
 
 /** 상품 > 목록 : 착용샷 **/
 main.goods.list > section.list.outfit ul#list a > .image { background-image : var(--outfit-src) !important }

@@ -68,7 +68,7 @@ main.collaboration > section > article p { word-break : keep-all }
 main.collaboration > section > article p + .buttons { margin : 60px auto 0 auto }
 main.collaboration > section > article + .buttons { margin : 100px auto 0 auto }
 main.collaboration .button { display: inline-block ; width: 308px ; height: 30px ; line-height: 28px ; color: #000 ; border: solid 1px #000 ; position: relative ; font-size: 11px ; text-align: center ; cursor: pointer ; }
-main.collaboration .button > .over { position: absolute ; left: 0 ; top: 0 ; height: 30px ; width: 0 ; background: #000 ; color: #fff ; overflow: hidden ; transition: ease-out.2s ; }
+main.collaboration .button > .over { position: absolute ; left: 0 ; top: 0 ; height: 28px ; width: 0 ; background: #000 ; color: #fff ; overflow: hidden ; transition: ease-out.2s ; }
 main.collaboration .button > .over .text { width: 308px ; height: 28px ; display: inline-block ; position: absolute ; left: 0 ; top: 0 ; color: #fff ; padding: 0 !important ; }
 main.collaboration .button:hover > .over { width: 100% ; }
 
@@ -975,4 +975,9 @@ main.collaboration.swarovski .badge img {
         bottom: 20px;
         right: 20px;
     }
+}
+
+/* bearbrick */
+main.collaboration section.bearbrick-1st {
+    margin-bottom: 100px;
 }

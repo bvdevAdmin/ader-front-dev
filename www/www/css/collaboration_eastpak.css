@@ -111,7 +111,7 @@ article.eastpak #swiper-product .swiper-slide {
   text-align: center;
 }
 
-article.eastpak>.product-wrap>* {
+main.collaboration article.eastpak>.product-wrap>* {
   margin-bottom: 150px;
 }
 
@@ -136,10 +136,6 @@ main.collaboration article.eastpak .product-wrap .swiper-slide {
 
 main.collaboration article.eastpak .product-wrap .swiper-slide img {
   width: 100%;
-}
-
-main.collaboration article.eastpak>.product-wrap>* {
-  margin-bottom: 150px;
 }
 
 main.collaboration article.eastpak>.product-wrap>.product>video {

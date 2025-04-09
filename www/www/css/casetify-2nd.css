@@ -84,6 +84,16 @@ article.casetify-2nd>.product-cont>.bubble figure:nth-child(3) {
     animation: up-down 2.8s infinite ease-in-out alternate;
 }
 
+@keyframes up-down {
+    from {
+        transform: translatey(0px);
+    }
+
+    to {
+        transform: translatey(-25px);
+    }
+}
+
 article.casetify-2nd>.model-cont {
     margin: 250px 0 200px 0;
     padding: 50px 100px;
@@ -228,37 +238,6 @@ article.casetify-2nd>.model-cont .thumb {
 
 article.casetify-2nd>.model-cont .thumb>ul>li.on>.wh-layer {
     opacity: 0;
-}
-
-article.casetify-2nd>.product-cont>.bubble figure:nth-child(1) {
-    position: absolute;
-    top: -19px;
-    right: 102px;
-    animation: up-down 3.6s infinite ease-in-out alternate;
-}
-
-article.casetify-2nd>.product-cont>.bubble figure:nth-child(2) {
-    position: absolute;
-    top: 90px;
-    left: 101px;
-    animation: up-down 1.5s infinite ease-in-out alternate;
-}
-
-article.casetify-2nd>.product-cont>.bubble figure:nth-child(3) {
-    position: absolute;
-    top: 717px;
-    left: 480px;
-    animation: up-down 2.8s infinite ease-in-out alternate;
-}
-
-@keyframes up-down {
-    from {
-        transform: translatey(0px);
-    }
-
-    to {
-        transform: translatey(-25px);
-    }
 }
 
 article.casetify-2nd .video-cont video {

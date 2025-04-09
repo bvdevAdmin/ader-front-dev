@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/disney.css" />
 <section class="collaboration disney">
     <article class="book">
         <section id="intro-page" class="paper">
@@ -5,285 +6,162 @@
         </section>
         <section class="contents">
             <div class="cont-wrap">
-            <div id="logoplay" class="logoplay">
-                <div class="item-center">
-                    <div class="logobody">
-                        <div class="logos">
-                            <div><img src="https://adererror.com/upload/2024ss-disney/logo-disney.svg"></div>
-                            <div><img src="https://adererror.com/upload/2024ss-disney/logo-pixar.svg"></div>
-                            <div><img src="https://adererror.com/upload/2024ss-disney/logo-marvel.svg"></div>
+                <div id="logoplay" class="logoplay">
+                    <div class="item-center">
+                        <div class="logobody">
+                            <div class="logos">
+                                <div>
+                                    <img src="https://adererror.com/upload/2024ss-disney/logo-disney.svg">
+                                </div>
+                                <div>
+                                    <img src="https://adererror.com/upload/2024ss-disney/logo-pixar.svg">
+                                </div>
+                                <div>
+                                    <img src="https://adererror.com/upload/2024ss-disney/logo-marvel.svg">
+                                </div>
+                            </div> 
+                            <div class="adererror">
+                                <img src="https://adererror.com/upload/2024ss-disney/logo-adererror.svg">
+                            </div>
                         </div>
-                        <div class="adererror"><img src="https://adererror.com/upload/2024ss-disney/logo-adererror.svg"></div>
+                    </div>
+                    <p class="copyright-1">©Disney</p>
+                    <p class="copyright-2">©Disney/Pixar</p>
+                    <p class="copyright-3">©2024MARVEL</p>
+                </div>
+                <div id="concept-summary" class="concept-summary item-center">
+                    <div>
+                        <h1>
+                            ADERERROR & DISNEY<br>
+                            ‘Blue Easter Egg Game’
+                        </h1>
+                        <p class="pc">
+                            디즈니의 이야기 속에서 비롯한 아더에러의 새로운 상상력 스토리 속 숨겨진 Easter Egg는 <br>
+                            중심적인 서사 안에서 새로운 상상력을 불러일으키는 실마리로, Easter Egg에 대한 해석을 통해<br>
+                            캐릭터와 스토리를 재해석하고 재편집하는 ​새로운 관계성을 만들어 냅니다.<br>
+                            <br>
+                            창의적 크리에이티브를 커뮤니케이션하는 아더에러는 디즈니와의 협업을 통해 상징적인<br>
+                            아더 블루 포인트를 지닌 Easter Egg를 컬렉션으로 표현하여,<br>
+                            아더에러의 시각적 언어를 통해 디즈니의 메인 스토리를 다시금 돌아볼 수 있도록<br>
+                            재편집된 스토리를 전개 하고자 합니다.<br>
+                            <br>
+                            디즈니에서 출발한 블루 이스터 에그는 아더에러를 만나 새롭게 상상된 이야기를 떠올리게 하고,<br>
+                            이야기는 제품으로 디자인되어 표현되고 제품에 대한 경험을 너머 협업 컨텐츠<br>
+                            그리고 오프라인 액티베이션으로 연결지어져 다양한 층위의<br>
+                            이스터 에그를 전달해 크리에이티브한 다감각적 협업을 선보입니다.
+                        </p>
+                        <p class="mobile">
+							디즈니의 이야기 속에서 비롯 아더에러의 새로운 상상력. <br>
+							아더에러는 지난해 디즈니 100주년을 기념하여 진행된 특별한 프로젝트, 디즈니의 ‘Create 100’ 옥션에 유일한 한국 브랜드로 참여한 바 있습니다. <br>
+							디즈니의 ‘Create 100’은 전 세계에서 가장 혁신적인 크리에이티브를 선보이는<br>
+							창작자 100팀이 디즈니의 스토리에서 영감을 받은 아트워크를 제작하여 옥션에 기부하는 특별한 프로젝트로, 아더에러는 해당 파트너십에서 발견한<br>
+							창의적 실마리를 기반으로 크리에이티브가 가진 힘을 캡슐 컬렉션으로 확장하여 선보이고자 합니다.<br><br>
+							‘Blue Easter Egg’는 아더에러를 상징하는 블루와 이야기 속 숨겨진 실마리를 뜻하는 이스터 에그의 조합으로,<br>
+							아더에러만의 창의적인 시각을 반영하여 디즈니의 스토리를 재편집하고 새로운 상상력을 불러일으킨다는 메시지를 담고 있습니다. <br><br>
+							아더에러의 방식으로 재해석한 디즈니, 마블, 픽사의 그래픽 아트워크를 통해 론칭되는 캡슐 컬렉션은 아더에러 최초로 키즈 티셔츠를 선보이고, 가족 모두가 함께 입을 수 있는 사이즈로 디자인되어 패밀리룩을 제시합니다. <br>​
+							캡슐 컬렉션 곳곳에 숨겨진 메시지(이스터 에그)를 발견하며 새로운 상상의 나래를 펼쳐보세요.
+						</p>
+                        <a>Next ></a>
                     </div>
                 </div>
-                <p class="copyright-1">©Disney</p>
-                <p class="copyright-2">©Disney/Pixar</p>
-                <p class="copyright-3">©2024MARVEL</p>
-            </div>
-            <div id="concept-summary" class="concept-summary item-center">
-                <div>
-                    <h1>
-                        ADERERROR &amp; DISNEY​<br>
-                        ‘Blue Easter Egg Game’​
-                    </h1>
-                    <p>​​​
-                        Disney's New Imagination Hidden in ADER's Story,<br>
-                        Easter Egg is a clue that evokes new imaginations<br>
-                        in the central narrative, creating new relationships that<br>
-                        reinterpret and re-edit characters and stories through interpretation of Easter Egg.<br>
-                        ​<br>
-                        Through collaboration with Disney, ADER,<br>
-                        who communicates creative creativity,<br>
-                        expresses Easter Egg with iconic ADER Blue points as a collection,<br>
-                        and develops a re-edited story to reflect on<br>
-                        Disney's main story through ADER's visual language.<br>
-                        ​<br>
-                        Starting from Disney, Blue Easter Egg meets ADER<br>
-                        and reminds him of a newly imagined story,<br>
-                        and the story is designed and expressed as a product,<br>
-                        and the experience of the product is linked to collaborative content<br>
-                        and offline activation, delivering Easter eggs<br>
-                        at various levels to showcase creative multi-sensory collaboration.
-                    </p>
-                    <a>Next &gt;</a>
+                <div id="bookbody" class="bookbody item-center">
+                    <article class="logoplay">
+                        <div class="logos">
+                            <div>
+                                <img src="https://adererror.com/upload/2024ss-disney/logo-disney.svg">
+                            </div>
+                            <div>
+                                <img src="https://adererror.com/upload/2024ss-disney/logo-pixar.svg">
+                            </div>
+                            <div>
+                                <img src="https://adererror.com/upload/2024ss-disney/logo-marvel.svg">
+                            </div>
+                        </div>
+                        <div class="adererror">
+                            <img src="https://adererror.com/upload/2024ss-disney/logo-adererror_w_line.svg">
+                        </div>
+                    </article>
+                    <div>
+                        <!-- flipbook -->
+						<div id="flipbook" class="book-contents center-left">
+                            <!-- 커버 -->
+						    <div class="page-cover-1 hard"></div>
+
+                            <!-- 페이지 영역 -->
+
+                            <!-- 커버 -->
+						    <div class="page-cover-2 hard"></div>
+                        </div>
+                        <!-- 모바일 풀스크린 버튼 -->
+                        <div class="fullscreen">
+							<button id="btn-fullscreen" type="button"><img src="https://adererror.com/upload/2024ss-disney/btn-fullscreen.svg">Full Screen</button>
+						</div>
+                        <!-- 페이징 -->
+						<div id="paging" class="paging">
+							<button id="btn-paging-prev" class="prev" type="button"></button>
+							<span class="paging-num" id="now-page">1</span>
+							<span>/</span>
+							<span class="paging-num">37</span>
+							<button id="btn-paging-next" class="next" type="button"></button>
+						</div>
+						<div class="paging-open next">
+							<button id="btn-paging-open1" type="button">Open</button>
+						</div>
+						<div class="paging-open prev">
+							<button id="btn-paging-open2" type="button">Open</button>
+						</div>
+					</div>
                 </div>
             </div>
-            <div id="bookbody" class="bookbody item-center">
-                <article class="logoplay">
-                    <div class="logos">
-                        <div><img src="https://adererror.com/upload/2024ss-disney/logo-disney.svg"></div>
-                        <div><img src="https://adererror.com/upload/2024ss-disney/logo-pixar.svg"></div>
-                        <div><img src="https://adererror.com/upload/2024ss-disney/logo-marvel.svg"></div>
-                    </div>
-                    <div class="adererror"><img src="https://adererror.com/upload/2024ss-disney/logo-adererror_w_line.svg"></div>
-                </article>
-                <div class="">
-                    <div class="book-contents center-left" id="flipbook" style="position: relative; width: 1200px; height: 760px; transform: translate3d(0px, 0px, 0px);">
-                    <div class="page-wrapper" page="1" style="position: absolute; overflow: hidden; width: 600px; height: 760px; top: 0px; right: 0px; left: auto; z-index: 76;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 2; transform-style: preserve-3d; backface-visibility: hidden; width: 600px; height: 760px;"><div class="page-cover-1 hard page p1 odd" style="float: left; width: 600px; height: 760px;"></div></div><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 1; transform-style: preserve-3d; backface-visibility: hidden; width: 600px; height: 760px;"></div><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: auto; display: none; width: 600px; height: 760px;"></div></div><div class="page-wrapper" page="2" style="position: absolute; overflow: hidden; width: 600px; height: 760px; top: 0px; left: 0px; right: auto; z-index: 0; display: none;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: auto; width: 968px; height: 968px;"><div style="background-image: url(&quot;/upload/2024ss-disney/magazine/magazine_01.jpg&quot;); background-position: left center; float: left; width: 600px; height: 760px; position: absolute; inset: 0px auto auto 0px;" class="page p2 even"></div></div></div><div style="pointer-events: none; display: none; position: absolute; top: 0px; left: 0px; overflow: visible; z-index: auto;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 0; display: none; width: 968px; height: 968px;"><div style="position: absolute; top: 0px; left: 0px; overflow: visible; z-index: auto; cursor: default; width: 600px; height: 760px;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div></div><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 75; display: none; width: 968px; height: 968px;"><div style="position: absolute; top: 0px; left: 0px; overflow: visible; z-index: auto; cursor: default; width: 600px; height: 760px;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div></div><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 0; display: none; width: 968px; height: 968px;"><div style="position: absolute; top: 0px; left: 0px; overflow: visible; z-index: auto; cursor: default; width: 600px; height: 760px;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div></div><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 0; display: none; width: 968px; height: 968px;"><div style="position: absolute; top: 0px; left: 0px; overflow: visible; z-index: auto; cursor: default; width: 600px; height: 760px;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div></div><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 0; display: none; width: 968px; height: 968px;"><div style="position: absolute; top: 0px; left: 0px; overflow: visible; z-index: auto; cursor: default; width: 600px; height: 760px;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div></div></div><div class="page-wrapper" page="3" style="position: absolute; overflow: hidden; width: 600px; height: 760px; top: 0px; right: 0px; left: auto; z-index: 75;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: auto; width: 968px; height: 968px;"><div style="background-image: url(&quot;/upload/2024ss-disney/magazine/magazine_01.jpg&quot;); background-position: right center; float: left; width: 600px; height: 760px; position: absolute; inset: 0px auto auto 0px;" class="page p3 odd"></div></div><div style="top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div><div class="page-wrapper" page="4" style="position: absolute; overflow: hidden; width: 600px; height: 760px; top: 0px; left: 0px; right: auto; z-index: 0; display: none;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: auto; width: 968px; height: 968px;"><div style="background-image: url(&quot;/upload/2024ss-disney/magazine/magazine_02.jpg&quot;); background-position: left center; float: left; width: 600px; height: 760px; position: absolute; inset: 0px auto auto 0px;" class="page p4 even"></div></div><div style="top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div><div class="page-wrapper" page="5" style="position: absolute; overflow: hidden; width: 600px; height: 760px; top: 0px; right: 0px; left: auto; z-index: 0; display: none;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: auto; width: 968px; height: 968px;"><div style="background-image: url(&quot;/upload/2024ss-disney/magazine/magazine_02.jpg&quot;); background-position: right center; float: left; width: 600px; height: 760px; position: absolute; inset: 0px auto auto 0px;" class="page p5 odd"></div></div><div style="top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div><div class="page-wrapper" page="6" style="position: absolute; overflow: hidden; width: 600px; height: 760px; top: 0px; left: 0px; right: auto; z-index: 0; display: none;"><div style="position: absolute; top: 0px; left: 0px; overflow: hidden; z-index: auto; width: 968px; height: 968px;"><div style="background-image: url(&quot;/upload/2024ss-disney/magazine/magazine_03.jpg&quot;); background-position: left center; float: left; width: 600px; height: 760px; position: absolute; inset: 0px auto auto 0px;" class="page p6 even"></div></div><div style="top: 0px; left: 0px; overflow: hidden; z-index: 1; width: 600px; height: 760px;"></div></div><div class="shadow" style="position: absolute; top: 0px; left: 600px; overflow: hidden; z-index: auto; width: 600px; height: 760px;"></div></div>
-                    <div class="paging" id="paging">
-                        <button type="button" class="prev" id="btn-paging-prev"></button>
-                        <span class="paging-num" id="now-page">1</span>
-                        <span>/</span>
-                        <span class="paging-num">37</span>
-                        <button type="button" class="next" id="btn-paging-next"></button>
-                    </div>
-                    <div class="paging-open next">
-                        <button type="button" id="btn-paging-open1">Open</button>
-                    </div>
-                    <div class="paging-open prev">
-                        <button type="button" id="btn-paging-open2">Open</button>
-                    </div>
-                </div>
+        </section>
+        <!-- <section class="egg-game item-center">
+            <div class="">
+                <h1>Blue Easter Egg Mini Game</h1>
+                <div class="qr"><img src="/upload/2024ss-disney/game-qr2.png"></div>
+                <p>
+                    캡슐 컬렉션의 타이틀에서 영감을 받은 게임에 참여하고 ​<br>
+                    게임을 통해 획득할 수 있는 숨겨진 리워드를 확인해 보세요.​​
+                </p>
             </div>
-        </div>
-    </section>
-    <section class="buy item-center">
-        <div>
-            <a href="/product/list.html?cate_no=1341%E2%80%8B" class="adult">
-                Purchase<br>
-                Adult product &gt;
-            </a>
-            <a href="/product/list.html?cate_no=1342" class="child">
-                Purchase<br>
-                Child product &gt;
-            </a>
-        </div>
-    </section>
-    <section class="editorial"><div class="video"><video src="https://d340a4zb19l6y1.cloudfront.net/24ss/main/ader_disney_pc_main.mp4" muted="" loop="" playsinline="" autoplay=""></video></div>
-        <a href="/editorial/detail.html?product_no=11829&amp;cate_no=73&amp;display_group=1">
-            Move to<br>
-            Editorial &gt;
-        </a>
-    </section>
+        </section> -->
+        <section class="buy item-center">
+            <div>
+                <a class="adult" href="https://adererror.com/product/list.html?cate_no=1341%E2%80%8B">
+                    <img src="https://adererror.com/upload/2024ss-disney/buy-adult.jpg">
+                    성인
+                    <br>
+                    제품 구매하기 >
+                </a>
+                <a class="child" href="https://adererror.com/product/list.html?cate_no=1342">
+                    <img src="https://adererror.com/upload/2024ss-disney/buy-child.jpg">
+                    아동
+                    <br>
+                    제품 구매하기 >
+                </a>
+            </div>
+        </section>
+        <section class="editorial">
+            <div>
+                <div class="video">
+                    <video src="https://d340a4zb19l6y1.cloudfront.net/24ss/main/ader_disney_pc_main.mp4" muted="" loop="" playsinline="" autoplay=""></video>
+                </div>
+                <a class="pc" href="https://adererror.com/editorial/detail.html?product_no=11829&cate_no=73&display_group=1">
+                    에디토리얼<br>
+                    보러가기 >
+                </a>
+                <a class="mobile" href="https://adererror.com/editorial/detail.html?product_no=11829&cate_no=73&display_group=1">
+                    에디토리얼 보러가기
+                </a>
+            </div>
+        </section>
     </article>
 </section>
-<script>
-var logoplay_timeout = null;
-$("#logoplay").click(function() {
-    if($("#logoplay").hasClass("on") == false) return;
-    if(logoplay_timeout != null) {
-        clearTimeout(logoplay_timeout);
-    }
-    let s1 = $("#logoplay").hasClass("s1")
-        , s2 = $("#logoplay").hasClass("s2")
-        , s3 = $("#logoplay").hasClass("s3");
-
-    if(s1 == false && s2 == false && s3 == false) {
-        $("#logoplay").addClass("s1");
-    }
-    else if(s1 == true && s2 == false) {
-        $("#logoplay").addClass("s2");
-    }
-    else if(s1 && s2 && s3 == false) {
-        $("#logoplay").addClass("s3");
-    }
-    else {
-        $("#logoplay").addClass("off");
-        setTimeout(function() {
-            $("#concept-summary").addClass("on");
-        },500);
-    }
-    logoplay_timeout = setTimeout(function() {
-        $("#logoplay").click();
-    },1500);
-});
-$(window).scroll(function() {
-    let page = Math.ceil($(this).scrollTop() / ($(this).height() / 12)) + 1;
-    let pageurl = `url('https://adererror.com/upload/2024ss-disney/paper/pc/pc_${appendzero(page,2)}.png')`;
-    if(typeof mobileWeb != 'undefined' && mobileWeb) pageurl = `url('/upload/2024ss-disney/paper/mo/mo_${appendzero(page,2)}.png')`;
-    if(page <= 25) {
-        $("#intro-page .bg").css({backgroundImage:pageurl});
-        $("#intro-page").removeClass("fix");
-        $("#logoplay,#concept-summary,#bookbody").removeClass("on").removeClass("off");
-        $("#logoplay").removeClass("s1").removeClass("s2").removeClass("s3");
-        $("body").removeClass("show-all");
-
-    }
-    else if(page > 30) {
-        pageurl = `url('https://adererror.com/upload/2024ss-disney/paper/pc/pc_25.png')`;
-        if(typeof mobileWeb != 'undefined' && mobileWeb) pageurl = `url('https://adererror.com/upload/2024ss-disney/paper/mo/mo_25.png')`;
-        $("#intro-page .bg").css({backgroundImage:pageurl});
-        /*
-        if($("#logoplay").hasClass("on") == false) {
-            $("#logoplay").addClass("on");
-            $("#logoplay").click();
-        }
-        */
-        $("#concept-summary").addClass("on");
-
-    }
-}).scroll();
-
-for(var i=1;i<=37;i++) {
-    $("#flipbook > .page-cover-2").before(`
-        <div style="background-image:url('/upload/2024ss-disney/magazine/magazine_${appendzero(i,2)}.jpg');background-position : left center"></div>
-        <div style="background-image:url('/upload/2024ss-disney/magazine/magazine_${appendzero(i,2)}.jpg');background-position : right center"></div>
-    `);
-    $("#swiper-book > .swiper-wrapper").append(`
-        <div class="swiper-slide" style="background-image:url('/upload/2024ss-disney/magazine/magazine_${appendzero(i,2)}.jpg')"></div>
-    `);
-}
-
-var book_gallery = null;
-if($("#swiper-book").length > 0) {
-    book_gallery = new Swiper($("#swiper-book").get(0),{
-        zoom: true,
-        autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-        },
-        navigation : {
-            nextEl : $("#swiper-book .swiper-button-next").get(0),
-            prevEl : $("#swiper-book .swiper-button-prev").get(0),
-        }
-    });
-    $("#btn-fullscreen").click(function() {
-        $("#swiper-book").parent().addClass("on");
-        book_gallery.slideTo(0);
-    });
-    $("#btn-bookgallery-close").click(function() {
-        $(this).parent().removeClass("on");
-    });
-}
-
-var flipbook_next = null;
-var flipbook_width = ($(window).width() <= 480) ? $(window).width() - 40 : 1200;
-var flipbook_height = ($(window).width() <= 480) ? ($(window).width() - 40) * (76/120) : 760;
-var flipbook = $("#flipbook").turn({
-    acceleration: true,
-    width: flipbook_width,
-    height: flipbook_height,
-    autoCenter : false,
-    gradients : !$.isTouch,
-    elevation : 50,
-    when: {
-        /*
-        turning: function(e, page, view) {
-
-            // Gets the range of pages that the book needs right now
-            var range = $(this).turn('range', page);
-
-            // Check if each page is within the book
-            for (page = range[0]; page<=range[1]; page++)
-            addPage(page, $(this));
-
-        },
-        */
-
-        turning: function(e, page, view) {
-            if(flipbook_next != null) {
-                clearTimeout(flipbook_next);
-                flipbook_next = null;
-            }
-            if(page%2 == 0) {
-                flipbook_next = setTimeout(function() {
-                    flipbook.turn("next");
-                },5000);
-            }
-
-            page = ( (page%2 == 1) ? page - 1 : page ) / 2;
-            if(page == 0) {
-                $("#flipbook").addClass("center-left");
-            }
-            else if(page == 38) {
-                $("#flipbook").addClass("center-right");
-            }
-            else {
-                $("#flipbook").removeClass("center-left");
-                $("#flipbook").removeClass("center-right");
-                $('#now-page').text(page);
-            }
-        }
-    }
-});
-
-$("#btn-paging-prev").click(function() {
-    flipbook.turn('previous');
-    if(flipbook_next != null) {
-        clearTimeout(flipbook_next);
-        flipbook_next = null;
-    }
-});
-$("#btn-paging-next").click(function() {
-    flipbook.turn('next');
-    if(flipbook_next != null) {
-        clearTimeout(flipbook_next);
-        flipbook_next = null;
-    }
-});
-$("#btn-paging-open1").click(function() {
-    flipbook.turn("page",2);
-});
-$("#btn-paging-open2").click(function() {
-    flipbook.turn("page",74);
-});
-
-// 컨셉 클릭시 넘어감
-$("#concept-summary").click(function() {
-    function show_book_container() {
-        $("#concept-summary").addClass("off");
-        $("#intro-page").addClass("fix");
-        $("body").addClass("show-all");
-        flipbook.turn("page",1);
-        setTimeout(function() {
-            $("#bookbody").addClass("on");
-            setTimeout(function() {
-                flipbook.turn("next");
-            },2000);
-        },500);
-    }
-
-    let obj = $("section.collaboration.disney > .book > .contents .concept-summary p");
-    if($("#swiper-book").length > 0) {
-        let chk_top = obj.scrollTop();
-        obj.scrollTop(10000);
-        if(chk_top == obj.scrollTop()) {
-            show_book_container()
-        }
-    }
-    else {
-        show_book_container()
-    }
-});
-
-</script>
+<section class="book-gallery">
+    <button id="btn-bookgallery-close" class="close" type="button"></button>
+	<div id="swiper-book" class="swiper">
+		<div class="swiper-wrapper"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+	</div>
+</section>
+<script src="/scripts/collaboration/collaboration_2024ss-disney.js"></script>

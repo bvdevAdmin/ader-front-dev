@@ -33,6 +33,7 @@ article.birkenstock>.swiper .swiper-slide a {
 
 article.birkenstock>.swiper .swiper-slide a .title {
   width: 100%;
+  text-align: left;
   line-height: 1;
   padding: 20px 20px 20px 70px;
   position: absolute;
@@ -161,7 +162,6 @@ article.birkenstock>.swiper .swiper-scrollbar-drag {
   background: #0000c5;
 }
 
-article.birkenstock>.swiper .swiper-slide a .title,
 article.birkenstock>.swiper .swiper-slide a.item-4,
 article.birkenstock>.swiper .swiper-slide a.item-8 {
   text-align: left;

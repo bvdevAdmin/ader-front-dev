@@ -26,10 +26,11 @@ let filter_name = {
 
 let cnt_filter = 0;
 
-let is_phased	= true,swiper = [];
+let is_phased	= true;
 let is_fetching	= false;
 
-localStorage.setItem("page",0);
+// 윤재은
+// let swiper = [];
 
 localStorage.setItem("page",0);
 
@@ -126,10 +127,11 @@ $(document).on("click","main.goods.list > header section.tools button",function(
 
 			sessionStorage.setItem(session_img,"O");
 			
+			// 윤재은
 			// swipe 초기화
-			swiper.forEach(row => {
-				row.enable();
-			});			
+			// swiper.forEach(row => {
+			// 	row.enable();
+			// });
 		} else {
 			$("ul#list").parent().removeClass("outfit");
 
@@ -139,12 +141,13 @@ $(document).on("click","main.goods.list > header section.tools button",function(
 
 			sessionStorage.setItem(session_img,"P");
 			
+			// 윤재은
 			// swipe 비활성화
-			if(typeof swiper == 'object' && swiper.length > 0) {
-				swiper.forEach(row => {
-					row.disable;
-				});
-			}
+			// if(typeof swiper == 'object' && swiper.length > 0) {
+			// 	swiper.forEach(row => {
+			// 		row.disable;
+			// 	});
+			// }
 		}
 	} else if ($(this).hasClass("column")) {
 		// 2/4칸 보기 토글
@@ -259,45 +262,61 @@ function get_goods( is_list_clear ) {
 				
 				d.data.forEach(row => {
 					// 이미지 슬라이드
-                    let swiper_container_o = '',swiper_slides_o = []
-                        , swiper_container_p = '',swiper_slides_p = []
-						, outfit_image = '';
+                    let swiper_container_o = '';
+					let swiper_slides_o = [];
+                    let swiper_container_p = '';
+					let swiper_slides_p = [];
+					let outfit_image = '';
 					
                     if (row.product_img) {
-						if(row.product_img.product_o_img.length > 0) {
-							img_src = 
-							row.product_img.product_o_img.forEach(img => {
-								swiper_slides_o.push(`<div class="swiper-slide"><div class="image-cont"><img src="${config.cdn + img.img_location}" loading="lazy"></div></div>`);
+						if(row.product_img.product_p_img.length > 0) {
+							row.product_img.product_p_img.forEach(img => {
+								swiper_slides_p.push(`
+									<div class="swiper-slide">
+										<div class="image-cont">
+											<img src="${config.cdn + img.img_location}" loading="lazy">
+										</div>
+									</div>
+								`);
 							});
-							swiper_container_o = `
-								<div class="swiper-container outfit">
+
+							swiper_container_p = `
+								<div class="swiper swiper-container product">
 									<div class="swiper-wrapper">
-									${swiper_slides_o.join("")}
+										${swiper_slides_p.join("")}
 									</div>
 								</div>
 							`;
 						}
 
-						if(row.product_img.product_p_img.length > 0) {
-							row.product_img.product_p_img.forEach(img => {
-								swiper_slides_p.push(`<div class="swiper-slide"><div class="image-cont"><img src="${config.cdn + img.img_location}" loading="lazy"></div></div>`);
+						if(row.product_img.product_o_img.length > 0) {
+							row.product_img.product_o_img.forEach(img => {
+								swiper_slides_o.push(`
+									<div class="swiper-slide">
+										<div class="image-cont">
+											<img src="${config.cdn + img.img_location}" loading="lazy">
+										</div>
+									</div>
+								`);
 							});
-							swiper_container_p = `
-								<div class="swiper-container product">
+
+							swiper_container_o = `
+								<div class="swiper swiper-container outfit">
 									<div class="swiper-wrapper">
-									${swiper_slides_p.join("")}
+										${swiper_slides_o.join("")}
 									</div>
 								</div>
 							`;
 						}
 						
-						if (row.product_img.product_p_img.length > 0 && row.product_img.product_p_img.length > 0) {
-							// 아이템 <-> 착용샷
-							outfit_image = `style="--outfit-src: url('${config.cdn + row.product_img.product_p_img[0].img_location}'); "`;
-							if(row.product_img.product_o_img.length > 0) { // 착용샷이 있을 경우 대표 이미지 가져옴
-								outfit_image = `style="--outfit-src: url('${config.cdn + row.product_img.product_o_img[0].img_location}'); "`;
-							}
-						}
+						// 윤재은
+						// if (row.product_img.product_p_img.length > 0 && row.product_img.product_p_img.length > 0) {
+						// 	// 아이템 <-> 착용샷
+						// 	outfit_image = `style="--outfit-src: url('${config.cdn + row.product_img.product_p_img[0].img_location}'); "`;
+						// 	if(row.product_img.product_o_img.length > 0) { // 착용샷이 있을 경우 대표 이미지 가져옴
+						// 		outfit_image = `style="--outfit-src: url('${config.cdn + row.product_img.product_o_img[0].img_location}'); "`;
+						// 	}
+						// }
 					}
 					
 					// 사이즈
@@ -320,7 +339,8 @@ function get_goods( is_list_clear ) {
 										data-no="${row2.product_idx}" 
 										data-option_no="${row2.option_idx}" 
 										data-type="${row2.size_type}" 
-										class="${stock_status}">
+										class="${stock_status}"
+										>
 										<span class="name">${row2.option_name}</span>
 									</li>
 								`;
@@ -349,19 +369,22 @@ function get_goods( is_list_clear ) {
 					$("#list").append(`
 						<li class="${(row.stock_status == 'STSO')?'soldout':''}" style="${(row.background_color!='')?'background-color:' + row.background_color:''}">
 							<a href="${config.base_url}/shop/${row.product_idx}">
-								<span 
-									class="image" 
-									data-src="${(row.product_img.product_p_img.length > 0) ? config.cdn + row.product_img.product_p_img[0].img_location : ''}"
-									${outfit_image}
-								>${swiper_container_o}${swiper_container_p}</span>
+								<span class="image item-${row.product_idx}">
+									${swiper_container_p}
+									${swiper_container_o}
+								</span>
 							</a>
 							<div class="info">
 								<strong>${row.product_name}</strong>
 								<span class="price ${row.discount > 0 ? ' discount' : ''}" data-discount="${row.discount}" data-saleprice="${row.sales_price}">
 									<span class="cont">${row.price}</span>
 								</span>
-								<span class="color"><ul>${color}</ul></span>
-								<span class="size"><ul>${size}</ul></span>
+								<span class="color">
+									<ul>${color}</ul>
+								</span>
+								<span class="size">
+									<ul>${size}</ul>
+								</span>
 							</div>
 							<button type="button" class="shop favorite ${(row.whish_flg)?'on':''}" data-goods_no="${row.product_idx}"></button>
 						</li>
@@ -373,8 +396,12 @@ function get_goods( is_list_clear ) {
 						spaceBetween: 0,
 						loop : true,
 					};
-					swiper.push(new Swiper($("#list > li").last().find(".swiper-container.product").get(0), swiper_option));
-					swiper.push(new Swiper($("#list > li").last().find(".swiper-container.outfit").get(0), swiper_option));
+
+					// 20250408 윤재은
+					// swiper.push(new Swiper($(`.item-${row.product_idx} .swiper.outfit`).get(0), swiper_option));
+					// swiper.push(new Swiper($(`.item-${row.product_idx} .swiper.product`).get(0), swiper_option));
+					new Swiper($(`.item-${row.product_idx} .swiper.outfit`).get(0), swiper_option);
+					new Swiper($(`.item-${row.product_idx} .swiper.product`).get(0), swiper_option);
 
 					if($("ul#list").parent().hasClass("col-2")) {
                         let el_top = $("#list > li").last().offset().top,

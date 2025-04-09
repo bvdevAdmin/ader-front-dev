@@ -680,7 +680,8 @@ function getIMG($db,$product_idx,$img_type,$param_type) {
 		WHERE
 			PI.PRODUCT_IDX = ? AND
 			PI.IMG_TYPE = ? AND
-			PI.IMG_SIZE = 'M'
+			PI.IMG_SIZE = 'M' AND
+			PI.DEL_FLG = FALSE
 		ORDER BY
 			PI.IDX ASC
 	";

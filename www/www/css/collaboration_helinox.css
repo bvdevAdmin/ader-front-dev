@@ -45,7 +45,7 @@ main.collaboration.new>article.helinox>.product>.swiper-container p {
 
 main.collaboration.new>article.helinox>.product>.swiper-container .swiper-pagination {
   position: relative;
-  padding-bottom: 50px;
+  padding-bottom: 75px;
 }
 
 main.collaboration.new>article.helinox>.product>.swiper-container .swiper-slide>div button.white {
@@ -326,10 +326,6 @@ main.collaboration article.helinox .swiper-button-next {
 main.collaboration article.helinox .swiper-button-next.swiper-button-disabled,
 main.collaboration article.helinox .swiper-button-prev.swiper-button-disabled {
   opacity: .15;
-}
-
-main.collaboration.new>article.helinox>.product>.swiper-container .swiper-pagination {
-  padding-bottom: 75px;
 }
 
 main.collaboration article.helinox .describe .text h1,

@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="/css/layout.css?v=<?=time()?>" />
 	<link rel="stylesheet" href="/css/contents.css?v=<?=time()?>" />
 	<link rel="stylesheet" href="/css/responsive.css?v=<?=time()?>" />
+	<link rel="stylesheet" href="/css/collaboration.css?v=<?=time()?>" />
 
 	<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 	<script src="//code.jquery.com/jquery-latest.min.js"></script>

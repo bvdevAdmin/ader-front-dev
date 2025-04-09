@@ -27,7 +27,7 @@
 			</p>
 		</article>
 	</section> -->
-	<section>
+	<section class="bearbrick-1st">
 		<ul class="gallery-grid hide-after-8 col-4">
 			<li><img src="/upload/collaboration/bearbrick/1.jpg"></li>
 			<li><img src="/upload/collaboration/bearbrick/2.jpg"></li>

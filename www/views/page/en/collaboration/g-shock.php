@@ -1,13 +1,15 @@
-<main class="collaboration">
+<main class="collaboration new">
     <?php include $_CONFIG['PATH']['PAGE'].$_CONFIG['M'][0].'/collaboration/_nav.php'; ?>
 	<header>
 		<h1>
 			<small>2018</small>
-			ADER ERROR X G-SHOCK
+			ADER x G-SHOCK COLLABORATION
 		</h1>
 	</header>
 	<section class="media">
-		<video loop muted autoplay playsinline src="https://d340a4zb19l6y1.cloudfront.net/collaboration/gshock/ADERxGSHOCK_PC.mp4"></video>
+		<img class="pc" src="https://adererror.com/collaboration/g-shock/intro.jpg">
+		<img class="mo" src="https://adererror.com/collaboration/g-shock/mobile/intro.jpg">
+		<!-- <video loop muted autoplay playsinline src="https://d340a4zb19l6y1.cloudfront.net/collaboration/gshock/ADERxGSHOCK_PC.mp4"></video>
 		<article>
 			<p>
 				아더와 지샥이 협업을 통해 시간에 대한 새로운 철학을 선보입니다. <br>
@@ -16,11 +18,25 @@
 				이번 협업 제품의 감각적인 디테일들을 경험해보세요. 
 			</p>
 			<div class="buttons">
-				<button type="button" class="play">Show campaign main videos</button>
+				<button type="button" class="play">캠페인 메인 영상 보기</button>
 			</div>
-		</article>
+		</article> -->
 	</section>
-	<section class="gallery">
+	<article class="campaign">
+		<h3>ADER x G-SHOCK</h3>
+		<div class="media">
+			<video class="both" loop muted autoplay playsinline src="https://ader-video-s3-bucket.s3.ap-northeast-2.amazonaws.com/collaboration/gshock/G-SHOCK_campaign_1920x1080.mp4"></video>
+		</div>
+		<div>
+			<button type="button" class="button play">
+				캠페인 영상 보기
+				<span class="over">
+					<span class="text">캠페인 영상 보기</span>
+				</span>
+			</button>
+		</div>
+	</article>
+	<!-- <section class="gallery">
 		<article class="product-gallery">
 			<section class="goods on">
 				<section class="detail">
@@ -34,17 +50,16 @@
 						<div class="swiper-pagination"></div>
 					</div>
 					<p>
-						The collaborative products created by ADER's meeting with Zi Shark<br>
-						include "WATCH", "STRAP", "07", and "but near missed things"<br>
-						at the top of the matte black band<br>
-						It gives you the fun of discovering ADER's unique witty text play<br class="mobile"> in a minimal mood.
+						아더와 지샥의 만남으로 탄생한 협업 제품은 매트한 블랙의 밴드 상단부에<br>
+						‘WATCH' , 'STRAP' , '07' , 'but near missed things' 등<br>
+						미니멀한 무드에 아더 특유의 위트 있는 텍스트 플레이를<br class="mobile"> 발견하는 재미를 선사합니다. 
 					</p>
 				</section>
 			</section>
 		</article>
 		<div class="buttons">
-			<a href="" class="btn">Show entire collaboration products</a>
+			<a href="" class="btn">콜라보레이션 제품 전체 보기</a>
 		</div>
-	</section>
-	<button type="button" class="to-top"></button>
+	</section> -->
+	<!-- <button type="button" class="to-top"></button> -->
 </main>
